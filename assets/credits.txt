@@ -2,4 +2,5 @@
 [b]Credits[/b]
 Designer: Some Guy
 Programmer: Some Other Guy
+3D Artist: Marcell Michl
 [/center]
