@@ -1,9 +1,17 @@
 [center]
-[b]Credits[/b]
-Designer: Michael Zarick
-Programmer: Chris Margroff
-Programmer: Mylana Herasymenko
-Artist:
-Music and Sound: strbtrfl
-3D Artist: Marcell Michl
+[font_size=20][b]Credits[/b][/font_size]
+Designer:
+Michael Zarick
+
+Lead Developer:
+Chris Margroff
+
+Developers:
+Mylana Herasymenko, Paul Etkin
+
+Music and Sound:
+strbtrfl
+
+Artists:
+Marcell Michl, XZO
 [/center]
