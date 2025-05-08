@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "template", "template.csproj", "{E9047D9C-75E3-45C2-9264-3399D961682D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "godot-wild-jam-81", "godot-wild-jam-81.csproj", "{E9047D9C-75E3-45C2-9264-3399D961682D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
