@@ -2,7 +2,7 @@
 [b]Credits[/b]
 Designer: Michael Zarick
 Programmer: Some Other Guy
-Programmer:
+Programmer: Mylana Herasymenko
 Artist:
 Music and Sound:  
 3D Artist: Marcell Michl
