@@ -1,7 +1,7 @@
 [center]
 [b]Credits[/b]
 Designer: Michael Zarick
-Programmer: Some Other Guy
+Programmer: Chris Margroff
 Programmer: Mylana Herasymenko
 Artist:
 Music and Sound:  
