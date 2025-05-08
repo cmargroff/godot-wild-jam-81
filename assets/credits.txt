@@ -1,5 +1,8 @@
 [center]
 [b]Credits[/b]
-Designer: Some Guy
+Designer: Michael Zarick
 Programmer: Some Other Guy
+Programmer:
+Artist:
+Music and Sound:  
 [/center]
