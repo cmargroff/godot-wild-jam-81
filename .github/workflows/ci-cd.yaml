@@ -114,11 +114,12 @@ jobs:
          prerelease: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Upload Windows Asset
-        uses: actions/upload-release-asset@v1
+      - name: List available files
         run: |
           ls -la .
           ls -la build/windows
+      - name: Upload Windows Asset
+        uses: actions/upload-release-asset@v1
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: build/windows/windows-release.zip
