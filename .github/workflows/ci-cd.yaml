@@ -96,7 +96,7 @@ jobs:
 
   release:
     name: Create Release
-    needs: [export-windows, export-linux, export-mac]
+    needs: [export-windows]
     runs-on: ubuntu-latest
     steps:
       - name: Download Windows Artifact
