@@ -10,14 +10,14 @@ config_version=5
 
 [application]
 
-config/name="template"
+config/name="godot-wild-jam-81"
 run/main_scene="uid://bhn3okwreagx3"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [dotnet]
 
-project/assembly_name="template"
+project/assembly_name="godot-wild-jam-81"
 
 [rendering]
 
