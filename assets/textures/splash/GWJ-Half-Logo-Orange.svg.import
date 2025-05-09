@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqlicqjd2e2mg"
-path="res://.godot/imported/spinner-512.png-ba087acd2695235e66aa67f6b4247699.ctex"
+uid="uid://7scj2udxt43l"
+path="res://.godot/imported/GWJ-Half-Logo-Orange.svg-3da4ab3a0250362ac004aa50ae744e9e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/spinner-512.png"
-dest_files=["res://.godot/imported/spinner-512.png-ba087acd2695235e66aa67f6b4247699.ctex"]
+source_file="res://assets/textures/splash/GWJ-Half-Logo-Orange.svg"
+dest_files=["res://.godot/imported/GWJ-Half-Logo-Orange.svg-3da4ab3a0250362ac004aa50ae744e9e.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=4.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c3kylo33r1wos"]
 
-[ext_resource type="Texture2D" uid="uid://e151fqb3nf51" path="res://assets/textures/godot_wild_card.png" id="1_tcg2b"]
+[ext_resource type="Texture2D" uid="uid://e151fqb3nf51" path="res://assets/textures/splash/godot_wild_card.png" id="1_tcg2b"]
 [ext_resource type="Script" uid="uid://biawamag0qrek" path="res://scripts/components/splash/WildCard.cs" id="2_15ynn"]
 [ext_resource type="FontFile" uid="uid://0k7r5qj6wgl7" path="res://assets/fonts/Oswald-SemiBold.ttf" id="3_tcg2b"]
 

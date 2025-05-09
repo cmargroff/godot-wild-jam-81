@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b2uevndy0ggx6"]
 
 [ext_resource type="Script" uid="uid://427f554vm4ht" path="res://views/LoadingScene.cs" id="1_3k5dh"]
-[ext_resource type="Texture2D" uid="uid://bqlicqjd2e2mg" path="res://assets/textures/spinner-512.png" id="2_b80fj"]
+[ext_resource type="Texture2D" uid="uid://bqlicqjd2e2mg" path="res://assets/textures/loading/spinner-512.png" id="2_b80fj"]
 
 [sub_resource type="Animation" id="Animation_smnf2"]
 length = 3.0

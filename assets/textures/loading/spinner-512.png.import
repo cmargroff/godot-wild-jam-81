@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://e151fqb3nf51"
-path="res://.godot/imported/godot_wild_card.png-36f5302483c049673e653a4f5d83806f.ctex"
+uid="uid://bqlicqjd2e2mg"
+path="res://.godot/imported/spinner-512.png-5be40cc9922a3b4a71c3b7d595be0ff4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/godot_wild_card.png"
-dest_files=["res://.godot/imported/godot_wild_card.png-36f5302483c049673e653a4f5d83806f.ctex"]
+source_file="res://assets/textures/loading/spinner-512.png"
+dest_files=["res://.godot/imported/spinner-512.png-5be40cc9922a3b4a71c3b7d595be0ff4.ctex"]
 
 [params]
 

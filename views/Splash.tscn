@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://be81cd05cwp15" path="res://views/Splash.cs" id="1_kur6f"]
 [ext_resource type="PackedScene" uid="uid://bsibg77xt75ap" path="res://components/splash/BuildLabel.tscn" id="2_eg5kb"]
 [ext_resource type="PackedScene" uid="uid://bnxurcn6pcbbr" path="res://components/splash/ThemeCard.tscn" id="2_ftxjo"]
-[ext_resource type="Texture2D" uid="uid://7scj2udxt43l" path="res://assets/textures/GWJ-Half-Logo-Orange.svg" id="2_qwakf"]
+[ext_resource type="Texture2D" uid="uid://7scj2udxt43l" path="res://assets/textures/splash/GWJ-Half-Logo-Orange.svg" id="2_qwakf"]
 [ext_resource type="PackedScene" uid="uid://c3kylo33r1wos" path="res://components/splash/WildCard.tscn" id="5_7be7o"]
 [ext_resource type="Resource" uid="uid://kjvmjoju77r2" path="res://resources/splash/wildcard1.tres" id="6_bjvs7"]
 [ext_resource type="Resource" uid="uid://drmaclbkwbudr" path="res://resources/splash/wildcard2.tres" id="7_fxiug"]

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b2n2ciq4ygvb3"
-path="res://.godot/imported/godot_wild_card.svg-e1312a957d254641a0b52e9b8407775e.ctex"
+path="res://.godot/imported/godot_wild_card.svg-6d877699fcfb6a582adc545701573992.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/godot_wild_card.svg"
-dest_files=["res://.godot/imported/godot_wild_card.svg-e1312a957d254641a0b52e9b8407775e.ctex"]
+source_file="res://assets/textures/splash/godot_wild_card.svg"
+dest_files=["res://.godot/imported/godot_wild_card.svg-6d877699fcfb6a582adc545701573992.ctex"]
 
 [params]
 
