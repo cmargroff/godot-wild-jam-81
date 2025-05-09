@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cs2ybcc1lpqhc"]
+
+[ext_resource type="Script" uid="uid://wiwsb8d1e7fq" path="res://scripts/views/Game.cs" id="1_5pph0"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_opgdw"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_5pph0"]
+
+[node name="Game" type="Node3D"]
+script = ExtResource("1_5pph0")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.990574, 0.0719169, -0.11658, 0, 0.851086, 0.525026, 0.136978, -0.520077, 0.843064, 0, 1.9805, 2.54742)
+
+[node name="Ship" type="MeshInstance3D" parent="."]
+transform = Transform3D(4.52173, 0, 0, 0, 0.994616, 0, 0, 0, 1.39782, 0, 0, 0)
+mesh = SubResource("BoxMesh_opgdw")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.340494, 0.940247, 0, -0.940247, 0.340494, 0, 0, 0)
+
+[node name="Water" type="MeshInstance3D" parent="."]
+transform = Transform3D(10.4076, 0, 0, 0, 2.10997e-07, 0.999999, 0, 4.82706, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("QuadMesh_5pph0")
