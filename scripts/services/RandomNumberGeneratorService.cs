@@ -23,7 +23,7 @@ public partial class RandomNumberGeneratorService
   {
     return _rng.Randi();
   }
-  public ushort RandomU16()
+  public static ushort RandomU16()
   {
     ushort temp1, temp2;
 
