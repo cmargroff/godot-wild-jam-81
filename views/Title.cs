@@ -48,7 +48,10 @@ public partial class Title : Control
     }
   }
 
-  public void Start() { }
+  public void Start()
+  {
+    _sceneManager.ChangeScene("Game");
+  }
   public void ToggleOptions()
   {
     _menu.Visible = _optionsShown;
