@@ -1,5 +1,6 @@
 using Godot;
 using JamTemplate.Managers;
+using JamTemplate.Services;
 using JamTemplate.Stores;
 using JamTemplate.Util;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,6 +24,7 @@ public partial class Entry : Node
     .AddSingleton<SettingsStore>()
     .AddSingleton<ConfigManager>()
     .AddSingleton<AudioManager>()
+    .AddSingleton<RandomNumberGeneratorService>()
     .AddSingleton(InjectInstantiatedPackedScene<SceneManager>("res://views/SceneManager.tscn"))
     ;
     AddScenes(Services);
