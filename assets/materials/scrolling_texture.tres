@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bsj6xumrw23oq"]
+
+[ext_resource type="Shader" uid="uid://cw7vr7ebv6vrv" path="res://assets/shaders/ScrollTexture.tres" id="1_sdv78"]
+[ext_resource type="Texture2D" uid="uid://drbwxryewvthp" path="res://assets/textures/game/2048x2048 Texel Density Texture 2.png" id="2_7q2hp"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_sdv78")
+shader_parameter/Speed = 0.1
+shader_parameter/Texture = ExtResource("2_7q2hp")
