@@ -15,4 +15,11 @@ public partial class Splash : Control
   {
     _sceneManager.ChangeScene("Title");
   }
+  public override void _Input(InputEvent @event)
+  {
+    if (@event is InputEventKey keyEvent && keyEvent.IsPressed())
+    {
+      _sceneManager.ChangeScene("Title");
+    }
+  }
 }
