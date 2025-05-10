@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://b7kdi5u8brmws"]
+[gd_scene load_steps=3 format=3 uid="uid://b7kdi5u8brmws"]
 
+[ext_resource type="Script" uid="uid://cw458qrvpgtfo" path="res://scripts/components/game/Score.cs" id="1_a1l8k"]
 [ext_resource type="FontFile" uid="uid://c0b830g1sx2i7" path="res://assets/fonts/pirata-one/PirataOne-Regular.ttf" id="1_j0xec"]
 
 [node name="Score" type="Control"]
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_a1l8k")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
