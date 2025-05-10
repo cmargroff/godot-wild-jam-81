@@ -1,17 +1,16 @@
+using System;
 using System.Collections.Generic;
-using Godot;
 using JamTemplate.Enum;
 using JamTemplate.Models;
 
 namespace JamTemplate.Managers;
 
-public partial class StatsManager : Node
+public partial class StatsManager
 {
-  [Signal]
-  public delegate void StatChangedEventHandler(Stat stat, float amount);
+  public event Action<Stat, float> StatChanged;
 
   private Dictionary<Stat, float> _stats;
-  public override void _EnterTree()
+  public StatsManager()
   {
     _stats = new();
     foreach (Stat id in System.Enum.GetValues(typeof(Stat)))
@@ -30,6 +29,7 @@ public partial class StatsManager : Node
     {
       _stats[statChange.Stat] += statChange.Amount;
     }
-    EmitSignal(SignalName.StatChanged, Variant.From(statChange.Stat), Variant.From(_stats[statChange.Stat]));
+    // some logic to limit the individual stats like cap water level at 100;
+    StatChanged?.Invoke(statChange.Stat, _stats[statChange.Stat]);
   }
 }
