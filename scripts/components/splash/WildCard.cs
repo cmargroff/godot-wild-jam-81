@@ -27,6 +27,7 @@ public partial class WildCard : TextureRect
         Modulate = new Color(1, 1, 1, 0.3f);
       }
       GetNode<Label>("%Name").Text = CardRes.Title;
+      GetNode<Label>("%Description").Text = CardRes.Description;
     }
   }
 }
