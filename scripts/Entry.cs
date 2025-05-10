@@ -1,6 +1,6 @@
 using Godot;
-using JamTemplate;
-using JamTemplate.Managers;
+using ShipOfTheseus2025;
+using ShipOfTheseus2025.Managers;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 

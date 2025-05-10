@@ -1,9 +1,9 @@
 using Godot;
-using JamTemplate.Managers;
-using JamTemplate.Resources;
-using JamTemplate.Util;
+using ShipOfTheseus2025.Managers;
+using ShipOfTheseus2025.Resources;
+using ShipOfTheseus2025.Util;
 
-namespace JamTemplate.Components;
+namespace ShipOfTheseus2025.Components;
 public partial class WildCard : TextureRect
 {
   [Export]

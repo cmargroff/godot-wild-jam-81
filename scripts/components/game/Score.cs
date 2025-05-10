@@ -1,7 +1,7 @@
 using Godot;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace JamTemplate.Components.Game;
+namespace ShipOfTheseus2025.Components.Game;
 
 public partial class Score : Control
 {

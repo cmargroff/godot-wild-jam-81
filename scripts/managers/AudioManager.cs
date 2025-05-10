@@ -1,7 +1,7 @@
 using Godot;
-using JamTemplate.Stores;
+using ShipOfTheseus2025.Stores;
 
-namespace JamTemplate.Managers;
+namespace ShipOfTheseus2025.Managers;
 
 public class AudioManager
 {

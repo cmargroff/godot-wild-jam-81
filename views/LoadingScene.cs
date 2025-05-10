@@ -1,6 +1,6 @@
 using Godot;
 
-namespace JamTemplate.Views;
+namespace ShipOfTheseus2025.Views;
 
 public partial class LoadingScene : Control
 {
