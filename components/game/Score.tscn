@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7kdi5u8brmws"]
+
+[ext_resource type="FontFile" uid="uid://c0b830g1sx2i7" path="res://assets/fonts/pirata-one/PirataOne-Regular.ttf" id="1_j0xec"]
+
+[node name="Score" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_j0xec")
+theme_override_font_sizes/font_size = 32
+text = "1234567890"
+horizontal_alignment = 2
+vertical_alignment = 1
+visible_characters_behavior = 2
