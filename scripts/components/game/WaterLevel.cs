@@ -13,7 +13,7 @@ public partial class WaterLevel : Control
   {
     _progressBar = GetNode<ProgressBar>("%ProgressBar");
     _icon = GetNode<TextureRect>("%Icon");
-    _statsManager = Entry.ServiceProvider.GetRequiredService<StatsManager>();
+    _statsManager = Globals.ServiceProvider.GetRequiredService<StatsManager>();
     _statsManager.StatChanged += StatsManager_StatChanged;
   }
   public override void _ExitTree()
