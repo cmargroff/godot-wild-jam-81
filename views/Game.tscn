@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cs2ybcc1lpqhc"]
 
 [ext_resource type="Script" uid="uid://wiwsb8d1e7fq" path="res://scripts/views/Game.cs" id="1_5pph0"]
-[ext_resource type="PackedScene" uid="uid://dwgi8x43v8k4u" path="res://components/game/Ship.tscn" id="2_26sbl"]
+[ext_resource type="PackedScene" uid="uid://cxyf4q4egqw6k" path="res://components/game/Ship.tscn" id="2_26sbl"]
 [ext_resource type="PackedScene" uid="uid://lw36b2co12mu" path="res://components/game/HUD.tscn" id="3_26sbl"]
 [ext_resource type="Material" uid="uid://bsj6xumrw23oq" path="res://assets/materials/scrolling_texture.tres" id="3_leryn"]
 
@@ -14,14 +14,15 @@ script = ExtResource("1_5pph0")
 [node name="Ship" parent="." instance=ExtResource("2_26sbl")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.990574, 0.0719169, -0.11658, 0.0217822, 0.757554, 0.652409, 0.135235, -0.648799, 0.748847, -0.664834, 2.89009, 3.59146)
+transform = Transform3D(0.983885, 0.0636368, -0.167095, 1.86265e-09, 0.934522, 0.355906, 0.178802, -0.350171, 0.919462, -1.79083, 10.3097, 20.0682)
+fov = 28.8
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.340494, 0.940247, 0, -0.940247, 0.340494, 0, 0, 0)
 
 [node name="Water" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(25, -2.84217e-13, -4.96941e-22, 0, -1.09278e-06, 1, -2.84217e-13, -25, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(50, -5.68434e-13, -9.93882e-22, 0, -2.18557e-06, 2, -5.68434e-13, -50, -8.74228e-08, -1.96497e-13, -7.55512e-07, -17.2841)
 mesh = SubResource("QuadMesh_5pph0")
 
 [node name="HUD" parent="." instance=ExtResource("3_26sbl")]

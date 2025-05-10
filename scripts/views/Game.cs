@@ -6,7 +6,6 @@ namespace JamTemplate.Views;
 
 public partial class Game : Node3D
 {
-  private AnimationPlayer _animationPlayer;
   private SceneManager _sceneManager;
   private StatsManager _statsManager;
   private GameEventManager _eventManager;
@@ -17,11 +16,6 @@ public partial class Game : Node3D
     _statsManager = statsManager;
     _eventManager = eventManager;
     AddChild(_eventManager);
-  }
-  public override void _EnterTree()
-  {
-    _animationPlayer = GetNode<AnimationPlayer>("%AnimationPlayer");
-    _animationPlayer.CurrentAnimation = "rocking";
   }
   public override void _Ready()
   {
