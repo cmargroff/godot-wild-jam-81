@@ -13,6 +13,7 @@ public partial class Score : Control
     _label = GetNode<Label>("Label");
     _scoreManager = Entry.ServiceProvider.GetRequiredService<ScoreManager>();
     _scoreManager.ScoreChanged += ScoreManager_ScoreChanged;
+    _label.Text = _scoreManager.Score.ToString();
   }
   private void ScoreManager_ScoreChanged(int Score)
   {
