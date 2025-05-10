@@ -10,16 +10,15 @@ public partial class Game : Node3D
   private SceneManager _sceneManager;
   private StatsManager _statsManager;
   private GameEventManager _eventManager;
-  private ItemSpawnManager _spawnManager;
+ 
   [FromServices]
-  public void Inject(SceneManager sceneManager, StatsManager statsManager, GameEventManager eventManager, ItemSpawnManager spawnManager)
+  public void Inject(SceneManager sceneManager, StatsManager statsManager, GameEventManager eventManager)
   {
     _sceneManager = sceneManager;
     _statsManager = statsManager;
     _eventManager = eventManager;
     AddChild(_eventManager);
-    _spawnManager = spawnManager;
-    AddChild(_spawnManager);
+    
   }
   public override void _EnterTree()
   {
