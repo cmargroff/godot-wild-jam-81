@@ -13,14 +13,16 @@ public partial class InventoryUi : Control
 
     private Dictionary<int, Texture2D> _itemIcons;
     private Texture2D _blankIcon;
+    
     public override void _EnterTree()
     {
         PreloadIcons();
         _inventoryManager = Entry.ServiceProvider.GetRequiredService<InventoryManager>();
         _itemList = GetNode<ItemList>("ItemList");
+        GD.Print(_itemList);
         _inventoryManager.InventoryUpdated += RenderItems;
         _itemList.Connect(ItemList.SignalName.ItemClicked, Callable.From<long, Vector2, long>(ItemList_ItemClicked));
-
+        RenderItems(_inventoryManager.GetInventory());
     }
 
     private void PreloadIcons()
@@ -31,6 +33,7 @@ public partial class InventoryUi : Control
     }
     private void RenderItems(List<Item> items)
     {
+        
         _itemList.Clear();
         
         foreach (var item in items)
@@ -51,6 +54,7 @@ public partial class InventoryUi : Control
 
     private void ItemList_ItemClicked(long index, Vector2 pos, long mouseButtonIndex)
     {
+        
     
         if (mouseButtonIndex == 2)
         {
@@ -63,8 +67,10 @@ public partial class InventoryUi : Control
             {
                 GD.Print("no item");
             }
-            GD.Print(item.Name);
-            //use item
+            else{
+                //use item
+            }
+           
         }
     }
     

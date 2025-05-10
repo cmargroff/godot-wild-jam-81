@@ -20,42 +20,45 @@ public partial class InventoryManager
     {
         _items = new();
 
+        InventoryUpdated?.Invoke(_items);
+        
     }
 
     public void AddInventoryItem(Item item)
     {
-        for (int i = 0; i < _inventorySize; i++)
+        if (_items.Count < _inventorySize)
         {
-            if (_items[i] != null) continue;
-            
-            _items[i] = item;
-            
+            _items.Add(item);
             InventoryUpdated?.Invoke(_items);
-            
-            return;
         }
        
     }
 
     public void RemoveInventoryItem(int index)
     {
-        if (index < 0 || index >= _inventorySize) return;
+        if (index < 0 || index >= _items.Count) return;
 
-        _items[index] = null;
-        
+        _items.RemoveAt(index);
         InventoryUpdated?.Invoke(_items);
     }
 
     public Item GetInventoryItem(int index)
     {
-        if (index < 0 || index >= _inventorySize) return null;
+        if (index < 0 || index >= _items.Count) return null;
         return _items[index];
     }
 
-    public void GetStartingInventory(List<Item> items)
+    public void SetInventory(List<Item> items)
     {
         _items = items;
+        InventoryUpdated?.Invoke(_items);
+
     }
+
+    public List<Item> GetInventory(){
+        return _items;
+    }
+
 
 }
 
