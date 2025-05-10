@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://7afu6die8g3x"
-path="res://.godot/imported/Oswald-Bold.ttf-6b16fa994d928ebdfcbc8ed28fa49fe1.fontdata"
+uid="uid://0k7r5qj6wgl7"
+path="res://.godot/imported/Oswald-SemiBold.ttf-35df0af6bb9b69113a6dc8717c16af9c.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/Oswald-Bold.ttf"
-dest_files=["res://.godot/imported/Oswald-Bold.ttf-6b16fa994d928ebdfcbc8ed28fa49fe1.fontdata"]
+source_file="res://assets/fonts/oswald/Oswald-SemiBold.ttf"
+dest_files=["res://.godot/imported/Oswald-SemiBold.ttf-35df0af6bb9b69113a6dc8717c16af9c.fontdata"]
 
 [params]
 

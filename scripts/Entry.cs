@@ -1,13 +1,13 @@
+using System;
+using System.IO;
+using System.Linq;
+using System.Reflection;
 using Godot;
 using JamTemplate.Managers;
 using JamTemplate.Services;
 using JamTemplate.Stores;
 using JamTemplate.Util;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.IO;
-using System.Linq;
-using System.Reflection;
 
 namespace JamTemplate;
 
@@ -24,15 +24,17 @@ public partial class Entry : Node
     .AddSingleton<SettingsStore>()
     .AddSingleton<ConfigManager>()
     .AddSingleton<AudioManager>()
+    .AddTransient<ScoreManager>()
     .AddSingleton<RandomNumberGeneratorService>()
     .AddSingleton(InjectInstantiatedPackedScene<SceneManager>("res://views/SceneManager.tscn"))
+    .AddTransient<StatsManager>()
     ;
     AddScenes(Services);
     ServiceProvider = Services.BuildServiceProvider();
     var gameManager = ServiceProvider.GetRequiredService<GameManager>();
     GetTree().Root.CallDeferred("add_child", gameManager);
   }
-  private Func<IServiceProvider, T> InjectNodeClass<T>() where T : Node, new()
+  private Func<IServiceProvider, T> InjectNodeClass<T>(bool autoParent = false) where T : Node, new()
   {
     return (serviceProvider) =>
     {
@@ -40,6 +42,10 @@ public partial class Entry : Node
 
       InjectAttributedMethods(obj, serviceProvider);
 
+      if (autoParent)
+      {
+        AddChild(obj);
+      }
       return obj;
     };
   }
