@@ -17,7 +17,7 @@ public partial class InventoryUi : Control
     public override void _EnterTree()
     {
         PreloadIcons();
-        _inventoryManager = Entry.ServiceProvider.GetRequiredService<InventoryManager>();
+        _inventoryManager = Globals.ServiceProvider.GetRequiredService<InventoryManager>();
         _itemList = GetNode<ItemList>("ItemList");
         GD.Print(_itemList);
         _inventoryManager.InventoryUpdated += RenderItems;
