@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://e151fqb3nf51" path="res://assets/textures/splash/godot_wild_card.png" id="1_tcg2b"]
 [ext_resource type="Script" uid="uid://biawamag0qrek" path="res://scripts/components/splash/WildCard.cs" id="2_15ynn"]
-[ext_resource type="FontFile" uid="uid://0k7r5qj6wgl7" path="res://assets/fonts/Oswald-SemiBold.ttf" id="3_tcg2b"]
+[ext_resource type="FontFile" uid="uid://0k7r5qj6wgl7" path="res://assets/fonts/oswald/Oswald-SemiBold.ttf" id="3_tcg2b"]
 
 [node name="WildCard" type="TextureRect"]
 size_flags_horizontal = 3
