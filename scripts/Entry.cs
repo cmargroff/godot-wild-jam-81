@@ -1,13 +1,13 @@
+using System;
+using System.IO;
+using System.Linq;
+using System.Reflection;
 using Godot;
 using JamTemplate.Managers;
 using JamTemplate.Services;
 using JamTemplate.Stores;
 using JamTemplate.Util;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.IO;
-using System.Linq;
-using System.Reflection;
 
 namespace JamTemplate;
 
@@ -26,6 +26,7 @@ public partial class Entry : Node
     .AddSingleton<AudioManager>()
     .AddSingleton<RandomNumberGeneratorService>()
     .AddSingleton(InjectInstantiatedPackedScene<SceneManager>("res://views/SceneManager.tscn"))
+    .AddTransient(InjectNodeClass<GameEventManager>())
     ;
     AddScenes(Services);
     ServiceProvider = Services.BuildServiceProvider();
