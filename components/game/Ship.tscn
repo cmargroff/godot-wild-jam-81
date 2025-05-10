@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwgi8x43v8k4u"]
+[gd_scene load_steps=6 format=3 uid="uid://cxyf4q4egqw6k"]
 
+[ext_resource type="Script" uid="uid://cl3oh7g4ilo65" path="res://scripts/components/game/Ship.cs" id="1_vik7u"]
 [ext_resource type="ArrayMesh" uid="uid://bdu1wpsp21g5o" path="res://assets/models/ship_Cube_027.res" id="1_yqq4h"]
 
 [sub_resource type="Animation" id="Animation_k55y7"]
@@ -41,9 +42,10 @@ _data = {
 }
 
 [node name="Ship" type="Node3D"]
+script = ExtResource("1_vik7u")
 
 [node name="Model" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.79523, -0.0872326, 0, 0.0872326, 0.79523, 0, 0, 0, 0.8, 0, 1.4, 0)
+transform = Transform3D(0.596422, -0.0654245, 0, 0.0654245, 0.596422, 0, 0, 0, 0.6, 0, 1.2, 0)
 mesh = ExtResource("1_yqq4h")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
