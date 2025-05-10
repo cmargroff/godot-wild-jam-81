@@ -26,7 +26,9 @@ public partial class Entry : Node
     .AddSingleton<AudioManager>()
     .AddSingleton<RandomNumberGeneratorService>()
     .AddSingleton(InjectInstantiatedPackedScene<SceneManager>("res://views/SceneManager.tscn"))
+    .AddTransient<InventoryManager>()
     ;
+
     AddScenes(Services);
     ServiceProvider = Services.BuildServiceProvider();
     var gameManager = ServiceProvider.GetRequiredService<GameManager>();

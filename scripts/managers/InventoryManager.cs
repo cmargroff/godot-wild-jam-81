@@ -1,31 +1,25 @@
 using Godot;
+using Godot.Collections;
 using System;
+using System.Collections.Generic;
 
 namespace JamTemplate.Managers;
-public partial class InventoryManager : ItemList
+public partial class InventoryManager 
 {
     
+    public event Action<List<Item>> InventoryUpdated;
 
     [Export]
     private int _inventorySize = 6;
     [Export]
     Texture2D blankIcon;
 
-    private Item[] _items;
+    private List<Item> _items;
 
-    public override void _Ready()
+    public InventoryManager()
     {
-        ItemClicked += OnInventoryItemClicked;
-        
-        
-        _items = new Item[_inventorySize];
+        _items = new();
 
-        
-        Item newItem = new Item();
-        newItem.Name = "some item";
-        newItem.Icon = GD.Load<Texture2D>("res://test.png");
-        AddInventoryItem(newItem);
-        LoadInventory();
     }
 
     public void AddInventoryItem(Item item)
@@ -36,12 +30,11 @@ public partial class InventoryManager : ItemList
             
             _items[i] = item;
             
-            // SetItemIcon(i, item.Icon);
+            InventoryUpdated?.Invoke(_items);
             
-            break;
+            return;
         }
-        GD.Print("item added");
-        UpdateUI();
+       
     }
 
     public void RemoveInventoryItem(int index)
@@ -49,9 +42,8 @@ public partial class InventoryManager : ItemList
         if (index < 0 || index >= _inventorySize) return;
 
         _items[index] = null;
-        // SetItemIcon(index, blankIcon);
-        // SetItemText(index, " ");
-        UpdateUI();
+        
+        InventoryUpdated?.Invoke(_items);
     }
 
     public Item GetInventoryItem(int index)
@@ -60,62 +52,9 @@ public partial class InventoryManager : ItemList
         return _items[index];
     }
 
-    private void OnInventoryItemClicked(long index, Vector2 pos, long mouseButtonIndex)
+    public void GetStartingInventory(List<Item> items)
     {
-        
-        if (mouseButtonIndex == 2)
-        {
-            Item item = GetInventoryItem((int)index);
-            if (item == null) 
-            {
-                GD.Print("no item");
-                return;
-            }
-            RemoveInventoryItem((int)index);
-        }
-        else if (mouseButtonIndex == 1)
-        {
-            Item item = GetInventoryItem((int)index);
-            if (item == null)
-            {
-                GD.Print("no item");
-                return;
-            }
-            GD.Print(item.Name);
-            //use item
-        }
-    }
-
-    public void LoadInventory()
-    {
-        for (int i = 0; i < _inventorySize; i++)
-        {
-            if (_items[i] == null)
-            {
-                
-                AddItem(" ", blankIcon);
-            }
-            else
-            {
-                AddItem(" ", _items[i].Icon);
-            }
-           
-        }
-    }
-
-    public void UpdateUI()
-    {
-        for (int i = 0; i < _inventorySize; i++)
-        {
-            if (_items[i] != null)
-            {
-                SetItemIcon(i, _items[i].Icon);
-            }
-            else 
-            {
-                SetItemIcon(i, blankIcon);
-            }
-        }
+        _items = items;
     }
 
 }
@@ -123,5 +62,5 @@ public partial class InventoryManager : ItemList
 public class Item
 {
     public string Name;
-    public Texture2D Icon; //?
+    public int ID;
 }
