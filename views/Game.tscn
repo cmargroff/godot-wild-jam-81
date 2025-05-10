@@ -1,61 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://cs2ybcc1lpqhc"]
+[gd_scene load_steps=6 format=3 uid="uid://cs2ybcc1lpqhc"]
 
 [ext_resource type="Script" uid="uid://wiwsb8d1e7fq" path="res://scripts/views/Game.cs" id="1_5pph0"]
+[ext_resource type="PackedScene" uid="uid://dwgi8x43v8k4u" path="res://components/game/Ship.tscn" id="2_26sbl"]
 [ext_resource type="PackedScene" uid="uid://lw36b2co12mu" path="res://components/game/HUD.tscn" id="3_26sbl"]
 [ext_resource type="Material" uid="uid://bsj6xumrw23oq" path="res://assets/materials/scrolling_texture.tres" id="3_leryn"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_opgdw"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_5pph0"]
 material = ExtResource("3_leryn")
 
-[sub_resource type="Animation" id="Animation_k55y7"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Ship:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0.109258)]
-}
-
-[sub_resource type="Animation" id="Animation_k714b"]
-resource_name = "rocking"
-length = 4.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Ship:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2, 4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0.109258), Vector3(0, 0, -0.0854513), Vector3(0, 0, 0.109258)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_hfq8r"]
-_data = {
-&"RESET": SubResource("Animation_k55y7"),
-&"rocking": SubResource("Animation_k714b")
-}
-
 [node name="Game" type="Node3D"]
 script = ExtResource("1_5pph0")
 
+[node name="Ship" parent="." instance=ExtResource("2_26sbl")]
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.990574, 0.0719169, -0.11658, 0.0217822, 0.757554, 0.652409, 0.135235, -0.648799, 0.748847, -0.664834, 2.89009, 3.59146)
-
-[node name="Ship" type="MeshInstance3D" parent="."]
-transform = Transform3D(4.49477, -0.108454, 0, 0.493053, 0.988685, 0, 0, 0, 1.39782, 0, 0.199368, 0)
-mesh = SubResource("BoxMesh_opgdw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.340494, 0.940247, 0, -0.940247, 0.340494, 0, 0, 0)
@@ -64,11 +23,5 @@ transform = Transform3D(1, 0, 0, 0, 0.340494, 0.940247, 0, -0.940247, 0.340494, 
 unique_name_in_owner = true
 transform = Transform3D(25, -2.84217e-13, -4.96941e-22, 0, -1.09278e-06, 1, -2.84217e-13, -25, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("QuadMesh_5pph0")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-unique_name_in_owner = true
-libraries = {
-&"": SubResource("AnimationLibrary_hfq8r")
-}
 
 [node name="HUD" parent="." instance=ExtResource("3_26sbl")]
