@@ -1,5 +1,5 @@
 using Godot;
-using JamTemplate.Components.Game;
+using ShipOfTheseus2025.Components.Game;
 using System;
 using System.Collections.Generic;
 using System.Linq;

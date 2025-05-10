@@ -1,4 +1,4 @@
-namespace JamTemplate.Enum;
+namespace ShipOfTheseus2025.Enum;
 
 public enum StatChangeMode
 {

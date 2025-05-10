@@ -1,6 +1,6 @@
 using Godot;
 
-namespace JamTemplate.Resources;
+namespace ShipOfTheseus2025.Resources;
 
 [GlobalClass]
 public partial class SplashWildcard : Resource

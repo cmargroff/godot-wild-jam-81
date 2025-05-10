@@ -1,12 +1,12 @@
 using Godot;
-using JamTemplate.Util;
+using ShipOfTheseus2025.Util;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace JamTemplate.Managers;
+namespace ShipOfTheseus2025.Managers;
 
 using Preloads = Dictionary<string, Dictionary<string, string>>;
 using Preloaded = Dictionary<string, Dictionary<string, Resource>>;

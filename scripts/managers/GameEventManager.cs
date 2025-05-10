@@ -1,6 +1,6 @@
 using Godot;
-using JamTemplate.Services;
-using JamTemplate.Util;
+using ShipOfTheseus2025.Services;
+using ShipOfTheseus2025.Util;
 
 public partial class GameEventManager : Node
 {

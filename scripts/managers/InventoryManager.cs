@@ -3,7 +3,7 @@ using Godot.Collections;
 using System;
 using System.Collections.Generic;
 
-namespace JamTemplate.Managers;
+namespace ShipOfTheseus2025.Managers;
 public partial class InventoryManager 
 {
     

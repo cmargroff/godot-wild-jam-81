@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using JamTemplate.Enum;
-using JamTemplate.Models;
+using ShipOfTheseus2025.Enum;
+using ShipOfTheseus2025.Models;
 
-namespace JamTemplate.Managers;
+namespace ShipOfTheseus2025.Managers;
 
 public partial class StatsManager
 {

@@ -1,6 +1,6 @@
 using Godot;
 
-namespace JamTemplate.Services;
+namespace ShipOfTheseus2025.Services;
 
 public partial class RandomNumberGeneratorService
 {
