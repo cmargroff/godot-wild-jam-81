@@ -27,8 +27,11 @@ public partial class Entry : Node
     .AddTransient<ScoreManager>()
     .AddSingleton<RandomNumberGeneratorService>()
     .AddSingleton(InjectInstantiatedPackedScene<SceneManager>("res://views/SceneManager.tscn"))
-    .AddTransient(InjectNodeClass<StatsManager>(true))
+    .AddTransient<StatsManager>()
+    .AddTransient(InjectNodeClass<GameEventManager>())
+    .AddTransient<InventoryManager>()
     ;
+
     AddScenes(Services);
     ServiceProvider = Services.BuildServiceProvider();
     var gameManager = ServiceProvider.GetRequiredService<GameManager>();
