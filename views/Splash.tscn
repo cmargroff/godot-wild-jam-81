@@ -88,7 +88,7 @@ layout_mode = 2
 CardRes = ExtResource("8_1jnxx")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 300.0
+wait_time = 5.0
 one_shot = true
 autostart = true
 ignore_time_scale = true
