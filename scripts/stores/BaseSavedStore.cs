@@ -2,7 +2,7 @@ using Godot;
 using System.Reflection;
 using System.Text.RegularExpressions;
 
-namespace JamTemplate.Stores;
+namespace ShipOfTheseus2025.Stores;
 
 public partial class BaseSavedStore
 {

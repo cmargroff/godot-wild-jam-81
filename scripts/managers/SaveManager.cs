@@ -1,7 +1,7 @@
 using Godot;
 using Godot.Collections;
 
-namespace JamTemplate.Managers;
+namespace ShipOfTheseus2025.Managers;
 
 public partial class SaveManager : Node
 {

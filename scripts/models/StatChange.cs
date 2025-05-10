@@ -1,6 +1,6 @@
-using JamTemplate.Enum;
+using ShipOfTheseus2025.Enum;
 
-namespace JamTemplate.Models;
+namespace ShipOfTheseus2025.Models;
 
 public class StatChange
 {

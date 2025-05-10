@@ -1,7 +1,7 @@
 
 using Godot;
 
-namespace JamTemplate.Managers;
+namespace ShipOfTheseus2025.Managers;
 
 public partial class ConfigManager : ConfigFile
 {

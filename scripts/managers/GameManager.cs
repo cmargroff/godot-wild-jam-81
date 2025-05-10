@@ -1,7 +1,7 @@
 using Godot;
-using JamTemplate.Util;
+using ShipOfTheseus2025.Util;
 
-namespace JamTemplate.Managers;
+namespace ShipOfTheseus2025.Managers;
 
 public partial class GameManager : Node
 {

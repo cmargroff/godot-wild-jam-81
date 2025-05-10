@@ -3,13 +3,13 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Godot;
-using JamTemplate.Managers;
-using JamTemplate.Services;
-using JamTemplate.Stores;
-using JamTemplate.Util;
+using ShipOfTheseus2025.Managers;
+using ShipOfTheseus2025.Services;
+using ShipOfTheseus2025.Stores;
+using ShipOfTheseus2025.Util;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace JamTemplate;
+namespace ShipOfTheseus2025;
 
 public partial class Globals : Node
 {

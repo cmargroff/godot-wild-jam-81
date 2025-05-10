@@ -1,8 +1,8 @@
 using Godot;
-using JamTemplate.Managers;
-using JamTemplate.Util;
+using ShipOfTheseus2025.Managers;
+using ShipOfTheseus2025.Util;
 
-namespace JamTemplate.Views;
+namespace ShipOfTheseus2025.Views;
 
 public partial class Game : Node3D
 {
