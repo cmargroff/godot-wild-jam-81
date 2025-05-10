@@ -8,6 +8,21 @@
 [sub_resource type="QuadMesh" id="QuadMesh_5pph0"]
 material = ExtResource("3_leryn")
 
+[sub_resource type="Animation" id="Animation_k55y7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ship:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.109258)]
+}
+
 [sub_resource type="Animation" id="Animation_k714b"]
 resource_name = "rocking"
 length = 4.0
@@ -25,21 +40,6 @@ tracks/0/keys = {
 "values": [Vector3(0, 0, 0.109258), Vector3(0, 0, -0.0854513), Vector3(0, 0, 0.109258)]
 }
 
-[sub_resource type="Animation" id="Animation_k55y7"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Ship:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0.109258)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hfq8r"]
 _data = {
 &"RESET": SubResource("Animation_k55y7"),
@@ -53,7 +53,7 @@ script = ExtResource("1_5pph0")
 transform = Transform3D(0.990574, 0.0719169, -0.11658, 0.0217822, 0.757554, 0.652409, 0.135235, -0.648799, 0.748847, -0.664834, 2.89009, 3.59146)
 
 [node name="Ship" type="MeshInstance3D" parent="."]
-transform = Transform3D(4.49477, -0.108453, 0, 0.493051, 0.988685, 0, 0, 0, 1.39782, 0, 0.199368, 0)
+transform = Transform3D(4.49477, -0.108454, 0, 0.493053, 0.988685, 0, 0, 0, 1.39782, 0, 0.199368, 0)
 mesh = SubResource("BoxMesh_opgdw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
