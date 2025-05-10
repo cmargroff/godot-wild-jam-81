@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_ewo5i")
-Enabled = false
-Title = "Title"
-Description = "This is the description"
+Enabled = true
+Title = "Side Effects Include..."
+Description = "Items have both good and bad effects"
 metadata/_custom_type_script = "uid://2ll2u1x47eep"

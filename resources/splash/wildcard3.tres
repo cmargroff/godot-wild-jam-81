@@ -5,6 +5,6 @@
 [resource]
 script = ExtResource("1_vwctm")
 Enabled = false
-Title = "Title"
-Description = "This is the description"
+Title = "A Capella"
+Description = "All audio is made with your mouth(s)"
 metadata/_custom_type_script = "uid://2ll2u1x47eep"
