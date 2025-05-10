@@ -116,7 +116,7 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         with:
-         tag_name: release-${{ github.ref_name }}
+         tag_name: r${{ github.run_number }}
          release_name: r${{ github.run_number }}
          draft: false
          prerelease: true
