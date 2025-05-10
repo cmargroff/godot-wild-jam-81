@@ -19,6 +19,10 @@ public partial class RandomNumberGeneratorService
   {
     return _rng.Randf();
   }
+  public float GetFloatRange(float from, float to)
+  {
+    return _rng.RandfRange(from, to);
+  }
   public uint GetInt()
   {
     return _rng.Randi();
