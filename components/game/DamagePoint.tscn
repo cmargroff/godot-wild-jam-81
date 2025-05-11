@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://crtl6uhk8whgg"]
+
+[ext_resource type="Script" uid="uid://bgyafk6wspk7k" path="res://scripts/components/game/DamagePoint.cs" id="1_6tnet"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kqkym"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kqkym"]
+shading_mode = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_kqkym"]
+material = SubResource("StandardMaterial3D_kqkym")
+
+[node name="DamagePoint" type="Area3D"]
+transform = Transform3D(1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_6tnet")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_kqkym")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_kqkym")

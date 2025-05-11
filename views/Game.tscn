@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://wiwsb8d1e7fq" path="res://scripts/views/Game.cs" id="1_5pph0"]
 [ext_resource type="PackedScene" uid="uid://cxyf4q4egqw6k" path="res://components/game/Ship.tscn" id="2_26sbl"]
-[ext_resource type="PackedScene" path="res://components/game/HUD.tscn" id="3_26sbl"]
+[ext_resource type="PackedScene" uid="uid://lw36b2co12mu" path="res://components/game/HUD.tscn" id="3_26sbl"]
 [ext_resource type="Material" uid="uid://bsj6xumrw23oq" path="res://assets/materials/scrolling_texture.tres" id="3_leryn"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_5pph0"]
@@ -14,7 +14,7 @@ script = ExtResource("1_5pph0")
 [node name="Ship" parent="." instance=ExtResource("2_26sbl")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.983885, 0.0636368, -0.167095, 1.86265e-09, 0.934522, 0.355906, 0.178802, -0.350171, 0.919462, -1.79083, 10.3097, 20.0682)
+transform = Transform3D(0.971285, 0.0735628, -0.226262, -0.0343803, 0.984415, 0.172469, 0.235423, -0.159737, 0.958676, -1.64515, 6.12187, 17.3087)
 fov = 28.8
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
