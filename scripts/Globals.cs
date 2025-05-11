@@ -13,7 +13,7 @@ namespace ShipOfTheseus2025;
 
 public partial class Globals : Node
 {
-  public static ServiceProvider ServiceProvider;
+  public static ServiceProvider ServiceProvider { get; private set; }
 
   public override void _EnterTree()
   {
@@ -30,12 +30,13 @@ public partial class Globals : Node
     .AddTransient<StatsManager>()
     .AddTransient(InjectNodeClass<GameEventManager>())
     .AddTransient<InventoryManager>()
+    .AddTransient<ItemSpawnManager>()
     ;
 
     AddScenes(Services);
-    ServiceProvider = Services.BuildServiceProvider();
-    
+    ServiceProvider = Services.BuildServiceProvider();    
   }
+
   private Func<IServiceProvider, T> InjectNodeClass<T>(bool autoParent = false) where T : Node, new()
   {
     return (serviceProvider) =>
