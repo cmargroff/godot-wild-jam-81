@@ -10,14 +10,17 @@ public partial class Game : Node3D
   private SceneManager _sceneManager;
   private StatsManager _statsManager;
   private GameEventManager _eventManager;
+  private PauseManager _pauseManager;
  
   [FromServices]
-  public void Inject(SceneManager sceneManager, StatsManager statsManager, GameEventManager eventManager)
+  public void Inject(SceneManager sceneManager, StatsManager statsManager, GameEventManager eventManager, PauseManager pauseManager)
   {
     _sceneManager = sceneManager;
     _statsManager = statsManager;
     _eventManager = eventManager;
     AddChild(_eventManager);
+    _pauseManager = pauseManager;
+    AddChild(_pauseManager);
     
   }
   public override void _EnterTree()
@@ -30,4 +33,9 @@ public partial class Game : Node3D
     _eventManager.Start();
     
   }
+
+
+    
+    
+
 }

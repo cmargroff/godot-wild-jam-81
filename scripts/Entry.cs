@@ -29,6 +29,7 @@ public partial class Entry : Node
     .AddTransient(InjectNodeClass<GameEventManager>())
     .AddTransient<InventoryManager>()
     .AddTransient<ItemSpawnManager>()
+    .AddTransient(InjectNodeClass<PauseManager>())
     ;
 
     AddScenes(Services);
