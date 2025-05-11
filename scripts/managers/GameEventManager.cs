@@ -70,11 +70,13 @@ public partial class GameEventManager : Node
   public void DispatchEnvironmentEvent()
   {
     GD.Print("Dispatching environment event");
+    QueueEnvironmentEvent();
     // _evironmentManager.Start(identifier);
   }
   public void DispatchItemEvent()
   {
     GD.Print("Dispatching item event");
-    _spawnManager.Spawn();
+    QueueItemEvent();
+    _spawnManager.Spawn("item");
   }
 }
