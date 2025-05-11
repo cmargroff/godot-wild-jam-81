@@ -34,7 +34,7 @@ public partial class ItemPickUp : Node3D
         {
             if (_hovered)
             {
-                // item drag manager dispatch
+                _dragManager.StartDragItem(GetNode<MeshInstance3D>("MeshInstance3D"));
                 QueueFree(); // TODO: maybe tell the item spawn manager to pool this item?
             }
         }
