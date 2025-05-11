@@ -21,6 +21,7 @@ public partial class PauseManager : Node
     {
         _tree.Paused = true;
         GamePauseChanged?.Invoke(_tree.Paused);
+        Engine.TimeScale = 0;
         GD.Print("paused");
 
     }
@@ -28,7 +29,9 @@ public partial class PauseManager : Node
     public void Unpause()
     {
         _tree.Paused = false; //here
+        Engine.TimeScale = 1;
         GamePauseChanged?.Invoke(_tree.Paused);
+
         GD.Print("unpaused");
         
 
@@ -38,16 +41,25 @@ public partial class PauseManager : Node
     {
         _tree.Paused = !_tree.Paused;
         GamePauseChanged?.Invoke(_tree.Paused);
+        Engine.TimeScale = _tree.Paused ? 0 : 1;
         GD.Print("pause toggled");
         GD.Print(GamePauseChanged?.GetInvocationList().Length);
     }
 
-    public override void _PhysicsProcess(double delta)
+    public override void _Input(InputEvent @event)
     {
-        if (Input.IsActionJustPressed("pause")) //testing pause
+        if (@event.IsPressed() && @event.IsAction("pause"))
         {
             Toggle();
         }
     }
+
+    // public override void _PhysicsProcess(double delta)
+    // {
+    //     if (Input.IsActionJustPressed("pause")) //testing pause
+    //     {
+    //         Toggle();
+    //     }
+    // }
 
 }
