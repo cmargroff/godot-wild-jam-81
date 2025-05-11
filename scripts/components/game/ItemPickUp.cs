@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class ItemPickUp : Node3D
 {
@@ -14,9 +13,8 @@ public partial class ItemPickUp : Node3D
     public override void _PhysicsProcess(double delta)
     {
         _position.X -= SPEED * (float)delta;
-        GlobalPosition =_position;
-        GD.Print(GlobalPosition.X);
-        if (GlobalPosition.X <= -30.0f) 
+        GlobalPosition = _position;
+        if (GlobalPosition.X <= -20.0f)
         {
             QueueFree();
         }

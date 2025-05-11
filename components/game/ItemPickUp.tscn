@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dx64cfvci6ggd"]
+[gd_scene load_steps=3 format=3 uid="uid://dkyhu7w5hp1d4"]
 
 [ext_resource type="Script" uid="uid://dd8avf5npsfcg" path="res://scripts/components/game/ItemPickUp.cs" id="1_kpet3"]
 
