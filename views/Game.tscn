@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cs2ybcc1lpqhc"]
+[gd_scene load_steps=10 format=3 uid="uid://cs2ybcc1lpqhc"]
 
 [ext_resource type="Script" uid="uid://wiwsb8d1e7fq" path="res://scripts/views/Game.cs" id="1_5pph0"]
-[ext_resource type="PackedScene" path="res://components/game/HUD.tscn" id="3_26sbl"]
+[ext_resource type="PackedScene" uid="uid://lw36b2co12mu" path="res://components/game/HUD.tscn" id="3_26sbl"]
 [ext_resource type="Material" uid="uid://bsj6xumrw23oq" path="res://assets/materials/scrolling_texture.tres" id="3_leryn"]
+[ext_resource type="PackedScene" uid="uid://b5dgny6o48h2" path="res://components/game/PauseMenu.tscn" id="4_26sbl"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_opgdw"]
 
@@ -62,6 +63,7 @@ transform = Transform3D(1, 0, 0, 0, 0.340494, 0.940247, 0, -0.940247, 0.340494, 
 
 [node name="Water" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
+process_mode = 1
 transform = Transform3D(25, -2.84217e-13, -4.96941e-22, 0, -1.09278e-06, 1, -2.84217e-13, -25, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("QuadMesh_5pph0")
 
@@ -75,3 +77,7 @@ libraries = {
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.218318, 0.0347824, -6.71449)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("4_26sbl")]
