@@ -24,6 +24,18 @@ public partial class ItemPickUp : Node3D
             QueueFree();
         }
     }
+    public override void _Input(InputEvent @event)
+    {
+        if (@event.IsPressed() && @event.IsAction("lmb"))
+        {
+            if (_hovered)
+            {
+                // item drag manager dispatch
+                QueueFree(); // TODO: maybe tell the item spawn manager to pool this item?
+            }
+        }
+    }
+
     public void MouseEntered()
     {
         GD.Print("mouseEntered");
