@@ -40,11 +40,13 @@ public partial class Globals : Node
     .AddTransient(InjectNodeClass<GameEventManager>())
     .AddTransient<InventoryManager>()
     .AddScoped(InjectNodeClass<ItemDragManager>())
+    .AddTransient<ItemSpawnManager>()
     ;
 
     AddScenes(Services);
     _serviceProvider = Services.BuildServiceProvider();
   }
+
   private Func<IServiceProvider, T> InjectNodeClass<T>(bool autoParent = false) where T : Node, new()
   {
     return (serviceProvider) =>
