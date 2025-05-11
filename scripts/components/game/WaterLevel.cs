@@ -15,6 +15,10 @@ public partial class WaterLevel : Control
     _icon = GetNode<TextureRect>("%Icon");
     _statsManager = Globals.ServiceProvider.GetRequiredService<StatsManager>();
     _statsManager.StatChanged += StatsManager_StatChanged;
+    
+    _progressBar.Value = _statsManager.GetStats(Stat.WaterLevel);
+    GD.Print(_progressBar.Value);
+    GD.Print(_statsManager.GetStats(Stat.WaterLevel));
   }
   public override void _ExitTree()
   {
