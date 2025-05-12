@@ -39,7 +39,7 @@ public partial class Globals : Node
     .AddTransient<StatsManager>()
     .AddTransient(InjectNodeClass<GameEventManager>())
     .AddTransient<InventoryManager>()
-    .AddSingleton(InjectNodeClass<ItemDragManager>(true))
+    .AddSingleton(InjectNodeClass<ItemDragManager>())
     .AddTransient<ItemSpawnManager>()
     ;
 
