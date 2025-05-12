@@ -5,12 +5,12 @@ namespace ShipOfTheseus2025.Managers;
 
 public partial class ItemDragManager : Node3D
 {
-  const float ITEM_GRABBED_SCALE = 0.5f;
+  public bool Dragging { get; private set; }
+  const float ITEM_GRABBED_SCALE = 0.2f;
   const float ITEM_SCALE_SMOOTHING = 0.5f;
   const float ITEM_SNAP_SMOOTHING = 0.2f;
   private Viewport _viewport;
   private Camera3D _camera;
-  private bool _dragging;
   private Node3D _item;
   private float _scale = 1f;
   public override void _EnterTree()
@@ -25,7 +25,7 @@ public partial class ItemDragManager : Node3D
   }
   public void StartDragItem(Node3D node)
   {
-    _dragging = true;
+    Dragging = true;
 
     if (_camera == null) return;
 
@@ -38,11 +38,11 @@ public partial class ItemDragManager : Node3D
   }
   public void EndDragItem()
   {
-    _dragging = false;
+    Dragging = false;
   }
   public override void _Process(double delta)
   {
-    if (_dragging)
+    if (Dragging)
     {
       var scaleDelta = _scale - ITEM_GRABBED_SCALE;
       if (scaleDelta > Mathf.Epsilon)
