@@ -14,14 +14,14 @@ public partial class DamagePoint : Area3D
   {
     if (_dragManager.Dragging)
     {
-      GD.Print(Name + " Entered");
+      _dragManager.SnapPoint(this);
     }
   }
   public override void _MouseExit()
   {
     if (_dragManager.Dragging)
     {
-      GD.Print(Name + " Exited");
+      _dragManager.Unsnap();
     }
   }
 }
