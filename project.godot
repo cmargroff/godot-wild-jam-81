@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Entry="*res://scripts/Globals.cs"
+Entry="res://scripts/Globals.cs"
 Globals="*res://scripts/Globals.cs"
 
 [display]
