@@ -1,9 +1,6 @@
 [center]
 [font_size=20][b]Credits[/b][/font_size]
-Designer:
-Michael Zarick
-
-Lead Developer:
+Designer & Lead Developer:
 Chris Margroff
 
 Developers:
@@ -13,5 +10,5 @@ Music and Sound:
 strbtrfl
 
 Artists:
-Marcell Michl, XZO
+Marcell Michl
 [/center]
