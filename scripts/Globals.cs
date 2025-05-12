@@ -42,6 +42,7 @@ public partial class Globals : Node
     .AddSingleton(InjectNodeClass<ItemDragManager>())
     .AddTransient<ItemSpawnManager>()
     .AddTransient(InjectNodeClass<PauseManager>())
+    .AddTransient<ItemFactoryService>()
     ;
 
     AddScenes(services);

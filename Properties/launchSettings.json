@@ -7,6 +7,12 @@
       "commandName": "Executable",
       "executablePath": "%GODOT_HOME%\\Godot_v4.4-stable_mono_win64.exe",
       "workingDirectory": "."
+    },
+    "Run Game Scene in Godot": {
+      "commandName": "Executable",
+      "executablePath": "%GODOT_HOME%\\Godot_v4.4-stable_mono_win64.exe",
+      "commandLineArgs": "views/Game.tscn",
+      "workingDirectory": "."
     }
   }
 }

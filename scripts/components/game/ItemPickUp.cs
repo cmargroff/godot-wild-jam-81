@@ -1,6 +1,7 @@
 using Godot;
 using Microsoft.Extensions.DependencyInjection;
 using ShipOfTheseus2025;
+using ShipOfTheseus2025.Components.Game;
 using ShipOfTheseus2025.Managers;
 
 public partial class ItemPickUp : Node3D
@@ -10,6 +11,8 @@ public partial class ItemPickUp : Node3D
     private Vector3 _position;
     private bool _hovered = false;
     private ItemDragManager _dragManager;
+    public InventoryItem InventoryItem { get; set; }
+
     public override void _EnterTree()
     {
         _dragManager = Globals.ServiceProvider.GetRequiredService<ItemDragManager>();

@@ -1,4 +1,5 @@
 using Godot;
+using ShipOfTheseus2025.Managers;
 using ShipOfTheseus2025.Services;
 using ShipOfTheseus2025.Util;
 
@@ -12,11 +13,14 @@ public partial class GameEventManager : Node
   private RandomNumberGeneratorService _rng;
   private Timer _environmentTimer;
   private Timer _itemTimer;
+  private GameManager _gameManager;
   private ItemSpawnManager _spawnManager;
+
   [FromServices]
-  public void Inject(RandomNumberGeneratorService rng, ItemSpawnManager spawnManager)
+  public void Inject(RandomNumberGeneratorService rng, ItemSpawnManager spawnManager, GameManager gameManager)
   {
     _rng = rng;
+    _gameManager = gameManager;
     _spawnManager = spawnManager;
     AddChild(_spawnManager);
 
@@ -77,6 +81,7 @@ public partial class GameEventManager : Node
   {
     GD.Print("Dispatching item event");
     QueueItemEvent();
-    _spawnManager.Spawn("item");
+        string item = _gameManager.EnabledItems[_rng.GetIntRange(0, _gameManager.EnabledItems.Count-1)];
+    _spawnManager.Spawn(item);
   }
 }

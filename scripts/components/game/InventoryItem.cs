@@ -15,5 +15,5 @@ public class InventoryItem
 
     public Texture2D IconTexture { get; set; }
 
-    public PackedScene ItemScene { get; set; }
+    public Node3D ItemScene { get; set; }
 }

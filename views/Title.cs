@@ -11,11 +11,14 @@ public partial class Title : Control
   private bool _optionsShown = false;
   private AudioManager _audio;
   private SceneManager _sceneManager;
+  private GameManager _gameManager;
+
   [FromServices]
-  public void Inject(AudioManager audio, SceneManager sceneManager)
+  public void Inject(AudioManager audio, SceneManager sceneManager, GameManager gameManager)
   {
     _audio = audio;
     _sceneManager = sceneManager;
+    _gameManager = gameManager;
   }
   public override void _EnterTree()
   {
@@ -50,7 +53,7 @@ public partial class Title : Control
 
   public void Start()
   {
-    _sceneManager.ChangeScene("Game");
+        _gameManager.StartGame();
   }
   public void ToggleOptions()
   {
