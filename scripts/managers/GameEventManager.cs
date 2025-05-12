@@ -2,6 +2,7 @@ using Godot;
 using ShipOfTheseus2025.Managers;
 using ShipOfTheseus2025.Services;
 using ShipOfTheseus2025.Util;
+using System.Collections.Generic;
 
 public partial class GameEventManager : Node
 {
@@ -15,13 +16,15 @@ public partial class GameEventManager : Node
   private Timer _itemTimer;
   private GameManager _gameManager;
   private ItemSpawnManager _spawnManager;
+    private SceneManager _sceneManager;
 
   [FromServices]
-  public void Inject(RandomNumberGeneratorService rng, ItemSpawnManager spawnManager, GameManager gameManager)
+  public void Inject(RandomNumberGeneratorService rng, ItemSpawnManager spawnManager, GameManager gameManager, SceneManager sceneManager)
   {
     _rng = rng;
     _gameManager = gameManager;
     _spawnManager = spawnManager;
+    _sceneManager = sceneManager;
     AddChild(_spawnManager);
 
   }
@@ -81,7 +84,23 @@ public partial class GameEventManager : Node
   {
     GD.Print("Dispatching item event");
     QueueItemEvent();
-        string item = _gameManager.EnabledItems[_rng.GetIntRange(0, _gameManager.EnabledItems.Count-1)];
-    _spawnManager.Spawn(item);
+    string item = null;
+    if (_gameManager.EnabledItems.Count > 0)
+    {
+        do
+        {
+            item = _gameManager.EnabledItems[_rng.GetIntRange(0, _gameManager.EnabledItems.Count - 1)];
+            if (_sceneManager.PreloadedResources is null ||
+                !_sceneManager.PreloadedResources.TryGetValue("Items", out Dictionary<string, Resource> itemDict) ||
+                !itemDict.TryGetValue(item, out Resource itemResource) || itemResource is null)
+            {
+                _gameManager.EnabledItems.Remove(item);
+                GD.PrintErr($"The item {item} has not been preloaded.");
+                item = null;
+            }
+        } while (item is null && _gameManager.EnabledItems.Count > 0);
+    }
+    if (item is not null)
+        _spawnManager.Spawn(item);
   }
 }
