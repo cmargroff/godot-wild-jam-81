@@ -33,4 +33,7 @@ public partial class ItemResource : Resource
 
     [Export]
     public PackedScene ItemScene { get; set; }
+
+    [Export]
+    public bool Disabled { get; set; }
 }

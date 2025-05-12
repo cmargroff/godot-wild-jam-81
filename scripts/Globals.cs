@@ -26,7 +26,7 @@ public partial class Globals : Node
 
   public override void _EnterTree()
   {
-    var Services = new ServiceCollection()
+    var services = new ServiceCollection()
     .AddSingleton(InjectNodeClass<GameManager>())
     .AddSingleton<PlayerDataStore>()
     .AddSingleton<ConfigStore>()
@@ -44,8 +44,8 @@ public partial class Globals : Node
     .AddTransient(InjectNodeClass<PauseManager>())
     ;
 
-    AddScenes(Services);
-    _serviceProvider = Services.BuildServiceProvider();
+    AddScenes(services);
+    _serviceProvider = services.BuildServiceProvider();
   }
 
   private Func<IServiceProvider, T> InjectNodeClass<T>(bool autoParent = false) where T : Node, new()
