@@ -27,6 +27,8 @@ public partial class Game : Node3D
   }
   public override void _EnterTree()
   {
+        //if (_sceneManager is null)
+        //    Globals.InjectAttributedMethods(this, Globals.ServiceProvider);
     _animationPlayer = GetNode<AnimationPlayer>("%AnimationPlayer");
     _animationPlayer.CurrentAnimation = "rocking";
   }

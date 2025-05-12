@@ -1,5 +1,6 @@
 using Godot;
 using Microsoft.Extensions.DependencyInjection;
+using ShipOfTheseus2025.Managers;
 
 namespace ShipOfTheseus2025.Components.Game;
 

@@ -79,7 +79,7 @@ public partial class Globals : Node
       return node;
     };
   }
-  private void InjectAttributedMethods<T>(T obj, IServiceProvider provider)
+  public static void InjectAttributedMethods<T>(T obj, IServiceProvider provider)
   {
     var objType = obj.GetType();
     var methods = objType
