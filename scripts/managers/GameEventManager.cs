@@ -7,15 +7,19 @@ public partial class GameEventManager : Node
   // times in seconds;
   const float MIN_ENVIRONMENT_TIME = 10;
   const float MAX_ENVIRONMENT_TIME = 60;
-  const float MIN_ITEM_TIME = 5;
-  const float MAX_ITEM_TIME = 25;
+  const float MIN_ITEM_TIME = 1;
+  const float MAX_ITEM_TIME = 15;
   private RandomNumberGeneratorService _rng;
   private Timer _environmentTimer;
   private Timer _itemTimer;
+  private ItemSpawnManager _spawnManager;
   [FromServices]
-  public void Inject(RandomNumberGeneratorService rng)
+  public void Inject(RandomNumberGeneratorService rng, ItemSpawnManager spawnManager)
   {
     _rng = rng;
+    _spawnManager = spawnManager;
+    AddChild(_spawnManager);
+
   }
   public override void _EnterTree()
   {
@@ -66,11 +70,13 @@ public partial class GameEventManager : Node
   public void DispatchEnvironmentEvent()
   {
     GD.Print("Dispatching environment event");
+    QueueEnvironmentEvent();
     // _evironmentManager.Start(identifier);
   }
   public void DispatchItemEvent()
   {
     GD.Print("Dispatching item event");
-    // _itemSpawnManager.Spawn(identifier);
+    QueueItemEvent();
+    _spawnManager.Spawn("item");
   }
 }

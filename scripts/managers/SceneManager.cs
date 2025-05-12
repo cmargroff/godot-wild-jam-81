@@ -1,15 +1,15 @@
-using Godot;
-using ShipOfTheseus2025.Util;
-using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Godot;
+using Microsoft.Extensions.DependencyInjection;
+using ShipOfTheseus2025.Util;
 
 namespace ShipOfTheseus2025.Managers;
 
-using Preloads = Dictionary<string, Dictionary<string, string>>;
 using Preloaded = Dictionary<string, Dictionary<string, Resource>>;
+using Preloads = Dictionary<string, Dictionary<string, string>>;
 
 public partial class SceneManager : Node3D
 {
@@ -148,6 +148,8 @@ public partial class SceneManager : Node3D
     if (_currentScene != null)
       _currentScene.QueueFree();
 
+    Globals.CloseSceneScope();
+
     FreePreloads();
 
     if (preloads.Count > 0)
@@ -171,6 +173,7 @@ public partial class SceneManager : Node3D
     if (_nextName != null)
     {
       // load the next scene and append it to the manager
+      Globals.CreateSceneScope();
       var scene = _serviceProvider.GetKeyedService<Node>(_nextName);
       scene.Connect(Node.SignalName.Ready, Callable.From(SceneFinishedLoading));
       AddChild(scene);
