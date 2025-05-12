@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cs2ybcc1lpqhc"]
 
 [ext_resource type="Script" uid="uid://wiwsb8d1e7fq" path="res://scripts/views/Game.cs" id="1_5pph0"]
-[ext_resource type="PackedScene" path="res://components/game/HUD.tscn" id="3_26sbl"]
+[ext_resource type="PackedScene" uid="uid://lw36b2co12mu" path="res://components/game/HUD.tscn" id="3_26sbl"]
 [ext_resource type="Material" uid="uid://bsj6xumrw23oq" path="res://assets/materials/scrolling_texture.tres" id="3_leryn"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_opgdw"]
@@ -50,7 +50,7 @@ _data = {
 [node name="Game" type="Node3D"]
 script = ExtResource("1_5pph0")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(0.990574, 0.0719169, -0.11658, 0.0217822, 0.757554, 0.652409, 0.135235, -0.648799, 0.748847, -0.664834, 2.89009, 3.59146)
 
 [node name="Ship" type="MeshInstance3D" parent="."]

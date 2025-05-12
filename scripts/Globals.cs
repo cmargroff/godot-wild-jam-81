@@ -3,17 +3,26 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Godot;
+using Microsoft.Extensions.DependencyInjection;
 using ShipOfTheseus2025.Managers;
 using ShipOfTheseus2025.Services;
 using ShipOfTheseus2025.Stores;
 using ShipOfTheseus2025.Util;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace ShipOfTheseus2025;
 
 public partial class Globals : Node
 {
-  public static ServiceProvider ServiceProvider { get; private set; }
+  private static ServiceProvider _serviceProvider;
+  private static IServiceScope _currentScope;
+  public static IServiceProvider ServiceProvider
+  {
+    get
+    {
+      if (_currentScope != null) return _currentScope.ServiceProvider;
+      return _serviceProvider;
+    }
+  }
 
   public override void _EnterTree()
   {
@@ -30,11 +39,12 @@ public partial class Globals : Node
     .AddTransient<StatsManager>()
     .AddTransient(InjectNodeClass<GameEventManager>())
     .AddTransient<InventoryManager>()
+    .AddSingleton(InjectNodeClass<ItemDragManager>())
     .AddTransient<ItemSpawnManager>()
     ;
 
     AddScenes(Services);
-    ServiceProvider = Services.BuildServiceProvider();    
+    _serviceProvider = Services.BuildServiceProvider();
   }
 
   private Func<IServiceProvider, T> InjectNodeClass<T>(bool autoParent = false) where T : Node, new()
@@ -118,5 +128,16 @@ public partial class Globals : Node
     {
       return InjectInstantiatedPackedScene<Node>(path, false)(ServiceProvider);
     };
+  }
+  public static void CreateSceneScope()
+  {
+    _currentScope = _serviceProvider.CreateScope();
+  }
+  public static void CloseSceneScope()
+  {
+    if (_currentScope != null)
+    {
+      _currentScope.Dispose();
+    }
   }
 }

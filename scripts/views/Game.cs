@@ -10,15 +10,17 @@ public partial class Game : Node3D
   private SceneManager _sceneManager;
   private StatsManager _statsManager;
   private GameEventManager _eventManager;
- 
+  private ItemDragManager _dragManager;
+
   [FromServices]
-  public void Inject(SceneManager sceneManager, StatsManager statsManager, GameEventManager eventManager)
+  public void Inject(SceneManager sceneManager, StatsManager statsManager, GameEventManager eventManager, ItemDragManager dragManager)
   {
     _sceneManager = sceneManager;
     _statsManager = statsManager;
     _eventManager = eventManager;
+    _dragManager = dragManager;
     AddChild(_eventManager);
-    
+    AddChild(_dragManager);
   }
   public override void _EnterTree()
   {
@@ -27,7 +29,7 @@ public partial class Game : Node3D
   }
   public override void _Ready()
   {
+    _dragManager.SetCamera(GetNode<Camera3D>("Camera"));
     _eventManager.Start();
-    
   }
 }

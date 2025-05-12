@@ -1,11 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://dkyhu7w5hp1d4"]
+[gd_scene load_steps=4 format=3 uid="uid://dkyhu7w5hp1d4"]
 
 [ext_resource type="Script" uid="uid://dd8avf5npsfcg" path="res://scripts/components/game/ItemPickUp.cs" id="1_kpet3"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_jev3k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kpet3"]
 
 [node name="ItemPickUp" type="Node3D"]
 script = ExtResource("1_kpet3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_jev3k")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_kpet3")
