@@ -42,7 +42,7 @@ public partial class Globals : Node
     .AddSingleton(InjectNodeClass<ItemDragManager>())
     .AddTransient<ItemSpawnManager>()
     .AddTransient(InjectNodeClass<PauseManager>())
-    .AddSingleton(InjectNodeClass<HoverPanelManager>())
+    .AddSingleton(InjectNodeClass<HoverPanelManager>(true))
     ;
 
     AddScenes(Services);
