@@ -12,9 +12,12 @@ public partial class DamagePoint : Area3D
   }
   public override void _MouseEnter()
   {
+    GD.Print("snap point");
     if (_dragManager.Dragging)
     {
       _dragManager.SnapPoint(this);
+      GD.Print("snapped");
+
     }
   }
   public override void _MouseExit()
@@ -22,6 +25,7 @@ public partial class DamagePoint : Area3D
     if (_dragManager.Dragging)
     {
       _dragManager.Unsnap();
+      GD.Print("unsnapped");
     }
   }
 }

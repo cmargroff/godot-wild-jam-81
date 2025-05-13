@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using ShipOfTheseus2025.Components.Game;
 
 namespace ShipOfTheseus2025.Managers;
 
@@ -32,18 +33,17 @@ public partial class ItemDragManager : Node3D
     if (_camera == null) return;
 
     _scale = 1f;
-    _item = new Node3D();
-    _item.GlobalPosition = node.GlobalPosition;
-    node.Reparent(_item);
-    node.Position = Vector3.Zero;
-    GetTree().Root.AddChild(_item);
+    _item = node;
+    node.Reparent(GetTree().Root, true);
   }
   public void EndDragItem()
   {
     Dragging = false;
+    // _item.GetChild<Node3D>(0).Scale = Vector3.One * 1f;
   }
   public override void _Process(double delta)
   {
+
     if (Dragging)
     {
       var scaleDelta = _scale - (_snapped ? 1f : ITEM_GRABBED_SCALE);
@@ -53,7 +53,7 @@ public partial class ItemDragManager : Node3D
         _item.GetChild<Node3D>(0).Scale = Vector3.One * targetScale;
         _scale = targetScale;
       }
-      var dest = _snapped ? _snapPoint.GlobalPosition : _camera.ProjectPosition(_viewport.GetMousePosition(), 3f);
+      var dest = _snapped ? _snapPoint.GlobalPosition : _camera.ProjectPosition(_viewport.GetMousePosition(), 4f);
       var distance = _item.GlobalPosition.DistanceTo(dest);
       if (distance > Mathf.Epsilon)
       {
@@ -61,6 +61,7 @@ public partial class ItemDragManager : Node3D
         _item.GlobalPosition += dir * (distance * ITEM_SNAP_SMOOTHING);
       }
     }
+   
   }
   public void SnapPoint(Node3D node)
   {

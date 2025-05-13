@@ -4,31 +4,60 @@ using ShipOfTheseus2025;
 using ShipOfTheseus2025.Components.Game;
 using ShipOfTheseus2025.Managers;
 
+namespace ShipOfTheseus2025.Components.Game;
 public partial class ItemPickUp : Node3D
 {
     [Export]
     float SPEED = 5f;
+    [Export]
+    float VELOCITY = 2f;
+
     private Vector3 _position;
     private bool _hovered = false;
     private ItemDragManager _dragManager;
     private HoverPanelManager _hoverManager;
+    private Area3D _area;
     public InventoryItem InventoryItem { get; set; }
+    public ItemPickupState State;
+
+    public enum ItemPickupState
+    { 
+        Floating, 
+        Held, 
+        Dropped 
+    }
 
     public override void _EnterTree()
     {
+        State = ItemPickupState.Floating;
         _dragManager = Globals.ServiceProvider.GetRequiredService<ItemDragManager>();
         _hoverManager = Globals.ServiceProvider.GetRequiredService<HoverPanelManager>();
         _position = Position;
         var area = GetNode<Area3D>("Area3D");
+        _area = area;
         area.Connect(Area3D.SignalName.MouseEntered, Callable.From(MouseEntered));
         area.Connect(Area3D.SignalName.MouseExited, Callable.From(MouseExited));
     }
 
     public override void _PhysicsProcess(double delta)
     {
-        _position.X -= SPEED * (float)delta;
-        Position = _position;
-        if (Position.X <= -20.0f)
+    
+        if (State == ItemPickupState.Floating)
+        {
+            _position.X -= SPEED * (float)delta;
+            Position = _position;
+        }
+
+        if (State == ItemPickupState.Dropped && GlobalPosition.Y > 0)
+        {
+            _position.Y -= VELOCITY * (float)delta;
+            Position = _position;
+            VELOCITY += 0.1f;
+
+        }
+       
+        
+        if (GlobalPosition.X <= -20.0f || GlobalPosition.Y <= -5)
         {
             QueueFree();
         }
@@ -37,10 +66,26 @@ public partial class ItemPickUp : Node3D
     {
         if (@event.IsPressed() && @event.IsAction("lmb"))
         {
-            if (_hovered)
+            if (_hovered && State == ItemPickupState.Floating)
             {
-                _dragManager.StartDragItem(GetNode<MeshInstance3D>("MeshInstance3D"));
-                QueueFree(); // TODO: maybe tell the item spawn manager to pool this item?
+                _dragManager.StartDragItem(this);
+                State = ItemPickupState.Held;
+                _area.InputRayPickable = false;
+            }
+        }
+        if (@event.IsPressed() && @event.IsAction("rmb"))
+        {
+            if (State == ItemPickupState.Held)
+            {
+                _dragManager.EndDragItem();
+                MouseExited();
+                State = ItemPickupState.Dropped;
+                GD.Print(GlobalPosition);
+                _position = GlobalPosition;
+                // _position.Z -= 0.5f;
+                // GlobalPosition = _position;
+                // GD.Print(GlobalPosition);
+                // _position = GlobalPosition;
             }
         }
     }
@@ -48,7 +93,7 @@ public partial class ItemPickUp : Node3D
     public void MouseEntered()
     {
         GD.Print("mouseEntered");
-        _hovered = true;
+        _hovered = (State == ItemPickupState.Floating) ? true : false;
         _hoverManager.ShowItem(new());
     }
     public void MouseExited()
