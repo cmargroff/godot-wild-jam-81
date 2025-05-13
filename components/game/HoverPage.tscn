@@ -1,0 +1,73 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7ovvcphirqn4"]
+
+[ext_resource type="Texture2D" uid="uid://bgm0o2ksoxecs" path="res://assets/textures/game/HoverPage1.tres" id="1_o60v6"]
+[ext_resource type="FontFile" uid="uid://c0b830g1sx2i7" path="res://assets/fonts/pirata-one/PirataOne-Regular.ttf" id="2_7hyke"]
+[ext_resource type="Texture2D" uid="uid://dvr4h20loqgmg" path="res://assets/textures/game/ItemBg.tres" id="3_bd8jx"]
+[ext_resource type="Texture2D" uid="uid://cjns18joji0ki" path="res://assets/textures/game/ItemFrame.tres" id="4_a4me0"]
+[ext_resource type="Texture2D" uid="uid://8wywilm14cng" path="res://assets/textures/items/default_item.png" id="4_begpj"]
+
+[node name="HoverPage" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+clip_contents = true
+layout_mode = 0
+offset_left = -90.0
+offset_top = -26.0
+offset_right = 422.0
+offset_bottom = 486.0
+texture = ExtResource("1_o60v6")
+stretch_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 90
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TextureRect/MarginContainer/VBoxContainer"]
+modulate = Color(0, 0, 0, 0.552941)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.411765)
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("2_7hyke")
+theme_override_font_sizes/font_size = 46
+text = "Item Name"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 90
+
+[node name="BG" type="TextureRect" parent="TextureRect/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("3_bd8jx")
+expand_mode = 5
+stretch_mode = 6
+
+[node name="Icon" type="TextureRect" parent="TextureRect/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("4_begpj")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="Frame" type="TextureRect" parent="TextureRect/MarginContainer/VBoxContainer/MarginContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_stretch_ratio = 0.53
+texture = ExtResource("4_a4me0")
+expand_mode = 4
+stretch_mode = 6
