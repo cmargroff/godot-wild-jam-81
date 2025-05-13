@@ -12,9 +12,11 @@ public partial class Game : Node3D
   private GameEventManager _eventManager;
   private ItemDragManager _dragManager;
   private PauseManager _pauseManager;
+  private GameManager _gameManager;
 
   [FromServices]
-  public void Inject(SceneManager sceneManager, StatsManager statsManager, GameEventManager eventManager, ItemDragManager dragManager, PauseManager pauseManager, HoverPanelManager hoverPanelManager)
+  public void Inject(SceneManager sceneManager, StatsManager statsManager, GameEventManager eventManager,
+      ItemDragManager dragManager, PauseManager pauseManager, GameManager gameManager, HoverPanelManager hoverPanelManager)
   {
     _sceneManager = sceneManager;
     _statsManager = statsManager;
@@ -24,10 +26,28 @@ public partial class Game : Node3D
     _pauseManager = pauseManager;
     AddChild(_pauseManager);
     AddChild(_dragManager);
+    _gameManager = gameManager;
   }
+
+    public override void _EnterTree()
+  {
+    //used when the Game scene is loaded directly, otherwise this will be skipped
+    if (_sceneManager is null)
+    {
+        Globals.InjectAttributedMethods(this, Globals.ServiceProvider);
+    }
+    if (_gameManager.EnabledItems is null || _gameManager.EnabledItems.Count == 0)
+        _gameManager.LoadConfig();
+#if DEBUG
+    if (_gameManager.EnabledItems is not null && _gameManager.EnabledItems.Count > 0)
+        _gameManager.LoadItemsDirectly();
+#endif
+  }
+
   public override void _Ready()
   {
     _dragManager.SetCamera(GetNode<Camera3D>("Camera"));
     _eventManager.Start();
+    _sceneManager.GetChild<Control>(0).Visible = false; //hides loading screen without crashing when running the game scene directly
   }
 }

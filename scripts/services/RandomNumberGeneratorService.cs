@@ -1,4 +1,5 @@
 using Godot;
+using System;
 
 namespace ShipOfTheseus2025.Services;
 
@@ -10,23 +11,21 @@ public partial class RandomNumberGeneratorService
   {
     _rng = new();
   }
+
   public void SetSeed(string seed)
   {
     _rng.Seed = (ulong)seed.GetHashCode();
     _rng.State = 0;
   }
-  public float GetFloat()
-  {
-    return _rng.Randf();
-  }
-  public float GetFloatRange(float from, float to)
-  {
-    return _rng.RandfRange(from, to);
-  }
-  public uint GetInt()
-  {
-    return _rng.Randi();
-  }
+    public float GetFloat() => _rng.Randf();
+    public float GetFloatRange(float from, float to) => _rng.RandfRange(from, to);
+    public uint GetInt() => _rng.Randi();
+
+    public int GetIntRange(int from, int to) => _rng.RandiRange(from, to);
+
+  /// <summary>
+  /// Copy of Super Mario 64's randomizer
+  /// </summary>
   public static ushort RandomU16()
   {
     ushort temp1, temp2;
@@ -62,4 +61,16 @@ public partial class RandomNumberGeneratorService
 
     return gRandomSeed16;
   }
+
+    public float NextInNormalDistribution(float mean, float stdDev)
+    {
+        Random rand = new(); //reuse this if you are generating many
+        double u1 = 1.0 - rand.NextDouble(); //uniform(0,1] random floats
+        double u2 = 1.0 - rand.NextDouble();
+        double randStdNormal = Math.Sqrt(-2.0 * Math.Log(u1)) *
+                     Math.Sin(2.0 * Math.PI * u2); //random normal(0,1)
+        double randNormal =
+                     mean + stdDev * randStdNormal; //random normal(mean,stdDev^2)
+        return (float)randNormal;
+    }
 }

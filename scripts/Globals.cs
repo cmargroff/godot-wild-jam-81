@@ -27,7 +27,7 @@ public partial class Globals : Node
 
   public override void _EnterTree()
   {
-    var Services = new ServiceCollection()
+    var services = new ServiceCollection()
     .AddSingleton(InjectNodeClass<GameManager>())
     .AddSingleton<PlayerDataStore>()
     .AddSingleton<ConfigStore>()
@@ -43,11 +43,12 @@ public partial class Globals : Node
     .AddSingleton(InjectNodeClass<ItemDragManager>())
     .AddTransient<ItemSpawnManager>()
     .AddTransient(InjectNodeClass<PauseManager>())
+    .AddTransient<ItemFactoryService>()
     .AddSingleton(InjectNodeClass<HoverPanelManager>(true))
     ;
 
-    AddScenes(Services);
-    _serviceProvider = Services.BuildServiceProvider();
+    AddScenes(services);
+    _serviceProvider = services.BuildServiceProvider();
   }
 
   private Func<IServiceProvider, T> InjectNodeClass<T>(bool autoParent = false) where T : Node, new()
@@ -81,7 +82,7 @@ public partial class Globals : Node
       return node;
     };
   }
-  private void InjectAttributedMethods<T>(T obj, IServiceProvider provider)
+  public static void InjectAttributedMethods<T>(T obj, IServiceProvider provider)
   {
     var objType = obj.GetType();
     var methods = objType
@@ -117,6 +118,7 @@ public partial class Globals : Node
       }
     }
   }
+
   public void AddScenes(IServiceCollection collection)
   {
     var paths = SceneManager.ListAvailableScenes();
@@ -125,17 +127,17 @@ public partial class Globals : Node
       collection.AddKeyedTransient(Path.GetFileNameWithoutExtension(path), InjectAvailableScene(path));
     }
   }
+
   public Func<IServiceProvider, object?, Node> InjectAvailableScene(string path)
   {
-    return (ServiceProvider, serviceKey) =>
-    {
-      return InjectInstantiatedPackedScene<Node>(path, false)(ServiceProvider);
-    };
+    return (ServiceProvider, serviceKey) => InjectInstantiatedPackedScene<Node>(path, false)(ServiceProvider);
   }
+
   public static void CreateSceneScope()
   {
     _currentScope = _serviceProvider.CreateScope();
   }
+
   public static void CloseSceneScope()
   {
     if (_currentScope != null)

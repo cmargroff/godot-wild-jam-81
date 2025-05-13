@@ -1,6 +1,8 @@
 using Godot;
+using Godot.Collections;
 using Microsoft.Extensions.DependencyInjection;
 using ShipOfTheseus2025.Managers;
+using ShipOfTheseus2025.Resources;
 
 namespace ShipOfTheseus2025;
 

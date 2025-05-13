@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+namespace ShipOfTheseus2025.Managers;
+
 public partial class ScoreManager : Node
 {
     [Signal]

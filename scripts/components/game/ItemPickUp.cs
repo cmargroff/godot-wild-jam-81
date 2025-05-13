@@ -12,6 +12,8 @@ public partial class ItemPickUp : Node3D
     private bool _hovered = false;
     private ItemDragManager _dragManager;
     private HoverPanelManager _hoverManager;
+    public InventoryItem InventoryItem { get; set; }
+
     public override void _EnterTree()
     {
         _dragManager = Globals.ServiceProvider.GetRequiredService<ItemDragManager>();
