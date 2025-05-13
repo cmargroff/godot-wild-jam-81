@@ -11,4 +11,5 @@ MaxGoldValue = 1000
 GoldValueDistribution = 1
 MinWeight = 5.0
 MaxWeight = 5.0
+Disabled = false
 metadata/_custom_type_script = "uid://chlt3chm3e8ap"

@@ -1,4 +1,5 @@
 using Godot;
+using ShipOfTheseus2025.Components.Game;
 using ShipOfTheseus2025.Managers;
 using ShipOfTheseus2025.Util;
 
@@ -6,7 +7,6 @@ namespace ShipOfTheseus2025.Views;
 
 public partial class Game : Node3D
 {
-  private AnimationPlayer _animationPlayer;
   private SceneManager _sceneManager;
   private StatsManager _statsManager;
   private GameEventManager _eventManager;
@@ -15,8 +15,8 @@ public partial class Game : Node3D
   private GameManager _gameManager;
 
   [FromServices]
-  public void Inject(SceneManager sceneManager, StatsManager statsManager, GameEventManager eventManager, 
-      ItemDragManager dragManager, PauseManager pauseManager, GameManager gameManager)
+  public void Inject(SceneManager sceneManager, StatsManager statsManager, GameEventManager eventManager,
+      ItemDragManager dragManager, PauseManager pauseManager, GameManager gameManager, HoverPanelManager hoverPanelManager)
   {
     _sceneManager = sceneManager;
     _statsManager = statsManager;
@@ -42,8 +42,6 @@ public partial class Game : Node3D
     if (_gameManager.EnabledItems is not null && _gameManager.EnabledItems.Count > 0)
         _gameManager.LoadItemsDirectly();
 #endif
-        _animationPlayer = GetNode<AnimationPlayer>("%AnimationPlayer");
-    _animationPlayer.CurrentAnimation = "rocking";
   }
 
   public override void _Ready()

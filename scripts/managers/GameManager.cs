@@ -67,7 +67,7 @@ public partial class GameManager : Node
         foreach (KeyValuePair<string, string> itemKey in preloads["Items"])
         {
             ItemResource itemRes = ResourceLoader.Load<ItemResource>(itemKey.Value);
-            itemDict.Add(itemKey.Key, itemRes);
+            itemDict.TryAdd(itemKey.Key, itemRes);
         }
     }
 #endif

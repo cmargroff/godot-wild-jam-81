@@ -11,11 +11,13 @@ public partial class ItemPickUp : Node3D
     private Vector3 _position;
     private bool _hovered = false;
     private ItemDragManager _dragManager;
+    private HoverPanelManager _hoverManager;
     public InventoryItem InventoryItem { get; set; }
 
     public override void _EnterTree()
     {
         _dragManager = Globals.ServiceProvider.GetRequiredService<ItemDragManager>();
+        _hoverManager = Globals.ServiceProvider.GetRequiredService<HoverPanelManager>();
         _position = Position;
         var area = GetNode<Area3D>("Area3D");
         area.Connect(Area3D.SignalName.MouseEntered, Callable.From(MouseEntered));
@@ -47,10 +49,12 @@ public partial class ItemPickUp : Node3D
     {
         GD.Print("mouseEntered");
         _hovered = true;
+        _hoverManager.ShowItem(new());
     }
     public void MouseExited()
     {
         GD.Print("mouseExited");
         _hovered = false;
+        _hoverManager.HidePage();
     }
 }
