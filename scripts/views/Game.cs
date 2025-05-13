@@ -28,15 +28,21 @@ public partial class Game : Node3D
     AddChild(_dragManager);
     _gameManager = gameManager;
   }
-  public override void _EnterTree()
+
+    public override void _EnterTree()
   {
     //used when the Game scene is loaded directly, otherwise this will be skipped
     if (_sceneManager is null)
+    {
         Globals.InjectAttributedMethods(this, Globals.ServiceProvider);
+    }
     if (_gameManager.EnabledItems is null || _gameManager.EnabledItems.Count == 0)
         _gameManager.LoadConfig();
-
-    _animationPlayer = GetNode<AnimationPlayer>("%AnimationPlayer");
+#if DEBUG
+    if (_gameManager.EnabledItems is not null && _gameManager.EnabledItems.Count > 0)
+        _gameManager.LoadItemsDirectly();
+#endif
+        _animationPlayer = GetNode<AnimationPlayer>("%AnimationPlayer");
     _animationPlayer.CurrentAnimation = "rocking";
   }
 

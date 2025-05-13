@@ -116,6 +116,7 @@ public partial class Globals : Node
       }
     }
   }
+
   public void AddScenes(IServiceCollection collection)
   {
     var paths = SceneManager.ListAvailableScenes();
@@ -124,17 +125,17 @@ public partial class Globals : Node
       collection.AddKeyedTransient(Path.GetFileNameWithoutExtension(path), InjectAvailableScene(path));
     }
   }
+
   public Func<IServiceProvider, object?, Node> InjectAvailableScene(string path)
   {
-    return (ServiceProvider, serviceKey) =>
-    {
-      return InjectInstantiatedPackedScene<Node>(path, false)(ServiceProvider);
-    };
+    return (ServiceProvider, serviceKey) => InjectInstantiatedPackedScene<Node>(path, false)(ServiceProvider);
   }
+
   public static void CreateSceneScope()
   {
     _currentScope = _serviceProvider.CreateScope();
   }
+
   public static void CloseSceneScope()
   {
     if (_currentScope != null)

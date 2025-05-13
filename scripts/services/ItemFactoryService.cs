@@ -23,7 +23,7 @@ public class ItemFactoryService
             GoldValue = GetGoldValue(itemResource),
             Weight = rng.GetFloatRange(itemResource.MinWeight, itemResource.MaxWeight),
             IconTexture = itemResource.IconTexture,
-            ItemScene = itemResource.ItemScene.Instantiate<Node3D>()
+            ItemScene = itemResource.ItemScene?.Instantiate<Node3D>()// ?? new Node3D()
         };
         return item;
     }
