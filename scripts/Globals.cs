@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using Godot;
 using Microsoft.Extensions.DependencyInjection;
+using ShipOfTheseus2025.Components.Game;
 using ShipOfTheseus2025.Managers;
 using ShipOfTheseus2025.Services;
 using ShipOfTheseus2025.Stores;
@@ -42,6 +43,7 @@ public partial class Globals : Node
     .AddSingleton(InjectNodeClass<ItemDragManager>())
     .AddTransient<ItemSpawnManager>()
     .AddTransient(InjectNodeClass<PauseManager>())
+    .AddSingleton(InjectNodeClass<HoverPanelManager>(true))
     ;
 
     AddScenes(Services);

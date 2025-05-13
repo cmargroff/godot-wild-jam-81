@@ -1,4 +1,5 @@
 using Godot;
+using ShipOfTheseus2025.Components.Game;
 using ShipOfTheseus2025.Managers;
 using ShipOfTheseus2025.Util;
 
@@ -13,7 +14,7 @@ public partial class Game : Node3D
   private PauseManager _pauseManager;
 
   [FromServices]
-  public void Inject(SceneManager sceneManager, StatsManager statsManager, GameEventManager eventManager, ItemDragManager dragManager, PauseManager pauseManager)
+  public void Inject(SceneManager sceneManager, StatsManager statsManager, GameEventManager eventManager, ItemDragManager dragManager, PauseManager pauseManager, HoverPanelManager hoverPanelManager)
   {
     _sceneManager = sceneManager;
     _statsManager = statsManager;
