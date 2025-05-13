@@ -1,17 +1,34 @@
 using Godot;
+using Godot.Collections;
 using ShipOfTheseus2025.Components.Game;
 using ShipOfTheseus2025.Enum;
+using ShipOfTheseus2025.Managers;
 using ShipOfTheseus2025.Resources;
 using ShipOfTheseus2025.Services;
 using System;
+using System.Collections.Generic;
 
 public class ItemFactoryService
 {
-    private RandomNumberGeneratorService rng;
+    private System.Collections.Generic.Dictionary<string, List<ItemTrait>> ItemTraitLookup;
 
-    public ItemFactoryService(RandomNumberGeneratorService rng)
+    private RandomNumberGeneratorService rng;
+    private readonly StatsManager statsManager;
+
+    public ItemFactoryService(RandomNumberGeneratorService rng, StatsManager statsManager)
     {
         this.rng = rng;
+        this.statsManager = statsManager;
+        SetupItemTraitLookup();
+    }
+
+    public void SetupItemTraitLookup()
+    {
+        ItemTraitLookup = new()
+        {
+            {"Fancy Portrait", [] },
+            { "Seagull", [new(rng, "Speed bonus of [%placeholder%]", 0.01f, 0.05f, (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue })) ] }
+        };
     }
 
     public InventoryItem GenerateItem(ItemResource itemResource)
@@ -25,7 +42,13 @@ public class ItemFactoryService
             IconTexture = itemResource.IconTexture,
             ItemScene = itemResource.ItemScene?.Instantiate<Node3D>()// ?? new Node3D()
         };
+        AddItemTraits(item);
         return item;
+    }
+
+    private void AddItemTraits(InventoryItem item)
+    {
+        item.Traits = ItemTraitLookup[item.Name];
     }
 
     private int GetGoldValue(ItemResource itemResource)
