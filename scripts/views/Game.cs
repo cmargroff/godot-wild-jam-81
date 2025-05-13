@@ -1,4 +1,5 @@
 using Godot;
+using ShipOfTheseus2025.Components.Game;
 using ShipOfTheseus2025.Managers;
 using ShipOfTheseus2025.Util;
 

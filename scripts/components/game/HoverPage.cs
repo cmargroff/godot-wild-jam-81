@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using Godot;
 using Godot.Collections;
 
+namespace ShipOfTheseus2025.Components.Game;
+
 public partial class HoverPage : Control
 {
   [Export]

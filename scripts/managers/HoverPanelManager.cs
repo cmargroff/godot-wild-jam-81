@@ -1,5 +1,7 @@
 using Godot;
 
+namespace ShipOfTheseus2025.Components.Game;
+
 public partial class HoverPanelManager : Control
 {
   public HoverPage _page;

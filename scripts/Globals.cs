@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using Godot;
 using Microsoft.Extensions.DependencyInjection;
+using ShipOfTheseus2025.Components.Game;
 using ShipOfTheseus2025.Managers;
 using ShipOfTheseus2025.Services;
 using ShipOfTheseus2025.Stores;
