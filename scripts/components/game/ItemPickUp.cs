@@ -24,7 +24,8 @@ public partial class ItemPickUp : Node3D
     { 
         Floating, 
         Held, 
-        Dropped 
+        Dropped,
+        Attached 
     }
 
     public override void _EnterTree()
@@ -48,7 +49,7 @@ public partial class ItemPickUp : Node3D
             Position = _position;
         }
 
-        if (State == ItemPickupState.Dropped && GlobalPosition.Y > 0)
+        if (State == ItemPickupState.Dropped)
         {
             _position.Y -= VELOCITY * (float)delta;
             Position = _position;
@@ -57,7 +58,7 @@ public partial class ItemPickUp : Node3D
         }
        
         
-        if (GlobalPosition.X <= -20.0f || GlobalPosition.Y <= 0)
+        if (GlobalPosition.X <= -20.0f  || GlobalPosition.Y <= -5) 
         {
             QueueFree();
         }
@@ -72,6 +73,13 @@ public partial class ItemPickUp : Node3D
                 State = ItemPickupState.Held;
                 _area.InputRayPickable = false;
             }
+            // if (State == ItemPickupState.Held && _dragManager.CanSnap())
+            // {
+            //     _dragManager.Snap();
+            //     State = ItemPickupState.Snapped;
+                
+            // }
+            
         }
         if (@event.IsPressed() && @event.IsAction("rmb"))
         {
@@ -82,12 +90,14 @@ public partial class ItemPickUp : Node3D
                 State = ItemPickupState.Dropped;
                 GD.Print(GlobalPosition);
                 _position = GlobalPosition;
-                // _position.Z -= 0.5f;
-                // GlobalPosition = _position;
-                // GD.Print(GlobalPosition);
-                // _position = GlobalPosition;
+                
             }
         }
+    }
+
+    public void Attach()
+    {
+        State = ItemPickupState.Attached;
     }
 
     public void MouseEntered()

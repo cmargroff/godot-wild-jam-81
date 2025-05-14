@@ -2,30 +2,48 @@ using Godot;
 using Microsoft.Extensions.DependencyInjection;
 using ShipOfTheseus2025;
 using ShipOfTheseus2025.Managers;
+using ShipOfTheseus2025.Interfaces;
+using ShipOfTheseus2025.Components.Game;
 
-public partial class DamagePoint : Area3D
+
+public partial class DamagePoint : Area3D, ISnapPoint
 {
   private ItemDragManager _dragManager;
+  public DamagePointState State;
+
+  public enum DamagePointState 
+  {
+    SnapEnable,
+    SnapDisable
+  }
+
   public override void _EnterTree()
   {
+    State = DamagePointState.SnapEnable;
     _dragManager = Globals.ServiceProvider.GetRequiredService<ItemDragManager>();
   }
   public override void _MouseEnter()
   {
-    GD.Print("snap point");
-    if (_dragManager.Dragging)
+    if (_dragManager.Dragging && State == DamagePointState.SnapEnable)
     {
       _dragManager.SnapPoint(this);
-      GD.Print("snapped");
 
     }
   }
   public override void _MouseExit()
   {
-    if (_dragManager.Dragging)
+    if (_dragManager.Dragging && State == DamagePointState.SnapEnable)
     {
       _dragManager.Unsnap();
-      GD.Print("unsnapped");
     }
   }
+  public void AttachItem(ItemPickUp item)
+  {
+    item.Reparent(this);
+    item.Attach();
+    item.GlobalPosition = GlobalPosition;
+    _dragManager.Unsnap();
+    State = DamagePointState.SnapDisable;
+  }
+
 }

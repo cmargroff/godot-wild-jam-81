@@ -1,6 +1,7 @@
 using System;
 using Godot;
 using ShipOfTheseus2025.Components.Game;
+using ShipOfTheseus2025.Interfaces;
 
 namespace ShipOfTheseus2025.Managers;
 
@@ -12,10 +13,10 @@ public partial class ItemDragManager : Node3D
   const float ITEM_SNAP_SMOOTHING = 0.2f;
   private Viewport _viewport;
   private Camera3D _camera;
-  private Node3D _item;
+  private ItemPickUp _item;
   private float _scale = 1f;
   private bool _snapped;
-  private Node3D _snapPoint;
+  private ISnapPoint _snapPoint;
   public override void _EnterTree()
   {
     _viewport = GetViewport();
@@ -26,20 +27,19 @@ public partial class ItemDragManager : Node3D
   {
     _camera = camera;
   }
-  public void StartDragItem(Node3D node)
+  public void StartDragItem(ItemPickUp item)
   {
     Dragging = true;
 
     if (_camera == null) return;
 
     _scale = 1f;
-    _item = node;
-    node.Reparent(GetTree().Root, true);
+    _item = item;
+    item.Reparent(GetTree().Root, true);
   }
   public void EndDragItem()
   {
     Dragging = false;
-    // _item.GetChild<Node3D>(0).Scale = Vector3.One * 1f;
   }
   public override void _Process(double delta)
   {
@@ -53,7 +53,7 @@ public partial class ItemDragManager : Node3D
         _item.GetChild<Node3D>(0).Scale = Vector3.One * targetScale;
         _scale = targetScale;
       }
-      var dest = _snapped ? _snapPoint.GlobalPosition : _camera.ProjectPosition(_viewport.GetMousePosition(), 4f);
+      var dest = _snapped ? ((Area3D)_snapPoint).GlobalPosition : _camera.ProjectPosition(_viewport.GetMousePosition(), 4f);
       var distance = _item.GlobalPosition.DistanceTo(dest);
       if (distance > Mathf.Epsilon)
       {
@@ -63,14 +63,32 @@ public partial class ItemDragManager : Node3D
     }
    
   }
-  public void SnapPoint(Node3D node)
+  public override void _Input(InputEvent @event)
+  {
+    if (@event.IsPressed() && @event.IsAction("lmb"))
+    {
+      if (_snapped)
+      {
+        Attach();
+      }
+    }
+  }
+  public void SnapPoint(ISnapPoint point)
   {
     _snapped = true;
-    _snapPoint = node;
+    _snapPoint = point;
+  }
+
+  public void Attach()
+  {
+    EndDragItem();
+    _snapPoint.AttachItem(_item);
+    
   }
   public void Unsnap()
   {
     _snapped = false;
     _snapPoint = null;
   }
+  
 }
