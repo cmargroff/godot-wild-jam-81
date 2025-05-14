@@ -54,6 +54,6 @@ public partial class TravelProgress : Control
     public override void _PhysicsProcess(double delta)
     {
         RemainingTime = Math.Max(0, RemainingTime - (float)(delta * SpeedScale));
-        _progressBar.Value = (1 - RemainingTime / RunTimeAt1X);
+        _progressBar.Value = (1 - RemainingTime / RunTimeAt1X) * 100f;
     }
 }
