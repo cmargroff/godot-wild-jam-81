@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://cs2ybcc1lpqhc"]
 
 [ext_resource type="Script" uid="uid://wiwsb8d1e7fq" path="res://scripts/views/Game.cs" id="1_5pph0"]
-[ext_resource type="PackedScene" path="res://components/game/Ship.tscn" id="2_26sbl"]
-[ext_resource type="PackedScene" path="res://components/game/HUD.tscn" id="3_26sbl"]
+[ext_resource type="PackedScene" uid="uid://cxyf4q4egqw6k" path="res://components/game/Ship.tscn" id="2_26sbl"]
+[ext_resource type="PackedScene" uid="uid://lw36b2co12mu" path="res://components/game/HUD.tscn" id="3_26sbl"]
 [ext_resource type="Material" uid="uid://bsj6xumrw23oq" path="res://assets/materials/scrolling_texture.tres" id="3_leryn"]
-[ext_resource type="PackedScene" uid="uid://um7j61tu7dky" path="res://components/game/TravelProgress.tscn" id="5_k714b"]
+[ext_resource type="PackedScene" path="res://components/game/TravelProgress.tscn" id="5_k714b"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_5pph0"]
 material = ExtResource("3_leryn")
