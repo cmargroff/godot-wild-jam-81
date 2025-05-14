@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdjgh43nrwibo"]
+[gd_scene load_steps=4 format=3 uid="uid://bdjgh43nrwibo"]
 
+[ext_resource type="Script" uid="uid://ljey7eklsu65" path="res://scripts/components/game/WaterLevel.cs" id="1_pigcg"]
 [ext_resource type="Texture2D" uid="uid://c2tshvp6wisrg" path="res://assets/textures/game/water frame.png" id="1_yrsdm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0u3sh"]
@@ -13,6 +14,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+script = ExtResource("1_pigcg")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -32,6 +34,7 @@ texture = ExtResource("1_yrsdm")
 
 [node name="ProgressBar" type="ProgressBar" parent="TextureRect"]
 show_behind_parent = true
+unique_name_in_owner = true
 layout_mode = 2
 offset_left = 13.0
 offset_top = 20.0
