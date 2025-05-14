@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cs2ybcc1lpqhc"]
+[gd_scene load_steps=7 format=3 uid="uid://cs2ybcc1lpqhc"]
 
 [ext_resource type="Script" uid="uid://wiwsb8d1e7fq" path="res://scripts/views/Game.cs" id="1_5pph0"]
 [ext_resource type="PackedScene" path="res://components/game/Ship.tscn" id="2_26sbl"]
 [ext_resource type="PackedScene" path="res://components/game/HUD.tscn" id="3_26sbl"]
 [ext_resource type="Material" uid="uid://bsj6xumrw23oq" path="res://assets/materials/scrolling_texture.tres" id="3_leryn"]
+[ext_resource type="PackedScene" uid="uid://um7j61tu7dky" path="res://components/game/TravelProgress.tscn" id="5_k714b"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_5pph0"]
 material = ExtResource("3_leryn")
@@ -26,6 +27,13 @@ transform = Transform3D(50, -5.68434e-13, -9.93882e-22, 0, -2.18557e-06, 2, -5.6
 mesh = SubResource("QuadMesh_5pph0")
 
 [node name="HUD" parent="." instance=ExtResource("3_26sbl")]
+
+[node name="TravelProgress" parent="HUD" instance=ExtResource("5_k714b")]
+layout_mode = 1
+offset_left = 85.0
+offset_top = -4.0
+offset_right = 85.0
+offset_bottom = -4.0
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.218318, 0.0347824, -6.71449)
