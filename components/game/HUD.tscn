@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://lw36b2co12mu"]
 
 [ext_resource type="PackedScene" uid="uid://b7kdi5u8brmws" path="res://components/game/Score.tscn" id="1_e13wi"]
-[ext_resource type="PackedScene" path="res://components/game/TravelProgress.tscn" id="1_s7bcb"]
+[ext_resource type="PackedScene" uid="uid://um7j61tu7dky" path="res://components/game/TravelProgress.tscn" id="1_s7bcb"]
 [ext_resource type="PackedScene" uid="uid://bdjgh43nrwibo" path="res://components/game/WaterLevel.tscn" id="2_auhp3"]
 
 [node name="HUD" type="Control"]
