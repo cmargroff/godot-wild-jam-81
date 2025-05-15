@@ -61,6 +61,7 @@ columns = 3
 [node name="SlotsWrap" type="VFlowContainer" parent="Frame/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+last_wrap_alignment = 3
 reverse_fill = true
 
 [node name="Handle" type="TextureRect" parent="Frame"]

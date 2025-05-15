@@ -26,7 +26,7 @@ public partial class DamagePoint : Area3D, ISnapPoint
   {
     if (_dragManager.Dragging && State == DamagePointState.SnapEnable)
     {
-      _dragManager.SnapPoint(this);
+      _dragManager.SnapPoint(this, true);
 
     }
   }

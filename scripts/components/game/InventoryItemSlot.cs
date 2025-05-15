@@ -25,7 +25,7 @@ public partial class InventoryItemSlot : TextureRect, ISnapPoint
 
   private void _MouseEntered()
   {
-    _dragManager.SnapPoint(this);
+    _dragManager.SnapPoint(this, false);
   }
   private void _MouseExited()
   {
@@ -37,6 +37,8 @@ public partial class InventoryItemSlot : TextureRect, ISnapPoint
     _item = item;
     _item.Visible = false;
     _icon.Texture = item.InventoryItem.IconTexture;
+    item.Attach();
+    _dragManager.Unsnap();
   }
 
 }
