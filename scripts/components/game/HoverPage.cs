@@ -56,7 +56,7 @@ public partial class HoverPage : Control
       }
     }
   }
-  private void AssignData(object inventoryItem)
+  private void AssignData(InventoryItem inventoryItem)
   {
     // assign a page bg color based on the hash of the item object;
     if (PageTextures.Count > 0)
@@ -65,12 +65,12 @@ public partial class HoverPage : Control
       _bg.Texture = PageTextures[bgIdx];
     }
 
-    // _name.Text = inventoryItem.ItemName;
-    // _icon.Texture = inventoryItem.IconTexture;
-    // _description.Text = inventoryItem.Description;
+    _name.Text = inventoryItem.Name;
+    _icon.Texture = inventoryItem.IconTexture;
+    _description.Text = inventoryItem.Description;
     // UpdateAttributes(inventoryItem.Attributes);
   }
-  public void Show(object inventoryItem)
+  public void Show(InventoryItem inventoryItem)
   {
     AssignData(inventoryItem);
     Visible = true;

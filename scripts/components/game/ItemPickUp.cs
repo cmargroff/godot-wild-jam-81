@@ -49,7 +49,7 @@ public partial class ItemPickUp : Node3D
     {
         GD.Print("mouseEntered");
         _hovered = true;
-        _hoverManager.ShowItem(new());
+        _hoverManager.ShowItem(InventoryItem);
     }
     public void MouseExited()
     {

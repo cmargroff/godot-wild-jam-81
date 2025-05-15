@@ -13,7 +13,7 @@ public partial class HoverPanelManager : Control
     AddChild(_page);
   }
 
-  public void ShowItem(object item)
+  public void ShowItem(InventoryItem item)
   {
     _page.Show(item);
   }
