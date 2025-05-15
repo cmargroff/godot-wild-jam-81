@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dkxs3lfvjqggx"]
+[gd_scene load_steps=6 format=3 uid="uid://dkxs3lfvjqggx"]
 
+[ext_resource type="Script" uid="uid://xq6y7wak7f3p" path="res://scripts/components/game/Inventory.cs" id="1_ua8al"]
 [ext_resource type="Texture2D" uid="uid://n4v5bdrm85uy" path="res://assets/textures/game/Border_01.png" id="1_vamlo"]
 [ext_resource type="Texture2D" uid="uid://qwlld1axs17p" path="res://assets/textures/game/Contentbox_10.png" id="2_ua8al"]
+[ext_resource type="PackedScene" uid="uid://dd6bd8cm6ewgm" path="res://components/game/InventoryItemSlot.tscn" id="3_fmepp"]
+[ext_resource type="Texture2D" uid="uid://7awdmhrgeqh5" path="res://assets/textures/game/inventory_handle.png" id="4_ajov7"]
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -10,21 +13,25 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Frame" type="TextureRect" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = -362.0
+offset_left = -377.0
 offset_top = -281.0
-offset_right = 31.0
+offset_right = 16.0
 offset_bottom = 285.0
 grow_vertical = 2
 texture = ExtResource("1_vamlo")
 expand_mode = 3
+script = ExtResource("1_ua8al")
+SlotTemplate = ExtResource("3_fmepp")
 
-[node name="TextureRect" type="TextureRect" parent="TextureRect"]
+[node name="TextureRect" type="TextureRect" parent="Frame"]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -35,7 +42,7 @@ grow_vertical = 2
 texture = ExtResource("2_ua8al")
 expand_mode = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="TextureRect"]
+[node name="MarginContainer" type="MarginContainer" parent="Frame"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -47,9 +54,27 @@ theme_override_constants/margin_top = 19
 theme_override_constants/margin_right = 17
 theme_override_constants/margin_bottom = 19
 
-[node name="GridContainer" type="GridContainer" parent="TextureRect/MarginContainer"]
+[node name="GridContainer" type="GridContainer" parent="Frame/MarginContainer"]
 layout_mode = 2
 columns = 3
 
-[node name="VFlowContainer" type="VFlowContainer" parent="TextureRect/MarginContainer"]
+[node name="SlotsWrap" type="VFlowContainer" parent="Frame/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
+reverse_fill = true
+
+[node name="Handle" type="TextureRect" parent="Frame"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -70.0
+offset_right = 28.0
+offset_bottom = 70.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("4_ajov7")
