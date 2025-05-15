@@ -14,5 +14,6 @@ mesh = SubResource("BoxMesh_jev3k")
 
 [node name="Area3D" type="Area3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="Shape" type="CollisionShape3D" parent="Area3D"]
+unique_name_in_owner = true
 shape = SubResource("BoxShape3D_kpet3")
