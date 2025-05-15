@@ -1,0 +1,18 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=7 format=3 uid="uid://p51ofnqbqlij"]
+
+[ext_resource type="AudioStream" uid="uid://ccfna7uvydouo" path="res://assets/audio/sfx/pickup_1.1.1.mp3" id="1_f4cig"]
+[ext_resource type="AudioStream" uid="uid://btyu2haks823h" path="res://assets/audio/sfx/pickup_1.1.mp3" id="2_bcxgc"]
+[ext_resource type="AudioStream" uid="uid://bcfr8bmp5wpv2" path="res://assets/audio/sfx/pickup_1.mp3" id="3_am5px"]
+[ext_resource type="AudioStream" uid="uid://dh3fh12eg6c2" path="res://assets/audio/sfx/pickup_2.1.1.mp3" id="4_brlvg"]
+[ext_resource type="AudioStream" uid="uid://bsargdvmd4svb" path="res://assets/audio/sfx/pickup_2.mp3" id="5_2i75d"]
+[ext_resource type="AudioStream" uid="uid://bx0oc4essr0fm" path="res://assets/audio/sfx/pickup_2.1.mp3" id="6_mbn5w"]
+
+[resource]
+playback_mode = 1
+streams_count = 6
+stream_0/stream = ExtResource("1_f4cig")
+stream_1/stream = ExtResource("2_bcxgc")
+stream_2/stream = ExtResource("3_am5px")
+stream_3/stream = ExtResource("4_brlvg")
+stream_4/stream = ExtResource("5_2i75d")
+stream_5/stream = ExtResource("6_mbn5w")

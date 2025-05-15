@@ -15,16 +15,21 @@ public partial class ItemDragManager : Node3D
   private float _scale = 1f;
   private bool _snapped;
   private Node3D _snapPoint;
+
+  public AudioStreamPlayer3D PickupAudioStreamPlayer { get; set; }
+
   public override void _EnterTree()
   {
     _viewport = GetViewport();
     Name = "ItemDragManager";
     GD.Print("ItemDragManager entered");
   }
+
   public void SetCamera(Camera3D camera)
   {
     _camera = camera;
   }
+
   public void StartDragItem(Node3D node)
   {
     Dragging = true;
@@ -37,6 +42,8 @@ public partial class ItemDragManager : Node3D
     node.Reparent(_item);
     node.Position = Vector3.Zero;
     GetTree().Root.AddChild(_item);
+    PickupAudioStreamPlayer.GlobalPosition = node.GlobalPosition;
+    PickupAudioStreamPlayer.Play();
   }
   public void EndDragItem()
   {

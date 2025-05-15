@@ -13,10 +13,12 @@ public partial class ItemPickUp : Node3D
     private ItemDragManager _dragManager;
     private HoverPanelManager _hoverManager;
     public InventoryItem InventoryItem { get; set; }
+    public AudioStreamPlayer3D ItemPickupAudioPlayer { get; set; }
 
     public override void _EnterTree()
     {
         _dragManager = Globals.ServiceProvider.GetRequiredService<ItemDragManager>();
+        _dragManager.PickupAudioStreamPlayer = ItemPickupAudioPlayer;
         _hoverManager = Globals.ServiceProvider.GetRequiredService<HoverPanelManager>();
         _position = Position;
         var area = GetNode<Area3D>("Area3D");
