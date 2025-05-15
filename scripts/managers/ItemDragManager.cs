@@ -19,6 +19,9 @@ public partial class ItemDragManager : Node3D
   private ISnapPoint _snapPoint;
   // private Area3D _snapPointArea;
   // private TextureRect _snapPointRect;
+  
+  public event Action<ItemPickUp> ItemSnapped;
+  
   public override void _EnterTree()
   {
     _viewport = GetViewport();
@@ -42,6 +45,7 @@ public partial class ItemDragManager : Node3D
   public void EndDragItem()
   {
     Dragging = false;
+    _item = null;
   }
   public override void _Process(double delta)
   {
@@ -105,6 +109,8 @@ public partial class ItemDragManager : Node3D
   {
     _snapped = snap;
     _snapPoint = point;
+    // if (Dragging) _snapPoint.Snap(_item);
+  
     // if (snap) _snapPointArea = (Area3D)_snapPoint;
     // else _snapPointRect = (TextureRect)_snapPoint;
 
@@ -112,7 +118,6 @@ public partial class ItemDragManager : Node3D
 
   public void Attach()
   {
-    EndDragItem();
     _snapPoint.AttachItem(_item);
     
   }
@@ -122,6 +127,11 @@ public partial class ItemDragManager : Node3D
     _snapPoint = null;
     // _snapPointArea = null;
     // _snapPointRect = null;
+  }
+
+  public ItemPickUp GetItem()
+  {
+    return _item;
   }
   
 }

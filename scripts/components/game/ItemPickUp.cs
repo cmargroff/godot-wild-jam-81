@@ -100,6 +100,11 @@ public partial class ItemPickUp : Node3D
         State = ItemPickupState.Attached;
     }
 
+    public void Grab()
+    {
+        State = ItemPickupState.Held;
+    }
+
     public void MouseEntered()
     {
         GD.Print("mouseEntered");

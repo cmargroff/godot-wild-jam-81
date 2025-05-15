@@ -42,8 +42,12 @@ public partial class DamagePoint : Area3D, ISnapPoint
     item.Reparent(this);
     item.Attach();
     item.GlobalPosition = GlobalPosition;
-    _dragManager.Unsnap();
     State = DamagePointState.SnapDisable;
+    _dragManager.Unsnap();
+    _dragManager.EndDragItem();
   }
-
+  // public void Snap(ItemPickUp item)
+  // {
+  //   GD.Print("");
+  // }
 }

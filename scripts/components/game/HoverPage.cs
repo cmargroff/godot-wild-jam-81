@@ -78,7 +78,7 @@ public partial class HoverPage : Control
     // assign a page bg color based on the hash of the item object;
     if (PageTextures.Count > 0)
     {
-      var bgIdx = inventoryItem.GetHashCode() % PageTextures.Count;
+      var bgIdx = inventoryItem.GetHashCode() % PageTextures.Count; //here bug
       _bg.Texture = PageTextures[bgIdx];
     }
 
