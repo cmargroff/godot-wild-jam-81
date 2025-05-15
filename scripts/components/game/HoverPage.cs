@@ -14,6 +14,10 @@ public partial class HoverPage : Control
   private TextureRect _bg;
   private Label _name;
   private TextureRect _icon;
+  private Label _weightLabel;
+  private string _weightFmt;
+  private Label _valueLabel;
+  private string _valueFmt;
   private RichTextLabel _description;
   private VBoxContainer _attributesWrap;
   public override void _EnterTree()
@@ -22,6 +26,10 @@ public partial class HoverPage : Control
     _bg = GetNode<TextureRect>("%BG");
     _name = GetNode<Label>("%Name");
     _icon = GetNode<TextureRect>("%Icon");
+    _weightLabel = GetNode<Label>("%WeightLabel");
+    _weightFmt = _weightLabel.Text;
+    _valueLabel = GetNode<Label>("%ValueLabel");
+    _valueFmt = _valueLabel.Text;
     _description = GetNode<RichTextLabel>("%Description");
   }
   private void UpdateAttributes(List<object> attributes)
@@ -68,6 +76,8 @@ public partial class HoverPage : Control
     _name.Text = inventoryItem.Name;
     _icon.Texture = inventoryItem.IconTexture;
     _description.Text = inventoryItem.Description;
+    _weightLabel.Text = string.Format(_weightFmt, inventoryItem.Weight);
+    _valueLabel.Text = string.Format(_valueFmt, inventoryItem.GoldValue);
     // UpdateAttributes(inventoryItem.Attributes);
   }
   public void Show(InventoryItem inventoryItem)

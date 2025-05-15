@@ -21,10 +21,11 @@ PageTextures = Array[Texture2D]([ExtResource("1_o60v6"), ExtResource("3_074c7"),
 unique_name_in_owner = true
 clip_contents = true
 layout_mode = 0
-offset_left = -90.0
-offset_top = -26.0
-offset_right = 422.0
-offset_bottom = 486.0
+offset_left = -58.0
+offset_top = -15.0
+offset_right = 454.0
+offset_bottom = 497.0
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_o60v6")
 stretch_mode = 3
 
@@ -56,31 +57,70 @@ horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="BG/MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 90
+theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 90
+theme_override_constants/margin_right = 30
 
-[node name="BG" type="TextureRect" parent="BG/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="BG/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="MarginContainer" type="MarginContainer" parent="BG/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.9
+
+[node name="BG" type="TextureRect" parent="BG/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("3_bd8jx")
 expand_mode = 5
 stretch_mode = 6
 
-[node name="Icon" type="TextureRect" parent="BG/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="Icon" type="TextureRect" parent="BG/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("4_begpj")
 expand_mode = 5
 stretch_mode = 5
 
-[node name="Frame" type="TextureRect" parent="BG/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="Frame" type="TextureRect" parent="BG/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/MarginContainer"]
 clip_contents = true
 layout_mode = 2
 size_flags_stretch_ratio = 0.53
 texture = ExtResource("4_a4me0")
 expand_mode = 4
 stretch_mode = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BG/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BG/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BG/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="WeightLabel" type="Label" parent="BG/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+text = "{0:N}Lbs"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="BG/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="BG/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="ValueLabel" type="Label" parent="BG/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 22
+text = "{0:D}G"
 
 [node name="MarginContainer2" type="MarginContainer" parent="BG/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -92,6 +132,7 @@ theme_override_constants/margin_right = 30
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 22
 text = "This is the description of the item
 "
 fit_content = true
