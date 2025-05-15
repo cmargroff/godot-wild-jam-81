@@ -20,10 +20,15 @@ public partial class HoverPage : Control
   private string _valueFmt;
   private RichTextLabel _description;
   private VBoxContainer _attributesWrap;
+  private Vector2 _pageSize;
+  private Vector2 _viewPortSize;
   public override void _EnterTree()
   {
     _viewport = GetViewport();
+    UpdateViewportSize();
+    _viewport.Connect(Viewport.SignalName.SizeChanged, Callable.From(UpdateViewportSize));
     _bg = GetNode<TextureRect>("%BG");
+    _pageSize = _bg.Size * _bg.Scale;
     _name = GetNode<Label>("%Name");
     _icon = GetNode<TextureRect>("%Icon");
     _weightLabel = GetNode<Label>("%WeightLabel");
@@ -31,6 +36,10 @@ public partial class HoverPage : Control
     _valueLabel = GetNode<Label>("%ValueLabel");
     _valueFmt = _valueLabel.Text;
     _description = GetNode<RichTextLabel>("%Description");
+  }
+  private void UpdateViewportSize()
+  {
+    _viewPortSize = _viewport.GetVisibleRect().Size;
   }
   private void UpdateAttributes(List<object> attributes)
   {
@@ -91,7 +100,16 @@ public partial class HoverPage : Control
     // move to mouse position
     if (Visible)
     {
-      Position = _viewport.GetMousePosition();
+      var nextPos = _viewport.GetMousePosition();
+      if (nextPos.Y + _pageSize.Y > _viewPortSize.Y)
+      {
+        nextPos.Y -= _pageSize.Y;
+      }
+      if (nextPos.X + _pageSize.X > _viewPortSize.X)
+      {
+        nextPos.X -= _pageSize.X;
+      }
+      Position = nextPos;
     }
   }
 }
