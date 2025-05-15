@@ -7,12 +7,12 @@ using Microsoft.Extensions.DependencyInjection;
 public partial class WaterLevel : Control
 {
   private ProgressBar _progressBar;
-  private TextureRect _icon;
+  // private TextureRect _icon;
   private StatsManager _statsManager;
   public override void _EnterTree()
   {
     _progressBar = GetNode<ProgressBar>("%ProgressBar");
-    _icon = GetNode<TextureRect>("%Icon");
+    // _icon = GetNode<TextureRect>("%Icon");
     _statsManager = Globals.ServiceProvider.GetRequiredService<StatsManager>();
     _statsManager.StatChanged += StatsManager_StatChanged;
     
