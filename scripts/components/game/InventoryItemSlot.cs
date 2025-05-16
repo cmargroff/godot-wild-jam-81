@@ -43,13 +43,14 @@ public partial class InventoryItemSlot : TextureRect, ISnapPoint
   {
     _dragManager.SnapPoint(this, false);
     Snap();
-    if (_item is not null) _hoverManager.ShowItem(_item.InventoryItem, HoverType.Slot);
+    if (_dragManager.Dragging == false && _item is not null) _hoverManager.ShowItem(_item.InventoryItem, HoverType.Slot);
 
   }
   private void _MouseExited()
   {
     _dragManager.Unsnap();
     if (_item is null) Unsnap();
+    if (_dragManager.Dragging == false) _hoverManager.HidePage();
   }
 
   public void AttachItem(ItemPickUp item)
@@ -78,7 +79,7 @@ public partial class InventoryItemSlot : TextureRect, ISnapPoint
     _item.Grab();
     _dragManager.StartDragItem(_item);
     _item = null;
-
+    
   }
 
 

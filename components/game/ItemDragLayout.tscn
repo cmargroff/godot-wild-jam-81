@@ -10,8 +10,8 @@ grow_vertical = 2
 
 [node name="HoverSlotMarker" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(1065, 108)
+position = Vector2(113, 85)
 
 [node name="HoverItemMarker" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(70, 214)
+position = Vector2(1065, 108)
