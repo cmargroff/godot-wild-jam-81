@@ -7,7 +7,7 @@ namespace ShipOfTheseus2025.Components.Game;
 public partial class HoverPage : Control
 {
   [Export]
-  public PackedScene AttributeItem;
+  public PackedScene TraitItem;
   [Export]
   public Array<Texture2D> PageTextures = new();
   private Viewport _viewport;
@@ -19,7 +19,7 @@ public partial class HoverPage : Control
   private Label _valueLabel;
   private string _valueFmt;
   private RichTextLabel _description;
-  private VBoxContainer _attributesWrap;
+  private VBoxContainer _traitsWrap;
   private Vector2 _pageSize;
   private Vector2 _viewPortSize;
   public override void _EnterTree()
@@ -36,40 +36,41 @@ public partial class HoverPage : Control
     _valueLabel = GetNode<Label>("%ValueLabel");
     _valueFmt = _valueLabel.Text;
     _description = GetNode<RichTextLabel>("%Description");
+    _traitsWrap = GetNode<VBoxContainer>("%TraitsWrap");
   }
   private void UpdateViewportSize()
   {
     _viewPortSize = _viewport.GetVisibleRect().Size;
   }
-  private void UpdateAttributes(List<object> attributes)
+  private void UpdateTraits(List<ItemTrait> traits)
   {
     // attribute nodes pooler
-    var childCount = _attributesWrap.GetChildCount();
+    var childCount = _traitsWrap.GetChildCount();
     var i = 0;
-    foreach (var attr in attributes)
+    foreach (var trait in traits)
     {
       if (i < childCount)
       {
         // update existing attribute nodes
-        var attrNode = _attributesWrap.GetChild<ItemPageAttribute>(i);
-        attrNode.SetAttribute(attr);
-        attrNode.Visible = true;
+        var traitNode = _traitsWrap.GetChild<ItemPageTrait>(i);
+        traitNode.SetTrait(trait);
+        traitNode.Visible = true;
       }
       else
       {
         // create new attribute nodes for longer attribute list
-        var newNode = AttributeItem.Instantiate<ItemPageAttribute>();
-        newNode.SetAttribute(attr);
-        _attributesWrap.AddChild(newNode);
+        var newNode = TraitItem.Instantiate<ItemPageTrait>();
+        _traitsWrap.AddChild(newNode);
+        newNode.SetTrait(trait);
       }
       i++;
     }
-    if (childCount > attributes.Count)
+    if (childCount > traits.Count)
     {
       // hide the extra nodes that are not in use
-      for (i = childCount - 1; i > attributes.Count; i--)
+      for (i = childCount - 1; i > traits.Count; i--)
       {
-        _attributesWrap.GetChild<Control>(i).Visible = false;
+        _traitsWrap.GetChild<Control>(i).Visible = false;
       }
     }
   }
@@ -78,7 +79,7 @@ public partial class HoverPage : Control
     // assign a page bg color based on the hash of the item object;
     if (PageTextures.Count > 0)
     {
-      var bgIdx = inventoryItem.GetHashCode() % PageTextures.Count;
+      var bgIdx = inventoryItem.GetHashCode() % PageTextures.Count; //here bug
       _bg.Texture = PageTextures[bgIdx];
     }
 
@@ -87,7 +88,7 @@ public partial class HoverPage : Control
     _description.Text = inventoryItem.Description;
     _weightLabel.Text = string.Format(_weightFmt, inventoryItem.Weight);
     _valueLabel.Text = string.Format(_valueFmt, inventoryItem.GoldValue);
-    // UpdateAttributes(inventoryItem.Attributes);
+    UpdateTraits(inventoryItem.Traits);
   }
   public void Show(InventoryItem inventoryItem)
   {

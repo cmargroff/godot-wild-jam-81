@@ -3,18 +3,19 @@
 [ext_resource type="Script" uid="uid://blmkykpe3cgur" path="res://scripts/components/game/HoverPage.cs" id="1_begpj"]
 [ext_resource type="Texture2D" uid="uid://bgm0o2ksoxecs" path="res://assets/textures/game/HoverPage1.tres" id="1_o60v6"]
 [ext_resource type="FontFile" uid="uid://c0b830g1sx2i7" path="res://assets/fonts/pirata-one/PirataOne-Regular.ttf" id="2_7hyke"]
+[ext_resource type="PackedScene" uid="uid://cl5f5gtfmsk83" path="res://components/game/ItemPageTrait.tscn" id="2_074c7"]
 [ext_resource type="Texture2D" uid="uid://g1itsvbthx7v" path="res://assets/textures/game/HoverPage2.tres" id="3_074c7"]
 [ext_resource type="Texture2D" uid="uid://dvr4h20loqgmg" path="res://assets/textures/game/ItemBg.tres" id="3_bd8jx"]
 [ext_resource type="Texture2D" uid="uid://cjns18joji0ki" path="res://assets/textures/game/ItemFrame.tres" id="4_a4me0"]
 [ext_resource type="Texture2D" uid="uid://8wywilm14cng" path="res://assets/textures/items/default_item.png" id="4_begpj"]
 [ext_resource type="Texture2D" uid="uid://1sbmv62sksrc" path="res://assets/textures/game/HoverPage3.tres" id="4_maisi"]
 [ext_resource type="Texture2D" uid="uid://c10bacmdb7nd3" path="res://assets/textures/game/HoverPage4.tres" id="5_3lxr7"]
-[ext_resource type="PackedScene" uid="uid://cl5f5gtfmsk83" path="res://components/game/ItemPageAttribute.tscn" id="7_0pa1b"]
 
 [node name="HoverPage" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_begpj")
+TraitItem = ExtResource("2_074c7")
 PageTextures = Array[Texture2D]([ExtResource("1_o60v6"), ExtResource("3_074c7"), ExtResource("4_maisi"), ExtResource("5_3lxr7")])
 
 [node name="BG" type="TextureRect" parent="."]
@@ -144,9 +145,7 @@ theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 30
 
-[node name="AttributesWrap" type="VBoxContainer" parent="BG/MarginContainer/VBoxContainer/MarginContainer3"]
+[node name="TraitsWrap" type="VBoxContainer" parent="BG/MarginContainer/VBoxContainer/MarginContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
-
-[node name="ItemPageAttribute" parent="BG/MarginContainer/VBoxContainer/MarginContainer3/AttributesWrap" instance=ExtResource("7_0pa1b")]
-layout_mode = 2
+theme_override_constants/separation = 3

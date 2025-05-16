@@ -28,4 +28,4 @@ mesh = SubResource("QuadMesh_5pph0")
 [node name="HUD" parent="." instance=ExtResource("3_26sbl")]
 
 [node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.218318, 0.0347824, -6.71449)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.218318, 0.0347824, 2.86379)
