@@ -1,0 +1,79 @@
+[gd_resource type="ShaderMaterial" load_steps=12 format=3 uid="uid://ujxhud0t4d4e"]
+
+[ext_resource type="Shader" uid="uid://do618ybdx5nju" path="res://assets/shaders/water_shader.gdshader" id="1_ythoq"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_id0k4"]
+noise_type = 4
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_f1yh1"]
+seamless = true
+bump_strength = 5.0
+noise = SubResource("FastNoiseLite_id0k4")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kupjt"]
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_id0k4")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jbdau"]
+noise_type = 3
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_owhrd"]
+seamless = true
+noise = SubResource("FastNoiseLite_jbdau")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ajb2p"]
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_jbdau")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wxiv5"]
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_brr7t"]
+seamless = true
+noise = SubResource("FastNoiseLite_wxiv5")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1nb05"]
+fractal_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u53gh"]
+seamless = true
+as_normal_map = true
+bump_strength = 4.0
+noise = SubResource("FastNoiseLite_1nb05")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ythoq")
+shader_parameter/water_color = Color(0, 0.490196, 0.498039, 1)
+shader_parameter/wave_time = 0.0
+shader_parameter/boat_speed = 10.0
+shader_parameter/noise1 = SubResource("NoiseTexture2D_f1yh1")
+shader_parameter/noise1_normal = SubResource("NoiseTexture2D_kupjt")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_owhrd")
+shader_parameter/noise2_normal = SubResource("NoiseTexture2D_ajb2p")
+shader_parameter/noise3 = SubResource("NoiseTexture2D_brr7t")
+shader_parameter/noise3_normal = SubResource("NoiseTexture2D_u53gh")
+shader_parameter/noise1_scale = 400.0
+shader_parameter/noise2_scale = 200.0
+shader_parameter/noise3_scale = 50.0
+shader_parameter/noise1_speed = Vector2(0.01, 0)
+shader_parameter/noise2_speed = Vector2(0.01, 0.01)
+shader_parameter/noise3_speed = Vector2(-0.01, -0.03)
+shader_parameter/noise1_strength = 4.005
+shader_parameter/noise2_strength = 2.785
+shader_parameter/noise3_strength = 0.805
+shader_parameter/fresnel_color = Color(0.992157, 0.592157, 0.635294, 1)
+shader_parameter/color_deep = Color(0.443137, 0.117647, 0.282353, 1)
+shader_parameter/color_shallow = Color(0.858824, 0.419608, 0.32549, 1)
+shader_parameter/beers_law = 2.0
+shader_parameter/depth_offset = -1.005
+shader_parameter/edge_scale = 0.875
+shader_parameter/near = 1.0
+shader_parameter/far = 155.425
+shader_parameter/edge_color = Color(1, 1, 1, 1)
+shader_parameter/camera_pos = 0.0
+shader_parameter/distance_fade = 1000.0
