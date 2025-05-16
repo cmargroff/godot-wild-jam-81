@@ -17,7 +17,9 @@ public partial class Game : Node3D
   private PauseManager _pauseManager;
   private GameManager _gameManager;
 
-      /// <summary>
+  private GameOver _gameOverScreen;
+
+    /// <summary>
     /// The expected time for the game to finish at normal speed, in seconds.
     /// </summary>
     public float RunTimeAt1X { get; set; } = 600f;
@@ -48,6 +50,7 @@ public partial class Game : Node3D
 
     public override void _EnterTree()
   {
+    _gameOverScreen = GetNode<GameOver>("GameOver");
     //used when the Game scene is loaded directly, otherwise this will be skipped
     if (_sceneManager is null)
     {
@@ -66,12 +69,21 @@ public partial class Game : Node3D
     _dragManager.SetCamera(GetNode<Camera3D>("Camera"));
     _eventManager.Start();
     _sceneManager.GetChild<Control>(0).Visible = false; //hides loading screen without crashing when running the game scene directly
+    
   }
 
     public override void _PhysicsProcess(double delta)
     {
         RemainingTime = Math.Max(0, RemainingTime - (float)(delta * SpeedScale));
         _statsManager.ChangeStat(new StatChange{Stat = Stat.Progress, Mode = StatChangeMode.Absolute, Amount = (1 - RemainingTime / RunTimeAt1X) * 100f});
+        if (_statsManager.GetStats(Stat.WaterLevel) >= 100)
+        {
+          _gameOverScreen.ShowScreen(false);
+        }
+        else if (_statsManager.GetStats(Stat.Progress) >= 100)
+        {
+          _gameOverScreen.ShowScreen(true);
+        }
     }
 
 }

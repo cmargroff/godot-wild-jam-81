@@ -1,12 +1,7 @@
 using Godot;
-using ShipOfTheseus2025;
 using ShipOfTheseus2025.Managers;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.IO;
 using ShipOfTheseus2025.Util;
+
 
 public partial class GameOver : Control
 {
@@ -14,6 +9,7 @@ public partial class GameOver : Control
     private SceneManager _sceneManager;
     private int _score;
     private Label _scoreLabel;
+    private Label _label;
     private Button _home;
     private Button _restart;
     [FromServices]
@@ -26,7 +22,17 @@ public partial class GameOver : Control
     public override void _EnterTree()
     {
         _scoreLabel = GetNode<Label>("%Score");
+        _label = GetNode<Label>("%Label");
+        
+    }
+
+    public void ShowScreen(bool win)
+    {
+        if (win) _label.Text = "You Won!";
+        else _label.Text = "You Lost";
         _scoreLabel.Text = $"Score: {_score}";
+
+        Visible = true;
     }
 
     public void Home()

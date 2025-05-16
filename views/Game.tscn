@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cs2ybcc1lpqhc"]
+[gd_scene load_steps=9 format=3 uid="uid://cs2ybcc1lpqhc"]
 
 [ext_resource type="Script" uid="uid://wiwsb8d1e7fq" path="res://scripts/views/Game.cs" id="1_5pph0"]
 [ext_resource type="PackedScene" uid="uid://cxyf4q4egqw6k" path="res://components/game/Ship.tscn" id="2_26sbl"]
@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://bsj6xumrw23oq" path="res://assets/materials/scrolling_texture.tres" id="3_leryn"]
 [ext_resource type="AudioStream" uid="uid://80uic5ew3hph" path="res://assets/audio/music/Pirate 2.ogg" id="5_k55y7"]
 [ext_resource type="AudioStream" uid="uid://p51ofnqbqlij" path="res://resources/audio/item_pickup_audio_stream_randomizer.tres" id="6_k55y7"]
+[ext_resource type="PackedScene" uid="uid://eclw6x7704g" path="res://views/GameOver.tscn" id="7_hfq8r"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_5pph0"]
 material = ExtResource("3_leryn")
@@ -40,3 +41,7 @@ bus = &"BGM"
 [node name="AudioStreamPlayer_ItemPickup" type="AudioStreamPlayer3D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("6_k55y7")
+
+[node name="GameOver" parent="." instance=ExtResource("7_hfq8r")]
+unique_name_in_owner = true
+visible = false
