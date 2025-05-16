@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5dgny6o48h2"]
+[gd_scene load_steps=2 format=3 uid="uid://b0ifm6knh2ypk"]
 
 [ext_resource type="Script" uid="uid://dqbbtf385qxm5" path="res://scripts/components/game/PauseMenu.cs" id="1_eqkuw"]
 
@@ -46,3 +46,10 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Continue"
+
+[node name="Menu" type="Button" parent="CenterContainer/Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Menu
+"
