@@ -19,15 +19,19 @@ public partial class ItemDragManager : Node3D
   private ISnapPoint _snapPoint;
   // private Area3D _snapPointArea;
   // private TextureRect _snapPointRect;
-  
+
   public event Action<ItemPickUp> ItemSnapped;
-  
+
+
+  public AudioStreamPlayer3D PickupAudioStreamPlayer { get; set; }
+
   public override void _EnterTree()
   {
     _viewport = GetViewport();
     Name = "ItemDragManager";
     GD.Print("ItemDragManager entered");
   }
+
   public void SetCamera(Camera3D camera)
   {
     _camera = camera;
@@ -41,6 +45,8 @@ public partial class ItemDragManager : Node3D
     _scale = 1f;
     _item = item;
     item.Reparent(GetTree().Root, true);
+    PickupAudioStreamPlayer.GlobalPosition = item.GlobalPosition;
+    PickupAudioStreamPlayer.Play();
   }
   public void EndDragItem()
   {
@@ -59,7 +65,7 @@ public partial class ItemDragManager : Node3D
         _item.GetChild<Node3D>(0).Scale = Vector3.One * targetScale;
         _scale = targetScale;
       }
-      
+
       var dest = _snapped ? ((Area3D)_snapPoint).GlobalPosition : _camera.ProjectPosition(_viewport.GetMousePosition(), 4f);
 
       var distance = _item.GlobalPosition.DistanceTo(dest);
@@ -68,11 +74,11 @@ public partial class ItemDragManager : Node3D
         var dir = _item.Position.DirectionTo(dest);
         _item.GlobalPosition += dir * (distance * ITEM_SNAP_SMOOTHING);
       }
-      
+
       // if (_snapPointArea is not null)
       // {
       //   var dest = _snapped ? _snapPointArea.GlobalPosition : _camera.ProjectPosition(_viewport.GetMousePosition(), 4f);
-      
+
       //   var distance = _item.GlobalPosition.DistanceTo(dest);
       //   if (distance > Mathf.Epsilon)
       //   {
@@ -80,20 +86,20 @@ public partial class ItemDragManager : Node3D
       //     _item.GlobalPosition += dir * (distance * ITEM_SNAP_SMOOTHING);
       //   }
       // }
-    //   else
-    //   {
-    //     var dest = _snapped ? new Vector3(_snapPointRect.GlobalPosition.X, _snapPointRect.GlobalPosition.Y, 0)
-    // : _camera.ProjectPosition(_viewport.GetMousePosition(), 4f);
-    //     var distance = _item.GlobalPosition.DistanceTo(dest);
-    //     if (distance > Mathf.Epsilon)
-    //     {
-    //       var dir = _item.Position.DirectionTo(dest);
-    //       _item.GlobalPosition += dir * (distance * ITEM_SNAP_SMOOTHING);
-    //     }
-    //   }
-      
+      //   else
+      //   {
+      //     var dest = _snapped ? new Vector3(_snapPointRect.GlobalPosition.X, _snapPointRect.GlobalPosition.Y, 0)
+      // : _camera.ProjectPosition(_viewport.GetMousePosition(), 4f);
+      //     var distance = _item.GlobalPosition.DistanceTo(dest);
+      //     if (distance > Mathf.Epsilon)
+      //     {
+      //       var dir = _item.Position.DirectionTo(dest);
+      //       _item.GlobalPosition += dir * (distance * ITEM_SNAP_SMOOTHING);
+      //     }
+      //   }
+
     }
-   
+
   }
   public override void _Input(InputEvent @event)
   {
@@ -110,7 +116,7 @@ public partial class ItemDragManager : Node3D
     _snapped = snap;
     _snapPoint = point;
     // if (Dragging) _snapPoint.Snap(_item);
-  
+
     // if (snap) _snapPointArea = (Area3D)_snapPoint;
     // else _snapPointRect = (TextureRect)_snapPoint;
 
@@ -119,7 +125,7 @@ public partial class ItemDragManager : Node3D
   public void Attach()
   {
     _snapPoint.AttachItem(_item);
-    
+
   }
   public void Unsnap()
   {
@@ -133,5 +139,5 @@ public partial class ItemDragManager : Node3D
   {
     return _item;
   }
-  
+
 }

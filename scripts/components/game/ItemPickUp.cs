@@ -5,6 +5,7 @@ using ShipOfTheseus2025.Components.Game;
 using ShipOfTheseus2025.Managers;
 
 namespace ShipOfTheseus2025.Components.Game;
+
 public partial class ItemPickUp : Node3D
 {
     [Export]
@@ -27,11 +28,13 @@ public partial class ItemPickUp : Node3D
         Dropped,
         Attached
     }
+    public AudioStreamPlayer3D ItemPickupAudioPlayer { get; set; }
 
     public override void _EnterTree()
     {
         State = ItemPickupState.Floating;
         _dragManager = Globals.ServiceProvider.GetRequiredService<ItemDragManager>();
+        _dragManager.PickupAudioStreamPlayer = ItemPickupAudioPlayer;
         _hoverManager = Globals.ServiceProvider.GetRequiredService<HoverPanelManager>();
         _position = Position;
         var area = GetNode<Area3D>("Area3D");
