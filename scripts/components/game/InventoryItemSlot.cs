@@ -43,7 +43,7 @@ public partial class InventoryItemSlot : TextureRect, ISnapPoint
   {
     _dragManager.SnapPoint(this, false);
     Snap();
-    if (_item is not null) _hoverManager.ShowItem(InventoryItem, HoverType.Slot);
+    if (_item is not null) _hoverManager.ShowItem(_item.InventoryItem, HoverType.Slot);
 
   }
   private void _MouseExited()
