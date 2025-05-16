@@ -13,9 +13,12 @@ script = ExtResource("1_w8iu6")
 
 [node name="TravelProgressBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 270.0
-offset_top = 17.0
-offset_right = 985.0
-offset_bottom = 51.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -357.5
+offset_right = 357.5
+offset_bottom = 34.0
+grow_horizontal = 2
 show_percentage = false
