@@ -34,16 +34,17 @@ public partial class Globals : Node
     .AddSingleton<SettingsStore>()
     .AddSingleton<ConfigManager>()
     .AddSingleton<AudioManager>()
-    .AddTransient<ScoreManager>()
+    .AddSingleton<ScoreManager>()
     .AddSingleton<RandomNumberGeneratorService>()
     .AddSingleton(InjectInstantiatedPackedScene<SceneManager>("res://views/SceneManager.tscn"))
-    .AddTransient<StatsManager>()
-    .AddTransient(InjectNodeClass<GameEventManager>())
-    .AddTransient<InventoryManager>()
+    .AddSingleton<StatsManager>()
+    .AddSingleton(InjectNodeClass<GameEventManager>())
+    .AddSingleton<InventoryManager>()
     .AddSingleton(InjectNodeClass<ItemDragManager>())
-    .AddTransient<ItemSpawnManager>()
-    .AddTransient(InjectNodeClass<PauseManager>())
+    .AddSingleton<ItemSpawnManager>()
+    .AddSingleton(InjectNodeClass<PauseManager>())
     .AddSingleton(InjectNodeClass<HoverPanelManager>(true))
+    .AddSingleton<EnvironmentManager>()
     ;
 
     AddScenes(Services);
