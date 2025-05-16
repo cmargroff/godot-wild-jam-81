@@ -92,6 +92,7 @@ public partial class ItemPickUp : Node3D
                 State = ItemPickupState.Dropped;
                 GD.Print(GlobalPosition);
                 _position = GlobalPosition;
+                _hoverManager.HidePage();
 
             }
         }
