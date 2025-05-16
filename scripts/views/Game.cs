@@ -1,6 +1,7 @@
 using Godot;
 using ShipOfTheseus2025.Components.Game;
 using ShipOfTheseus2025.Managers;
+using ShipOfTheseus2025.Models;
 using ShipOfTheseus2025.Util;
 
 namespace ShipOfTheseus2025.Views;
@@ -29,5 +30,14 @@ public partial class Game : Node3D
   {
     _dragManager.SetCamera(GetNode<Camera3D>("Camera"));
     _eventManager.Start();
+  }
+  public override void _PhysicsProcess(double delta)
+  {
+    _statsManager.ChangeStat(new StatChange
+    {
+      Stat = Enum.Stat.WaterNoiseTime,
+      Mode = Enum.StatChangeMode.Relative,
+      Amount = (float)delta
+    });
   }
 }
