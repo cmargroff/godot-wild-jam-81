@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://d0bpma3t500w3"]
+
+[node name="ItemDragLayout" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HoverSlotMarker" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1065, 108)
+
+[node name="HoverItemMarker" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(70, 214)

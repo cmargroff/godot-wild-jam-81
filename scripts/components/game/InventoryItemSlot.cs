@@ -2,6 +2,7 @@ using Godot;
 using Microsoft.Extensions.DependencyInjection;
 using ShipOfTheseus2025;
 using ShipOfTheseus2025.Components.Game;
+using ShipOfTheseus2025.Enum;
 using ShipOfTheseus2025.Interfaces;
 using ShipOfTheseus2025.Managers;
 
@@ -25,10 +26,10 @@ public partial class InventoryItemSlot : TextureRect, ISnapPoint
   public void Snap()
   {
     var item = _dragManager.GetItem();
-    if (_item is null && item is not null) 
+    if (_item is null && item is not null)
     {
       _icon.Texture = item.InventoryItem.IconTexture;
-      _icon.Modulate = new Color(1,1,1, 0.5f);
+      _icon.Modulate = new Color(1, 1, 1, 0.5f);
       GD.Print("show icon");
     }
   }
@@ -42,8 +43,8 @@ public partial class InventoryItemSlot : TextureRect, ISnapPoint
   {
     _dragManager.SnapPoint(this, false);
     Snap();
-    if (_item is not null) _hoverManager.ShowItem(InventoryItem);
-    
+    if (_item is not null) _hoverManager.ShowItem(InventoryItem, HoverType.Slot);
+
   }
   private void _MouseExited()
   {
@@ -62,7 +63,7 @@ public partial class InventoryItemSlot : TextureRect, ISnapPoint
       _item = item;
       item.Visible = false;
       _icon.Texture = item.InventoryItem.IconTexture;
-      _icon.Modulate = new Color(1,1,1,1);
+      _icon.Modulate = new Color(1, 1, 1, 1);
       item.Attach();
       _dragManager.EndDragItem();
       _dragManager.Unsnap();
@@ -77,7 +78,7 @@ public partial class InventoryItemSlot : TextureRect, ISnapPoint
     _item.Grab();
     _dragManager.StartDragItem(_item);
     _item = null;
-    
+
   }
 
 

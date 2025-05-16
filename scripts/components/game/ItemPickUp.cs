@@ -1,7 +1,6 @@
 using Godot;
 using Microsoft.Extensions.DependencyInjection;
-using ShipOfTheseus2025;
-using ShipOfTheseus2025.Components.Game;
+using ShipOfTheseus2025.Enum;
 using ShipOfTheseus2025.Managers;
 
 namespace ShipOfTheseus2025.Components.Game;
@@ -112,7 +111,7 @@ public partial class ItemPickUp : Node3D
     {
         GD.Print("mouseEntered");
         _hovered = (State == ItemPickupState.Floating) ? true : false;
-        _hoverManager.ShowItem(InventoryItem);
+        _hoverManager.ShowItem(InventoryItem, HoverType.Item);
     }
     public void MouseExited()
     {

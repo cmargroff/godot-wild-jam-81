@@ -1,11 +1,19 @@
 using Godot;
+using ShipOfTheseus2025.Enum;
 
 namespace ShipOfTheseus2025.Components.Game;
 
 public partial class HoverPanelManager : Control
 {
   public HoverPage _page;
+  private Marker2D _slotMarker;
+  private Marker2D _hoverMarker;
   public override void _EnterTree()
+  {
+    InstantiatePage();
+    InstantiateMarkers();
+  }
+  public void InstantiatePage()
   {
     var scene = ResourceLoader.Load<PackedScene>("res://components/game/HoverPage.tscn");
     _page = scene.Instantiate<HoverPage>();
@@ -13,9 +21,28 @@ public partial class HoverPanelManager : Control
     AddChild(_page);
   }
 
-  public void ShowItem(InventoryItem item)
+  public void InstantiateMarkers()
+  {
+    var scene = ResourceLoader.Load<PackedScene>("res://components/game/ItemDragLayout.tscn");
+    var layout = scene.Instantiate<Control>();
+
+    _slotMarker = layout.GetNode<Marker2D>("%HoverSlotMarker");
+    _hoverMarker = layout.GetNode<Marker2D>("%HoverItemMarker");
+
+    AddChild(layout);
+  }
+
+  public void ShowItem(InventoryItem item, HoverType hooverType)
   {
     _page.Show(item);
+    if (hooverType == HoverType.Item)
+    {
+      _page.Position = _hoverMarker.Position;
+    }
+    else
+    {
+      _page.Position = _slotMarker.Position;
+    }
   }
   public void HidePage()
   {

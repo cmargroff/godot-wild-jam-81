@@ -96,21 +96,21 @@ public partial class HoverPage : Control
     Visible = true;
   }
 
-  public override void _Process(double delta)
-  {
-    // move to mouse position
-    if (Visible)
-    {
-      var nextPos = _viewport.GetMousePosition();
-      if (nextPos.Y + _pageSize.Y > _viewPortSize.Y)
-      {
-        nextPos.Y -= _pageSize.Y;
-      }
-      if (nextPos.X + _pageSize.X > _viewPortSize.X)
-      {
-        nextPos.X -= _pageSize.X;
-      }
-      Position = nextPos;
-    }
-  }
+  // public override void _Process(double delta)
+  // {
+  //   // move to mouse position
+  //   if (Visible)
+  //   {
+  //     var nextPos = _viewport.GetMousePosition();
+  //     if (nextPos.Y + _pageSize.Y > _viewPortSize.Y)
+  //     {
+  //       nextPos.Y -= _pageSize.Y;
+  //     }
+  //     if (nextPos.X + _pageSize.X > _viewPortSize.X)
+  //     {
+  //       nextPos.X -= _pageSize.X;
+  //     }
+  //     Position = nextPos;
+  //   }
+  // }
 }
