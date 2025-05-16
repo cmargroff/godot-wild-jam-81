@@ -69,6 +69,7 @@ public partial class Game : Node3D
     _dragManager.SetCamera(GetNode<Camera3D>("Camera"));
     _eventManager.Start();
     _sceneManager.GetChild<Control>(0).Visible = false; //hides loading screen without crashing when running the game scene directly
+          _gameOverScreen.ShowScreen(true);
     
   }
 

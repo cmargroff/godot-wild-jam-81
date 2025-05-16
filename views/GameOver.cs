@@ -1,3 +1,4 @@
+using System.Reflection;
 using Godot;
 using ShipOfTheseus2025.Managers;
 using ShipOfTheseus2025.Util;
@@ -32,7 +33,10 @@ public partial class GameOver : Control
         else _label.Text = "You Lost";
         _scoreLabel.Text = $"Score: {_score}";
 
+        Modulate = new Color(1,1,1,0);
         Visible = true;
+        var tween = CreateTween();
+        tween.TweenProperty(this, "modulate:a", 1f, 0.5f);
     }
 
     public void Home()
