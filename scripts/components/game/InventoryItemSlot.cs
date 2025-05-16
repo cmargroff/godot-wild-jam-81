@@ -58,7 +58,7 @@ public partial class InventoryItemSlot : TextureRect, ISnapPoint
     {
       GrabItem();
     }
-    else if (_item is null)
+    else if (_dragManager.Dragging && _item is null)
     {
       _item = item;
       item.Visible = false;

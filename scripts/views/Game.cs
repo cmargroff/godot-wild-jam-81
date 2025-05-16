@@ -1,6 +1,9 @@
+using System;
 using Godot;
 using ShipOfTheseus2025.Components.Game;
+using ShipOfTheseus2025.Enum;
 using ShipOfTheseus2025.Managers;
+using ShipOfTheseus2025.Models;
 using ShipOfTheseus2025.Util;
 
 namespace ShipOfTheseus2025.Views;
@@ -13,6 +16,20 @@ public partial class Game : Node3D
   private ItemDragManager _dragManager;
   private PauseManager _pauseManager;
   private GameManager _gameManager;
+
+      /// <summary>
+    /// The expected time for the game to finish at normal speed, in seconds.
+    /// </summary>
+    public float RunTimeAt1X { get; set; } = 600f;
+
+    /// <summary>
+    /// The time remaining
+    /// </summary>
+    public float RemainingTime { get; set; } = 600f;
+
+    public float InitialKnots { get; set; } = 7f;
+   [Export]
+    public float SpeedScale { get; set; } = 1f;
 
   [FromServices]
   public void Inject(SceneManager sceneManager, StatsManager statsManager, GameEventManager eventManager,
@@ -50,4 +67,11 @@ public partial class Game : Node3D
     _eventManager.Start();
     _sceneManager.GetChild<Control>(0).Visible = false; //hides loading screen without crashing when running the game scene directly
   }
+
+    public override void _PhysicsProcess(double delta)
+    {
+        RemainingTime = Math.Max(0, RemainingTime - (float)(delta * SpeedScale));
+        _statsManager.ChangeStat(new StatChange{Stat = Stat.Progress, Mode = StatChangeMode.Absolute, Amount = (1 - RemainingTime / RunTimeAt1X) * 100f});
+    }
+
 }
