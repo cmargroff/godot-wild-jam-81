@@ -54,13 +54,10 @@ theme_override_constants/margin_top = 19
 theme_override_constants/margin_right = 17
 theme_override_constants/margin_bottom = 19
 
-[node name="GridContainer" type="GridContainer" parent="Frame/MarginContainer"]
-layout_mode = 2
-columns = 3
-
 [node name="SlotsWrap" type="VFlowContainer" parent="Frame/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_constants/v_separation = 0
 last_wrap_alignment = 3
 reverse_fill = true
 

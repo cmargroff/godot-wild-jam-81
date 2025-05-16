@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Godot;
 using Godot.Collections;
 using ShipOfTheseus2025.Components.Game;
@@ -5,8 +7,6 @@ using ShipOfTheseus2025.Enum;
 using ShipOfTheseus2025.Managers;
 using ShipOfTheseus2025.Resources;
 using ShipOfTheseus2025.Services;
-using System;
-using System.Collections.Generic;
 
 public class ItemFactoryService
 {
@@ -26,8 +26,21 @@ public class ItemFactoryService
     {
         ItemTraitLookup = new()
         {
-            {"Fancy Portrait", [] },
-            { "Seagull", [new(rng, "Speed bonus of [%placeholder%]", 0.01f, 0.05f, (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue })) ] }
+            {"Fancy Portrait", [
+                new(
+                    rng,
+                    "Attached speed bonus of [%placeholder%]",
+                    -0.01f, -0.05f,
+                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                        new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue }
+                    )
+                )
+            ] },
+            { "Seagull",
+            [
+                    new(rng, "Speed bonus of [%placeholder%]", 0.01f, 0.05f, (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue }))
+                ]
+            }
         };
     }
 
@@ -60,5 +73,6 @@ public class ItemFactoryService
             GoldValueDistribution.Normal => (int)rng.NextInNormalDistribution((itemResource.MinGoldValue + itemResource.MaxGoldValue) / 2f, (itemResource.MinGoldValue + itemResource.MaxGoldValue) / 10f),
             _ => itemResource.MinGoldValue
         };
-    }    
+    }
+
 }
