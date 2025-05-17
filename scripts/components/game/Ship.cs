@@ -22,11 +22,16 @@ public partial class Ship : Node3D
   }
   public override void _EnterTree()
   {
-    _model = GetNode<MeshInstance3D>("Model");
-    _animationPlayer = GetNode<AnimationPlayer>("%AnimationPlayer");
-    _animationPlayer.CurrentAnimation = "rocking";
+    // _model = GetNode<MeshInstance3D>("Model");
+    // _animationPlayer = GetNode<AnimationPlayer>("%AnimationPlayer");
+    // _animationPlayer.CurrentAnimation = "rocking";
     _damagePoints = GetNode<Node3D>("%Damage points");
     GetDamagePoints();
+    
+  }
+  public override void _Ready()
+  {
+    Break();
   }
 
 

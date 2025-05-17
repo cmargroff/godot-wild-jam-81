@@ -10,6 +10,8 @@ public partial class DamagePoint : Area3D, ISnapPoint
 {
   private ItemDragManager _dragManager;
   public DamagePointState State;
+  private MeshInstance3D _damage;
+  private ItemPickUp _item;
 
   public enum DamagePointState
   {
@@ -19,8 +21,10 @@ public partial class DamagePoint : Area3D, ISnapPoint
 
   public override void _EnterTree()
   {
-    State = DamagePointState.SnapEnable;
+    State = DamagePointState.SnapDisable;
     _dragManager = Globals.ServiceProvider.GetRequiredService<ItemDragManager>();
+    _damage = GetNode<MeshInstance3D>("damage");
+    
   }
   public override void _MouseEnter()
   {
@@ -39,6 +43,7 @@ public partial class DamagePoint : Area3D, ISnapPoint
   }
   public void AttachItem(ItemPickUp item)
   {
+    _item = item;
     item.Reparent(this);
     item.Attach();
     item.GlobalPosition = GlobalPosition;
@@ -49,7 +54,16 @@ public partial class DamagePoint : Area3D, ISnapPoint
 
   public void Enable()
   {
+    if (_item is null)
+    {
+      _damage.Visible = true;
+    }
+    else 
+    {
+      _item.Reparent(GetTree().Root, true);
+      _item.Drop();
+    }
     State = DamagePointState.SnapEnable;
-    // code to change damage point visual
+    
   }
 }

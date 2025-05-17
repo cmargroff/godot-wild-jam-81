@@ -63,7 +63,7 @@ public partial class ItemPickUp : Node3D
         }
 
 
-        if (GlobalPosition.X <= -20.0f || GlobalPosition.Y <= -5)
+        if (GlobalPosition.X <= -30.0f || GlobalPosition.Y <= -5)
         {
             QueueFree();
         }
@@ -111,6 +111,11 @@ public partial class ItemPickUp : Node3D
         GD.Print("hover page");
         _hoverManager.ShowItem(InventoryItem, HoverType.Item);
 
+    }
+
+    public void Drop()
+    {
+        State = ItemPickupState.Dropped;
     }
 
     public void MouseEntered()
