@@ -25,4 +25,8 @@ public sealed class ItemTrait
 
         ApplyToShip = applyToShip;
     }
+    public static ItemTrait FromConfig(RandomNumberGeneratorService rng, ItemTraitConfig config)
+    {
+        return new ItemTrait(rng, config.Label, config.Min, config.Max, config.AttachCallback);
+    }
 }
