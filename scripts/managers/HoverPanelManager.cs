@@ -10,6 +10,7 @@ public partial class HoverPanelManager : Control
   private Marker2D _hoverMarker;
   public override void _EnterTree()
   {
+    Name = GetType().Name;
     InstantiatePage();
     InstantiateMarkers();
   }
@@ -42,7 +43,7 @@ public partial class HoverPanelManager : Control
     else
     {
       _page.Position = _slotMarker.Position;
-      
+
     }
   }
   public void HidePage()

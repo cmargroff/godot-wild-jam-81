@@ -30,6 +30,7 @@ public partial class GameEventManager : Node
   }
   public override void _EnterTree()
   {
+    Name = GetType().Name;
     InitTimers();
   }
   private void InitTimers()

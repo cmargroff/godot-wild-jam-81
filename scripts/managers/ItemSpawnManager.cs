@@ -21,6 +21,7 @@ public partial class ItemSpawnManager : Node
 
     public override void _EnterTree()
     {
+        Name = GetType().Name;
         _itemScene = GD.Load<PackedScene>("res://components/game/ItemPickUp.tscn");
     }
 
