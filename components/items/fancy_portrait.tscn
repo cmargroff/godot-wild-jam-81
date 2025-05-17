@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bo27gupy337aw"]
+
+[ext_resource type="PackedScene" uid="uid://de03r7o3hbar3" path="res://assets/models/items/fancy_portrait.glb" id="1_sf1m2"]
+
+[node name="FancyPortrait" type="Node3D"]
+
+[node name="fancy_portrait" parent="." instance=ExtResource("1_sf1m2")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)

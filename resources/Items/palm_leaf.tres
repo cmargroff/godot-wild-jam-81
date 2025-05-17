@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=4 format=3 uid="uid://b2we00rdrnbh8"]
+
+[ext_resource type="Texture2D" uid="uid://c0eppbucp2cuw" path="res://assets/textures/items/leaf.png" id="1_0817g"]
+[ext_resource type="Script" uid="uid://chlt3chm3e8ap" path="res://scripts/resources/ItemResource.cs" id="1_irgvc"]
+[ext_resource type="PackedScene" uid="uid://co81irye3qhlo" path="res://components/items/banana_leaf.tscn" id="2_6e4ql"]
+
+[resource]
+script = ExtResource("1_irgvc")
+ItemName = "Palm Leaf"
+Description = "Not effective at blocking a leak. Greatly increses speed."
+MinGoldValue = 0
+MaxGoldValue = 1
+GoldValueDistribution = 0
+MinWeight = 0.0
+MaxWeight = 0.0
+IconTexture = ExtResource("1_0817g")
+ItemScene = ExtResource("2_6e4ql")
+Disabled = false
+metadata/_custom_type_script = "uid://chlt3chm3e8ap"

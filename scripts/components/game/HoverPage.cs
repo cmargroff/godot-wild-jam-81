@@ -46,6 +46,8 @@ public partial class HoverPage : Control
   {
     // attribute nodes pooler
     var childCount = _traitsWrap.GetChildCount();
+    GD.Print(childCount);
+    GD.Print(traits.Count);
     var i = 0;
     foreach (var trait in traits)
     {
@@ -68,7 +70,7 @@ public partial class HoverPage : Control
     if (childCount > traits.Count)
     {
       // hide the extra nodes that are not in use
-      for (i = childCount - 1; i > traits.Count; i--)
+      for (i = childCount - 1; i >= traits.Count; i--)
       {
         _traitsWrap.GetChild<Control>(i).Visible = false;
       }

@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://cskxef1ah4pyd"]
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://cskxef1ah4pyd"]
 
-[ext_resource type="Texture2D" uid="uid://8wywilm14cng" path="res://assets/textures/items/default_item.png" id="1_b4p2e"]
-[ext_resource type="Script" uid="uid://chlt3chm3e8ap" path="res://scripts/resources/ItemResource.cs" id="1_i4f6y"]
+[ext_resource type="Texture2D" uid="uid://bdocy1i50cesy" path="res://assets/textures/items/fancy_portrait.png" id="1_ffc7r"]
+[ext_resource type="Script" path="res://scripts/resources/ItemResource.cs" id="1_i4f6y"]
+[ext_resource type="PackedScene" uid="uid://bo27gupy337aw" path="res://components/items/fancy_portrait.tscn" id="2_6x6iv"]
 
 [resource]
 script = ExtResource("1_i4f6y")
@@ -12,6 +13,7 @@ MaxGoldValue = 1000
 GoldValueDistribution = 1
 MinWeight = 5.0
 MaxWeight = 5.0
-IconTexture = ExtResource("1_b4p2e")
+IconTexture = ExtResource("1_ffc7r")
+ItemScene = ExtResource("2_6x6iv")
 Disabled = false
 metadata/_custom_type_script = "uid://chlt3chm3e8ap"

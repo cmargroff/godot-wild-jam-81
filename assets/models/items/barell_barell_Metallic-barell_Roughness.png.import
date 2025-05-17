@@ -1,0 +1,39 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://b7uj6tcmlrx0g"
+path.s3tc="res://.godot/imported/barell_barell_Metallic-barell_Roughness.png-749ba345a7ecf825a6d41b6bffb2df47.s3tc.ctex"
+path.etc2="res://.godot/imported/barell_barell_Metallic-barell_Roughness.png-749ba345a7ecf825a6d41b6bffb2df47.etc2.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "053e83e01058e60b485eb5aa3b9cb400"
+}
+
+[deps]
+
+source_file="res://assets/models/items/barell_barell_Metallic-barell_Roughness.png"
+dest_files=["res://.godot/imported/barell_barell_Metallic-barell_Roughness.png-749ba345a7ecf825a6d41b6bffb2df47.s3tc.ctex", "res://.godot/imported/barell_barell_Metallic-barell_Roughness.png-749ba345a7ecf825a6d41b6bffb2df47.etc2.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

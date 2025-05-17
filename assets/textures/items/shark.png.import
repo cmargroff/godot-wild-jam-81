@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bo10mms6kxmwi"
-path="res://.godot/imported/inventory_slot_mask.png-0211516a7bc4cb12bb7db52bf87b7fa1.ctex"
+uid="uid://cgwiv4s41mkl8"
+path="res://.godot/imported/shark.png-d1b358367b9cf8bd4d8b60ba163d2816.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/game/inventory_slot_mask.png"
-dest_files=["res://.godot/imported/inventory_slot_mask.png-0211516a7bc4cb12bb7db52bf87b7fa1.ctex"]
+source_file="res://assets/textures/items/shark.png"
+dest_files=["res://.godot/imported/shark.png-d1b358367b9cf8bd4d8b60ba163d2816.ctex"]
 
 [params]
 
