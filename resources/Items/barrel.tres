@@ -1,15 +1,19 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=2 format=3 uid="uid://c0lhoss15habt"]
+[gd_resource type="Resource" script_class="ItemResource" load_steps=4 format=3 uid="uid://c0lhoss15habt"]
 
+[ext_resource type="Texture2D" uid="uid://dismx5j0hncmd" path="res://assets/textures/items/barrel.png" id="1_2fsxt"]
 [ext_resource type="Script" uid="uid://chlt3chm3e8ap" path="res://scripts/resources/ItemResource.cs" id="1_jt84l"]
+[ext_resource type="PackedScene" uid="uid://brn8vyrqvowc0" path="res://components/items/barrel.tscn" id="2_hljwi"]
 
 [resource]
 script = ExtResource("1_jt84l")
-ItemName = ""
-Description = ""
-MinGoldValue = 0
-MaxGoldValue = 0
+ItemName = "Barrel"
+Description = "Just a normal barrel"
+MinGoldValue = 1
+MaxGoldValue = 5
 GoldValueDistribution = 0
-MinWeight = 0.0
-MaxWeight = 0.0
+MinWeight = 50.0
+MaxWeight = 100.0
+IconTexture = ExtResource("1_2fsxt")
+ItemScene = ExtResource("2_hljwi")
 Disabled = false
 metadata/_custom_type_script = "uid://chlt3chm3e8ap"
