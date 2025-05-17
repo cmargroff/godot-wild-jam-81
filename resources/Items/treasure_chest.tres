@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=2 format=3 uid="uid://boqad6l2mp40o"]
+
+[ext_resource type="Script" path="res://scripts/resources/ItemResource.cs" id="1_tesg0"]
+
+[resource]
+script = ExtResource("1_tesg0")
+ItemName = "Treasure Chest"
+Description = "Can't be attached to ship."
+MinGoldValue = 500
+MaxGoldValue = 500
+GoldValueDistribution = 0
+MinWeight = 800.0
+MaxWeight = 800.0
+Disabled = false
+metadata/_custom_type_script = "uid://chlt3chm3e8ap"

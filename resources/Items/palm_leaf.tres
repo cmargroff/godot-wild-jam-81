@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=2 format=3 uid="uid://diiophpigbbap"]
+
+[ext_resource type="Script" path="res://scripts/resources/ItemResource.cs" id="1_irgvc"]
+
+[resource]
+script = ExtResource("1_irgvc")
+ItemName = "Palm Leaf"
+Description = "Not effective at blocking a leak. Greatly increses speed."
+MinGoldValue = 0
+MaxGoldValue = 1
+GoldValueDistribution = 0
+MinWeight = 0.0
+MaxWeight = 0.0
+Disabled = false
+metadata/_custom_type_script = "uid://chlt3chm3e8ap"

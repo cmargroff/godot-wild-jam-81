@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=2 format=3 uid="uid://ctgrrdn0oxc33"]
+
+[ext_resource type="Script" path="res://scripts/resources/ItemResource.cs" id="1_t41o4"]
+
+[resource]
+script = ExtResource("1_t41o4")
+ItemName = "Coconut"
+Description = "Can block a leak for some time. Greatly reduses speed but increases chances to resist damage."
+MinGoldValue = 0
+MaxGoldValue = 0
+GoldValueDistribution = 0
+MinWeight = 0.0
+MaxWeight = 0.0
+Disabled = false
+metadata/_custom_type_script = "uid://chlt3chm3e8ap"

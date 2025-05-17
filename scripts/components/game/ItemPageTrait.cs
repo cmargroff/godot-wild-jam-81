@@ -13,7 +13,7 @@ public partial class ItemPageTrait : Control
     _label.Text = itemTrait.Description;
     if (itemTrait.FixedValue < 0)
     {
-      _label.AddThemeColorOverride("font_color", new Color(1, 0, 0, 1));
+      _label.AddThemeColorOverride("font_color", new Color(0.9f, 0.15f, 0.15f, 1));
     }
     else
     {

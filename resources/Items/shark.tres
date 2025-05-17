@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=2 format=3 uid="uid://82kelnpb6de"]
+
+[ext_resource type="Script" path="res://scripts/resources/ItemResource.cs" id="1_xukkb"]
+
+[resource]
+script = ExtResource("1_xukkb")
+ItemName = "Shark"
+Description = "Good at blocking a leak. Increases speed and reduces water level."
+MinGoldValue = 10
+MaxGoldValue = 100
+GoldValueDistribution = 0
+MinWeight = 200.0
+MaxWeight = 1000.0
+Disabled = false
+metadata/_custom_type_script = "uid://chlt3chm3e8ap"
