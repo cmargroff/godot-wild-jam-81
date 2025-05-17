@@ -1,7 +1,6 @@
-using System;
 using System.Collections.Generic;
+using System.Linq;
 using Godot;
-using Godot.Collections;
 using ShipOfTheseus2025.Components.Game;
 using ShipOfTheseus2025.Enum;
 using ShipOfTheseus2025.Managers;
@@ -10,7 +9,7 @@ using ShipOfTheseus2025.Services;
 
 public class ItemFactoryService
 {
-    private System.Collections.Generic.Dictionary<string, List<ItemTrait>> ItemTraitLookup;
+    private System.Collections.Generic.Dictionary<string, List<ItemTraitConfig>> ItemTraitLookup;
 
     private RandomNumberGeneratorService rng;
     private readonly StatsManager statsManager;
@@ -27,6 +26,24 @@ public class ItemFactoryService
         ItemTraitLookup = new()
         {
             {"Fancy Portrait", [
+                new(){
+                    Label = "Attached speed bonus of [%placeholder%]",
+                    Min = -0.03f,
+                    Max = -0.1f,
+                    AttachCallback = IncreaseSpeedCallback
+                }
+            ] },
+            { "Seagull", [
+                new(){
+                    Label = "Speed bonus of {0}",
+                    Min = 0.05f,
+                    Max = 0.2f,
+                    AttachCallback = IncreaseSpeedCallback
+                }
+            ] }
+        };
+    }
+
     private void IncreaseSpeedCallback(StatsManager statsManager, float fixedValue) => statsManager
         .ChangeStat(new() { Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue });
     private void ReduceSpeedCallback(StatsManager statsManager, float fixedValue) => statsManager
@@ -49,7 +66,7 @@ public class ItemFactoryService
 
     private void AddItemTraits(InventoryItem item)
     {
-        item.Traits = ItemTraitLookup[item.Name];
+        item.Traits = ItemTraitLookup[item.Name].Select(conf => ItemTrait.FromConfig(rng, conf)).ToList();
     }
 
     private int GetGoldValue(ItemResource itemResource)
