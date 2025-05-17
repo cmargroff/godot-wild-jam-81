@@ -29,80 +29,105 @@ public class ItemFactoryService
             {"Fancy Portrait", [
                 new(
                     rng,
-                    "Attached speed bonus of [%placeholder%]",
-                    -0.01f, -0.05f,
+                    "Attached speed bonus of {0:N2}",
+                    -0.01f, -0.05f, false,
                     (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue }
-                    ), false
+                    ),
+                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                        new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue * -1}
+                    )
                 )
             ] },
-            // { "Seagull",
-            // [
-            //         new(rng, "Speed bonus of [%placeholder%]", 0.01f, 0.05f, (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue }))
-            //     ]
-            // }
             {"Palm Leaf", [
                 new(
                     rng,
                     "Attached speed bonus of [%placeholder%]",
-                    0.7f, 1.5f,
+                    0.7f, 1.5f, false,
                     (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue }
-                    ), false
+                    ),
+                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                        new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue * -1 }
+                    )
                 )
             ] },
             {"Coconut", [
                 new(
                     rng,
                     "Attached buoyancy bonus of [%placeholder%]",
-                    0.02f, 0.05f,
+                    0.02f, 0.05f, false,
                     (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.Buoyancy, Mode = StatChangeMode.Relative, Amount = fixedValue }
-                    ), false
+                    ),
+                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                        new(){ Stat = Stat.Buoyancy, Mode = StatChangeMode.Relative, Amount = fixedValue* -1 }
+                    )
                 ),
                 new(
                     rng,
                     "Attached speed bonus of [%placeholder%]",
-                    -0.2f, -0.5f,
+                    -0.2f, -0.5f, false,
                     (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue }
-                    ), false
+                    ),
+                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                        new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue * -1}
+                    )
                 ),
             ] },
             {"Shark", [
                 new(
                     rng,
                     "Attached speed bonus of [%placeholder%]",
-                    0.02f, 0.05f,
+                    0.02f, 0.05f, false,
                     (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue }
-                    ), false
+                    ),
+                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                        new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue * -1}
+                    )
                 ),
                 new(
                     rng,
                     "Attached bailing bonus of [%placeholder%]",
-                    -0.2f, -0.5f,
+                    -0.2f, -0.5f, true,
                     (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.WaterLevel, Mode = StatChangeMode.Relative, Amount = fixedValue }
-                    ), true
+                    ),
+                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                        new(){ Stat = Stat.WaterLevel, Mode = StatChangeMode.Relative, Amount = fixedValue * -1 }
+                    )
                 ),
             ] },
             {"Orange", [
                 new(
                     rng,
                     "Attached speed bonus of [%placeholder%]",
-                    -0.01f, -0.05f,
+                    -0.01f, -0.05f, false,
                     (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue }
-                    ), false
-                )          
-            ] }
-        };
+                    ),
+                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                        new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue * -1}
+                    )
+                )
+            ] },
+            {
+            "Seagull",
+                [
+                    new(rng, "Speed bonus of {0:N2}", 0.01f, 0.05f,
+                        false,
+                        (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(new() { Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue }),
+                        (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(new() { Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue * -1 }))
+                ]
+            }
+    };
     }
 
-    public InventoryItem GenerateItem(ItemResource itemResource)
+    public ShipOfTheseus2025.Components.Game.InventoryItem GenerateItem(ItemResource itemResource)
     {
-        InventoryItem item = new()
+        ShipOfTheseus2025.Components.Game.InventoryItem item = new()
         {
             Name = itemResource.ItemName,
             Description = itemResource.Description,
@@ -115,7 +140,7 @@ public class ItemFactoryService
         return item;
     }
 
-    private void AddItemTraits(InventoryItem item)
+    private void AddItemTraits(ShipOfTheseus2025.Components.Game.InventoryItem item)
     {
         item.Traits = ItemTraitLookup[item.Name];
     }
