@@ -27,22 +27,10 @@ public class ItemFactoryService
         ItemTraitLookup = new()
         {
             {"Fancy Portrait", [
-                new(
-                    rng,
-                    "Attached speed bonus of [%placeholder%]",
-                    -0.01f, -0.05f,
-                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
-                        new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue }
-                    )
-                )
-            ] },
-            { "Seagull",
-            [
-                    new(rng, "Speed bonus of [%placeholder%]", 0.01f, 0.05f, (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue }))
-                ]
-            }
-        };
-    }
+    private void IncreaseSpeedCallback(StatsManager statsManager, float fixedValue) => statsManager
+        .ChangeStat(new() { Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue });
+    private void ReduceSpeedCallback(StatsManager statsManager, float fixedValue) => statsManager
+        .ChangeStat(new() { Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = -fixedValue });
 
     public InventoryItem GenerateItem(ItemResource itemResource)
     {
