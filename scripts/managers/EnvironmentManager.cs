@@ -1,6 +1,7 @@
 
 using System;
 using Godot;
+using ShipOfTheseus2025.Util;
 
 namespace ShipOfTheseus2025.Managers;
 
@@ -11,6 +12,26 @@ public class EnvironmentManager
   public event Action<NoiseParams> WaterParamsChanged;
   public NoiseParams WaterNoiseParams;
 
+  public EnvironmentManager()
+  {
+    // var texture = new NoiseTexture2D();
+    // texture.Width = 512;
+    // texture.Height = 512;
+    // texture.Seamless = true;
+    // texture.Changed += () => UpdateTexture(texture);
+    // texture.Noise = new FastNoiseLite( );
+    // texture.Noise.fra
+    WaterNoiseParams = new NoiseParams
+    {
+      Scale = 200,
+      Speed = Vector2.One * 0.01f,
+      Strength = 10
+    };
+  }
+  // private void UpdateTexture(NoiseTexture2D texture)
+  // {
+  //   WaterNoise = texture.GetImage();
+  // }
   public struct NoiseParams
   {
     public Vector2 Speed;
@@ -18,21 +39,35 @@ public class EnvironmentManager
     public float Strength;
   }
 
-  // TODO: use this globally instead of implemented per object type
-  private float GetHeightForPosition(Vector3 position, float time = 0)
+  public void SetNoise(Image img)
   {
-    var pixelPos = new Vector2I(
-      (int)((
-        position.X / WaterNoiseParams.Scale
-          + time * WaterNoiseParams.Speed.X
-      ) % 1 * WaterNoise.GetWidth()),
-      (int)((
-        position.Z / WaterNoiseParams.Scale
-          + time * WaterNoiseParams.Speed.Y
-      ) % 1 * WaterNoise.GetHeight())
-    );
+    WaterNoise = img;
+  }
 
-    return WaterNoise.GetPixelv(pixelPos).R * WaterNoiseParams.Strength;
+  // TODO: use this globally instead of implemented per object type
+  public float GetHeightForPosition(Vector3 position, float time = 0)
+  {
+    // var scale = 200f;
+    // var offset = scale / 2;
+    // var coord = new Vector2(
+    //   position.X, position.Z
+    // );
+    // GD.Print("Input  ", coord);
+    // coord.X += offset;
+    // coord.Y += scale / 2;
+    // var UV = (coord / scale).Wrap(0, 1);
+    // GD.Print("Output ", UV * 512f);
+
+
+    var uv_x = Mathf.Wrap(position.X / WaterNoiseParams.Scale + time * WaterNoiseParams.Speed.X /* + boatpos.x */, 0, 1);
+    var uv_y = Mathf.Wrap(position.Z / WaterNoiseParams.Scale + time * WaterNoiseParams.Speed.Y /* + boatpos.y */, 0, 1);
+
+    var pixel_pos = new Vector2I(
+      Mathf.RoundToInt(uv_x * WaterNoise.GetWidth()), Mathf.RoundToInt(uv_y * WaterNoise.GetHeight())
+    );
+    return WaterNoise.GetPixelv(pixel_pos).R * WaterNoiseParams.Strength;
+
+    // return WaterNoise.GetPixelv(pixelPos.ToVector2I()).R * WaterNoiseParams.Strength;
   }
   public void ChangeWeather() { }
   public void ChangeTime() { }
