@@ -54,6 +54,8 @@ public partial class ItemPickUp : Node3D
         if (State == ItemPickupState.Dropped)
         {
             _position.Y -= VELOCITY * (float)delta;
+            //maybe
+            // _position.X -= (SPEED/2) * (float)delta;
             Position = _position;
             VELOCITY += 0.1f;
 
@@ -74,13 +76,11 @@ public partial class ItemPickUp : Node3D
                 _dragManager.StartDragItem(this);
                 State = ItemPickupState.Held;
                 _area.InputRayPickable = false;
-            }
-            // if (State == ItemPickupState.Held && _dragManager.CanSnap())
-            // {
-            //     _dragManager.Snap();
-            //     State = ItemPickupState.Snapped;
+                _hoverManager.ShowItem(InventoryItem, HoverType.Item);
+                GD.Print("hover page");
 
-            // }
+            }
+          
 
         }
         if (@event.IsPressed() && @event.IsAction("rmb"))
@@ -92,6 +92,7 @@ public partial class ItemPickUp : Node3D
                 State = ItemPickupState.Dropped;
                 GD.Print(GlobalPosition);
                 _position = GlobalPosition;
+                _hoverManager.HidePage();
 
             }
         }
@@ -100,23 +101,30 @@ public partial class ItemPickUp : Node3D
     public void Attach()
     {
         State = ItemPickupState.Attached;
+        _hoverManager.HidePage();
     }
 
     public void Grab()
     {
         State = ItemPickupState.Held;
+        GD.Print("hover page");
+        _hoverManager.ShowItem(InventoryItem, HoverType.Item);
+
     }
 
     public void MouseEntered()
     {
-        GD.Print("mouseEntered");
-        _hovered = (State == ItemPickupState.Floating) ? true : false;
-        _hoverManager.ShowItem(InventoryItem, HoverType.Item);
+        if (_dragManager.Dragging == false)
+        {
+            _hovered = (State == ItemPickupState.Floating) ? true : false;
+            if (_hovered) _hoverManager.ShowItem(InventoryItem, HoverType.Item);
+        }
+        
     }
     public void MouseExited()
     {
-        GD.Print("mouseExited");
         _hovered = false;
-        _hoverManager.HidePage();
+        if (_dragManager.Dragging == false && State == ItemPickupState.Floating) _hoverManager.HidePage();
+        GD.Print("mouse exited");
     }
 }

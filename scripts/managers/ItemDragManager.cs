@@ -1,7 +1,9 @@
 using System;
 using Godot;
 using ShipOfTheseus2025.Components.Game;
+using ShipOfTheseus2025.Enum;
 using ShipOfTheseus2025.Interfaces;
+
 
 namespace ShipOfTheseus2025.Managers;
 
@@ -17,17 +19,17 @@ public partial class ItemDragManager : Node3D
   private float _scale = 1f;
   private bool _snapped;
   private ISnapPoint _snapPoint;
-  // private Area3D _snapPointArea;
-  // private TextureRect _snapPointRect;
 
   public event Action<ItemPickUp> ItemSnapped;
 
 
   public AudioStreamPlayer3D PickupAudioStreamPlayer { get; set; }
 
+ 
   public override void _EnterTree()
   {
     _viewport = GetViewport();
+
     Name = "ItemDragManager";
     GD.Print("ItemDragManager entered");
   }
@@ -47,6 +49,7 @@ public partial class ItemDragManager : Node3D
     item.Reparent(GetTree().Root, true);
     PickupAudioStreamPlayer.GlobalPosition = item.GlobalPosition;
     PickupAudioStreamPlayer.Play();
+    ;
   }
   public void EndDragItem()
   {
@@ -75,29 +78,6 @@ public partial class ItemDragManager : Node3D
         _item.GlobalPosition += dir * (distance * ITEM_SNAP_SMOOTHING);
       }
 
-      // if (_snapPointArea is not null)
-      // {
-      //   var dest = _snapped ? _snapPointArea.GlobalPosition : _camera.ProjectPosition(_viewport.GetMousePosition(), 4f);
-
-      //   var distance = _item.GlobalPosition.DistanceTo(dest);
-      //   if (distance > Mathf.Epsilon)
-      //   {
-      //     var dir = _item.Position.DirectionTo(dest);
-      //     _item.GlobalPosition += dir * (distance * ITEM_SNAP_SMOOTHING);
-      //   }
-      // }
-      //   else
-      //   {
-      //     var dest = _snapped ? new Vector3(_snapPointRect.GlobalPosition.X, _snapPointRect.GlobalPosition.Y, 0)
-      // : _camera.ProjectPosition(_viewport.GetMousePosition(), 4f);
-      //     var distance = _item.GlobalPosition.DistanceTo(dest);
-      //     if (distance > Mathf.Epsilon)
-      //     {
-      //       var dir = _item.Position.DirectionTo(dest);
-      //       _item.GlobalPosition += dir * (distance * ITEM_SNAP_SMOOTHING);
-      //     }
-      //   }
-
     }
 
   }
@@ -115,10 +95,6 @@ public partial class ItemDragManager : Node3D
   {
     _snapped = snap;
     _snapPoint = point;
-    // if (Dragging) _snapPoint.Snap(_item);
-
-    // if (snap) _snapPointArea = (Area3D)_snapPoint;
-    // else _snapPointRect = (TextureRect)_snapPoint;
 
   }
 
@@ -131,8 +107,7 @@ public partial class ItemDragManager : Node3D
   {
     _snapped = false;
     _snapPoint = null;
-    // _snapPointArea = null;
-    // _snapPointRect = null;
+   
   }
 
   public ItemPickUp GetItem()
