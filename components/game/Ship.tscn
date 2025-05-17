@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cl3oh7g4ilo65" path="res://scripts/components/game/Ship.cs" id="1_vik7u"]
 [ext_resource type="ArrayMesh" uid="uid://bdu1wpsp21g5o" path="res://assets/models/ship_Cube_027.res" id="1_yqq4h"]
-[ext_resource type="PackedScene" uid="uid://crtl6uhk8whgg" path="res://components/game/DamagePoint.tscn" id="3_p83qx"]
+[ext_resource type="PackedScene" path="res://components/game/DamagePoint.tscn" id="3_p83qx"]
 
 [sub_resource type="Animation" id="Animation_k55y7"]
 length = 0.001
@@ -49,27 +49,28 @@ script = ExtResource("1_vik7u")
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 1.2, 0)
 mesh = ExtResource("1_yqq4h")
 
-[node name="Hull points" type="Node3D" parent="Model"]
+[node name="Damage points" type="Node3D" parent="Model"]
+unique_name_in_owner = true
 
-[node name="DamagePoint1" parent="Model/Hull points" instance=ExtResource("3_p83qx")]
+[node name="DamagePoint1" parent="Model/Damage points" instance=ExtResource("3_p83qx")]
 transform = Transform3D(1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0, 1, -3.78762, 0.303666, 1.5505)
 
-[node name="DamagePoint2" parent="Model/Hull points" instance=ExtResource("3_p83qx")]
+[node name="DamagePoint2" parent="Model/Damage points" instance=ExtResource("3_p83qx")]
 transform = Transform3D(1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0, 1, -0.523666, -0.515342, 1.67795)
 
-[node name="DamagePoint3" parent="Model/Hull points" instance=ExtResource("3_p83qx")]
+[node name="DamagePoint3" parent="Model/Damage points" instance=ExtResource("3_p83qx")]
 transform = Transform3D(1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0, 1, 2.84202, -0.640626, 1.7346)
 
-[node name="DamagePoint4" parent="Model/Hull points" instance=ExtResource("3_p83qx")]
+[node name="DamagePoint4" parent="Model/Damage points" instance=ExtResource("3_p83qx")]
 transform = Transform3D(1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0, 1, 5.45117, -0.597966, 0.9958)
 
-[node name="Mast points" type="Node3D" parent="Model"]
-
-[node name="DamagePoint" parent="Model/Mast points" instance=ExtResource("3_p83qx")]
+[node name="DamagePoint5" parent="Model/Damage points" instance=ExtResource("3_p83qx")]
 transform = Transform3D(1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0, 1, -0.226387, 3.46316, 0)
 
-[node name="DamagePoint2" parent="Model/Mast points" instance=ExtResource("3_p83qx")]
+[node name="DamagePoint6" parent="Model/Damage points" instance=ExtResource("3_p83qx")]
 transform = Transform3D(1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0, 1, 2.58593, 3.14914, 0)
+
+[node name="Mast points" type="Node3D" parent="Model"]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
