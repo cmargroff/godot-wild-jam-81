@@ -45,12 +45,13 @@ public partial class GameManager : Node
 
     private Dictionary<string, Dictionary<string, string>> CreatePreloadsFromIni()
     {
-        Dictionary<string, Dictionary<string, string>> preloads = new() { { "Items", new() } };
+        Dictionary<string, Dictionary<string, string>> preloads = new() { { "Items", new() }, { "AudioRandomizers", new() } };
         foreach (string itemResourceFileName in EnabledItems)
         {
             preloads["Items"].Add(itemResourceFileName, $"res://resources/Items/{itemResourceFileName}");
         }
-
+        preloads["AudioRandomizers"].Add("ship_creaking_audio_stream_randomizer.tres", "res://resources/audio/ship_creaking_audio_stream_randomizer.tres");
+        preloads["AudioRandomizers"].Add("waves_audio_stream_randomizer.tres", "res://resources/audio/waves_audio_stream_randomizer.tres");
         return preloads;
     }
 #if DEBUG
@@ -63,11 +64,21 @@ public partial class GameManager : Node
         {
             itemDict = new();
             _sceneManager.PreloadedResources.Add("Items", itemDict);
+            foreach (KeyValuePair<string, string> itemKey in preloads["Items"])
+            {
+                ItemResource itemRes = ResourceLoader.Load<ItemResource>(itemKey.Value);
+                itemDict.TryAdd(itemKey.Key, itemRes);
+            }
         }
-        foreach (KeyValuePair<string, string> itemKey in preloads["Items"])
+        if (!_sceneManager.PreloadedResources.TryGetValue("AudioRandomizers", out Dictionary<string, Resource> audioDict))
         {
-            ItemResource itemRes = ResourceLoader.Load<ItemResource>(itemKey.Value);
-            itemDict.TryAdd(itemKey.Key, itemRes);
+            audioDict = new();
+            _sceneManager.PreloadedResources.Add("AudioRandomizers", itemDict);
+            foreach (KeyValuePair<string, string> audioEntry in preloads["AudioRandomizers"])
+            {
+                AudioStreamRandomizer audioStream = ResourceLoader.Load<AudioStreamRandomizer>(audioEntry.Value);
+                audioDict.TryAdd(audioEntry.Key, audioStream);
+            }
         }
     }
 #endif
