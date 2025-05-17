@@ -40,6 +40,7 @@ public partial class ItemPickUp : Node3D
         _area = area;
         area.Connect(Area3D.SignalName.MouseEntered, Callable.From(MouseEntered));
         area.Connect(Area3D.SignalName.MouseExited, Callable.From(MouseExited));
+        AddChild(InventoryItem.ItemScene);
     }
 
     public override void _PhysicsProcess(double delta)
