@@ -11,7 +11,7 @@ public partial class DamagePoint : Area3D, ISnapPoint
   private ItemDragManager _dragManager;
   public DamagePointState State;
 
-  public enum DamagePointState 
+  public enum DamagePointState
   {
     SnapEnable,
     SnapDisable
@@ -46,8 +46,10 @@ public partial class DamagePoint : Area3D, ISnapPoint
     _dragManager.Unsnap();
     _dragManager.EndDragItem();
   }
-  // public void Snap(ItemPickUp item)
-  // {
-  //   GD.Print("");
-  // }
+
+  public void Enable()
+  {
+    State = DamagePointState.SnapEnable;
+    // code to change damage point visual
+  }
 }
