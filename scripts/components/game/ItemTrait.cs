@@ -1,7 +1,8 @@
-using ShipOfTheseus2025.Managers;
-using ShipOfTheseus2025.Services;
 using System;
 using System.Diagnostics.CodeAnalysis;
+using Godot;
+using ShipOfTheseus2025.Managers;
+using ShipOfTheseus2025.Services;
 
 public sealed class ItemTrait
 {
@@ -17,11 +18,10 @@ public sealed class ItemTrait
     [SetsRequiredMembers]
     public ItemTrait(RandomNumberGeneratorService rng, string description, float minValue, float maxValue, Action<StatsManager, float> applyToShip)
     {
-        
         MinValue = minValue;
         MaxValue = maxValue;
         FixedValue = rng.GetFloatRange(minValue, maxValue);
-        Description = description.Replace("[%placeholder%]", FixedValue.ToString());
+        Description = description.Replace("[%placeholder%]", (Mathf.RoundToInt(FixedValue * 100) / 100f).ToString());
 
         ApplyToShip = applyToShip;
     }
