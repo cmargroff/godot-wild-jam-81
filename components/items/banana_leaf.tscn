@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=4 uid="uid://co81irye3qhlo"]
+
+[ext_resource type="Texture2D" uid="uid://bt7fvr7ols83i" path="res://assets/models/items/fruits_fruits_Base_color.jpg" id="1_5sj42"]
+[ext_resource type="Texture2D" uid="uid://c0eymhgsx6vlx" path="res://assets/models/items/fruits_fruits_Roughness.png" id="2_8goaa"]
+[ext_resource type="Texture2D" uid="uid://daaes0ioj2gys" path="res://assets/models/items/fruits_fruits_Normal_OpenGL.jpg" id="3_nv1yr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q8wol"]
+resource_name = "fruits"
+cull_mode = 2
+albedo_texture = ExtResource("1_5sj42")
+metallic_texture = ExtResource("2_8goaa")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_8goaa")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = ExtResource("3_nv1yr")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_6jsh4"]
+_surfaces = [{
+"aabb": AABB(-1.00484, -0.320554, -2.23941, 2.00969, 0.418189, 5.13052),
+"format": 34896613377,
+"index_count": 156,
+"index_data": PackedByteArray("FgABAAIAFgAAAAEAAgAXABYAAgADABcAFgAYAAAAGAAFAAAAGAAGAAUAFgAZABgAGQAWABcABwAGABgAGQAHABgABwAIAAYAGgAXAAMAGgADABIAGQAXABsAGwAXABoAGQAcAAcAHAAZABsACQAHABwACQAKAAcAHAALAAkAHAAdAAsAHAAbAB0ADQALAB0AGwAaAB4AHQAbAB4ADQAdAB8AHQAeAB8ADAANAB8AHgAaACAAIAAaABIAIAASABMAHgAgACEAHwAeACEAEwAiACAAIQAgACIAEwAUACIAFAARACIAFAAVABEAIwAiABEAIQAiACMAIwARAAQAHwAhACQAJAAhACMADAAfACQAJAAOAAwAJAAjACUAJAAlAA4AJQAjAAQAJQAPAA4AJQAEABAAJQAQAA8A"),
+"lods": [0.455136, PackedByteArray("AAABAAIAAgADAAAABAAAAAMABAAFAAAABAAGAAUABwAIAAYABwAGAAQACQAKAAcABwALAAkABwAEAAsADAANAAsADAALAA4ACwAEAA4ADgAEAA8ADwAEABAABAADABEAEQADABIAEQASABMAEwAUABEAFAAVABEA")],
+"name": "fruits",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 38,
+"vertex_data": PackedByteArray("pHZicczXAACeWv2fwdQAABwh2JU8vQAAnQj5c0+gAAD/f53CAAAAAPRx//+C/gAA/38S5P//AABbiWJxzNcAAAqO//+C/gAA4t7YlTy9AABgpf2fwdQAAGH3+XNPoAAAr+Q7kCo/AAD//0dlWHYAAO/NqMcXIgAAfamP2gQIAAB/lTjKeAIAAH9qOMp4AgAAAABHZVh2AABPGzuQKj8AAA8yqMcXIgAAgVaP2gQIAADUTi1Xk8AAACJC6C1PoAAA/3/PeKXYAAD/f0I7EMIAAKs9Nh9YdgAA/3+xDk+gAAAqsS1Xk8AAANy96C1PoAAA/38AAFh2AABTwjYfWHYAANJLKkoqPwAA/3/0Kio/AACcV0aDmh8AAP9/z2R/HgAALLQqSio/AABiqEaDmh8AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_0j6dm"]
+resource_name = "fruits_Plane_014"
+_surfaces = [{
+"aabb": AABB(-1.00484, -0.320554, -2.23941, 2.00969, 0.418189, 5.13052),
+"attribute_data": PackedByteArray("18ZLjYTNN4zK3Y+UM+hLoi/t0P94wFR3Fb32d0fxA/3A8ei3oPYN17X3UOiv9MP4DIB61mWP+6GqfrfneIVst8aIZf9mgTj4u4SH/B+xko1Au2l44Le4dwyabpR2ql+Ma9O5lrHEdY0GybGZBNzTpkzPaKuy5Hm8C9dIwRDsato/4Rnelu/461TnR++NigbauYaE6+uO+O5NleXdcZI3vAKgRMGAm7mmI6iHq2Gkx5a4ru2ZQ7PFjQ=="),
+"format": 34896613399,
+"index_count": 156,
+"index_data": PackedByteArray("GAABAAIAGAAAAAEAGAAZAAAAGQAFAAAAGQAGAAUAGAAaABkAAgAbABgAGgAYABsAAgADABsAGgAbABwAHQAbAAMAHAAbAB0AHQADAAgAHAAdAB4AHwAdAAgAHgAdAB8AHwAIAAkAHgAfACAACQAhAB8AIAAfACEACQAKACEAIAAhACIACgAHACEAIgAhAAcACgALAAcAIgAHAAQAIwAOAAwAIwAkAA4AJAARAA4AJAASABEAJAAQABIAJAAlABAAIwAlACQAIwAmACUADAAnACMAJwAmACMADAAPACcAJwAoACYADwApACcAKQAoACcADwANACkAKQAqACgAKwApAA0AKwAqACkAKwANABYAKwAsACoAFgATACsALAArABMAFgAXABMALAATAC0AEwAUAC0AEwAVABQA"),
+"lods": [0.455136, PackedByteArray("AAABAAIAAgADAAAABAAAAAMABAAFAAAABAAGAAUABAADAAcABwADAAgABwAIAAkACQAKAAcACgALAAcADAANAA4ADAAPAA0ADQAQAA4ADgAQABEAEQAQABIAEwAQAA0AEwAUABAAEwAVABQAEwANABYAFgAXABMA")],
+"material": SubResource("StandardMaterial3D_q8wol"),
+"name": "fruits",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 46,
+"vertex_data": PackedByteArray("pHZicczXsPGeWv2fwdTQ7Rwh2JU8vczunQj5c0+geu//f53CAADR9PRx//+C/jTw/38S5P//Efd/ajjKeAJe7wAAR2VYdinvTxs7kCo/r+0PMqjHFyIk7IFWj9oECFvrr+Q7kCo/+uxh9/lzT6DY7u/NqMcXIlzr//9HZVh2fu7/f53CAAA+9H2pj9oECJTqf5U4yngC0+5biWJxzNdb8f9/EuT//6f2Co7//4L+yu/i3tiVPL1B7mCl/Z/B1Gnt1E4tV5PAj/D/f894pdiO9/9/QjsQwhf3IkLoLU+gPfH/f7EOT6CZ9qs9Nh9Ydu3w/38AAFh2F/bSSypKKj+47/9/9CoqP5j1nFdGg5ofZe7/f89kfx4W9Sy0KkoqP1PvYqhGg5of7O3/f89kfx6D9P9/9CoqP/70U8I2H1h2iPD/fwAAWHaG9dy96C1PoOHw/3+xDk+gDPYqsS1Xk8Ay8P9/QjsQwpb2/3/PeKXYH/dYu+kGXLOCASm50wJIvUIDyss2CbW5UAWgvtYLw8cCAs7AoAJ7w1cABTltAlA31wMLgUm8B4RlwkR+erlZg+q+qIkBtNB8wbd8ghS4WodwxFqMFMHlhQPGlIOBxjGCU8xPutwE7L7tCunAtQoUv4oFGMNwCkHC8QSXxREKt8QyAyPIrgk1xvIAl8pZCZODI7tggaa50YkxtTWKm7dahZK9m4oiuvaFusACi5q8XIV0xUWLx75zi8bA")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_6jsh4")
+
+[node name="BananaLeaf" type="Node3D"]
+
+[node name="fruits_leaf" type="MeshInstance3D" parent="."]
+transform = Transform3D(-3.34247e-08, 0, 0.697775, 0, 0.697775, 0, -0.764668, 0, -3.05007e-08, 0, 0, 0)
+mesh = SubResource("ArrayMesh_0j6dm")
+skeleton = NodePath("")

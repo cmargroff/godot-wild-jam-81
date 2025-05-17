@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=4 format=3 uid="uid://82kelnpb6de"]
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://82kelnpb6de"]
 
 [ext_resource type="Texture2D" uid="uid://cgwiv4s41mkl8" path="res://assets/textures/items/shark.png" id="1_kuiun"]
-[ext_resource type="Script" uid="uid://chlt3chm3e8ap" path="res://scripts/resources/ItemResource.cs" id="1_xukkb"]
+[ext_resource type="Script" path="res://scripts/resources/ItemResource.cs" id="1_xukkb"]
 [ext_resource type="PackedScene" uid="uid://87u6yuw5ketm" path="res://components/items/shark.tscn" id="2_uqkvr"]
 
 [resource]
