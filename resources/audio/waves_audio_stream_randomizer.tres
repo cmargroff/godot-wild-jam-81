@@ -1,0 +1,14 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=5 format=3 uid="uid://s4bxkc2hc23h"]
+
+[ext_resource type="AudioStream" uid="uid://c3s43u4420xe3" path="res://assets/audio/sfx/ambient/amb_waves_fast_layer_1.ogg" id="1_ic70i"]
+[ext_resource type="AudioStream" uid="uid://cjwl7oaovryga" path="res://assets/audio/sfx/ambient/amb_waves_fast_layer_2.ogg" id="2_6fula"]
+[ext_resource type="AudioStream" uid="uid://bkun15kmtfm1e" path="res://assets/audio/sfx/ambient/amb_waves_mid_n_fast_1.ogg" id="3_ichnb"]
+[ext_resource type="AudioStream" uid="uid://dxc8h8kywkmkm" path="res://assets/audio/sfx/ambient/amb_waves_mid_n_fast_2.ogg" id="4_i41g8"]
+
+[resource]
+random_pitch = 4.0
+streams_count = 4
+stream_0/stream = ExtResource("1_ic70i")
+stream_1/stream = ExtResource("2_6fula")
+stream_2/stream = ExtResource("3_ichnb")
+stream_3/stream = ExtResource("4_i41g8")

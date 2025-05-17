@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cs2ybcc1lpqhc"]
 
 [ext_resource type="Script" uid="uid://wiwsb8d1e7fq" path="res://scripts/views/Game.cs" id="1_5pph0"]
-[ext_resource type="PackedScene" uid="uid://cxyf4q4egqw6k" path="res://components/game/Ship.tscn" id="2_26sbl"]
+[ext_resource type="PackedScene" path="res://components/game/Ship.tscn" id="2_26sbl"]
 [ext_resource type="PackedScene" uid="uid://lw36b2co12mu" path="res://components/game/HUD.tscn" id="3_26sbl"]
 [ext_resource type="Material" uid="uid://bsj6xumrw23oq" path="res://assets/materials/scrolling_texture.tres" id="3_leryn"]
 [ext_resource type="AudioStream" uid="uid://80uic5ew3hph" path="res://assets/audio/music/Pirate 2.ogg" id="5_k55y7"]
@@ -34,6 +34,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.218318, 0.0347824, -6.7144
 
 [node name="AudioStreamPlayer_BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_k55y7")
+volume_db = -6.0
 autoplay = true
 bus = &"BGM"
 

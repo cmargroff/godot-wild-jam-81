@@ -1,0 +1,8 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=2 format=3 uid="uid://bt5ededno3vwq"]
+
+[ext_resource type="AudioStream" uid="uid://cwl2daofkovnf" path="res://assets/audio/sfx/ambient/amb_ship_random_1.ogg" id="1_tk0ph"]
+
+[resource]
+random_pitch = 4.0
+streams_count = 1
+stream_0/stream = ExtResource("1_tk0ph")

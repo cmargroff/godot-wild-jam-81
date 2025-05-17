@@ -13,10 +13,11 @@ public partial class Game : Node3D
   private ItemDragManager _dragManager;
   private PauseManager _pauseManager;
   private GameManager _gameManager;
+  private AudioManager _audioManager;
 
   [FromServices]
   public void Inject(SceneManager sceneManager, StatsManager statsManager, GameEventManager eventManager,
-      ItemDragManager dragManager, PauseManager pauseManager, GameManager gameManager, HoverPanelManager hoverPanelManager)
+      ItemDragManager dragManager, PauseManager pauseManager, GameManager gameManager, HoverPanelManager hoverPanelManager, AudioManager audioManager)
   {
     _sceneManager = sceneManager;
     _statsManager = statsManager;
@@ -27,9 +28,10 @@ public partial class Game : Node3D
     AddChild(_pauseManager);
     AddChild(_dragManager);
     _gameManager = gameManager;
+    _audioManager = audioManager;
   }
 
-    public override void _EnterTree()
+  public override void _EnterTree()
   {
     //used when the Game scene is loaded directly, otherwise this will be skipped
     if (_sceneManager is null)
@@ -40,7 +42,9 @@ public partial class Game : Node3D
         _gameManager.LoadConfig();
 #if DEBUG
     if (_gameManager.EnabledItems is not null && _gameManager.EnabledItems.Count > 0)
+    {
         _gameManager.LoadItemsDirectly();
+    }
 #endif
   }
 
@@ -49,5 +53,9 @@ public partial class Game : Node3D
     _dragManager.SetCamera(GetNode<Camera3D>("Camera"));
     _eventManager.Start();
     _sceneManager.GetChild<Control>(0).Visible = false; //hides loading screen without crashing when running the game scene directly
+    _audioManager.PlayGlobalAudioOnRepeat(_sceneManager.PreloadedResources["AudioRandomizers"]["waves_audio_stream_randomizer.tres"] as AudioStreamRandomizer,
+        "SFX", this, new(0, 2f), true, (AudioStreamPlayer player) => player.VolumeDb = -6f, null);
+    _audioManager.PlayGlobalAudioOnRepeat(_sceneManager.PreloadedResources["AudioRandomizers"]["ship_creaking_audio_stream_randomizer.tres"] as AudioStreamRandomizer,
+        "SFX", this, new(2, 5f), false, null, null);
   }
 }
