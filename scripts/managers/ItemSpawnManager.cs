@@ -32,7 +32,7 @@ public partial class ItemSpawnManager : Node
     public void Spawn(string identifier)
     {
         ItemResource resource = _sceneManager.PreloadedResources["Items"][identifier] as ItemResource;
-        InventoryItem item = _itemFactoryService.GenerateItem(resource);
+        ShipOfTheseus2025.Components.Game.InventoryItem item = _itemFactoryService.GenerateItem(resource);
         ItemPickUp pickupableItem = _itemScene.Instantiate<ItemPickUp>();
         pickupableItem.ItemPickupAudioPlayer = ItemPickupAudio;
         pickupableItem.InventoryItem = item;

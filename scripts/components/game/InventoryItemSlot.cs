@@ -12,7 +12,7 @@ public partial class InventoryItemSlot : TextureRect, ISnapPoint
   private HoverPanelManager _hoverManager;
   private TextureRect _icon;
   private ItemPickUp _item;
-  public InventoryItem InventoryItem { get; set; }
+  public ShipOfTheseus2025.Components.Game.InventoryItem InventoryItem { get; set; }
 
   public override void _EnterTree()
   {

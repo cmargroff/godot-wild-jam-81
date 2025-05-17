@@ -7,6 +7,7 @@ public sealed class ItemTrait
 {
     public required string Description { get; init; }
     public required Action<StatsManager, float> ApplyToShip { get; init; }
+    public required Action<StatsManager, float> RemoveFromShip { get; init; }
 
     public required float FixedValue { get; init; }
 
@@ -15,14 +16,20 @@ public sealed class ItemTrait
 
     //TODO: 
     [SetsRequiredMembers]
-    public ItemTrait(RandomNumberGeneratorService rng, string description, float minValue, float maxValue, Action<StatsManager, float> applyToShip)
+    public ItemTrait(RandomNumberGeneratorService rng, string description, float minValue, float maxValue, 
+        Action<StatsManager, float> applyToShip,
+        Action<StatsManager, float> removeFromShip)
     {
         
         MinValue = minValue;
         MaxValue = maxValue;
         FixedValue = rng.GetFloatRange(minValue, maxValue);
-        Description = description.Replace("[%placeholder%]", FixedValue.ToString());
+        Description = string.Format(description, FixedValue);
 
         ApplyToShip = applyToShip;
+        RemoveFromShip = removeFromShip;
     }
+
+    public void Apply(StatsManager statsManager) => ApplyToShip(statsManager, FixedValue);
+    public void Remove(StatsManager statsManager) => RemoveFromShip(statsManager, FixedValue);
 }
