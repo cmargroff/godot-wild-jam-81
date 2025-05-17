@@ -95,7 +95,7 @@ public class ItemFactoryService
                     (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue }
                     ), false
-                )          
+                )
             ] }
         };
     }
@@ -117,7 +117,9 @@ public class ItemFactoryService
 
     private void AddItemTraits(InventoryItem item)
     {
-        item.Traits = ItemTraitLookup[item.Name];
+        ItemTraitLookup.TryGetValue(item.Name, out var value);
+        if (value is not null)
+            item.Traits = ItemTraitLookup[item.Name];
     }
 
     private int GetGoldValue(ItemResource itemResource)
