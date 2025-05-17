@@ -1,17 +1,16 @@
 
 using System;
 using Godot;
-using ShipOfTheseus2025.Util;
 
 namespace ShipOfTheseus2025.Managers;
 
-public class EnvironmentManager
+public partial class EnvironmentManager : Node
 {
   public event Action<Noise> WaterHeightChanged;
   public Image WaterNoise;
   public event Action<NoiseParams> WaterParamsChanged;
   public NoiseParams WaterNoiseParams;
-
+  private float _time = 0;
   public EnvironmentManager()
   {
     // var texture = new NoiseTexture2D();
@@ -45,7 +44,7 @@ public class EnvironmentManager
   }
 
   // TODO: use this globally instead of implemented per object type
-  public float GetHeightForPosition(Vector3 position, float time = 0)
+  public float GetHeightForPosition(Vector3 position)
   {
     // var scale = 200f;
     // var offset = scale / 2;
@@ -59,8 +58,8 @@ public class EnvironmentManager
     // GD.Print("Output ", UV * 512f);
 
 
-    var uv_x = Mathf.Wrap(position.X / WaterNoiseParams.Scale + time * WaterNoiseParams.Speed.X /* + boatpos.x */, 0, 1);
-    var uv_y = Mathf.Wrap(position.Z / WaterNoiseParams.Scale + time * WaterNoiseParams.Speed.Y /* + boatpos.y */, 0, 1);
+    var uv_x = Mathf.Wrap(position.X / WaterNoiseParams.Scale + _time * WaterNoiseParams.Speed.X /* + boatpos.x */, 0, 1);
+    var uv_y = Mathf.Wrap(position.Z / WaterNoiseParams.Scale + _time * WaterNoiseParams.Speed.Y /* + boatpos.y */, 0, 1);
 
     var pixel_pos = new Vector2I(
       Mathf.RoundToInt(uv_x * WaterNoise.GetWidth()), Mathf.RoundToInt(uv_y * WaterNoise.GetHeight())
@@ -69,6 +68,12 @@ public class EnvironmentManager
 
     // return WaterNoise.GetPixelv(pixelPos.ToVector2I()).R * WaterNoiseParams.Strength;
   }
+  public override void _PhysicsProcess(double delta)
+  {
+    // advance global time
+    _time += (float)delta;
+  }
+
   public void ChangeWeather() { }
   public void ChangeTime() { }
 }

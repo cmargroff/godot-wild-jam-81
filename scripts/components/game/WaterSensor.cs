@@ -10,7 +10,6 @@ public partial class WaterSensor : Marker3D
 {
 #if DEBUG
   private MeshInstance3D _mesh;
-  private float _time;
   private EnvironmentManager _envManager;
   private float _targetHeight = 0;
   public override void _EnterTree()
@@ -27,8 +26,7 @@ public partial class WaterSensor : Marker3D
   }
   public override void _Process(double delta)
   {
-    _time += (float)delta;
-    var height = _envManager.GetHeightForPosition(Position, _time);
+    var height = _envManager.GetHeightForPosition(Position);
 
     _targetHeight = height;
     var d = (_targetHeight - _mesh.Position.Y) * .1f;

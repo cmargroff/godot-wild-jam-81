@@ -44,7 +44,7 @@ public partial class Globals : Node
     .AddSingleton<ItemSpawnManager>()
     .AddSingleton(InjectNodeClass<PauseManager>())
     .AddSingleton(InjectNodeClass<HoverPanelManager>(true))
-    .AddSingleton<EnvironmentManager>()
+    .AddSingleton(InjectNodeClass<EnvironmentManager>())
     ;
 
     AddScenes(Services);
