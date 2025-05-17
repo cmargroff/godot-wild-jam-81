@@ -1,19 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://cs2ybcc1lpqhc"]
+[gd_scene load_steps=7 format=3 uid="uid://cs2ybcc1lpqhc"]
 
 [ext_resource type="Script" uid="uid://wiwsb8d1e7fq" path="res://scripts/views/Game.cs" id="1_5pph0"]
 [ext_resource type="PackedScene" uid="uid://cxyf4q4egqw6k" path="res://components/game/Ship.tscn" id="2_26sbl"]
 [ext_resource type="PackedScene" uid="uid://lw36b2co12mu" path="res://components/game/HUD.tscn" id="3_26sbl"]
 [ext_resource type="PackedScene" uid="uid://cqpcvpq350dvi" path="res://components/game/Water.tscn" id="4_k714b"]
 [ext_resource type="PackedScene" uid="uid://wmg6ljmyxk7y" path="res://components/game/WorldEnvironment.tscn" id="5_k55y7"]
+[ext_resource type="Script" uid="uid://gbebqe27w76w" path="res://scripts/components/game/WaterSensor.cs" id="6_k55y7"]
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_5pph0")
 
-[node name="Ship" parent="." instance=ExtResource("2_26sbl")]
-
-[node name="Camera" type="Camera3D" parent="Ship"]
+[node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(0.971285, 0.0735626, -0.226262, -0.0343803, 0.984415, 0.172468, 0.235423, -0.159737, 0.958676, -1.64515, 6.12187, 17.3087)
 fov = 44.0
+
+[node name="Ship" parent="." instance=ExtResource("2_26sbl")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.230919, 0.857024, 0.460637, 0.817173, -0.0861408, 0.569919, 0.528114, 0.508026, -0.680445, 0, 0, 0)
@@ -21,6 +22,41 @@ transform = Transform3D(-0.230919, 0.857024, 0.460637, 0.817173, -0.0861408, 0.5
 [node name="HUD" parent="." instance=ExtResource("3_26sbl")]
 
 [node name="Water" parent="." instance=ExtResource("4_k714b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.79416, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("5_k55y7")]
+
+[node name="WaterSensor" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 0, 0)
+script = ExtResource("6_k55y7")
+
+[node name="WaterSensor2" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 0)
+script = ExtResource("6_k55y7")
+
+[node name="WaterSensor3" type="Marker3D" parent="."]
+script = ExtResource("6_k55y7")
+
+[node name="WaterSensor4" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
+script = ExtResource("6_k55y7")
+
+[node name="WaterSensor5" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -100)
+script = ExtResource("6_k55y7")
+
+[node name="WaterSensor6" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 0, -100)
+script = ExtResource("6_k55y7")
+
+[node name="WaterSensor7" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, -100)
+script = ExtResource("6_k55y7")
+
+[node name="WaterSensor8" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 100)
+script = ExtResource("6_k55y7")
+
+[node name="WaterSensor9" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 0, 100)
+script = ExtResource("6_k55y7")
