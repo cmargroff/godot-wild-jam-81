@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bxe6fyyubevft"]
+
+[ext_resource type="Shader" uid="uid://dpts6v0km4p5h" path="res://assets/shaders/item_slot_clip.tres" id="1_e0fof"]
+
+[resource]
+shader = ExtResource("1_e0fof")
