@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Godot;
 using Microsoft.Extensions.DependencyInjection;
 using ShipOfTheseus2025.Enum;
@@ -28,6 +29,12 @@ public partial class Water : MeshInstance3D
   public override void _Ready()
   {
     _material = Mesh.SurfaceGetMaterial(0) as ShaderMaterial;
-    _environmentManager.WaterNoise = _material.GetShaderParameter("noise1").As<Image>();
+    var tex = _material.GetShaderParameter("noise1").As<NoiseTexture2D>();
+    tex.Changed += () => { SetEnvironmentNoise(tex); };
+  }
+  private void SetEnvironmentNoise(NoiseTexture2D tex)
+  {
+    var img = tex.GetImage();
+    _environmentManager.WaterNoise = img;
   }
 }
