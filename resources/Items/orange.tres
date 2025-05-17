@@ -6,7 +6,7 @@
 script = ExtResource("1_fg7a8")
 ItemName = "Orange"
 Description = "Can block a leak for some time. Increases chances to resist damage."
-MinGoldValue = 1
+MinGoldValue = 10
 MaxGoldValue = 3
 GoldValueDistribution = 0
 MinWeight = 0.1
