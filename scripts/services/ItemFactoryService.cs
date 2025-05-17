@@ -35,7 +35,7 @@ public class ItemFactoryService
             ] },
             { "Seagull", [
                 new(){
-                    Label = "Speed bonus of {0}",
+                    Label = "Speed bonus of [%placeholder%]",
                     Min = 0.05f,
                     Max = 0.2f,
                     AttachCallback = IncreaseSpeedCallback
