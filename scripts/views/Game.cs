@@ -31,13 +31,4 @@ public partial class Game : Node3D
     _dragManager.SetCamera(GetNode<Camera3D>("Camera"));
     _eventManager.Start();
   }
-  public override void _PhysicsProcess(double delta)
-  {
-    _statsManager.ChangeStat(new StatChange
-    {
-      Stat = Enum.Stat.WaterNoiseTime,
-      Mode = Enum.StatChangeMode.Relative,
-      Amount = (float)delta
-    });
-  }
 }

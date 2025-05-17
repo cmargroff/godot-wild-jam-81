@@ -76,7 +76,6 @@ public partial class Ship : Node3D
 
   private float GetHeightForPosition(Vector3 worldPos)
   {
-    GD.Print((worldPos.X, worldPos.Z));
     var pos = new Vector2(
       Mathf.Wrap(
         worldPos.X / _environmentManager.WaterNoiseParams.Scale

@@ -1,6 +1,8 @@
 
 using System;
 using Godot;
+using ShipOfTheseus2025.Models;
+using ShipOfTheseus2025.Util;
 
 namespace ShipOfTheseus2025.Managers;
 
@@ -11,6 +13,7 @@ public partial class EnvironmentManager : Node
   public event Action<NoiseParams> WaterParamsChanged;
   public NoiseParams WaterNoiseParams;
   private float _time = 0;
+  private StatsManager _statsManager;
   public EnvironmentManager()
   {
     // var texture = new NoiseTexture2D();
@@ -26,6 +29,11 @@ public partial class EnvironmentManager : Node
       Speed = Vector2.One * 0.01f,
       Strength = 10
     };
+  }
+  [FromServices]
+  public void Inject(StatsManager statsManager)
+  {
+    _statsManager = statsManager;
   }
   // private void UpdateTexture(NoiseTexture2D texture)
   // {
@@ -72,6 +80,13 @@ public partial class EnvironmentManager : Node
   {
     // advance global time
     _time += (float)delta;
+    // GD.Print("noise time ", _time);
+    _statsManager.ChangeStat(new StatChange
+    {
+      Stat = Enum.Stat.WaterNoiseTime,
+      Mode = Enum.StatChangeMode.Absolute,
+      Amount = _time
+    });
   }
 
   public void ChangeWeather() { }

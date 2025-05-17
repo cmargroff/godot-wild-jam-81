@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://wiwsb8d1e7fq" path="res://scripts/views/Game.cs" id="1_5pph0"]
 [ext_resource type="PackedScene" uid="uid://cxyf4q4egqw6k" path="res://components/game/Ship.tscn" id="2_26sbl"]
 [ext_resource type="PackedScene" uid="uid://lw36b2co12mu" path="res://components/game/HUD.tscn" id="3_26sbl"]
-[ext_resource type="PackedScene" uid="uid://cqpcvpq350dvi" path="res://components/game/Water.tscn" id="4_k714b"]
-[ext_resource type="PackedScene" uid="uid://wmg6ljmyxk7y" path="res://components/game/WorldEnvironment.tscn" id="5_k55y7"]
+[ext_resource type="PackedScene" path="res://components/game/Water.tscn" id="4_k714b"]
+[ext_resource type="PackedScene" path="res://components/game/WorldEnvironment.tscn" id="5_k55y7"]
 [ext_resource type="Script" uid="uid://gbebqe27w76w" path="res://scripts/components/game/WaterSensor.cs" id="6_k55y7"]
 
 [node name="Game" type="Node3D"]
