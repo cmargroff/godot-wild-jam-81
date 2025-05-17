@@ -1,15 +1,17 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=2 format=3 uid="uid://ctgrrdn0oxc33"]
+[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://ctgrrdn0oxc33"]
 
-[ext_resource type="Script" path="res://scripts/resources/ItemResource.cs" id="1_t41o4"]
+[ext_resource type="Texture2D" uid="uid://8wywilm14cng" path="res://assets/textures/items/default_item.png" id="1_mlyoj"]
+[ext_resource type="Script" uid="uid://chlt3chm3e8ap" path="res://scripts/resources/ItemResource.cs" id="1_t41o4"]
 
 [resource]
 script = ExtResource("1_t41o4")
 ItemName = "Coconut"
-Description = "Can block a leak for some time. Greatly reduses speed but increases chances to resist damage."
+Description = "Can block a leak for some time. Reduses speed but increases buoyancy."
 MinGoldValue = 2
 MaxGoldValue = 5
 GoldValueDistribution = 0
 MinWeight = 0.5
 MaxWeight = 2.0
+IconTexture = ExtResource("1_mlyoj")
 Disabled = false
 metadata/_custom_type_script = "uid://chlt3chm3e8ap"

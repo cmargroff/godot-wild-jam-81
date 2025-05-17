@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using ShipOfTheseus2025.Enum;
 
 public partial class ItemPageTrait : Control
 {
@@ -20,4 +21,5 @@ public partial class ItemPageTrait : Control
       _label.AddThemeColorOverride("font_color", new Color(0, 1, 0, 1));
     }
   }
+
 }

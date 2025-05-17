@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=2 format=3 uid="uid://82kelnpb6de"]
+[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://82kelnpb6de"]
 
-[ext_resource type="Script" path="res://scripts/resources/ItemResource.cs" id="1_xukkb"]
+[ext_resource type="Texture2D" uid="uid://8wywilm14cng" path="res://assets/textures/items/default_item.png" id="1_kuhf1"]
+[ext_resource type="Script" uid="uid://chlt3chm3e8ap" path="res://scripts/resources/ItemResource.cs" id="1_xukkb"]
 
 [resource]
 script = ExtResource("1_xukkb")
@@ -11,5 +12,6 @@ MaxGoldValue = 100
 GoldValueDistribution = 0
 MinWeight = 200.0
 MaxWeight = 1000.0
+IconTexture = ExtResource("1_kuhf1")
 Disabled = false
 metadata/_custom_type_script = "uid://chlt3chm3e8ap"
