@@ -6,8 +6,8 @@ public partial class Ship : Node3D
   private MeshInstance3D _model;
   public override void _EnterTree()
   {
-    _model = GetNode<MeshInstance3D>("Model");
-    _animationPlayer = GetNode<AnimationPlayer>("%AnimationPlayer");
-    _animationPlayer.CurrentAnimation = "rocking";
+    // _model = GetNode<MeshInstance3D>("Model");
+    // _animationPlayer = GetNode<AnimationPlayer>("%AnimationPlayer");
+    // _animationPlayer.CurrentAnimation = "rocking";
   }
 }
