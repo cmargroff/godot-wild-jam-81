@@ -42,7 +42,7 @@ public partial class Globals : Node
     .AddTransient<InventoryManager>()
     .AddSingleton(InjectNodeClass<ItemDragManager>())
     .AddTransient<ItemSpawnManager>()
-    .AddTransient(InjectNodeClass<PauseManager>())
+    .AddSingleton(InjectNodeClass<PauseManager>())
     .AddTransient<ItemFactoryService>()
     .AddSingleton(InjectNodeClass<HoverPanelManager>(true))
     ;

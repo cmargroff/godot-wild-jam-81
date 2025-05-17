@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" path="res://components/game/Ship.tscn" id="2_26sbl"]
 [ext_resource type="PackedScene" uid="uid://lw36b2co12mu" path="res://components/game/HUD.tscn" id="3_26sbl"]
 [ext_resource type="Material" uid="uid://bsj6xumrw23oq" path="res://assets/materials/scrolling_texture.tres" id="3_leryn"]
+[ext_resource type="PackedScene" uid="uid://b5dgny6o48h2" path="res://components/game/PauseMenu.tscn" id="4_26sbl"]
 [ext_resource type="AudioStream" uid="uid://80uic5ew3hph" path="res://assets/audio/music/Pirate 2.ogg" id="5_k55y7"]
 [ext_resource type="AudioStream" uid="uid://p51ofnqbqlij" path="res://resources/audio/item_pickup_audio_stream_randomizer.tres" id="6_k55y7"]
 
@@ -24,13 +25,18 @@ transform = Transform3D(1, 0, 0, 0, 0.340494, 0.940247, 0, -0.940247, 0.340494, 
 
 [node name="Water" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
+process_mode = 1
 transform = Transform3D(50, -5.68434e-13, -9.93882e-22, 0, -2.18557e-06, 2, -5.68434e-13, -50, -8.74228e-08, -1.96497e-13, -7.55512e-07, -17.2841)
 mesh = SubResource("QuadMesh_5pph0")
 
 [node name="HUD" parent="." instance=ExtResource("3_26sbl")]
 
+[node name="PauseMenu" parent="." instance=ExtResource("4_26sbl")]
+
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.218318, 0.0347824, -6.71449)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="AudioStreamPlayer_BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_k55y7")
