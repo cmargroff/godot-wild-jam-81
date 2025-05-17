@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=2 format=3 uid="uid://c0lhoss15habt"]
+
+[ext_resource type="Script" uid="uid://chlt3chm3e8ap" path="res://scripts/resources/ItemResource.cs" id="1_jt84l"]
+
+[resource]
+script = ExtResource("1_jt84l")
+ItemName = ""
+Description = ""
+MinGoldValue = 0
+MaxGoldValue = 0
+GoldValueDistribution = 0
+MinWeight = 0.0
+MaxWeight = 0.0
+Disabled = false
+metadata/_custom_type_script = "uid://chlt3chm3e8ap"
