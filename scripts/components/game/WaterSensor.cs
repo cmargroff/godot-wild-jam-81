@@ -22,11 +22,10 @@ public partial class WaterSensor : Marker3D
     _mesh.Scale = Vector3.One * 2f;
     AddChild(_mesh);
     _envManager = Globals.ServiceProvider.GetRequiredService<EnvironmentManager>();
-    _envManager.GetHeightForPosition(GlobalPosition);
   }
   public override void _Process(double delta)
   {
-    var height = _envManager.GetHeightForPosition(Position);
+    var height = _envManager.GetHeightForPosition(GlobalPosition);
 
     _targetHeight = height;
     var d = (_targetHeight - _mesh.Position.Y) * .1f;
