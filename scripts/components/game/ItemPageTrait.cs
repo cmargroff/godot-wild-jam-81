@@ -12,13 +12,13 @@ public partial class ItemPageTrait : Control
   public void SetTrait(ItemTrait itemTrait)
   {
     _label.Text = itemTrait.Description;
-    if (itemTrait.FixedValue < 0)
+    if (itemTrait.FixedValue < 0 && itemTrait.ReverseColor == false)
     {
       _label.AddThemeColorOverride("font_color", new Color(0.9f, 0.15f, 0.15f, 1));
     }
     else
     {
-      _label.AddThemeColorOverride("font_color", new Color(0, 1, 0, 1));
+      _label.AddThemeColorOverride("font_color", new Color(0.1f, 1, 0.1f, 1));
     }
   }
 

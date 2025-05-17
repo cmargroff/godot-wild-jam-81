@@ -12,17 +12,19 @@ public sealed class ItemTrait
 
     public required float MinValue { get; init; }
     public required float MaxValue { get; init; }
+    public bool ReverseColor { get; init; } 
 
     //TODO: 
     [SetsRequiredMembers]
-    public ItemTrait(RandomNumberGeneratorService rng, string description, float minValue, float maxValue, Action<StatsManager, float> applyToShip)
+    public ItemTrait(RandomNumberGeneratorService rng, string description, float minValue, float maxValue, Action<StatsManager, float> applyToShip, bool reverseColor)
     {
-        
+
         MinValue = minValue;
         MaxValue = maxValue;
         FixedValue = rng.GetFloatRange(minValue, maxValue);
         Description = description.Replace("[%placeholder%]", FixedValue.ToString());
 
         ApplyToShip = applyToShip;
+        ReverseColor = reverseColor;
     }
 }

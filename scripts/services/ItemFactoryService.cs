@@ -33,7 +33,7 @@ public class ItemFactoryService
                     -0.01f, -0.05f,
                     (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue }
-                    )
+                    ), false
                 )
             ] },
             // { "Seagull",
@@ -48,7 +48,7 @@ public class ItemFactoryService
                     0.7f, 1.5f,
                     (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue }
-                    )
+                    ), false
                 )
             ] },
             {"Coconut", [
@@ -58,7 +58,7 @@ public class ItemFactoryService
                     0.02f, 0.05f,
                     (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.Buoyancy, Mode = StatChangeMode.Relative, Amount = fixedValue }
-                    )
+                    ), false
                 ),
                 new(
                     rng,
@@ -66,7 +66,7 @@ public class ItemFactoryService
                     -0.2f, -0.5f,
                     (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue }
-                    )
+                    ), false
                 ),
             ] },
             {"Shark", [
@@ -76,7 +76,7 @@ public class ItemFactoryService
                     0.02f, 0.05f,
                     (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue }
-                    )
+                    ), false
                 ),
                 new(
                     rng,
@@ -84,7 +84,7 @@ public class ItemFactoryService
                     -0.2f, -0.5f,
                     (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.WaterLevel, Mode = StatChangeMode.Relative, Amount = fixedValue }
-                    )
+                    ), true
                 ),
             ] },
             {"Orange", [
@@ -94,7 +94,7 @@ public class ItemFactoryService
                     -0.01f, -0.05f,
                     (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue }
-                    )
+                    ), false
                 )          
             ] }
         };
