@@ -34,7 +34,7 @@ public partial class Globals : Node
     .AddSingleton<SettingsStore>()
     .AddSingleton<ConfigManager>()
     .AddSingleton(InjectNodeClass<AudioManager>())
-    .AddSingleton<ScoreManager>()
+    .AddSingleton(InjectNodeClass<ScoreManager>())
     .AddSingleton<RandomNumberGeneratorService>()
     .AddSingleton(InjectInstantiatedPackedScene<SceneManager>("res://views/SceneManager.tscn"))
     .AddSingleton<StatsManager>()
