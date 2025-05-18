@@ -36,11 +36,11 @@ public partial class ItemPickUp : Node3D
         _dragManager.PickupAudioStreamPlayer = ItemPickupAudioPlayer;
         _hoverManager = Globals.ServiceProvider.GetRequiredService<HoverPanelManager>();
         _position = Position;
-        var area = GetNode<Area3D>("Area3D");
-        _area = area;
-        area.Connect(Area3D.SignalName.MouseEntered, Callable.From(MouseEntered));
-        area.Connect(Area3D.SignalName.MouseExited, Callable.From(MouseExited));
         AddChild(InventoryItem.ItemScene);
+        var area = InventoryItem.ItemScene.GetNode<Area3D>("Area3D");
+        _area = area;
+        _area.Connect(Area3D.SignalName.MouseEntered, Callable.From(MouseEntered));
+        _area.Connect(Area3D.SignalName.MouseExited, Callable.From(MouseExited));
     }
 
     public override void _PhysicsProcess(double delta)

@@ -1,8 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://bo27gupy337aw"]
+[gd_scene load_steps=3 format=3 uid="uid://bo27gupy337aw"]
 
 [ext_resource type="PackedScene" uid="uid://de03r7o3hbar3" path="res://assets/models/items/fancy_portrait.glb" id="1_sf1m2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sf1m2"]
+size = Vector3(2.24878, 3.22174, 0.528198)
 
 [node name="FancyPortrait" type="Node3D"]
 
 [node name="fancy_portrait" parent="." instance=ExtResource("1_sf1m2")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.177613)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.127194)
+shape = SubResource("BoxShape3D_sf1m2")

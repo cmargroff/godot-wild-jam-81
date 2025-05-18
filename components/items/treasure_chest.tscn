@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://jem462yetv31"]
+[gd_scene load_steps=8 format=4 uid="uid://jem462yetv31"]
 
 [ext_resource type="Texture2D" uid="uid://co5ldey2jc8yg" path="res://assets/models/items/chest_chest_Base_color.jpg" id="1_vrrk7"]
 [ext_resource type="Texture2D" uid="uid://dnvs8uelsvn2a" path="res://assets/models/items/chest_chest_Metallic-chest_Roughness.png" id="2_6jydd"]
@@ -47,6 +47,9 @@ bind/1/name = &"top"
 bind/1/bone = -1
 bind/1/pose = Transform3D(1, -2.23319e-06, 0, -1.26942e-19, -5.68434e-14, 1, -2.23319e-06, -1, 0, 0.000761672, -0.587434, 1.14993)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_vrrk7"]
+size = Vector3(2.33936, 1.86547, 1.8129)
+
 [node name="TreasureChest" type="Node3D"]
 
 [node name="chest_armature" type="Node3D" parent="."]
@@ -71,3 +74,9 @@ bones/1/scale = Vector3(1, 1, 1)
 [node name="chest" type="MeshInstance3D" parent="chest_armature/Skeleton3D"]
 mesh = SubResource("ArrayMesh_v0iqd")
 skin = SubResource("Skin_lvjcw")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0291862, -0.0473366, 0.0337982)
+shape = SubResource("BoxShape3D_vrrk7")
