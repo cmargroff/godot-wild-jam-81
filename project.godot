@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="godot-wild-jam-81"
+config/name="Ship of Theseus Simulator 2025"
 run/main_scene="uid://bhn3okwreagx3"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
