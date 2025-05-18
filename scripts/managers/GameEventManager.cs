@@ -9,7 +9,7 @@ public partial class GameEventManager : Node
 {
   // times in seconds;
   const float MIN_ENVIRONMENT_TIME = 10;
-  const float MAX_ENVIRONMENT_TIME = 60;
+  const float MAX_ENVIRONMENT_TIME = 30;
   const float MIN_ITEM_TIME = 1;
   const float MAX_ITEM_TIME = 15;
   private RandomNumberGeneratorService _rng;
