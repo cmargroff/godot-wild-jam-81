@@ -19,6 +19,7 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ffm1r"]
 resource_name = "black"
 cull_mode = 2
+albedo_color = Color(0, 0, 0, 1)
 metallic = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8dqpk"]
