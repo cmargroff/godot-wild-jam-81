@@ -64,16 +64,16 @@ float edge(float depth){
 
 
 void vertex() {
-	
+
 	world_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
-	
+
 	boat_pos = vec2(boat_speed * wave_time, 0.0);
-	
+
 	height = texture(noise1, world_pos.xz / noise1_scale + wave_time * noise1_speed + boat_pos).r * noise1_strength;
 	height += texture(noise2, world_pos.xz / noise2_scale + wave_time * noise2_speed + boat_pos).r * noise2_strength;
 	height += texture(noise3, world_pos.xz / noise3_scale + wave_time * noise3_speed + boat_pos).r * noise3_strength;
 	VERTEX.y = height;
-	
+
 }
 
 
@@ -84,55 +84,55 @@ void fragment() {
 	SPECULAR = 0.9;
 	METALLIC = 0.0;
 	RIM = 0.3;
-	
-	
+
+
 	//edge
 	float z_depth = edge(texture(DEPTH_TEXTURE, SCREEN_UV).x);
 	float z_pos = edge(FRAGCOORD.z);
 	float z_dif = z_depth - z_pos;
-	
-	
+
+
 	vec3 normal1 = texture(noise1_normal, world_pos.xz/noise1_scale + wave_time * noise1_speed + boat_pos).rgb;
 	vec3 normal2 = texture(noise2_normal, world_pos.xz/noise2_scale + wave_time * noise2_speed + boat_pos).rgb;
 	vec3 normal3 = texture(noise3_normal, world_pos.xz/noise3_scale + wave_time * noise3_speed + boat_pos).rgb;
 	NORMAL_MAP = mix(normal1, normal2, 0.5);
 	NORMAL_MAP = mix(NORMAL_MAP, normal3, 0.5);
-	
+
 	//depth
 	float depth_texture = texture(DEPTH_TEXTURE, SCREEN_UV).r * 2.0 -1.0;
 	float depth = PROJECTION_MATRIX[3][2] / (depth_texture + PROJECTION_MATRIX[2][2]);
 	float depth_blend = exp((depth + VERTEX.z + depth_offset) * -beers_law);
 	depth_blend = clamp(1.0 - depth_blend, 0.0, 1.0);
 	float depth_blend_power = clamp(pow(depth_blend, 2.5), 0.0, 1.0);
-	
+
 	vec3 screen_color = textureLod(SCREEN_TEXTURE, SCREEN_UV, depth_blend_power * 2.5).rgb;
 	vec3 depth_color = mix(color_shallow.rgb, color_deep.rgb, depth_blend_power);
 	vec3 depth_rgb = mix(screen_color * depth_color, depth_color *0.25, depth_blend_power * 0.5);
 	ALBEDO = depth_rgb;
-	
-	
+
+
 	//fresnel
 	float fresnel = fresnel(5.0, NORMAL, VIEW);
 	ALBEDO = mix(ALBEDO, fresnel_color, fresnel);
-	
+
 	//edge
 	ALBEDO = mix(edge_color, ALBEDO, step(edge_scale, z_dif));
-	
+
 	//foam
-	if(texture(noise3, world_pos.xz / noise3_scale + wave_time * noise3_speed + boat_pos).r + 
-		texture(noise2, world_pos.xz / noise2_scale + wave_time * noise2_speed + boat_pos).r 
+	if(texture(noise3, world_pos.xz / noise3_scale + wave_time * noise3_speed + boat_pos).r +
+		texture(noise2, world_pos.xz / noise2_scale + wave_time * noise2_speed + boat_pos).r
 		> 1.3){
 		ALBEDO = vec3(1, 1, 1);
 	}
-	
+
 	if(distance_fade != 0.0){
 		float dist = length(world_pos - camera_pos);
-		
+
 		ALPHA = 1.0 - smoothstep(0.0, distance_fade, dist);
 	}
 
-	
-	
+
+
 }
 
 

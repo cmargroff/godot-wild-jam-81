@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_t41o4")
 ItemName = "Coconut"
-Description = "Can block a leak for some time. Reduses speed but increases buoyancy."
+Description = "Reduses speed but increases buoyancy"
 MinGoldValue = 2
 MaxGoldValue = 5
 GoldValueDistribution = 0

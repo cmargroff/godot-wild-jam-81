@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_i4f6y")
 ItemName = "Fancy Portrait"
-Description = "Good at blocking a leak for some time, and might be worth something."
+Description = "Might be worth something"
 MinGoldValue = 5
 MaxGoldValue = 1000
 GoldValueDistribution = 1

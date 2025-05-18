@@ -51,6 +51,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_6jsh4")
 
 [node name="BananaLeaf" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.056989, 0.998375, 0, -0.998375, 0.056989, 0, 0, 0)
 
 [node name="fruits_leaf" type="MeshInstance3D" parent="."]
 transform = Transform3D(-3.34247e-08, 0, 0.697775, 0, 0.697775, 0, -0.764668, 0, -3.05007e-08, 0, 0, 0)

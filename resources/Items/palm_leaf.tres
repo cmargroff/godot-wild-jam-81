@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_irgvc")
 ItemName = "Palm Leaf"
-Description = "Not effective at blocking a leak. Greatly increses speed."
+Description = "Greatly increses speed but also increases watel level "
 MinGoldValue = 0
 MaxGoldValue = 1
 GoldValueDistribution = 0

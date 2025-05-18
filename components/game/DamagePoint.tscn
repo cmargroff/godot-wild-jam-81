@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bgyafk6wspk7k" path="res://scripts/components/game/DamagePoint.cs" id="1_6tnet"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_kqkym"]
+radius = 0.595224
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kqkym"]
 shading_mode = 0

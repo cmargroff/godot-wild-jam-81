@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dd8avf5npsfcg" path="res://scripts/components/game/ItemPickUp.cs" id="1_kpet3"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_kpet3"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_kpet3"]
+radius = 0.771022
 
 [node name="ItemPickUp" type="Node3D"]
 script = ExtResource("1_kpet3")
@@ -11,4 +12,4 @@ script = ExtResource("1_kpet3")
 
 [node name="Shape" type="CollisionShape3D" parent="Area3D"]
 unique_name_in_owner = true
-shape = SubResource("BoxShape3D_kpet3")
+shape = SubResource("SphereShape3D_kpet3")
