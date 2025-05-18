@@ -80,7 +80,6 @@ render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_s
 
 
 "
-graph_offset = Vector2(-311.437, -358.003)
 nodes/vertex/0/position = Vector2(-1400, -540)
 nodes/vertex/2/node = SubResource("VisualShaderNodeTexture_l8ss2")
 nodes/vertex/2/position = Vector2(-2262.84, -662.272)
