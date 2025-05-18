@@ -72,7 +72,10 @@ public partial class DamagePoint : Area3D, ISnapPoint
       Amount = item.InventoryItem.Weight,
       Mode = StatChangeMode.Relative
     });
-    
+    foreach (ItemTrait trait in _item.InventoryItem.Traits)
+    {
+      trait.Apply(_statsManager);
+    }
     _dragManager.Unsnap();
     _dragManager.EndDragItem();
     LeakingChanged?.Invoke();
