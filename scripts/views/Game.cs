@@ -19,6 +19,8 @@ public partial class Game : Node3D
   private AudioManager _audioManager;
 
   private GameOver _gameOverScreen;
+  private Timer _gameOverTimer;
+  private Port _port;
 
   /// <summary>
   /// The expected time for the game to finish at normal speed, in seconds.
@@ -53,6 +55,7 @@ public partial class Game : Node3D
   public override void _EnterTree()
   {
     _gameOverScreen = GetNode<GameOver>("GameOver");
+    _gameOverTimer = GetNode<Timer>("GameOverTimer");
     //used when the Game scene is loaded directly, otherwise this will be skipped
     if (_sceneManager is null)
     {
@@ -85,12 +88,33 @@ public partial class Game : Node3D
     _statsManager.ChangeStat(new StatChange { Stat = Stat.Progress, Mode = StatChangeMode.Absolute, Amount = (1 - RemainingTime / RunTimeAt1X) * 100f });
     if (_statsManager.GetStats(Stat.WaterLevel) >= 100)
     {
+      
       _gameOverScreen.ShowScreen(false);
     }
     else if (_statsManager.GetStats(Stat.Progress) >= 100)
     {
       _gameOverScreen.ShowScreen(true);
+      // _gameOverTimer.Start();
+      // InstantiatePort();
+      
     }
   }
+  // public void InstantiatePort()
+  // {
+  //   var scene = ResourceLoader.Load<PackedScene>("res://components/game/Port.tscn");
+  //   _port = scene.Instantiate<Port>();
+  //   _port.Visible = true;
+  //   AddChild(_port);
+  //   _port.GlobalPosition = new Vector3(62, 7, -35);
+  //   _port.Rotation = new Vector3(0, 90, 0);
+  // }
+
+  // public void GameOver()
+  // {
+  //   GD.Print("game over");
+  //   _gameOverScreen.ShowScreen(true);
+  //   _pauseManager.Pause();
+    
+  // }
 
 }
