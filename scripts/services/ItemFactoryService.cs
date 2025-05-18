@@ -35,16 +35,102 @@ public class ItemFactoryService
                     ),
                     (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue * -1 }
-                    )
+                    ), false
                 )
             ] },
             { "Seagull",
                 [
-                    new(rng, "Speed bonus of {0:N2}", 0.01f, 0.05f, 
+                    new(rng, "Speed bonus of {0:N2}", 0.01f, 0.05f,
                         (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue }),
-                        (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue * -1 }))
+                        (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue * -1 }),
+                        false)
                 ]
-            }
+            },
+            {"Palm Leaf", [
+                new(
+                    rng,
+                    "Attached speed bonus of {0:N2}",
+                    1.5f, 2.5f,
+                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                        new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue }
+                    ),
+                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                        new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue * -1 }
+                    ), false
+                ),
+                new(
+                    rng,
+                    "Attached bailing bonus of {0:N2}",
+                    0.3f, 0.5f,
+                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                        new(){ Stat = Stat.WaterLevel, Mode = StatChangeMode.Relative, Amount = fixedValue }
+                    ),
+                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                        new(){ Stat = Stat.WaterLevel, Mode = StatChangeMode.Relative, Amount = fixedValue * -1 }
+                    ), true
+                )
+            ] },
+            {"Coconut", [
+                new(
+                    rng,
+                    "Attached speed bonus of {0:N2}",
+                    -0.03f, -0.07f,
+                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                        new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue }
+                    ),
+                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                        new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue * -1 }
+                    ), false
+                )
+            ] },
+            {"Shark", [
+                new(
+                    rng,
+                    "Attached speed bonus of {0:N2}",
+                    0.4f, 0.8f,
+                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                        new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue }
+                    ),
+                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                        new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue * -1 }
+                    ), false
+                ),
+                new(
+                    rng,
+                    "Attached bailing bonus of {0:N2}",
+                    -2f, -1.5f,
+                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                        new(){ Stat = Stat.WaterLevel, Mode = StatChangeMode.Relative, Amount = fixedValue }
+                    ),
+                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                        new(){ Stat = Stat.WaterLevel, Mode = StatChangeMode.Relative, Amount = 0 }
+                    ), true
+                )
+            ] },
+            {"Orange", [
+                new(
+                    rng,
+                    "Attached speed bonus of {0:N2}",
+                    -0.03f, -0.07f,
+                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                        new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue }
+                    ),
+                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                        new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue * -1 }
+                    ), false
+                ),
+                new(
+                    rng,
+                    "Attached bailing bonus of {0:N2}",
+                    -0.3f, -0.6f,
+                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                        new(){ Stat = Stat.WaterLevel, Mode = StatChangeMode.Relative, Amount = fixedValue }
+                    ),
+                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                        new(){ Stat = Stat.WaterLevel, Mode = StatChangeMode.Relative, Amount = 0 }
+                    ), true
+                )
+            ] }
         };
     }
 

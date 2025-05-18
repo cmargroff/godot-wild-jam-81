@@ -96,6 +96,16 @@ public partial class DamagePoint : Area3D, ISnapPoint
     else 
     {
       // _item.Reparent(GetTree().Root, true);
+      _statsManager.ChangeStat(new()
+    {
+        Stat = Stat.Buoyancy,
+        Amount = _item.InventoryItem.Weight,
+        Mode = StatChangeMode.Relative
+    });
+    foreach (ItemTrait trait in _item.InventoryItem.Traits) 
+    {
+        trait.Remove(_statsManager);
+    }
       _item.Drop();
     }
     State = DamagePointState.SnapEnable;

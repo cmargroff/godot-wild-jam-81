@@ -14,13 +14,14 @@ public sealed class ItemTrait
 
     public required float MinValue { get; init; }
     public required float MaxValue { get; init; }
-    public bool ReverseColor { get; init; } 
+    public bool ReverseColor { get; init; }
 
     //TODO: 
     [SetsRequiredMembers]
-    public ItemTrait(RandomNumberGeneratorService rng, string description, float minValue, float maxValue, 
+    public ItemTrait(RandomNumberGeneratorService rng, string description, float minValue, float maxValue,
         Action<StatsManager, float> applyToShip,
-        Action<StatsManager, float> removeFromShip)
+        Action<StatsManager, float> removeFromShip,
+        bool reverseColor)
     {
         MinValue = minValue;
         MaxValue = maxValue;
@@ -29,6 +30,8 @@ public sealed class ItemTrait
 
         ApplyToShip = applyToShip;
         RemoveFromShip = removeFromShip;
+
+        ReverseColor = reverseColor;
     }
 
     public void Apply(StatsManager statsManager) => ApplyToShip(statsManager, FixedValue);

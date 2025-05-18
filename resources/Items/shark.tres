@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=4 format=3 uid="uid://82kelnpb6de"]
+[gd_resource type="Resource" script_class="ItemResource" load_steps=4 format=3 uid="uid://dcwglgkei8ryh"]
 
 [ext_resource type="Texture2D" uid="uid://cgwiv4s41mkl8" path="res://assets/textures/items/shark.png" id="1_kuiun"]
 [ext_resource type="Script" uid="uid://chlt3chm3e8ap" path="res://scripts/resources/ItemResource.cs" id="1_xukkb"]
@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_xukkb")
 ItemName = "Shark"
-Description = "Good at blocking a leak. Increases speed and reduces water level."
+Description = "Increases speed and reduces water level"
 MinGoldValue = 10
 MaxGoldValue = 100
 GoldValueDistribution = 0

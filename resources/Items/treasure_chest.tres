@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=4 format=3 uid="uid://c5d0frilce7ed"]
+[gd_resource type="Resource" script_class="ItemResource" load_steps=4 format=3 uid="uid://bxh4agah0mj85"]
 
 [ext_resource type="Texture2D" uid="uid://b232ut4pqkqaw" path="res://assets/textures/items/chest.png" id="1_pnbng"]
 [ext_resource type="Script" uid="uid://chlt3chm3e8ap" path="res://scripts/resources/ItemResource.cs" id="1_tesg0"]
@@ -7,9 +7,9 @@
 [resource]
 script = ExtResource("1_tesg0")
 ItemName = "Treasure Chest"
-Description = "Can't be attached to ship."
+Description = "Just chest with gold coins"
 MinGoldValue = 500
-MaxGoldValue = 500
+MaxGoldValue = 2000
 GoldValueDistribution = 0
 MinWeight = 800.0
 MaxWeight = 800.0
