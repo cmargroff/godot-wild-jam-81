@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_tesg0")
 ItemName = "Treasure Chest"
-Description = "Can't be attached to ship."
+Description = "Chest with cold coins"
 MinGoldValue = 500
 MaxGoldValue = 500
 GoldValueDistribution = 0

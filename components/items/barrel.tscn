@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://brn8vyrqvowc0"]
+[gd_scene load_steps=8 format=4 uid="uid://brn8vyrqvowc0"]
 
 [ext_resource type="Texture2D" uid="uid://daxdro1ssfhrb" path="res://assets/models/items/barell_barell_Base_color.jpg" id="1_ymdaj"]
 [ext_resource type="Texture2D" uid="uid://b7uj6tcmlrx0g" path="res://assets/models/items/barell_barell_Metallic-barell_Roughness.png" id="2_0rtev"]
@@ -50,9 +50,19 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_8tldn")
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ymdaj"]
+radius = 0.881004
+height = 2.70146
+
 [node name="Barrel" type="Node3D"]
 
 [node name="barell" type="MeshInstance3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_plej4")
 skeleton = NodePath("")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_ymdaj")

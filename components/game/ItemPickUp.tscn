@@ -1,14 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dkyhu7w5hp1d4"]
+[gd_scene load_steps=2 format=3 uid="uid://dkyhu7w5hp1d4"]
 
 [ext_resource type="Script" uid="uid://dd8avf5npsfcg" path="res://scripts/components/game/ItemPickUp.cs" id="1_kpet3"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_kpet3"]
-
 [node name="ItemPickUp" type="Node3D"]
 script = ExtResource("1_kpet3")
-
-[node name="Area3D" type="Area3D" parent="."]
-
-[node name="Shape" type="CollisionShape3D" parent="Area3D"]
-unique_name_in_owner = true
-shape = SubResource("BoxShape3D_kpet3")

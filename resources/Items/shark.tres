@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_xukkb")
 ItemName = "Shark"
-Description = "Good at blocking a leak. Increases speed and reduces water level."
+Description = "Increases speed and reduces water level"
 MinGoldValue = 10
 MaxGoldValue = 100
 GoldValueDistribution = 0

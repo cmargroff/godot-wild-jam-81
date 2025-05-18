@@ -11,7 +11,7 @@ public partial class ItemPickUp : Node3D
     [Export]
     float SPEED = 5f;
     [Export]
-    float VELOCITY = 2f;
+    float VELOCITY = 5f;
 
     private Vector3 _globalPosition;
     private bool _hovered = false;
@@ -45,10 +45,6 @@ public partial class ItemPickUp : Node3D
         _dragManager.PickupAudioStreamPlayer = ItemPickupAudioPlayer;
         _hoverManager = Globals.ServiceProvider.GetRequiredService<HoverPanelManager>();
         _globalPosition = GlobalPosition;
-        var area = GetNode<Area3D>("Area3D");
-        _area = area;
-        area.Connect(Area3D.SignalName.MouseEntered, Callable.From(MouseEntered));
-        area.Connect(Area3D.SignalName.MouseExited, Callable.From(MouseExited));
         AddChild(InventoryItem.ItemScene);
 
         // create references to water noise
@@ -83,6 +79,10 @@ public partial class ItemPickUp : Node3D
                 _waterSamplers = _waterSamplers.GetRange(0, 2);
             }
         }
+        var area = InventoryItem.ItemScene.GetNode<Area3D>("Area3D");
+        _area = area;
+        _area.Connect(Area3D.SignalName.MouseEntered, Callable.From(MouseEntered));
+        _area.Connect(Area3D.SignalName.MouseExited, Callable.From(MouseExited));
     }
 
     public override void _PhysicsProcess(double delta)
