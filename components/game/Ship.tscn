@@ -1,7 +1,7 @@
 [gd_scene load_steps=181 format=4 uid="uid://cxyf4q4egqw6k"]
 
 [ext_resource type="Script" uid="uid://cl3oh7g4ilo65" path="res://scripts/components/game/Ship.cs" id="1_vik7u"]
-[ext_resource type="PackedScene" uid="uid://dmamg4rgfhmso" path="res://components/game/DamagePoint.tscn" id="2_c5dpv"]
+[ext_resource type="PackedScene" uid="uid://crtl6uhk8whgg" path="res://components/game/DamagePoint.tscn" id="2_c5dpv"]
 [ext_resource type="Texture2D" uid="uid://drgyqxaxpk5v0" path="res://assets/models/ship/ship_Metal_basecolor_b.png" id="2_i3pu8"]
 [ext_resource type="Texture2D" uid="uid://cbrwt7ydgl2qi" path="res://assets/models/ship/ship_Metal_normal.jpg" id="3_c5dpv"]
 [ext_resource type="Texture2D" uid="uid://cwt8xa4eu3js8" path="res://assets/models/ship/ship_Floor_basecolor_b.png" id="4_8wgjk"]
@@ -3003,38 +3003,34 @@ script = ExtResource("1_vik7u")
 unique_name_in_owner = true
 
 [node name="DamagePoint" parent="Damage points" instance=ExtResource("2_c5dpv")]
-transform = Transform3D(1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0, 1, -6.70766, 0.11617, 3.56145)
+transform = Transform3D(1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0, 1, -6.70766, 0.11617, 3.34923)
 
 [node name="damage" type="MeshInstance3D" parent="Damage points/DamagePoint"]
 transform = Transform3D(-1, 1.49012e-08, -8.74228e-08, 1.49012e-08, 1, 1.3027e-15, 8.74228e-08, 0, -1, 8.53389, -0.11617, -3.3546)
-visible = false
 mesh = SubResource("ArrayMesh_n6q7w")
 skeleton = NodePath("")
 
 [node name="DamagePoint2" parent="Damage points" instance=ExtResource("2_c5dpv")]
-transform = Transform3D(1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0, 1, -4.21155, -0.104648, 3.79694)
+transform = Transform3D(1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0, 1, -4.21155, -0.104648, 3.5658)
 
 [node name="damage" type="MeshInstance3D" parent="Damage points/DamagePoint2"]
 transform = Transform3D(-1, 1.49012e-08, -8.74228e-08, 1.49012e-08, 1, 1.3027e-15, 8.74228e-08, 0, -1, 6.03778, 0.104648, -3.5394)
-visible = false
 mesh = SubResource("ArrayMesh_cj15s")
 skeleton = NodePath("")
 
 [node name="DamagePoint3" parent="Damage points" instance=ExtResource("2_c5dpv")]
-transform = Transform3D(1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0, 1, 1.50642, -0.282126, 3.76735)
+transform = Transform3D(1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0, 1, 1.50642, -0.282126, 3.46619)
 
 [node name="damage" type="MeshInstance3D" parent="Damage points/DamagePoint3"]
 transform = Transform3D(-1, 1.49012e-08, -8.74228e-08, 1.49012e-08, 1, 1.3027e-15, 8.74228e-08, 0, -1, 0.319807, 0.282126, -3.46107)
-visible = false
 mesh = SubResource("ArrayMesh_yidhc")
 skeleton = NodePath("")
 
 [node name="DamagePoint4" parent="Damage points" instance=ExtResource("2_c5dpv")]
-transform = Transform3D(1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0, 1, 5.98514, -0.271784, 3.38129)
+transform = Transform3D(1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0, 1, 5.98514, -0.271784, 3.25324)
 
 [node name="damage" type="MeshInstance3D" parent="Damage points/DamagePoint4"]
 transform = Transform3D(-1, 1.49012e-08, -8.74228e-08, 1.49012e-08, 1, 1.3027e-15, 8.74228e-08, 0, -1, -0.208704, -0.232827, -0.0756726)
-visible = false
 mesh = SubResource("ArrayMesh_e4sla")
 skeleton = NodePath("")
 
