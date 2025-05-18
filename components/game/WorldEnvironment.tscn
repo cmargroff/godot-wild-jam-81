@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://wmg6ljmyxk7y"]
 
-[ext_resource type="Shader" path="res://assets/shaders/sky_shader.gdshader" id="1_dq0xd"]
+[ext_resource type="Shader" uid="uid://5yc623i2i225" path="res://assets/shaders/sky_shader.gdshader" id="1_dq0xd"]
 [ext_resource type="Texture2D" uid="uid://ch1cmvgj2pt2o" path="res://assets/textures/sky/particle.png" id="2_ki1nh"]
 
 [sub_resource type="Curve" id="Curve_3g71p"]
@@ -50,8 +50,8 @@ shader_parameter/clouds_smoothness = 0.03
 shader_parameter/clouds_light_color = Color(1, 1, 1, 1)
 shader_parameter/clouds_shadow_intensity = 1.0
 shader_parameter/high_clouds_density = 0.0
-shader_parameter/top_color = Color(0.972549, 0.894118, 0.976471, 1)
-shader_parameter/bottom_color = Color(0.435294, 0.631373, 0.843137, 1)
+shader_parameter/top_color = Color(0.729412, 0.921569, 1, 1)
+shader_parameter/bottom_color = Color(0.321569, 0.741176, 0.921569, 1)
 shader_parameter/sun_scatter = Color(0.298039, 0.298039, 0.298039, 1)
 shader_parameter/astro_tint = Color(1, 1, 1, 1)
 shader_parameter/astro_sampler = ExtResource("2_ki1nh")
