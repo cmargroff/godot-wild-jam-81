@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://cs2ybcc1lpqhc"]
 
 [ext_resource type="Script" uid="uid://wiwsb8d1e7fq" path="res://scripts/views/Game.cs" id="1_5pph0"]
-[ext_resource type="PackedScene" uid="uid://cxyf4q4egqw6k" path="res://components/game/Ship.tscn" id="2_26sbl"]
+[ext_resource type="PackedScene" path="res://components/game/Ship.tscn" id="2_26sbl"]
 [ext_resource type="PackedScene" uid="uid://lw36b2co12mu" path="res://components/game/HUD.tscn" id="3_26sbl"]
 [ext_resource type="Material" uid="uid://bsj6xumrw23oq" path="res://assets/materials/scrolling_texture.tres" id="3_leryn"]
-[ext_resource type="PackedScene" uid="uid://b0ifm6knh2ypk" path="res://components/game/PauseMenu.tscn" id="4_26sbl"]
+[ext_resource type="PackedScene" path="res://components/game/PauseMenu.tscn" id="4_26sbl"]
 [ext_resource type="AudioStream" uid="uid://80uic5ew3hph" path="res://assets/audio/music/Pirate 2.ogg" id="5_k55y7"]
 [ext_resource type="AudioStream" uid="uid://p51ofnqbqlij" path="res://resources/audio/item_pickup_audio_stream_randomizer.tres" id="6_k55y7"]
 [ext_resource type="PackedScene" path="res://views/GameOver.tscn" id="7_hfq8r"]
@@ -28,7 +28,6 @@ transform = Transform3D(1, 0, 0, 0, 0.340494, 0.940247, 0, -0.940247, 0.340494, 
 unique_name_in_owner = true
 process_mode = 1
 transform = Transform3D(50, -5.68434e-13, -9.93882e-22, 0, -2.18557e-06, 2, -5.68434e-13, -50, -8.74228e-08, -1.96497e-13, -7.55512e-07, -17.2841)
-visible = false
 mesh = SubResource("QuadMesh_5pph0")
 
 [node name="HUD" parent="." instance=ExtResource("3_26sbl")]
