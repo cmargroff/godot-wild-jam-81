@@ -8,6 +8,7 @@ public sealed class ItemTrait
 {
     public required string Description { get; init; }
     public required Action<StatsManager, float> ApplyToShip { get; init; }
+    public required Action<StatsManager, float> RemoveFromShip { get; init; }
 
     public required float FixedValue { get; init; }
 
@@ -17,18 +18,19 @@ public sealed class ItemTrait
 
     //TODO: 
     [SetsRequiredMembers]
-    public ItemTrait(RandomNumberGeneratorService rng, string description, float minValue, float maxValue, Action<StatsManager, float> applyToShip, bool reverseColor)
+    public ItemTrait(RandomNumberGeneratorService rng, string description, float minValue, float maxValue, 
+        Action<StatsManager, float> applyToShip,
+        Action<StatsManager, float> removeFromShip)
     {
         MinValue = minValue;
         MaxValue = maxValue;
         FixedValue = rng.GetFloatRange(minValue, maxValue);
-        Description = description.Replace("[%placeholder%]", (Mathf.RoundToInt(FixedValue * 100) / 100f).ToString());
+        Description = string.Format(description, FixedValue);
 
         ApplyToShip = applyToShip;
-        ReverseColor = reverseColor;
+        RemoveFromShip = removeFromShip;
     }
-    public static ItemTrait FromConfig(RandomNumberGeneratorService rng, ItemTraitConfig config)
-    {
-        return new ItemTrait(rng, config.Label, config.Min, config.Max, config.AttachCallback, config.ReverseColor);
-    }
+
+    public void Apply(StatsManager statsManager) => ApplyToShip(statsManager, FixedValue);
+    public void Remove(StatsManager statsManager) => RemoveFromShip(statsManager, FixedValue);
 }

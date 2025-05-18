@@ -70,6 +70,16 @@ public partial class DamagePoint : Area3D, ISnapPoint
     item.Attach();
     item.GlobalPosition = GlobalPosition;
     State = DamagePointState.SnapDisable;
+    _statsManager.ChangeStat(new()
+    {
+        Stat = Stat.Buoyancy,
+        Amount = item.InventoryItem.Weight,
+        Mode = StatChangeMode.Relative
+    });
+    foreach (ItemTrait trait in item.InventoryItem.Traits) 
+    {
+        trait.Apply(_statsManager);
+    }
     _dragManager.Unsnap();
     _dragManager.EndDragItem();
     // InventoryItem = item.InventoryItem;

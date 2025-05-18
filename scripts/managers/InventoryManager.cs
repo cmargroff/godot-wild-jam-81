@@ -1,5 +1,6 @@
 using Godot;
 using Godot.Collections;
+using ShipOfTheseus2025.Components.Game;
 using System;
 using System.Collections.Generic;
 
@@ -7,14 +8,14 @@ namespace ShipOfTheseus2025.Managers;
 public partial class InventoryManager 
 {
     
-    public event Action<List<Item>> InventoryUpdated;
+    public event Action<List<InventoryItem>> InventoryUpdated;
 
     [Export]
     private int _inventorySize = 6;
     [Export]
     Texture2D blankIcon;
 
-    private List<Item> _items;
+    private List<InventoryItem> _items;
 
     public InventoryManager()
     {
@@ -24,7 +25,7 @@ public partial class InventoryManager
         
     }
 
-    public void AddInventoryItem(Item item)
+    public void AddInventoryItem(InventoryItem item)
     {
         if (_items.Count < _inventorySize)
         {
@@ -42,28 +43,22 @@ public partial class InventoryManager
         InventoryUpdated?.Invoke(_items);
     }
 
-    public Item GetInventoryItem(int index)
+    public InventoryItem GetInventoryItem(int index)
     {
         if (index < 0 || index >= _items.Count) return null;
         return _items[index];
     }
 
-    public void SetInventory(List<Item> items)
+    public void SetInventory(List<InventoryItem> items)
     {
         _items = items;
         InventoryUpdated?.Invoke(_items);
 
     }
 
-    public List<Item> GetInventory(){
+    public List<InventoryItem> GetInventory(){
         return _items;
     }
 
 
-}
-
-public class Item
-{
-    public string Name;
-    public int ID;
 }

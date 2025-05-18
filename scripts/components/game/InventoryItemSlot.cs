@@ -14,14 +14,8 @@ public partial class InventoryItemSlot : TextureRect, ISnapPoint
   private ScoreManager _scoreManager;
   private TextureRect _icon;
   private ItemPickUp _item;
-  public InventoryItem InventoryItem { get; set; }
-  // [FromServices]
-  // public void Inject(ItemDragManager dragManager, HoverPanelManager hoverManager, ScoreManager scoreManager)
-  // {
-  //   _dragManager = dragManager;
-  //   _hoverManager = hoverManager;
-  //   _scoreManager = scoreManager;
-  // }
+  public ShipOfTheseus2025.Components.Game.InventoryItem InventoryItem { get; set; }
+
   public override void _EnterTree()
   {
     _dragManager = Globals.ServiceProvider.GetRequiredService<ItemDragManager>();
