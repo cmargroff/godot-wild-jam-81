@@ -30,7 +30,7 @@ public partial class Ship : Node3D
   private Image noise;
   private float _time = 0;
   [Export]
-  public float offset_y = -2.5f;
+  public float offset_y = -2.5f * 1.5f;
 
   [FromServices]
   public void Inject(RandomNumberGeneratorService rng, GameEventManager gameEventManager, StatsManager statsManager)
