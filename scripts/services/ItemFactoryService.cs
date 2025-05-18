@@ -91,7 +91,7 @@ public class ItemFactoryService
                 new(
                     rng,
                     "Attached speed bonus of {0:N2}",
-                    0.02f, 0.05f, false,
+                    0.2f, 0.5f, false,
                     (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue }
                     ),
@@ -107,7 +107,7 @@ public class ItemFactoryService
                         new(){ Stat = Stat.WaterLevel, Mode = StatChangeMode.Relative, Amount = fixedValue }
                     ),
                     (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
-                        new(){ Stat = Stat.WaterLevel, Mode = StatChangeMode.Relative, Amount = fixedValue * -1 }
+                        new(){ Stat = Stat.WaterLevel, Mode = StatChangeMode.Relative, Amount = 0 }
                     )
                 )
             ] },
@@ -115,12 +115,12 @@ public class ItemFactoryService
                 new(
                     rng,
                     "Attached speed bonus of {0:N2}",
-                    -0.01f, -0.05f, false,
+                    -0.1f, -0.05f, false,
                     (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue }
                     ),
                     (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
-                        new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue * 1 }
+                        new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue * -1 }
                     )
                 ),
                 new(
@@ -131,7 +131,7 @@ public class ItemFactoryService
                         new(){ Stat = Stat.WaterLevel, Mode = StatChangeMode.Relative, Amount = fixedValue }
                     ),
                     (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
-                        new(){ Stat = Stat.WaterLevel, Mode = StatChangeMode.Relative, Amount = fixedValue * -1 }
+                        new(){ Stat = Stat.WaterLevel, Mode = StatChangeMode.Relative, Amount = 0 }
                     )
                 )
             ] }

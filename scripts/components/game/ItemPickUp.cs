@@ -10,7 +10,7 @@ public partial class ItemPickUp : Node3D
     [Export]
     float SPEED = 5f;
     [Export]
-    float VELOCITY = 2f;
+    float VELOCITY = 5f;
 
     private Vector3 _position;
     private bool _hovered = false;
@@ -58,7 +58,8 @@ public partial class ItemPickUp : Node3D
             //maybe
             // _position.X -= (SPEED/2) * (float)delta;
             Position = _position;
-            VELOCITY += 0.1f;
+            VELOCITY += 0.7f;
+            if (GlobalPosition.Y <= 4) State = ItemPickupState.Floating;
 
         }
 

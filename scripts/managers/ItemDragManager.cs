@@ -12,7 +12,7 @@ public partial class ItemDragManager : Node3D
   public bool Dragging { get; private set; }
   const float ITEM_GRABBED_SCALE = 0.8f;
   const float ITEM_SCALE_SMOOTHING = 0.5f;
-  const float ITEM_SNAP_SMOOTHING = 0.2f;
+  const float ITEM_SNAP_SMOOTHING = 0.3f;
   private Viewport _viewport;
   private Camera3D _camera;
   private ItemPickUp _item;
