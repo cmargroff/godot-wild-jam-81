@@ -38,6 +38,13 @@ text = "Ship of Theseus Simulator 2025"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Subtitle" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "(no we dont have a fancy title screen)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Menu" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
