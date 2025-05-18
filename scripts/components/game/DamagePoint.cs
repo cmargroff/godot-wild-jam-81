@@ -1,11 +1,12 @@
+using System;
 using Godot;
 using Microsoft.Extensions.DependencyInjection;
 using ShipOfTheseus2025;
-using ShipOfTheseus2025.Managers;
-using ShipOfTheseus2025.Interfaces;
 using ShipOfTheseus2025.Components.Game;
-using ShipOfTheseus2025.Util;
 using ShipOfTheseus2025.Enum;
+using ShipOfTheseus2025.Interfaces;
+using ShipOfTheseus2025.Managers;
+using ShipOfTheseus2025.Util;
 
 
 public partial class DamagePoint : Area3D, ISnapPoint
@@ -15,7 +16,14 @@ public partial class DamagePoint : Area3D, ISnapPoint
   public DamagePointState State;
   private MeshInstance3D _damage;
   private ItemPickUp _item;
-
+  public event Action LeakingChanged;
+  public bool Leaking
+  {
+    get
+    {
+      return State == DamagePointState.SnapEnable;
+    }
+  }
   public enum DamagePointState
   {
     SnapEnable,
@@ -33,7 +41,8 @@ public partial class DamagePoint : Area3D, ISnapPoint
     State = DamagePointState.SnapDisable;
     _dragManager = Globals.ServiceProvider.GetRequiredService<ItemDragManager>();
     _damage = GetNode<MeshInstance3D>("damage");
-    
+
+
   }
   public override void _MouseEnter()
   {
@@ -59,16 +68,17 @@ public partial class DamagePoint : Area3D, ISnapPoint
     State = DamagePointState.SnapDisable;
     _statsManager.ChangeStat(new()
     {
-        Stat = Stat.Buoyancy,
-        Amount = item.InventoryItem.Weight,
-        Mode = StatChangeMode.Relative
+      Stat = Stat.Buoyancy,
+      Amount = item.InventoryItem.Weight,
+      Mode = StatChangeMode.Relative
     });
-    foreach (ItemTrait trait in item.InventoryItem.Traits) 
+    foreach (ItemTrait trait in item.InventoryItem.Traits)
     {
-        trait.Apply(_statsManager);
+      trait.Apply(_statsManager);
     }
     _dragManager.Unsnap();
     _dragManager.EndDragItem();
+    LeakingChanged?.Invoke();
   }
 
   public void Enable()
@@ -77,12 +87,13 @@ public partial class DamagePoint : Area3D, ISnapPoint
     {
       _damage.Visible = true;
     }
-    else 
+    else
+
     {
       _item.Reparent(GetTree().Root, true);
       _item.Drop();
     }
     State = DamagePointState.SnapEnable;
-    
+    LeakingChanged?.Invoke();
   }
 }
