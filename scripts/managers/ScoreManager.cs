@@ -17,4 +17,17 @@ public partial class ScoreManager : Node
         Score = items.Sum(i => i.GoldValue);
         EmitSignal(SignalName.ScoreChanged, Score);
     }
+
+    public void AddGold(int gold)
+    {
+        Score += gold;
+        EmitSignal(SignalName.ScoreChanged, Score);
+    }
+
+    public void RemoveGold(int gold)
+    {
+        Score -= gold;
+        EmitSignal(SignalName.ScoreChanged, Score);
+    }
+
 }

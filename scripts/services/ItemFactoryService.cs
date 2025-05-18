@@ -29,7 +29,7 @@ public class ItemFactoryService
                 new(
                     rng,
                     "Attached speed bonus of [%placeholder%]",
-                    -0.01f, -0.05f,
+                    -0.05f, -0.01f,
                     (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue }
                     ), false
@@ -80,7 +80,7 @@ public class ItemFactoryService
                 new(
                     rng,
                     "Attached bailing bonus of [%placeholder%]",
-                    -0.2f, -0.5f,
+                    -2f, -2f,
                     (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.WaterLevel, Mode = StatChangeMode.Relative, Amount = fixedValue }
                     ), true

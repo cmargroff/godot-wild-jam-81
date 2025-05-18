@@ -16,6 +16,7 @@ material = ExtResource("3_leryn")
 script = ExtResource("1_5pph0")
 
 [node name="Ship" parent="." instance=ExtResource("2_26sbl")]
+unique_name_in_owner = true
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(0.971285, 0.0735628, -0.226262, -0.0343803, 0.984415, 0.172469, 0.235423, -0.159737, 0.958676, -7.36746, 14.59, 42.1539)
@@ -28,6 +29,7 @@ transform = Transform3D(1, 0, 0, 0, 0.340494, 0.940247, 0, -0.940247, 0.340494, 
 unique_name_in_owner = true
 process_mode = 1
 transform = Transform3D(50, -5.68434e-13, -9.93882e-22, 0, -2.18557e-06, 2, -5.68434e-13, -50, -8.74228e-08, -1.96497e-13, -7.55512e-07, -17.2841)
+visible = false
 mesh = SubResource("QuadMesh_5pph0")
 
 [node name="HUD" parent="." instance=ExtResource("3_26sbl")]
@@ -52,3 +54,7 @@ stream = ExtResource("6_k55y7")
 [node name="GameOver" parent="." instance=ExtResource("7_hfq8r")]
 unique_name_in_owner = true
 visible = false
+
+[node name="BreakTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 5.0

@@ -2,13 +2,15 @@ using Godot;
 using ShipOfTheseus2025.Managers;
 using ShipOfTheseus2025.Services;
 using ShipOfTheseus2025.Util;
+using System;
 using System.Collections.Generic;
 
 public partial class GameEventManager : Node
 {
+  public event Action GameEvent; 
   // times in seconds;
-  const float MIN_ENVIRONMENT_TIME = 10;
-  const float MAX_ENVIRONMENT_TIME = 60;
+  const float MIN_ENVIRONMENT_TIME = 5;
+  const float MAX_ENVIRONMENT_TIME = 15;
   const float MIN_ITEM_TIME = 1;
   const float MAX_ITEM_TIME = 15;
   private RandomNumberGeneratorService _rng;
@@ -16,7 +18,8 @@ public partial class GameEventManager : Node
   private Timer _itemTimer;
   private GameManager _gameManager;
   private ItemSpawnManager _spawnManager;
-    private SceneManager _sceneManager;
+  private SceneManager _sceneManager;
+
 
   [FromServices]
   public void Inject(RandomNumberGeneratorService rng, ItemSpawnManager spawnManager, GameManager gameManager, SceneManager sceneManager)
@@ -60,6 +63,7 @@ public partial class GameEventManager : Node
       _rng.GetFloatRange(MIN_ENVIRONMENT_TIME, MAX_ENVIRONMENT_TIME)
     );
     GD.Print($"Queueing environment event for {_environmentTimer.TimeLeft} seconds");
+    GameEvent?.Invoke();
   }
   public void QueueItemEvent()
   {

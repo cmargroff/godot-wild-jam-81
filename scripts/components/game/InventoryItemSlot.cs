@@ -5,19 +5,28 @@ using ShipOfTheseus2025.Components.Game;
 using ShipOfTheseus2025.Enum;
 using ShipOfTheseus2025.Interfaces;
 using ShipOfTheseus2025.Managers;
+using ShipOfTheseus2025.Util;
 
 public partial class InventoryItemSlot : TextureRect, ISnapPoint
 {
   private ItemDragManager _dragManager;
   private HoverPanelManager _hoverManager;
+  private ScoreManager _scoreManager;
   private TextureRect _icon;
   private ItemPickUp _item;
   public InventoryItem InventoryItem { get; set; }
-
+  // [FromServices]
+  // public void Inject(ItemDragManager dragManager, HoverPanelManager hoverManager, ScoreManager scoreManager)
+  // {
+  //   _dragManager = dragManager;
+  //   _hoverManager = hoverManager;
+  //   _scoreManager = scoreManager;
+  // }
   public override void _EnterTree()
   {
     _dragManager = Globals.ServiceProvider.GetRequiredService<ItemDragManager>();
     _hoverManager = Globals.ServiceProvider.GetRequiredService<HoverPanelManager>();
+    _scoreManager = Globals.ServiceProvider.GetRequiredService<ScoreManager>();
     _icon = GetNode<TextureRect>("%Icon");
     Connect(SignalName.MouseEntered, Callable.From(_MouseEntered));
     Connect(SignalName.MouseExited, Callable.From(_MouseExited));
@@ -68,6 +77,11 @@ public partial class InventoryItemSlot : TextureRect, ISnapPoint
       item.Attach();
       _dragManager.EndDragItem();
       _dragManager.Unsnap();
+      InventoryItem = item.InventoryItem;
+      var gold = InventoryItem.GoldValue;
+      GD.Print(gold);
+      _scoreManager.AddGold(gold);
+
     }
     _MouseEntered();
   }
@@ -78,6 +92,9 @@ public partial class InventoryItemSlot : TextureRect, ISnapPoint
     _item.Visible = true;
     _item.Grab();
     _dragManager.StartDragItem(_item);
+    InventoryItem = _item.InventoryItem;
+    var gold = InventoryItem.GoldValue;
+    _scoreManager.RemoveGold(gold);
     _item = null;
     
   }

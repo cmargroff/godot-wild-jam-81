@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Godot;
 using ShipOfTheseus2025.Enum;
 using ShipOfTheseus2025.Models;
 
@@ -30,6 +31,11 @@ public partial class StatsManager
       _stats[statChange.Stat] += statChange.Amount;
     }
     // some logic to limit the individual stats like cap water level at 100;
+    if (statChange.Stat == Stat.Speed)
+    {
+      GD.Print($"stats changed {statChange.Stat}");
+    
+    }
     StatChanged?.Invoke(statChange.Stat, _stats[statChange.Stat]);
   }
 

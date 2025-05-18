@@ -12,13 +12,15 @@ public partial class Ship : Node3D
 
   private RandomNumberGeneratorService _rng;
   private AnimationPlayer _animationPlayer;
+  private GameEventManager _eventManager;
   private MeshInstance3D _model;
   private Node3D _damagePoints;
   private List<DamagePoint> _pointsList = new();
   [FromServices]
-  public void Inject(RandomNumberGeneratorService rng)
+  public void Inject(RandomNumberGeneratorService rng, GameEventManager eventManager)
   {
     _rng = rng;
+    _eventManager = eventManager;
   }
   public override void _EnterTree()
   {
@@ -27,12 +29,13 @@ public partial class Ship : Node3D
     // _animationPlayer.CurrentAnimation = "rocking";
     _damagePoints = GetNode<Node3D>("%Damage points");
     GetDamagePoints();
-    
+
+    _eventManager.GameEvent += Break;
   }
-  public override void _Ready()
-  {
-    Break();
-  }
+  // public override void _Ready()
+  // {
+  //   Break();
+  // }
 
 
   private void GetDamagePoints()

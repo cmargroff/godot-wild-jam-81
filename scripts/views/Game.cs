@@ -53,6 +53,7 @@ public partial class Game : Node3D
   public override void _EnterTree()
   {
     _gameOverScreen = GetNode<GameOver>("GameOver");
+
     //used when the Game scene is loaded directly, otherwise this will be skipped
     if (_sceneManager is null)
     {
@@ -92,5 +93,7 @@ public partial class Game : Node3D
       _gameOverScreen.ShowScreen(true);
     }
   }
+
+
 
 }
