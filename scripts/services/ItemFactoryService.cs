@@ -9,7 +9,7 @@ using ShipOfTheseus2025.Services;
 
 public class ItemFactoryService
 {
-    private System.Collections.Generic.Dictionary<string, List<ItemTraitConfig>> ItemTraitLookup;
+    private System.Collections.Generic.Dictionary<string, List<ItemTrait>> ItemTraitLookup;
 
     private RandomNumberGeneratorService rng;
     private readonly StatsManager statsManager;
