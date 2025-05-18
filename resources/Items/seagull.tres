@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=4 format=3 uid="uid://5v6iujpa2o2q"]
+
+[ext_resource type="Texture2D" uid="uid://cstg56041th8h" path="res://assets/textures/items/seagull.png" id="1_4vt8q"]
+[ext_resource type="Script" uid="uid://chlt3chm3e8ap" path="res://scripts/resources/ItemResource.cs" id="1_it2ph"]
+[ext_resource type="PackedScene" uid="uid://bojpfhre0rnkj" path="res://components/items/Seagull.tscn" id="2_lnn7l"]
+
+[resource]
+script = ExtResource("1_it2ph")
+ItemName = "Seagull"
+Description = "An annoying bird"
+MinGoldValue = 1
+MaxGoldValue = 15
+GoldValueDistribution = 2
+MinWeight = 0.5
+MaxWeight = 2.0
+IconTexture = ExtResource("1_4vt8q")
+ItemScene = ExtResource("2_lnn7l")
+Disabled = false
+metadata/_custom_type_script = "uid://chlt3chm3e8ap"
