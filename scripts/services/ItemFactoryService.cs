@@ -42,7 +42,7 @@ public class ItemFactoryService
             {"Palm Leaf", [
                 new(
                     rng,
-                    "Attached speed bonus of [%placeholder%]",
+                    "Attached speed bonus of {0:N2}",
                     0.7f, 1.5f, false,
                     (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue }
@@ -55,7 +55,7 @@ public class ItemFactoryService
             {"Coconut", [
                 new(
                     rng,
-                    "Attached buoyancy bonus of [%placeholder%]",
+                    "Attached buoyancy bonus of {0:N2}",
                     0.02f, 0.05f, false,
                     (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.Buoyancy, Mode = StatChangeMode.Relative, Amount = fixedValue }
@@ -66,7 +66,7 @@ public class ItemFactoryService
                 ),
                 new(
                     rng,
-                    "Attached speed bonus of [%placeholder%]",
+                    "Attached speed bonus of {0:N2}",
                     -0.2f, -0.5f, false,
                     (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue }
@@ -79,7 +79,7 @@ public class ItemFactoryService
             {"Shark", [
                 new(
                     rng,
-                    "Attached speed bonus of [%placeholder%]",
+                    "Attached speed bonus of {0:N2}",
                     0.02f, 0.05f, false,
                     (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue }
@@ -90,7 +90,7 @@ public class ItemFactoryService
                 ),
                 new(
                     rng,
-                    "Attached bailing bonus of [%placeholder%]",
+                    "Attached bailing bonus of {0:N2}",
                     -0.2f, -0.5f, true,
                     (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.WaterLevel, Mode = StatChangeMode.Relative, Amount = fixedValue }
@@ -103,26 +103,17 @@ public class ItemFactoryService
             {"Orange", [
                 new(
                     rng,
-                    "Attached speed bonus of [%placeholder%]",
+                    "Attached speed bonus of {0:N2}",
                     -0.01f, -0.05f, false,
                     (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue }
                     ),
                     (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
-                        new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue * -1}
+                        new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue * 1 }
                     )
                 )
-            ] },
-            {
-            "Seagull",
-                [
-                    new(rng, "Speed bonus of {0:N2}", 0.01f, 0.05f,
-                        false,
-                        (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(new() { Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue }),
-                        (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(new() { Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue * -1 }))
-                ]
-            }
-    };
+            ] }
+        };
     }
 
     public ShipOfTheseus2025.Components.Game.InventoryItem GenerateItem(ItemResource itemResource)
@@ -142,7 +133,9 @@ public class ItemFactoryService
 
     private void AddItemTraits(ShipOfTheseus2025.Components.Game.InventoryItem item)
     {
-        item.Traits = ItemTraitLookup[item.Name];
+        ItemTraitLookup.TryGetValue(item.Name, out var value);
+        if (value is not null)
+            item.Traits = ItemTraitLookup[item.Name];
     }
 
     private int GetGoldValue(ItemResource itemResource)

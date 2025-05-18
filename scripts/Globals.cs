@@ -41,7 +41,7 @@ public partial class Globals : Node
     .AddSingleton(InjectNodeClass<GameEventManager>())
     .AddSingleton<InventoryManager>()
     .AddSingleton(InjectNodeClass<ItemDragManager>())
-    .AddSingleton<ItemSpawnManager>()
+    .AddTransient<ItemSpawnManager>()
     .AddSingleton(InjectNodeClass<PauseManager>())
     .AddSingleton<ItemFactoryService>()
     .AddSingleton(InjectNodeClass<HoverPanelManager>(true))

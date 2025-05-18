@@ -10,7 +10,7 @@ namespace ShipOfTheseus2025.Managers;
 public partial class ItemDragManager : Node3D
 {
   public bool Dragging { get; private set; }
-  const float ITEM_GRABBED_SCALE = 0.2f;
+  const float ITEM_GRABBED_SCALE = 0.005f;
   const float ITEM_SCALE_SMOOTHING = 0.5f;
   const float ITEM_SNAP_SMOOTHING = 0.2f;
   private Viewport _viewport;
@@ -25,7 +25,6 @@ public partial class ItemDragManager : Node3D
 
   public AudioStreamPlayer3D PickupAudioStreamPlayer { get; set; }
 
- 
   public override void _EnterTree()
   {
     _viewport = GetViewport();
@@ -69,7 +68,7 @@ public partial class ItemDragManager : Node3D
         _scale = targetScale;
       }
 
-      var dest = _snapped ? ((Area3D)_snapPoint).GlobalPosition : _camera.ProjectPosition(_viewport.GetMousePosition(), 4f);
+      var dest = _snapped ? ((Area3D)_snapPoint).GlobalPosition : _camera.ProjectPosition(_viewport.GetMousePosition(), 24f);
 
       var distance = _item.GlobalPosition.DistanceTo(dest);
       if (distance > Mathf.Epsilon)
@@ -107,7 +106,6 @@ public partial class ItemDragManager : Node3D
   {
     _snapped = false;
     _snapPoint = null;
-   
   }
 
   public ItemPickUp GetItem()

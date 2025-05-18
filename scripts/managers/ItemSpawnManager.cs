@@ -6,7 +6,7 @@ using ShipOfTheseus2025.Util;
 
 public partial class ItemSpawnManager : Node
 {
-    private Vector3 _position = new Vector3(20, 0, -6);
+    private Vector3 _position = new Vector3(30, 0, -6);
     private PackedScene _itemScene;
     private SceneManager _sceneManager;
     private ItemFactoryService _itemFactoryService;
@@ -21,6 +21,7 @@ public partial class ItemSpawnManager : Node
 
     public override void _EnterTree()
     {
+        Name = GetType().Name;
         _itemScene = GD.Load<PackedScene>("res://components/game/ItemPickUp.tscn");
     }
 
