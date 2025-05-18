@@ -25,12 +25,12 @@ public partial class SceneManager : Node3D
   private List<Preload> _preloadQueue;
   private string _nextName;
   private bool _processing = false;
-  private IServiceProvider _serviceProvider;
-  [FromServices]
-  public void Inject(IServiceProvider serviceProvider)
-  {
-    _serviceProvider = serviceProvider;
-  }
+  //private IServiceProvider _serviceProvider;
+  //[FromServices]
+  //public void Inject(IServiceProvider serviceProvider)
+  //{
+  //  _serviceProvider = serviceProvider;
+  //}
   public override void _Ready()
   {
     GD.Print(GetType().Name, " Ready");
@@ -58,7 +58,7 @@ public partial class SceneManager : Node3D
         {
           if (!resource.Value.IsQueuedForDeletion())
           {
-            resource.Value.Free();
+            //resource.Value.Free(); //resources are automatically freed when there are 0 references to them
           }
         }
       }
@@ -174,7 +174,7 @@ public partial class SceneManager : Node3D
     {
       // load the next scene and append it to the manager
       Globals.CreateSceneScope();
-      var scene = _serviceProvider.GetKeyedService<Node>(_nextName);
+      var scene = Globals.ServiceProvider.GetKeyedService<Node>(_nextName);
       scene.Connect(Node.SignalName.Ready, Callable.From(SceneFinishedLoading));
       AddChild(scene);
       _currentScene = scene;

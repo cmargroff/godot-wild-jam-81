@@ -1,4 +1,3 @@
-using System.Reflection;
 using Godot;
 using ShipOfTheseus2025.Managers;
 using ShipOfTheseus2025.Util;
@@ -13,6 +12,7 @@ public partial class GameOver : Control
     private Label _label;
     private Button _home;
     private Button _restart;
+
     [FromServices]
     public void Inject(ScoreManager scoreManager, SceneManager sceneManager)
     {
@@ -23,8 +23,7 @@ public partial class GameOver : Control
     public override void _EnterTree()
     {
         _scoreLabel = GetNode<Label>("%Score");
-        _label = GetNode<Label>("%Label");
-        
+        _label = GetNode<Label>("%Label");        
     }
 
     public void ShowScreen(bool win)
@@ -48,5 +47,6 @@ public partial class GameOver : Control
     {
         //code to restart game
         GD.Print("restart");
+        _sceneManager.ChangeScene("Game");
     }
 }

@@ -28,27 +28,28 @@ public partial class Globals : Node
   public override void _EnterTree()
   {
     var services = new ServiceCollection()
-    .AddSingleton(InjectNodeClass<GameManager>())
-    .AddSingleton<PlayerDataStore>()
+    .AddScoped(InjectNodeClass<GameManager>())
+    .AddScoped<PlayerDataStore>()
     .AddSingleton<ConfigStore>()
     .AddSingleton<SettingsStore>()
     .AddSingleton<ConfigManager>()
-    .AddSingleton(InjectNodeClass<AudioManager>())
-    .AddSingleton(InjectNodeClass<ScoreManager>())
+    .AddScoped(InjectNodeClass<AudioManager>())
+    .AddScoped(InjectNodeClass<ScoreManager>())
     .AddSingleton<RandomNumberGeneratorService>()
     .AddSingleton(InjectInstantiatedPackedScene<SceneManager>("res://views/SceneManager.tscn"))
-    .AddSingleton<StatsManager>()
-    .AddSingleton(InjectNodeClass<GameEventManager>())
-    .AddSingleton<InventoryManager>()
-    .AddSingleton(InjectNodeClass<ItemDragManager>())
+    .AddScoped<StatsManager>()
+    .AddScoped(InjectNodeClass<GameEventManager>())
+    .AddScoped<InventoryManager>()
+    .AddScoped(InjectNodeClass<ItemDragManager>())
     .AddTransient<ItemSpawnManager>()
-    .AddSingleton(InjectNodeClass<PauseManager>())
+    .AddScoped(InjectNodeClass<PauseManager>())
     .AddSingleton<ItemFactoryService>()
-    .AddSingleton(InjectNodeClass<HoverPanelManager>(true))
+    .AddScoped(InjectNodeClass<HoverPanelManager>(true))
     ;
 
     AddScenes(services);
     _serviceProvider = services.BuildServiceProvider();
+    CreateSceneScope();
   }
 
   private Func<IServiceProvider, T> InjectNodeClass<T>(bool autoParent = false) where T : Node, new()
@@ -87,10 +88,7 @@ public partial class Globals : Node
     var objType = obj.GetType();
     var methods = objType
       .GetMethods(BindingFlags.Instance | BindingFlags.Public)
-      .Where(method =>
-      {
-        return method.GetCustomAttribute<FromServicesAttribute>() != null;
-      });
+      .Where(method => method.GetCustomAttribute<FromServicesAttribute>() != null);
 
     foreach (var method in methods)
     {
@@ -135,14 +133,14 @@ public partial class Globals : Node
 
   public static void CreateSceneScope()
   {
+    if (_currentScope is not null)
+        throw new InvalidOperationException("You must close the service scope before opening a new one. Call " + nameof(CloseSceneScope) + "().");
     _currentScope = _serviceProvider.CreateScope();
   }
 
   public static void CloseSceneScope()
   {
-    if (_currentScope != null)
-    {
-      _currentScope.Dispose();
-    }
+    _currentScope?.Dispose();
+    _currentScope = null;
   }
 }
