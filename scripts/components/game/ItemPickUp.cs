@@ -207,7 +207,6 @@ public partial class ItemPickUp : Node3D
             Mathf.RoundToInt(uv_x * (noise.GetWidth() - 1)),
             Mathf.RoundToInt(uv_y * (noise.GetHeight() - 1))
         );
-        GD.Print((uv_x, pixel_pos.X));
         return noise.GetPixelv(pixel_pos).R * noise_strength;
     }
 }
