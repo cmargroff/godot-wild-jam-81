@@ -14,13 +14,14 @@ public partial class InventoryManager
     private int _inventorySize = 6;
     [Export]
     Texture2D blankIcon;
+    private StatsManager _statsManager;
 
     private List<InventoryItem> _items;
 
-    public InventoryManager()
+    public InventoryManager(StatsManager statsManager)
     {
         _items = new();
-
+        _statsManager = statsManager;
         InventoryUpdated?.Invoke(_items);
         
     }
@@ -30,6 +31,12 @@ public partial class InventoryManager
         if (_items.Count < _inventorySize)
         {
             _items.Add(item);
+            _statsManager.ChangeStat(new()
+            {
+                Stat = Enum.Stat.Buoyancy,
+                Mode = Enum.StatChangeMode.Relative,
+                Amount = item.Weight
+            });
             InventoryUpdated?.Invoke(_items);
         }
        
@@ -39,8 +46,29 @@ public partial class InventoryManager
     {
         if (index < 0 || index >= _items.Count) return;
 
+        InventoryItem item = _items[index];
         _items.RemoveAt(index);
+        _statsManager.ChangeStat(new()
+        {
+            Stat = Enum.Stat.Buoyancy,
+            Mode = Enum.StatChangeMode.Relative,
+            Amount = item.Weight * -1
+        });
         InventoryUpdated?.Invoke(_items);
+    }
+
+    public void RemoveInventoryItem(InventoryItem item)
+    {
+        if (_items.Remove(item))
+        {
+            _statsManager.ChangeStat(new()
+            {
+                Stat = Enum.Stat.Buoyancy,
+                Mode = Enum.StatChangeMode.Relative,
+                Amount = item.Weight * -1
+            });
+            InventoryUpdated?.Invoke(_items);
+        }
     }
 
     public InventoryItem GetInventoryItem(int index)
