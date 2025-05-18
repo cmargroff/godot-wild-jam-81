@@ -94,21 +94,7 @@ public class ItemFactoryService
                     (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue }
                     ), false
-                )          
-                new(){
-                    Label = "Attached speed bonus of [%placeholder%]",
-                    Min = -0.03f,
-                    Max = -0.1f,
-                    AttachCallback = IncreaseSpeedCallback
-                }
-            ] },
-            { "Seagull", [
-                new(){
-                    Label = "Speed bonus of [%placeholder%]",
-                    Min = 0.05f,
-                    Max = 0.2f,
-                    AttachCallback = IncreaseSpeedCallback
-                }
+                )
             ] }
         };
     }
@@ -135,7 +121,10 @@ public class ItemFactoryService
 
     private void AddItemTraits(InventoryItem item)
     {
-        item.Traits = ItemTraitLookup[item.Name].Select(conf => ItemTrait.FromConfig(rng, conf)).ToList();
+        //item.Traits = ItemTraitLookup[item.Name].Select(conf => ItemTrait.FromConfig(rng, conf)).ToList();
+        ItemTraitLookup.TryGetValue(item.Name, out var value);
+        if (value is not null)
+            item.Traits = ItemTraitLookup[item.Name];
     }
 
     private int GetGoldValue(ItemResource itemResource)
