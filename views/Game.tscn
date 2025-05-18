@@ -30,6 +30,18 @@ transform = Transform3D(1, 0, 0, 0, 0.340494, 0.940247, 0, -0.940247, 0.340494, 
 [node name="Water" parent="." instance=ExtResource("5_lah3o")]
 unique_name_in_owner = true
 
+[node name="Water2" parent="." instance=ExtResource("5_lah3o")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -200)
+
+[node name="Water3" parent="." instance=ExtResource("5_lah3o")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, -200)
+
+[node name="Water4" parent="." instance=ExtResource("5_lah3o")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 0)
+
 [node name="WorldEnvironment" parent="." instance=ExtResource("6_cqtd1")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
