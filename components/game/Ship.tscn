@@ -3401,3 +3401,25 @@ skeleton = NodePath("")
 transform = Transform3D(1.47598e-07, -0.606169, 0.125733, -0.619071, -1.45459e-07, 2.54609e-08, 4.61244e-09, -0.125733, -0.606169, -3.48933, 1.9152, 1.82026)
 mesh = SubResource("ArrayMesh_6oc3e")
 skeleton = NodePath("")
+
+[node name="WaterSamplers" type="Node3D" parent="."]
+
+[node name="PitchSamplers" type="Node3D" parent="WaterSamplers"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.77169, 0)
+
+[node name="0" type="Marker3D" parent="WaterSamplers/PitchSamplers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.05246, 0, 0)
+
+[node name="1" type="Marker3D" parent="WaterSamplers/PitchSamplers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.728, 0, 0)
+
+[node name="RollSamplers" type="Node3D" parent="WaterSamplers"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.772, 0)
+
+[node name="0" type="Marker3D" parent="WaterSamplers/RollSamplers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.33275)
+
+[node name="1" type="Marker3D" parent="WaterSamplers/RollSamplers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.333)
