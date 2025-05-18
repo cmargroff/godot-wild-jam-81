@@ -121,6 +121,10 @@ public partial class ItemPickUp : Node3D
                 _dragManager.StartDragItem(this);
                 State = ItemPickupState.Held;
                 _area.InputRayPickable = false;
+                if (InventoryItem.Name == "Seagull")
+                {
+                    InventoryItem.ItemScene.GetChild<Node3D>(1).Position = Vector3.Zero;
+                }
                 _hoverManager.ShowItem(InventoryItem, HoverType.Item);
                 GD.Print("hover page");
 
