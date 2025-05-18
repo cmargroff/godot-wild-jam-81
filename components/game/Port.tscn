@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctigml18m3xj8"]
+
+[ext_resource type="PackedScene" uid="uid://s8oleubiqxox" path="res://assets/models/port/port.glb" id="1_tjer2"]
+[ext_resource type="Script" uid="uid://cgmwbdi14nowq" path="res://scripts/components/game/Port.cs" id="2_ceyby"]
+
+[node name="Port" instance=ExtResource("1_tjer2")]
+script = ExtResource("2_ceyby")
