@@ -1,14 +1,14 @@
+using System;
 using Godot;
 using ShipOfTheseus2025.Enum;
 using ShipOfTheseus2025.Managers;
 using ShipOfTheseus2025.Util;
-using System;
 
 namespace ShipOfTheseus2025.Components.Game;
 
 public partial class TravelProgress : Control
 {
-    private ProgressBar _progressBar;
+    private TextureProgressBar _progressBar;
 
     private StatsManager _statsManager;
 
@@ -30,8 +30,9 @@ public partial class TravelProgress : Control
 
     public override void _Ready()
     {
-        _progressBar = GetNode<ProgressBar>("%TravelProgressBar");
+        _progressBar = GetNode<TextureProgressBar>("%TravelProgressBar");
     }
 
- 
+
+
 }
