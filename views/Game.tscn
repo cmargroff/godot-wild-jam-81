@@ -14,7 +14,7 @@
 script = ExtResource("1_5pph0")
 
 [node name="Camera" type="Camera3D" parent="."]
-transform = Transform3D(0.973179, 0.0395522, -0.226624, 0, 0.985109, 0.171929, 0.23005, -0.167318, 0.958687, -5.34206, 16.6861, 33.1937)
+transform = Transform3D(0.973179, 0.0395523, -0.226624, 0, 0.985109, 0.171929, 0.23005, -0.167318, 0.958688, -5.34206, 16.6861, 35.8802)
 fov = 44.0
 
 [node name="Ship" parent="." instance=ExtResource("2_26sbl")]

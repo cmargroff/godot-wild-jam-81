@@ -54,7 +54,7 @@ public class ItemFactoryService
                 new(
                     rng,
                     "Attached bailing bonus of {0:N2}",
-                    0.2f, 0.5f, true,
+                    -0.2f, -0.5f, true,
                     (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.WaterLevel, Mode = StatChangeMode.Relative, Amount = fixedValue }
                     ),

@@ -64,7 +64,7 @@ public partial class ItemPickUp : Node3D
         }
 
 
-        if (GlobalPosition.X <= -30.0f || GlobalPosition.Y <= -5)
+        if (GlobalPosition.X <= -30.0f || GlobalPosition.Y <= -10)
         {
             QueueFree();
         }
