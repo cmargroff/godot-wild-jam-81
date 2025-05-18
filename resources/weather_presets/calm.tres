@@ -1,0 +1,31 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://uwxvkssgisvb"]
+
+[ext_resource type="Script" uid="uid://5uun48tsw3lq" path="res://scripts/resources/WeatherType.cs" id="1_3fru6"]
+[ext_resource type="Texture2D" uid="uid://q5q1u3a8lm51" path="res://resources/weather_presets/WeatherCurveTexture.tres" id="1_myvdl"]
+
+[resource]
+script = ExtResource("1_3fru6")
+noise1_scale = 400.0
+noise2_scale = 200.0
+noise3_scale = 50.0
+noise1_speed = Vector2(0.01, 0)
+noise2_speed = Vector2(0.01, 0.01)
+noise3_speed = Vector2(-0.01, -0.03)
+noise1_strength = 10.0
+noise2_strength = 2.0
+noise3_strength = 0.3
+fresnel_color = Color(0.2, 0.63, 0.47, 1)
+color_deep = Color(0, 0.6, 0.47, 1)
+color_shallow = Color(0, 0.81, 0.6, 1)
+clouds_density = 0.4
+clouds_light_color = Color(1, 1, 1, 1)
+top_color = Color(0.73, 0.92, 1, 1)
+bottom_color = Color(0.32, 0.74, 0.92, 1)
+sun_scatter = Color(0.3, 0.3, 0.3, 1)
+light_color = Color(1, 1, 1, 1)
+light_energy = 1.0
+is_raining = false
+rain_amount = 1000
+curve_r = ExtResource("1_myvdl")
+curve_g = ExtResource("1_myvdl")
+curve_b = ExtResource("1_myvdl")

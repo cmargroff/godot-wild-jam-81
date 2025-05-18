@@ -1,0 +1,6 @@
+[gd_resource type="CurveTexture" load_steps=2 format=3 uid="uid://q5q1u3a8lm51"]
+
+[ext_resource type="Curve" uid="uid://bm5inpfs0wnjg" path="res://resources/weather_presets/WeatherCurve.tres" id="1_ncmge"]
+
+[resource]
+curve = ExtResource("1_ncmge")

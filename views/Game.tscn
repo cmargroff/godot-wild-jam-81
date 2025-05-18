@@ -1,17 +1,27 @@
-[gd_scene load_steps=10 format=3 uid="uid://cs2ybcc1lpqhc"]
+[gd_scene load_steps=15 format=3 uid="uid://cs2ybcc1lpqhc"]
 
 [ext_resource type="Script" uid="uid://wiwsb8d1e7fq" path="res://scripts/views/Game.cs" id="1_5pph0"]
-[ext_resource type="PackedScene" uid="uid://cxyf4q4egqw6k" path="res://components/game/Ship.tscn" id="2_26sbl"]
+[ext_resource type="PackedScene" path="res://components/game/Ship.tscn" id="2_26sbl"]
+[ext_resource type="Resource" uid="uid://uwxvkssgisvb" path="res://resources/weather_presets/calm.tres" id="2_aus0g"]
+[ext_resource type="Script" uid="uid://5uun48tsw3lq" path="res://scripts/resources/WeatherType.cs" id="2_xkg38"]
 [ext_resource type="PackedScene" uid="uid://lw36b2co12mu" path="res://components/game/HUD.tscn" id="3_26sbl"]
-[ext_resource type="PackedScene" uid="uid://b0ifm6knh2ypk" path="res://components/game/PauseMenu.tscn" id="4_26sbl"]
+[ext_resource type="Resource" uid="uid://dyffb5xpkqn3h" path="res://resources/weather_presets/red.tres" id="3_xkg38"]
+[ext_resource type="PackedScene" path="res://components/game/PauseMenu.tscn" id="4_26sbl"]
+[ext_resource type="Resource" uid="uid://d1fapgikx2bcv" path="res://resources/weather_presets/storm.tres" id="4_mk44f"]
 [ext_resource type="AudioStream" uid="uid://80uic5ew3hph" path="res://assets/audio/music/Pirate 2.ogg" id="5_k55y7"]
-[ext_resource type="PackedScene" uid="uid://cqpcvpq350dvi" path="res://components/game/Water.tscn" id="5_lah3o"]
-[ext_resource type="PackedScene" uid="uid://wmg6ljmyxk7y" path="res://components/game/WorldEnvironment.tscn" id="6_cqtd1"]
+[ext_resource type="PackedScene" path="res://components/game/Water.tscn" id="5_lah3o"]
+[ext_resource type="PackedScene" path="res://components/game/WorldEnvironment.tscn" id="6_cqtd1"]
 [ext_resource type="AudioStream" uid="uid://p51ofnqbqlij" path="res://resources/audio/item_pickup_audio_stream_randomizer.tres" id="6_k55y7"]
-[ext_resource type="PackedScene" uid="uid://eclw6x7704g" path="res://views/GameOver.tscn" id="7_hfq8r"]
+[ext_resource type="PackedScene" path="res://views/GameOver.tscn" id="7_hfq8r"]
+[ext_resource type="PackedScene" path="res://components/game/rain.tscn" id="7_kcxve"]
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_5pph0")
+WeatherPresets = Dictionary[String, ExtResource("2_xkg38")]({
+"Calm": ExtResource("2_aus0g"),
+"Red": ExtResource("3_xkg38"),
+"Storm": ExtResource("4_mk44f")
+})
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(0.973179, 0.0395522, -0.226624, 0, 0.985109, 0.171929, 0.23005, -0.167318, 0.958687, -5.34206, 16.6861, 33.1937)
@@ -31,6 +41,9 @@ transform = Transform3D(1, 0, 0, 0, 0.340494, 0.940247, 0, -0.940247, 0.340494, 
 unique_name_in_owner = true
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("6_cqtd1")]
+
+[node name="rain" parent="." instance=ExtResource("7_kcxve")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 3.651, 74.779, -33.427)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

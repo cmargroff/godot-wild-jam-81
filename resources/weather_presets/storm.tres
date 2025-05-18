@@ -1,0 +1,31 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://d1fapgikx2bcv"]
+
+[ext_resource type="Script" uid="uid://5uun48tsw3lq" path="res://scripts/resources/WeatherType.cs" id="1_ppdra"]
+[ext_resource type="Texture2D" uid="uid://q5q1u3a8lm51" path="res://resources/weather_presets/WeatherCurveTexture.tres" id="1_x5n1n"]
+
+[resource]
+script = ExtResource("1_ppdra")
+noise1_scale = 300.0
+noise2_scale = 200.0
+noise3_scale = 50.0
+noise1_speed = Vector2(0.01, 0)
+noise2_speed = Vector2(0.01, 0.01)
+noise3_speed = Vector2(-0.01, -0.03)
+noise1_strength = 10.0
+noise2_strength = 4.0
+noise3_strength = 0.3
+fresnel_color = Color(0.145098, 0.560784, 0.901961, 1)
+color_deep = Color(0.172549, 0.172549, 0.458824, 1)
+color_shallow = Color(0.0901961, 0.376471, 0.772549, 1)
+clouds_density = 0.7
+clouds_light_color = Color(0.196078, 0.196078, 0.196078, 1)
+top_color = Color(0.0784314, 0.105882, 0.137255, 1)
+bottom_color = Color(0.0980392, 0.117647, 0.196078, 1)
+sun_scatter = Color(0.180392, 0.180392, 0.180392, 1)
+light_color = Color(1, 1, 1, 1)
+light_energy = 0.0
+is_raining = true
+rain_amount = 1000
+curve_r = ExtResource("1_x5n1n")
+curve_g = ExtResource("1_x5n1n")
+curve_b = ExtResource("1_x5n1n")

@@ -1,0 +1,31 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dyffb5xpkqn3h"]
+
+[ext_resource type="Script" uid="uid://5uun48tsw3lq" path="res://scripts/resources/WeatherType.cs" id="1_bi3ae"]
+[ext_resource type="Texture2D" uid="uid://q5q1u3a8lm51" path="res://resources/weather_presets/WeatherCurveTexture.tres" id="1_nvpas"]
+
+[resource]
+script = ExtResource("1_bi3ae")
+noise1_scale = 400.0
+noise2_scale = 200.0
+noise3_scale = 50.0
+noise1_speed = Vector2(0.01, 0)
+noise2_speed = Vector2(0.01, 0.01)
+noise3_speed = Vector2(-0.01, -0.03)
+noise1_strength = 5.0
+noise2_strength = 2.0
+noise3_strength = 0.3
+fresnel_color = Color(0.698039, 0.45098, 0.623529, 1)
+color_deep = Color(0.945098, 0, 0.286275, 1)
+color_shallow = Color(1, 0.533333, 0.505882, 1)
+clouds_density = 0.621
+clouds_light_color = Color(1, 0.839216, 0.870588, 1)
+top_color = Color(0.972549, 0.894118, 0.976471, 1)
+bottom_color = Color(0.32, 0.74, 0.92, 1)
+sun_scatter = Color(0.3, 0.3, 0.3, 1)
+light_color = Color(1, 0.917647, 0.917647, 1)
+light_energy = 1.0
+is_raining = false
+rain_amount = 1000
+curve_r = ExtResource("1_nvpas")
+curve_g = ExtResource("1_nvpas")
+curve_b = ExtResource("1_nvpas")
