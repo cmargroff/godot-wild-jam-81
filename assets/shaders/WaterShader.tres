@@ -1,0 +1,136 @@
+[gd_resource type="VisualShader" load_steps=21 format=3 uid="uid://c42hncv2f63k"]
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_a6qxr"]
+parameter_name = "noise3_normal"
+texture_type = 2
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_siuit"]
+source = 5
+
+[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_gjmqr"]
+linked_parent_graph_frame = 21
+size = Vector2(520, 260)
+expression = "	depth = 2.0 * depth - 1.0;
+	return near * far / (far + depth * (near - far));"
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_00n5k"]
+parameter_name = "DEPTH_TEXTURE"
+texture_source = 2
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_7sgvv"]
+output_port_for_preview = 0
+expanded_output_ports = [0]
+source = 5
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_aa2y3"]
+input_name = "screen_uv"
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_lc1t7"]
+parameter_name = "near"
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_w7iro"]
+parameter_name = "far"
+
+[sub_resource type="VisualShaderNodeFrame" id="VisualShaderNodeFrame_t5pnj"]
+size = Vector2(600, 341)
+title = "Edge"
+attached_nodes = PackedInt32Array(15)
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_wmpn0"]
+source = 5
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_xp5w6"]
+parameter_name = "noise2"
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_2b4t4"]
+source = 5
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_qhew3"]
+parameter_name = "noise1_normal"
+texture_type = 2
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_l8ss2"]
+source = 5
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_5ohoh"]
+parameter_name = "noise4"
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_k82mp"]
+source = 5
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_f8aes"]
+parameter_name = "noise3"
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_nx6dw"]
+source = 5
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_amtoi"]
+parameter_name = "noise2_normal"
+texture_type = 2
+
+[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_wkhw8"]
+size = Vector2(520, 260)
+expression = "	depth = 2.0 * depth - 1.0;
+	return near * far / (far + depth * (near - far));"
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+
+
+"
+nodes/vertex/0/position = Vector2(-1400, -540)
+nodes/vertex/2/node = SubResource("VisualShaderNodeTexture_l8ss2")
+nodes/vertex/2/position = Vector2(-2262.84, -662.272)
+nodes/vertex/3/node = SubResource("VisualShaderNodeTexture2DParameter_5ohoh")
+nodes/vertex/3/position = Vector2(-2622.84, -662.272)
+nodes/vertex/4/node = SubResource("VisualShaderNodeTexture_k82mp")
+nodes/vertex/4/position = Vector2(-2260, 60)
+nodes/vertex/5/node = SubResource("VisualShaderNodeTexture2DParameter_f8aes")
+nodes/vertex/5/position = Vector2(-2620, 60)
+nodes/vertex/6/node = SubResource("VisualShaderNodeTexture_nx6dw")
+nodes/vertex/6/position = Vector2(-2260, -300)
+nodes/vertex/7/node = SubResource("VisualShaderNodeTexture2DParameter_amtoi")
+nodes/vertex/7/position = Vector2(-2620, -300)
+nodes/vertex/8/node = SubResource("VisualShaderNodeExpression_wkhw8")
+nodes/vertex/8/position = Vector2(-1700, -880)
+nodes/vertex/8/size = Vector2(520, 260)
+nodes/vertex/8/input_ports = "0,0,depth;1,0,near;2,0,far;"
+nodes/vertex/8/output_ports = "0,0,output0;"
+nodes/vertex/8/expression = "	depth = 2.0 * depth - 1.0;
+	return near * far / (far + depth * (near - far));"
+nodes/vertex/connections = PackedInt32Array(3, 0, 2, 2, 5, 0, 4, 2, 7, 0, 6, 2)
+nodes/fragment/0/position = Vector2(-180, -140)
+nodes/fragment/4/node = SubResource("VisualShaderNodeTexture_wmpn0")
+nodes/fragment/4/position = Vector2(-1740, 320)
+nodes/fragment/5/node = SubResource("VisualShaderNodeTexture2DParameter_xp5w6")
+nodes/fragment/5/position = Vector2(-2100, 320)
+nodes/fragment/8/node = SubResource("VisualShaderNodeTexture_2b4t4")
+nodes/fragment/8/position = Vector2(-1740, -40)
+nodes/fragment/9/node = SubResource("VisualShaderNodeTexture2DParameter_qhew3")
+nodes/fragment/9/position = Vector2(-2100, -40)
+nodes/fragment/12/node = SubResource("VisualShaderNodeTexture2DParameter_a6qxr")
+nodes/fragment/12/position = Vector2(-2100, 700)
+nodes/fragment/13/node = SubResource("VisualShaderNodeTexture_siuit")
+nodes/fragment/13/position = Vector2(-1740, 700)
+nodes/fragment/15/node = SubResource("VisualShaderNodeExpression_gjmqr")
+nodes/fragment/15/position = Vector2(-2080, -620)
+nodes/fragment/15/size = Vector2(520, 260)
+nodes/fragment/15/input_ports = "0,0,depth;1,0,near;2,0,far;"
+nodes/fragment/15/output_ports = "0,0,output0;"
+nodes/fragment/15/expression = "	depth = 2.0 * depth - 1.0;
+	return near * far / (far + depth * (near - far));"
+nodes/fragment/16/node = SubResource("VisualShaderNodeTexture2DParameter_00n5k")
+nodes/fragment/16/position = Vector2(-3020, -620)
+nodes/fragment/17/node = SubResource("VisualShaderNodeTexture_7sgvv")
+nodes/fragment/17/position = Vector2(-2580, -760)
+nodes/fragment/18/node = SubResource("VisualShaderNodeInput_aa2y3")
+nodes/fragment/18/position = Vector2(-3000, -780)
+nodes/fragment/19/node = SubResource("VisualShaderNodeFloatParameter_lc1t7")
+nodes/fragment/19/position = Vector2(-2620, -280)
+nodes/fragment/20/node = SubResource("VisualShaderNodeFloatParameter_w7iro")
+nodes/fragment/20/position = Vector2(-2620, -80)
+nodes/fragment/21/node = SubResource("VisualShaderNodeFrame_t5pnj")
+nodes/fragment/21/position = Vector2(-2120, -660)
+nodes/fragment/connections = PackedInt32Array(5, 0, 4, 2, 9, 0, 8, 2, 12, 0, 13, 2, 16, 0, 17, 2, 18, 0, 17, 0, 17, 1, 15, 0, 19, 0, 15, 1, 20, 0, 15, 2)

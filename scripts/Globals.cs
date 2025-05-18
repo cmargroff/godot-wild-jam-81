@@ -45,6 +45,7 @@ public partial class Globals : Node
     .AddScoped(InjectNodeClass<PauseManager>())
     .AddSingleton<ItemFactoryService>()
     .AddScoped(InjectNodeClass<HoverPanelManager>(true))
+    .AddScoped(InjectNodeClass<EnvironmentManager>(true))
     ;
 
     AddScenes(services);
@@ -134,7 +135,7 @@ public partial class Globals : Node
   public static void CreateSceneScope()
   {
     if (_currentScope is not null)
-        throw new InvalidOperationException("You must close the service scope before opening a new one. Call " + nameof(CloseSceneScope) + "().");
+      throw new InvalidOperationException("You must close the service scope before opening a new one. Call " + nameof(CloseSceneScope) + "().");
     _currentScope = _serviceProvider.CreateScope();
   }
 

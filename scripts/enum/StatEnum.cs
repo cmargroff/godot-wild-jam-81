@@ -5,5 +5,6 @@ public enum Stat
   WaterLevel,
   Speed,
   Buoyancy,
-  Progress
+  Progress,
+  WaterNoiseTime,
 }
