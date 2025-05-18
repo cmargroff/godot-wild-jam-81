@@ -3007,6 +3007,7 @@ transform = Transform3D(1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0, 1, -6.70766
 
 [node name="damage" type="MeshInstance3D" parent="Damage points/DamagePoint"]
 transform = Transform3D(-1, 1.49012e-08, -8.74228e-08, 1.49012e-08, 1, 1.3027e-15, 8.74228e-08, 0, -1, 8.53389, -0.11617, -3.3546)
+visible = false
 mesh = SubResource("ArrayMesh_n6q7w")
 skeleton = NodePath("")
 
@@ -3015,6 +3016,7 @@ transform = Transform3D(1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0, 1, -4.21155
 
 [node name="damage" type="MeshInstance3D" parent="Damage points/DamagePoint2"]
 transform = Transform3D(-1, 1.49012e-08, -8.74228e-08, 1.49012e-08, 1, 1.3027e-15, 8.74228e-08, 0, -1, 6.03778, 0.104648, -3.5394)
+visible = false
 mesh = SubResource("ArrayMesh_cj15s")
 skeleton = NodePath("")
 
@@ -3023,6 +3025,7 @@ transform = Transform3D(1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0, 1, 1.50642,
 
 [node name="damage" type="MeshInstance3D" parent="Damage points/DamagePoint3"]
 transform = Transform3D(-1, 1.49012e-08, -8.74228e-08, 1.49012e-08, 1, 1.3027e-15, 8.74228e-08, 0, -1, 0.319807, 0.282126, -3.46107)
+visible = false
 mesh = SubResource("ArrayMesh_yidhc")
 skeleton = NodePath("")
 
@@ -3031,6 +3034,7 @@ transform = Transform3D(1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0, 1, 5.98514,
 
 [node name="damage" type="MeshInstance3D" parent="Damage points/DamagePoint4"]
 transform = Transform3D(-1, 1.49012e-08, -8.74228e-08, 1.49012e-08, 1, 1.3027e-15, 8.74228e-08, 0, -1, -0.208704, -0.232827, -0.0756726)
+visible = false
 mesh = SubResource("ArrayMesh_e4sla")
 skeleton = NodePath("")
 

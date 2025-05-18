@@ -1,8 +1,9 @@
+using System;
+using System.Collections.Generic;
 using Godot;
 using ShipOfTheseus2025.Managers;
 using ShipOfTheseus2025.Services;
 using ShipOfTheseus2025.Util;
-using System.Collections.Generic;
 
 public partial class GameEventManager : Node
 {
@@ -16,7 +17,9 @@ public partial class GameEventManager : Node
   private Timer _itemTimer;
   private GameManager _gameManager;
   private ItemSpawnManager _spawnManager;
-    private SceneManager _sceneManager;
+  private SceneManager _sceneManager;
+
+  public event Action EnvironmentEvent;
 
   [FromServices]
   public void Inject(RandomNumberGeneratorService rng, ItemSpawnManager spawnManager, GameManager gameManager, SceneManager sceneManager)
@@ -80,6 +83,7 @@ public partial class GameEventManager : Node
     GD.Print("Dispatching environment event");
     QueueEnvironmentEvent();
     // _evironmentManager.Start(identifier);
+    EnvironmentEvent?.Invoke();
   }
   public void DispatchItemEvent()
   {
@@ -88,20 +92,20 @@ public partial class GameEventManager : Node
     string item = null;
     if (_gameManager.EnabledItems.Count > 0)
     {
-        do
+      do
+      {
+        item = _gameManager.EnabledItems[_rng.GetIntRange(0, _gameManager.EnabledItems.Count - 1)];
+        if (_sceneManager.PreloadedResources is null ||
+            !_sceneManager.PreloadedResources.TryGetValue("Items", out Dictionary<string, Resource> itemDict) ||
+            !itemDict.TryGetValue(item, out Resource itemResource) || itemResource is null)
         {
-            item = _gameManager.EnabledItems[_rng.GetIntRange(0, _gameManager.EnabledItems.Count - 1)];
-            if (_sceneManager.PreloadedResources is null ||
-                !_sceneManager.PreloadedResources.TryGetValue("Items", out Dictionary<string, Resource> itemDict) ||
-                !itemDict.TryGetValue(item, out Resource itemResource) || itemResource is null)
-            {
-                _gameManager.EnabledItems.Remove(item);
-                GD.PrintErr($"The item {item} has not been preloaded.");
-                item = null;
-            }
-        } while (item is null && _gameManager.EnabledItems.Count > 0);
+          _gameManager.EnabledItems.Remove(item);
+          GD.PrintErr($"The item {item} has not been preloaded.");
+          item = null;
+        }
+      } while (item is null && _gameManager.EnabledItems.Count > 0);
     }
     if (item is not null)
-        _spawnManager.Spawn(item);
+      _spawnManager.Spawn(item);
   }
 }
