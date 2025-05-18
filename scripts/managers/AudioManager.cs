@@ -121,8 +121,11 @@ public partial class AudioManager : Node
         Timer delayTimer = null;
         void CreateAndRunTimer(FloatRange delay, Action<AudioStreamPlayer> options, AudioStreamPlayer player)
         {
-            delayTimer = CreateNewDelayTimer(delay, player, options);
-            player.AddChild(delayTimer);
+            if (delayTimer is null)
+            {
+                delayTimer = CreateNewDelayTimer(delay, player, options);
+                player.AddChild(delayTimer);
+            }
             delayTimer.Start(_rng.GetFloatRange(delay));
         }
 
@@ -216,8 +219,11 @@ public partial class AudioManager : Node
         Timer delayTimer = null;
         void CreateAndRunTimer2D(FloatRange delay, Action<AudioStreamPlayer2D> options, AudioStreamPlayer2D player)
         {
-            delayTimer = CreateNewDelayTimer2D(delay, player, options);
-            player.AddChild(delayTimer);
+            if (delayTimer is null)
+            {
+                delayTimer = CreateNewDelayTimer2D(delay, player, options);
+                player.AddChild(delayTimer);
+            }
             delayTimer.Start(_rng.GetFloatRange(delay));
         }
 
@@ -311,8 +317,11 @@ public partial class AudioManager : Node
         Timer delayTimer = null;
         void CreateAndRunTimer3D(FloatRange delay, Action<AudioStreamPlayer3D> options, AudioStreamPlayer3D player)
         {
-            delayTimer = CreateNewDelayTimer3D(delay, player, options);
-            player.AddChild(delayTimer);
+            if (delayTimer is null)
+            {
+                delayTimer = CreateNewDelayTimer3D(delay, player, options);
+                player.AddChild(delayTimer);
+            }
             delayTimer.Start(_rng.GetFloatRange(delay));
         }
 
