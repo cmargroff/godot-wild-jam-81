@@ -25,12 +25,12 @@ public partial class Game : Node3D
   /// <summary>
   /// The expected time for the game to finish at normal speed, in seconds.
   /// </summary>
-  public float RunTimeAt1X { get; set; } = 600f;
+  public float RunTimeAt1X { get; set; } = 300f;
 
   /// <summary>
   /// The time remaining
   /// </summary>
-  public float RemainingTime { get; set; } = 600f;
+  public float RemainingTime { get; set; } = 300f;
 
   public float InitialKnots { get; set; } = 7f;
   [Export]
@@ -88,7 +88,7 @@ public partial class Game : Node3D
     _statsManager.ChangeStat(new StatChange { Stat = Stat.Progress, Mode = StatChangeMode.Absolute, Amount = (1 - RemainingTime / RunTimeAt1X) * 100f });
     if (_statsManager.GetStats(Stat.WaterLevel) >= 100)
     {
-      
+
       _gameOverScreen.ShowScreen(false);
     }
     else if (_statsManager.GetStats(Stat.Progress) >= 100)
@@ -96,7 +96,7 @@ public partial class Game : Node3D
       _gameOverScreen.ShowScreen(true);
       // _gameOverTimer.Start();
       // InstantiatePort();
-      
+
     }
   }
   // public void InstantiatePort()
@@ -114,7 +114,7 @@ public partial class Game : Node3D
   //   GD.Print("game over");
   //   _gameOverScreen.ShowScreen(true);
   //   _pauseManager.Pause();
-    
+
   // }
 
 }
