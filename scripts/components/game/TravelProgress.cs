@@ -10,9 +10,6 @@ public partial class TravelProgress : Control
 {
     private ProgressBar _progressBar;
 
-   
-
-
     private StatsManager _statsManager;
 
     [FromServices]

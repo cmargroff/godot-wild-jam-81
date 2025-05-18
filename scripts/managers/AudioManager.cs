@@ -108,8 +108,8 @@ public partial class AudioManager : Node
     /// <param name="playImmediately">True if the first time should not be delayed, else false.</param>
     /// <param name="options">A callback to apply options just before each play of the audio stream.</param>
     /// <param name="onFinished">A callback after each play of the audio stream is finished.</param>
-    /// <returns>The player that will be playing this audio so that you can stop it manually.</returns>
-    public AudioStreamPlayer PlayGlobalAudioOnRepeat(AudioStream audio, string busName, Node parentNode, FloatRange delay, bool playImmediately = false, Action<AudioStreamPlayer> options = null, Action onFinished = null)
+    /// <returns>The player that will be playing this audio and an action that stops the player as well as the underlying timer.</returns>
+    public (AudioStreamPlayer, Action) PlayGlobalAudioOnRepeat(AudioStream audio, string busName, Node parentNode, FloatRange delay, bool playImmediately = false, Action<AudioStreamPlayer> options = null, Action onFinished = null)
     {
         AudioStreamPlayer player = new()
         {
@@ -122,7 +122,7 @@ public partial class AudioManager : Node
         void CreateAndRunTimer(FloatRange delay, Action<AudioStreamPlayer> options, AudioStreamPlayer player)
         {
             delayTimer = CreateNewDelayTimer(delay, player, options);
-            parentNode.AddChild(delayTimer);
+            player.AddChild(delayTimer);
             delayTimer.Start(_rng.GetFloatRange(delay));
         }
 
@@ -140,7 +140,13 @@ public partial class AudioManager : Node
         {
             CreateAndRunTimer(delay, options, player);
         }
-        return player;
+        return (player, () =>
+        {
+            player.Stop();
+            Timer timer = player.GetChild<Timer>(0);
+            timer?.Stop();
+            player.QueueFree();
+        });
     }
 
     private Timer CreateNewDelayTimer(FloatRange delay, AudioStreamPlayer player, Action<AudioStreamPlayer> options = null)
@@ -197,8 +203,8 @@ public partial class AudioManager : Node
     /// <param name="playImmediately">True if the first time should not be delayed, else false.</param>
     /// <param name="options">A callback to apply options just before each play of the audio stream.</param>
     /// <param name="onFinished">A callback after each play of the audio stream is finished.</param>
-    /// <returns>The player that will be playing this audio so that you can stop it manually.</returns>
-    public AudioStreamPlayer2D Play2DAudioOnRepeat(AudioStream audio, string busName, Node parentNode, FloatRange delay, bool playImmediately = false, Action<AudioStreamPlayer2D> options = null, Action onFinished = null)
+    /// <returns>The player that will be playing this audio, and an action that stops the player as well as the underlying timer.</returns>
+    public (AudioStreamPlayer2D, Action) Play2DAudioOnRepeat(AudioStream audio, string busName, Node parentNode, FloatRange delay, bool playImmediately = false, Action<AudioStreamPlayer2D> options = null, Action onFinished = null)
     {
         AudioStreamPlayer2D player = new()
         {
@@ -211,7 +217,7 @@ public partial class AudioManager : Node
         void CreateAndRunTimer2D(FloatRange delay, Action<AudioStreamPlayer2D> options, AudioStreamPlayer2D player)
         {
             delayTimer = CreateNewDelayTimer2D(delay, player, options);
-            parentNode.AddChild(delayTimer);
+            player.AddChild(delayTimer);
             delayTimer.Start(_rng.GetFloatRange(delay));
         }
 
@@ -229,7 +235,13 @@ public partial class AudioManager : Node
         {
             CreateAndRunTimer2D(delay, options, player);
         }
-        return player;
+        return (player, () =>
+        {
+            player.Stop();
+            Timer timer = player.GetChild<Timer>(0);
+            timer?.Stop();
+            player.QueueFree();
+        });
     }
 
     private Timer CreateNewDelayTimer2D(FloatRange delay, AudioStreamPlayer2D player, Action<AudioStreamPlayer2D> options = null)
@@ -286,8 +298,8 @@ public partial class AudioManager : Node
     /// <param name="playImmediately">True if the first time should not be delayed, else false.</param>
     /// <param name="options">A callback to apply options just before each play of the audio stream.</param>
     /// <param name="onFinished">A callback after each play of the audio stream is finished.</param>
-    /// <returns>The player that will be playing this audio so that you can stop it manually.</returns>
-    public AudioStreamPlayer3D Play3DAudioOnRepeat(AudioStream audio, string busName, Node parentNode, FloatRange delay, bool playImmediately = false, Action<AudioStreamPlayer3D> options = null, Action onFinished = null)
+    /// <returns>The player that will be playing this audio, and an action that stops the player as well as the underlying timer.</returns>
+    public (AudioStreamPlayer3D, Action) Play3DAudioOnRepeat(AudioStream audio, string busName, Node parentNode, FloatRange delay, bool playImmediately = false, Action<AudioStreamPlayer3D> options = null, Action onFinished = null)
     {
         AudioStreamPlayer3D player = new()
         {
@@ -300,7 +312,7 @@ public partial class AudioManager : Node
         void CreateAndRunTimer3D(FloatRange delay, Action<AudioStreamPlayer3D> options, AudioStreamPlayer3D player)
         {
             delayTimer = CreateNewDelayTimer3D(delay, player, options);
-            parentNode.AddChild(delayTimer);
+            player.AddChild(delayTimer);
             delayTimer.Start(_rng.GetFloatRange(delay));
         }
 
@@ -318,7 +330,13 @@ public partial class AudioManager : Node
         {
             CreateAndRunTimer3D(delay, options, player);
         }
-        return player;
+        return (player, () =>
+        {
+            player.Stop();
+            Timer timer = player.GetChild<Timer>(0);
+            timer?.Stop();
+            player.QueueFree();
+        });
     }
 
     private Timer CreateNewDelayTimer3D(FloatRange delay, AudioStreamPlayer3D player, Action<AudioStreamPlayer3D> options = null)

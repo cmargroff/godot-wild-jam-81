@@ -5,13 +5,14 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using ShipOfTheseus2025.Components.Game;
 
 public partial class InventoryUi : Control
 {
     private InventoryManager _inventoryManager;
     private ItemList _itemList;
 
-    private Dictionary<int, Texture2D> _itemIcons;
+    private Dictionary<string, Texture2D> _itemIcons;
     private Texture2D _blankIcon;
     
     public override void _EnterTree()
@@ -29,17 +30,16 @@ public partial class InventoryUi : Control
     {
         _itemIcons = new();
         var tex = ResourceLoader.Load<Texture2D>("res://assets/textures/items/test.png");
-        _itemIcons.Add(0, tex);
+        _itemIcons.Add("test", tex);
     }
-    private void RenderItems(List<Item> items)
+    private void RenderItems(List<InventoryItem> items)
     {
         
         _itemList.Clear();
         
         foreach (var item in items)
         {
-            int index = item.ID;
-            _itemList.AddItem(item.Name, _itemIcons[index]);
+            _itemList.AddItem(item.Name, _itemIcons[item.Name]);
         }
         
         int itemsCount = items.Count;

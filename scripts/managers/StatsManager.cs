@@ -5,19 +5,20 @@ using ShipOfTheseus2025.Models;
 
 namespace ShipOfTheseus2025.Managers;
 
-public partial class StatsManager
+public class StatsManager
 {
   public event Action<Stat, float> StatChanged;
 
   private Dictionary<Stat, float> _stats;
-  public StatsManager()
+  public StatsManager(ConfigManager configManager)
   {
     _stats = new();
-    foreach (Stat id in System.Enum.GetValues(typeof(Stat)))
-    {
-      _stats.Add(id, 0);
-    }
+    _stats[Stat.WaterLevel] = 0.5f; //50% of the ship's height (not including the mast) is below the surface of the water
+    _stats[Stat.Speed] = configManager.GetValue("shipstats", "INITIAL_SPEED").As<float>();
+    _stats[Stat.Buoyancy] = configManager.GetValue("shipstats", "INITIAL_WEIGHT_TONS").As<float>() * 2000;
+    _stats[Stat.Progress] = 0;
   }
+
   public void ChangeStat(StatChange statChange)
   {
     // TODO: maybe change this to a switch
