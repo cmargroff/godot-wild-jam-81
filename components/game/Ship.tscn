@@ -1,4 +1,4 @@
-[gd_scene load_steps=181 format=4 uid="uid://cxyf4q4egqw6k"]
+[gd_scene load_steps=182 format=4 uid="uid://cxyf4q4egqw6k"]
 
 [ext_resource type="Script" uid="uid://cl3oh7g4ilo65" path="res://scripts/components/game/Ship.cs" id="1_vik7u"]
 [ext_resource type="PackedScene" uid="uid://crtl6uhk8whgg" path="res://components/game/DamagePoint.tscn" id="2_c5dpv"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cbrwt7ydgl2qi" path="res://assets/models/ship/ship_Metal_normal.jpg" id="3_c5dpv"]
 [ext_resource type="Texture2D" uid="uid://cwt8xa4eu3js8" path="res://assets/models/ship/ship_Floor_basecolor_b.png" id="4_8wgjk"]
 [ext_resource type="Texture2D" uid="uid://bnbwahuemm2ib" path="res://assets/models/ship/ship_Floor_normal.jpg" id="5_6x5d1"]
+[ext_resource type="Material" uid="uid://dmthnesx7qgil" path="res://assets/materials/HoleHighlight.tres" id="5_8wgjk"]
 [ext_resource type="Texture2D" uid="uid://dd0endcufwx0d" path="res://assets/models/ship/ship_Wood_basecolor_b.png" id="6_1of4t"]
 [ext_resource type="Texture2D" uid="uid://dnlhow35a4fy" path="res://assets/models/ship/ship_Wood_normal.jpg" id="7_ryq2u"]
 [ext_resource type="Texture2D" uid="uid://babvbmbak5bib" path="res://assets/models/ship/ship_Rope_basecolor.jpg" id="8_utrgd"]
@@ -3004,40 +3005,44 @@ script = ExtResource("1_vik7u")
 unique_name_in_owner = true
 
 [node name="DamagePoint" parent="Damage points" instance=ExtResource("2_c5dpv")]
-transform = Transform3D(1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0, 1, -6.70766, 0.11617, 3.34923)
+transform = Transform3D(1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0, 1, -6.88081, -0.170863, 3.03136)
 
 [node name="damage" type="MeshInstance3D" parent="Damage points/DamagePoint"]
-transform = Transform3D(-1, 1.49012e-08, -8.74228e-08, 1.49012e-08, 1, 1.3027e-15, 8.74228e-08, 0, -1, 8.53389, -0.11617, -3.3546)
+transform = Transform3D(-1, 1.49012e-08, -8.74228e-08, 1.49012e-08, 1, 1.3027e-15, 8.74228e-08, 0, -1, 8.70704, 0.170863, -3.03673)
 visible = false
 mesh = SubResource("ArrayMesh_n6q7w")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("5_8wgjk")
 
 [node name="DamagePoint2" parent="Damage points" instance=ExtResource("2_c5dpv")]
-transform = Transform3D(1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0, 1, -4.21155, -0.104648, 3.5658)
+transform = Transform3D(1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0, 1, -4.26902, -0.317544, 3.34862)
 
-[node name="damage" type="MeshInstance3D" parent="Damage points/DamagePoint2"]
-transform = Transform3D(-1, 1.49012e-08, -8.74228e-08, 1.49012e-08, 1, 1.3027e-15, 8.74228e-08, 0, -1, 6.03778, 0.104648, -3.5394)
+[node name="damage2" type="MeshInstance3D" parent="Damage points/DamagePoint2"]
+transform = Transform3D(-1, 1.49012e-08, -8.74228e-08, 1.49012e-08, 1, 1.3027e-15, 8.74228e-08, 0, -1, 6.09525, 0.317544, -3.32222)
 visible = false
 mesh = SubResource("ArrayMesh_cj15s")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("5_8wgjk")
 
 [node name="DamagePoint3" parent="Damage points" instance=ExtResource("2_c5dpv")]
-transform = Transform3D(1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0, 1, 1.50642, -0.282126, 3.46619)
+transform = Transform3D(1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0, 1, 1.7079, -0.380156, 3.46619)
 
-[node name="damage" type="MeshInstance3D" parent="Damage points/DamagePoint3"]
-transform = Transform3D(-1, 1.49012e-08, -8.74228e-08, 1.49012e-08, 1, 1.3027e-15, 8.74228e-08, 0, -1, 0.319807, 0.282126, -3.46107)
+[node name="damage3" type="MeshInstance3D" parent="Damage points/DamagePoint3"]
+transform = Transform3D(-1, 1.49012e-08, -8.74228e-08, 1.49012e-08, 1, 1.3027e-15, 8.74228e-08, 0, -1, 0.118326, 0.380156, -3.46107)
 visible = false
 mesh = SubResource("ArrayMesh_yidhc")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("5_8wgjk")
 
 [node name="DamagePoint4" parent="Damage points" instance=ExtResource("2_c5dpv")]
-transform = Transform3D(1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0, 1, 5.98514, -0.271784, 3.25324)
+transform = Transform3D(1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0, 1, 5.79038, -0.475665, 3.25324)
 
-[node name="damage" type="MeshInstance3D" parent="Damage points/DamagePoint4"]
-transform = Transform3D(-1, 1.49012e-08, -8.74228e-08, 1.49012e-08, 1, 1.3027e-15, 8.74228e-08, 0, -1, -0.208704, -0.232827, -0.0756726)
+[node name="damage4" type="MeshInstance3D" parent="Damage points/DamagePoint4"]
+transform = Transform3D(-1, 1.49012e-08, -8.74228e-08, 1.49012e-08, 1, 1.3027e-15, 8.74228e-08, 0, -1, -0.0139475, -0.0289455, -0.0756726)
 visible = false
 mesh = SubResource("ArrayMesh_e4sla")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("5_8wgjk")
 
 [node name="ship" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -14.2038, 0, 0)
