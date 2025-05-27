@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://dmthnesx7qgil"]
+
+[ext_resource type="Shader" uid="uid://nyum3hi8bk4q" path="res://assets/shaders/HoleHighlight.tres" id="1_jq6ig"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jq6ig"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_p5lxw"]
+noise = SubResource("FastNoiseLite_jq6ig")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_jq6ig")
+shader_parameter/Texture2DParameter = SubResource("NoiseTexture2D_p5lxw")
