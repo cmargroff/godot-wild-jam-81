@@ -5,15 +5,36 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Launch",
+      "name": "Launch Game",
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build",
-      "program": "${env:GODOT_HOME}/Godot_v4.4-stable_mono_win64.exe",
-      "args": [],
+      "args": ["--verbose"],
       "cwd": "${workspaceRoot}",
       "console": "internalConsole",
-      "stopAtEntry": false
+      "stopAtEntry": false,
+      "windows": {
+        "program": "${env:GODOT_HOME}/Godot_v4.6.1-stable_mono_win64.exe",
+      },
+      "linux": {
+        "program": "~/.local/bin/godot",
+      }
+    },
+    {
+      "name": "Launch Editor",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "args": ["-e"],
+      "cwd": "${workspaceRoot}",
+      "console": "internalConsole",
+      "stopAtEntry": false,
+      "windows": {
+        "program": "${env:GODOT_HOME}/Godot_v4.6.1-stable_mono_win64.exe",
+      },
+      "linux": {
+        "program": "~/.local/bin/godot",
+      }
     }
   ]
 }
