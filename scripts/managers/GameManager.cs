@@ -1,8 +1,7 @@
-using System;
 using System.Collections.Generic;
 using Godot;
+using ShipOfTheseus2025.DependencyInjection;
 using ShipOfTheseus2025.Resources;
-using ShipOfTheseus2025.Util;
 
 namespace ShipOfTheseus2025.Managers;
 
@@ -25,10 +24,10 @@ public partial class GameManager : Node
     {
         Name = GetType().Name;
         GD.Print(GetType().Name, " Started");
-        var initialScenePath = (string)_configManager.GetValue("game", "INITIAL_SCENE_NAME");
-        if (initialScenePath != "")
+        var initialSceneKey = ProjectSettings.GetSetting("custom/initial_scene").AsString();
+        if (initialSceneKey != "")
         {
-            _sceneManager.ChangeScene(initialScenePath);
+            _sceneManager.ChangeScene(initialSceneKey);
         }
     }
 
