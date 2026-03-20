@@ -1,7 +1,6 @@
 using Godot;
+using ShipOfTheseus2025.DependencyInjection;
 using ShipOfTheseus2025.Managers;
-using ShipOfTheseus2025.Util;
-
 
 public partial class GameOver : Control
 {
@@ -17,13 +16,13 @@ public partial class GameOver : Control
     public void Inject(ScoreManager scoreManager, SceneManager sceneManager)
     {
         _scoreManager = scoreManager;
-        _sceneManager = sceneManager;  
+        _sceneManager = sceneManager;
     }
 
     public override void _EnterTree()
     {
         _scoreLabel = GetNode<Label>("%Score");
-        _label = GetNode<Label>("%Label");        
+        _label = GetNode<Label>("%Label");
     }
 
     public void ShowScreen(bool win)
@@ -32,7 +31,7 @@ public partial class GameOver : Control
         else _label.Text = "You Lost";
         _scoreLabel.Text = $"Score: {_score}";
 
-        Modulate = new Color(1,1,1,0);
+        Modulate = new Color(1, 1, 1, 0);
         Visible = true;
         var tween = CreateTween();
         tween.TweenProperty(this, "modulate:a", 1f, 0.5f);
