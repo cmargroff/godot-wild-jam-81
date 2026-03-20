@@ -1,8 +1,8 @@
 using System;
 using Godot;
+using ShipOfTheseus2025.DependencyInjection;
 using ShipOfTheseus2025.Services;
 using ShipOfTheseus2025.Stores;
-using ShipOfTheseus2025.Util;
 
 namespace ShipOfTheseus2025.Managers;
 
@@ -80,7 +80,7 @@ public partial class AudioManager : Node
     /// <param name="options">A callback to apply options for the player.</param>
     /// <param name="onFinished">A callback for when the audio finishes playing (if not looped).</param>
     /// <returns>The player that will be playing this audio so that you can stop it before it's finished.</returns>
-    public AudioStreamPlayer PlayGlobalAudio(AudioStream audio, string busName, Node parentNode, Action<AudioStreamPlayer> options = null, Action onFinished = null) 
+    public AudioStreamPlayer PlayGlobalAudio(AudioStream audio, string busName, Node parentNode, Action<AudioStreamPlayer> options = null, Action onFinished = null)
     {
         AudioStreamPlayer player = new()
         {
@@ -149,7 +149,8 @@ public partial class AudioManager : Node
             Timer timer = player.GetChild<Timer>(0);
             timer?.Stop();
             player.QueueFree();
-        });
+        }
+        );
     }
 
     private Timer CreateNewDelayTimer(FloatRange delay, AudioStreamPlayer player, Action<AudioStreamPlayer> options = null)
@@ -247,7 +248,8 @@ public partial class AudioManager : Node
             Timer timer = player.GetChild<Timer>(0);
             timer?.Stop();
             player.QueueFree();
-        });
+        }
+        );
     }
 
     private Timer CreateNewDelayTimer2D(FloatRange delay, AudioStreamPlayer2D player, Action<AudioStreamPlayer2D> options = null)
@@ -345,7 +347,8 @@ public partial class AudioManager : Node
             Timer timer = player.GetChild<Timer>(0);
             timer?.Stop();
             player.QueueFree();
-        });
+        }
+        );
     }
 
     private Timer CreateNewDelayTimer3D(FloatRange delay, AudioStreamPlayer3D player, Action<AudioStreamPlayer3D> options = null)

@@ -1,8 +1,8 @@
 using Godot;
 using ShipOfTheseus2025.Components.Game;
+using ShipOfTheseus2025.DependencyInjection;
 using ShipOfTheseus2025.Managers;
 using ShipOfTheseus2025.Resources;
-using ShipOfTheseus2025.Util;
 
 public partial class ItemSpawnManager : Node
 {
@@ -33,7 +33,7 @@ public partial class ItemSpawnManager : Node
     public void Spawn(string identifier)
     {
         ItemResource resource = _sceneManager.PreloadedResources["Items"][identifier] as ItemResource;
-        ShipOfTheseus2025.Components.Game.InventoryItem item = _itemFactoryService.GenerateItem(resource);
+        InventoryItem item = _itemFactoryService.GenerateItem(resource);
         ItemPickUp pickupableItem = _itemScene.Instantiate<ItemPickUp>();
         pickupableItem.ItemPickupAudioPlayer = ItemPickupAudio;
         pickupableItem.InventoryItem = item;

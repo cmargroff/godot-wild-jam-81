@@ -1,8 +1,8 @@
+using System;
 using Godot;
+using Microsoft.Extensions.DependencyInjection;
 using ShipOfTheseus2025;
 using ShipOfTheseus2025.Managers;
-using Microsoft.Extensions.DependencyInjection;
-using System;
 
 public partial class PauseMenu : Control
 {
@@ -18,10 +18,9 @@ public partial class PauseMenu : Control
         _continue.Pressed += Continue;
         _menu = GetNode<Button>("%Menu");
         _menu.Pressed += Menu;
-        _pauseManager = Globals.ServiceProvider.GetRequiredService<PauseManager>();
-        GD.Print(_pauseManager);
+        _pauseManager = Globals.Instance.ServiceProvider.GetRequiredService<PauseManager>();
         _pauseManager.GamePauseChanged += PauseManager_GamePauseChanged;
-        _sceneManager = Globals.ServiceProvider.GetRequiredService<SceneManager>();
+        _sceneManager = Globals.Instance.ServiceProvider.GetRequiredService<SceneManager>();
 
     }
 

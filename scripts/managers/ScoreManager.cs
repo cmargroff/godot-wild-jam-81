@@ -1,9 +1,8 @@
-using Godot;
-using ShipOfTheseus2025.Components.Game;
-using ShipOfTheseus2025.Util;
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using Godot;
+using ShipOfTheseus2025.Components.Game;
+using ShipOfTheseus2025.DependencyInjection;
 
 namespace ShipOfTheseus2025.Managers;
 
@@ -27,5 +26,5 @@ public partial class ScoreManager : Node
         Score = items.Sum(i => i.GoldValue);
         EmitSignal(SignalName.ScoreChanged, Score);
     }
-    
+
 }

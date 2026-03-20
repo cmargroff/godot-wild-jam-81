@@ -41,9 +41,9 @@ public partial class ItemPickUp : Node3D
     public override void _EnterTree()
     {
         State = ItemPickupState.Floating;
-        _dragManager = Globals.ServiceProvider.GetRequiredService<ItemDragManager>();
+        _dragManager = Globals.Instance.ServiceProvider.GetRequiredService<ItemDragManager>();
         _dragManager.PickupAudioStreamPlayer = ItemPickupAudioPlayer;
-        _hoverManager = Globals.ServiceProvider.GetRequiredService<HoverPanelManager>();
+        _hoverManager = Globals.Instance.ServiceProvider.GetRequiredService<HoverPanelManager>();
         _globalPosition = GlobalPosition;
         AddChild(InventoryItem.ItemScene);
 

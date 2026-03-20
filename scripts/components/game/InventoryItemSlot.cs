@@ -5,7 +5,6 @@ using ShipOfTheseus2025.Components.Game;
 using ShipOfTheseus2025.Enum;
 using ShipOfTheseus2025.Interfaces;
 using ShipOfTheseus2025.Managers;
-using ShipOfTheseus2025.Util;
 
 public partial class InventoryItemSlot : TextureRect, ISnapPoint
 {
@@ -14,13 +13,13 @@ public partial class InventoryItemSlot : TextureRect, ISnapPoint
   private HoverPanelManager _hoverManager;
   private TextureRect _icon;
   private ItemPickUp _item;
-  public ShipOfTheseus2025.Components.Game.InventoryItem InventoryItem { get; set; }
+  public InventoryItem InventoryItem { get; set; }
 
   public override void _EnterTree()
   {
-    _dragManager = Globals.ServiceProvider.GetRequiredService<ItemDragManager>();
-    _hoverManager = Globals.ServiceProvider.GetRequiredService<HoverPanelManager>();
-    _inventoryManager = Globals.ServiceProvider.GetRequiredService<InventoryManager>();
+    _dragManager = Globals.Instance.ServiceProvider.GetRequiredService<ItemDragManager>();
+    _hoverManager = Globals.Instance.ServiceProvider.GetRequiredService<HoverPanelManager>();
+    _inventoryManager = Globals.Instance.ServiceProvider.GetRequiredService<InventoryManager>();
     _icon = GetNode<TextureRect>("%Icon");
     Connect(SignalName.MouseEntered, Callable.From(_MouseEntered));
     Connect(SignalName.MouseExited, Callable.From(_MouseExited));
@@ -84,7 +83,7 @@ public partial class InventoryItemSlot : TextureRect, ISnapPoint
     _inventoryManager.RemoveInventoryItem(_item.InventoryItem);
     _dragManager.StartDragItem(_item);
     _item = null;
-    
+
   }
 
 

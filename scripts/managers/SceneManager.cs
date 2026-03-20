@@ -148,7 +148,7 @@ public partial class SceneManager : Node3D
     if (_currentScene != null)
       _currentScene.QueueFree();
 
-    Globals.CloseSceneScope();
+    Globals.Instance.CloseSceneScope();
 
     FreePreloads();
 
@@ -173,8 +173,8 @@ public partial class SceneManager : Node3D
     if (_nextName != null)
     {
       // load the next scene and append it to the manager
-      Globals.CreateSceneScope();
-      var scene = Globals.ServiceProvider.GetKeyedService<Node>(_nextName);
+      Globals.Instance.CreateSceneScope();
+      var scene = Globals.Instance.ServiceProvider.GetKeyedService<Node>(_nextName);
       scene.Connect(Node.SignalName.Ready, Callable.From(SceneFinishedLoading));
       AddChild(scene);
       _currentScene = scene;

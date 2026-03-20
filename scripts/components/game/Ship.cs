@@ -1,10 +1,10 @@
 
 using System.Collections.Generic;
 using Godot;
+using ShipOfTheseus2025.DependencyInjection;
 using ShipOfTheseus2025.Enum;
 using ShipOfTheseus2025.Managers;
 using ShipOfTheseus2025.Services;
-using ShipOfTheseus2025.Util;
 
 public partial class Ship : Node3D
 {

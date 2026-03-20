@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using Godot;
 using Microsoft.Extensions.DependencyInjection;
 using ShipOfTheseus2025.Enum;
@@ -13,8 +12,8 @@ public partial class Water : MeshInstance3D
   private ShaderMaterial _material;
   public override void _EnterTree()
   {
-    _environmentManager = Globals.ServiceProvider.GetRequiredService<EnvironmentManager>();
-    _statsManager = Globals.ServiceProvider.GetRequiredService<StatsManager>();
+    _environmentManager = Globals.Instance.ServiceProvider.GetRequiredService<EnvironmentManager>();
+    _statsManager = Globals.Instance.ServiceProvider.GetRequiredService<StatsManager>();
     _statsManager.StatChanged += StatsManager_StatChanged;
   }
 

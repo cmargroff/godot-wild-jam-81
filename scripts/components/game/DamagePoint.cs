@@ -3,11 +3,10 @@ using Godot;
 using Microsoft.Extensions.DependencyInjection;
 using ShipOfTheseus2025;
 using ShipOfTheseus2025.Components.Game;
+using ShipOfTheseus2025.DependencyInjection;
 using ShipOfTheseus2025.Enum;
 using ShipOfTheseus2025.Interfaces;
 using ShipOfTheseus2025.Managers;
-using ShipOfTheseus2025.Util;
-
 
 public partial class DamagePoint : Area3D, ISnapPoint
 {
@@ -39,7 +38,7 @@ public partial class DamagePoint : Area3D, ISnapPoint
   public override void _EnterTree()
   {
     State = DamagePointState.SnapDisable;
-    _dragManager = Globals.ServiceProvider.GetRequiredService<ItemDragManager>();
+    _dragManager = Globals.Instance.ServiceProvider.GetRequiredService<ItemDragManager>();
     _damage = GetNode<MeshInstance3D>("damage");
 
 

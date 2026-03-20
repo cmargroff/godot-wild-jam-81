@@ -1,11 +1,9 @@
-using Godot;
-using ShipOfTheseus2025;
-using ShipOfTheseus2025.Managers;
-using Microsoft.Extensions.DependencyInjection;
-using System;
 using System.Collections.Generic;
-using System.Linq;
+using Godot;
+using Microsoft.Extensions.DependencyInjection;
+using ShipOfTheseus2025;
 using ShipOfTheseus2025.Components.Game;
+using ShipOfTheseus2025.Managers;
 
 public partial class InventoryUi : Control
 {
@@ -14,11 +12,11 @@ public partial class InventoryUi : Control
 
     private Dictionary<string, Texture2D> _itemIcons;
     private Texture2D _blankIcon;
-    
+
     public override void _EnterTree()
     {
         PreloadIcons();
-        _inventoryManager = Globals.ServiceProvider.GetRequiredService<InventoryManager>();
+        _inventoryManager = Globals.Instance.ServiceProvider.GetRequiredService<InventoryManager>();
         _itemList = GetNode<ItemList>("ItemList");
         GD.Print(_itemList);
         _inventoryManager.InventoryUpdated += RenderItems;
@@ -34,14 +32,14 @@ public partial class InventoryUi : Control
     }
     private void RenderItems(List<InventoryItem> items)
     {
-        
+
         _itemList.Clear();
-        
+
         foreach (var item in items)
         {
             _itemList.AddItem(item.Name, _itemIcons[item.Name]);
         }
-        
+
         int itemsCount = items.Count;
         if (itemsCount < 6)
         {
@@ -54,8 +52,8 @@ public partial class InventoryUi : Control
 
     private void ItemList_ItemClicked(long index, Vector2 pos, long mouseButtonIndex)
     {
-        
-    
+
+
         if (mouseButtonIndex == 2)
         {
             _inventoryManager.RemoveInventoryItem((int)index);
@@ -67,11 +65,12 @@ public partial class InventoryUi : Control
             {
                 GD.Print("no item");
             }
-            else{
+            else
+            {
                 //use item
             }
-           
+
         }
     }
-    
+
 }

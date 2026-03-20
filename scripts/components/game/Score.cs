@@ -12,7 +12,7 @@ public partial class Score : Control
   public override void _EnterTree()
   {
     _label = GetNode<Label>("%Label");
-    _scoreManager = Globals.ServiceProvider.GetRequiredService<ScoreManager>();
+    _scoreManager = Globals.Instance.ServiceProvider.GetRequiredService<ScoreManager>();
     _scoreManager.ScoreChanged += ScoreManager_ScoreChanged;
     _label.Text = _scoreManager.Score.ToString();
   }

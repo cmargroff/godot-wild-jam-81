@@ -21,7 +21,7 @@ public partial class WaterSensor : Marker3D
     _mesh.Mesh.SurfaceSetMaterial(0, mat);
     _mesh.Scale = Vector3.One * 2f;
     AddChild(_mesh);
-    _envManager = Globals.ServiceProvider.GetRequiredService<EnvironmentManager>();
+    _envManager = Globals.Instance.ServiceProvider.GetRequiredService<EnvironmentManager>();
   }
   public override void _Process(double delta)
   {
