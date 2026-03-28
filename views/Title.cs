@@ -3,7 +3,7 @@ using Godot;
 using ShipOfTheseus2025.DependencyInjection;
 using ShipOfTheseus2025.Managers;
 
-public partial class Title : Control
+public partial class Title : Control, IManagedScene
 {
   private Control _menu;
   private Control _options;
@@ -11,6 +11,8 @@ public partial class Title : Control
   private AudioManager _audio;
   private SceneManager _sceneManager;
   private GameManager _gameManager;
+
+  public event Action<string> SceneClosing;
 
   [FromServices]
   public void Inject(AudioManager audio, SceneManager sceneManager, GameManager gameManager)
@@ -52,7 +54,7 @@ public partial class Title : Control
 
   public void Start()
   {
-        _gameManager.StartGame();
+    _gameManager.StartGame();
   }
   public void ToggleOptions()
   {
@@ -62,7 +64,7 @@ public partial class Title : Control
   }
   public void Credits()
   {
-    _sceneManager.ChangeScene("Credits");
+    SceneClosing?.Invoke("Credits");
   }
   public void Quit()
   {

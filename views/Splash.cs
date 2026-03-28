@@ -1,11 +1,16 @@
+using System;
 using Godot;
+using ShipOfTheseus2025.DependencyInjection;
 using ShipOfTheseus2025.Managers;
-using ShipOfTheseus2025.Util;
 
 namespace ShipOfTheseus2025.Views;
-public partial class Splash : Control
+
+public partial class Splash : Control, IManagedScene
 {
   private SceneManager _sceneManager;
+
+  public event Action<string> SceneClosing;
+
   [FromServices]
   public void Inject(SceneManager sceneManager)
   {
@@ -13,13 +18,13 @@ public partial class Splash : Control
   }
   public void Timeout()
   {
-    _sceneManager.ChangeScene("Title");
+    SceneClosing?.Invoke("Title");
   }
   public override void _Input(InputEvent @event)
   {
     if (@event is InputEventKey keyEvent && keyEvent.IsPressed())
     {
-      _sceneManager.ChangeScene("Title");
+      SceneClosing?.Invoke("Title");
     }
   }
 }

@@ -1,22 +1,23 @@
+using System;
 using Godot;
 using ShipOfTheseus2025.DependencyInjection;
 using ShipOfTheseus2025.Managers;
 
-public partial class GameOver : Control
+public partial class GameOver : Control, IManagedScene
 {
     private ScoreManager _scoreManager;
-    private SceneManager _sceneManager;
     private int _score;
     private Label _scoreLabel;
     private Label _label;
     private Button _home;
     private Button _restart;
 
+    public event Action<string> SceneClosing;
+
     [FromServices]
-    public void Inject(ScoreManager scoreManager, SceneManager sceneManager)
+    public void Inject(ScoreManager scoreManager)
     {
         _scoreManager = scoreManager;
-        _sceneManager = sceneManager;
     }
 
     public override void _EnterTree()
@@ -39,13 +40,13 @@ public partial class GameOver : Control
 
     public void Home()
     {
-        _sceneManager.ChangeScene("Title");
+        SceneClosing?.Invoke("Title");
     }
 
     public void Restart()
     {
         //code to restart game
         GD.Print("restart");
-        _sceneManager.ChangeScene("Game");
+        SceneClosing?.Invoke("Game");
     }
 }

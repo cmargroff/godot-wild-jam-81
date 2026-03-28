@@ -1,12 +1,16 @@
+using System;
 using Godot;
 using ShipOfTheseus2025.DependencyInjection;
 using ShipOfTheseus2025.Managers;
 
-public partial class Credits : Control
+public partial class Credits : Control, IManagedScene
 {
   [Export]
   public string CopyResourcePath;
   private SceneManager _sceneManager;
+
+  public event Action<string> SceneClosing;
+
   [FromServices]
   public void Inject(SceneManager sceneManager)
   {
@@ -25,7 +29,7 @@ public partial class Credits : Control
   {
     if (@event is InputEventKey keyEvent && keyEvent.IsPressed())
     {
-      _sceneManager.ChangeScene("Title");
+      SceneClosing?.Invoke("Title");
     }
   }
 }
