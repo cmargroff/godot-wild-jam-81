@@ -24,11 +24,12 @@ public partial class GameEventManager : Node
   [FromServices]
   public void Inject(RandomNumberGeneratorService rng, ItemSpawnManager spawnManager, GameManager gameManager, SceneManager sceneManager)
   {
+    GD.Print("Injecting dependencies into GameEventManager");
     _rng = rng;
     _gameManager = gameManager;
     _spawnManager = spawnManager;
     _sceneManager = sceneManager;
-    AddChild(_spawnManager);
+    // AddChild(_spawnManager);
 
   }
   public override void _EnterTree()

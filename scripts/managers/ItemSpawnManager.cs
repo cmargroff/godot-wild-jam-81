@@ -27,6 +27,7 @@ public partial class ItemSpawnManager : Node
 
     public override void _Ready()
     {
+        // TODO get this from globals
         ItemPickupAudio = GetParent().GetParent().GetNode<AudioStreamPlayer3D>("%AudioStreamPlayer_ItemPickup");
     }
 

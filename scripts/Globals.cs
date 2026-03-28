@@ -1,4 +1,5 @@
 using System.IO;
+using System.Linq;
 using Godot;
 using Microsoft.Extensions.DependencyInjection;
 using ShipOfTheseus2025.Components.Game;
@@ -28,28 +29,30 @@ public partial class Globals : DIContainerNode
 
     _serviceCollection
     .AddSingleton(InjectNodeClass<GameManager>())
-    .AddScoped<PlayerDataStore>()
+    .AddSingleton(InjectNodeClass<AudioManager>())
+    .AddSingleton(InjectInstantiatedPackedScene<SceneManager>("res://views/SceneManager.tscn"))
     .AddSingleton<ConfigStore>()
     .AddSingleton<SettingsStore>()
     .AddSingleton<ConfigManager>()
-    .AddSingleton(InjectNodeClass<AudioManager>())
-    .AddScoped(InjectNodeClass<ScoreManager>())
     .AddSingleton<RandomNumberGeneratorService>()
-    .AddSingleton(InjectInstantiatedPackedScene<SceneManager>("res://views/SceneManager.tscn"))
-    .AddScoped<StatsManager>()
-    .AddScoped(InjectNodeClass<GameEventManager>())
-    .AddScoped<InventoryManager>()
-    .AddScoped(InjectNodeClass<ItemDragManager>())
-    .AddScoped<ItemSpawnManager>()
-    .AddScoped(InjectNodeClass<PauseManager>())
     .AddSingleton<ItemFactoryService>()
-    .AddScoped(InjectNodeClass<HoverPanelManager>(true))
-    .AddScoped(InjectNodeClass<EnvironmentManager>(true))
+    .AddScoped(InjectNodeClass<ScoreManager>(false))
+    .AddScoped(InjectNodeClass<GameEventManager>(false))
+    .AddScoped(InjectNodeClass<ItemDragManager>(false))
+    .AddScoped(InjectNodeClass<PauseManager>(false))
+    .AddScoped(InjectNodeClass<HoverPanelManager>(false))
+    .AddScoped(InjectNodeClass<EnvironmentManager>(false))
+    .AddScoped(InjectNodeClass<ItemSpawnManager>(false))
+    .AddScoped(InjectInstantiatedPackedScene<Water>("res://components/game/Water.tscn"))
+    .AddScoped<PlayerDataStore>()
+    .AddScoped<StatsManager>()
+    .AddScoped<InventoryManager>()
     ;
 
     AddScenes();
     BuildServiceProvider();
     CreateSceneScope();
+
     ServiceProvider.GetRequiredService<GameManager>();
   }
 

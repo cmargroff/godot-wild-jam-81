@@ -20,7 +20,7 @@ public partial class ItemDragManager : Node3D
   private bool _snapped;
   private ISnapPoint _snapPoint;
 
-  public event Action<ItemPickUp> ItemSnapped;
+  // public event Action<ItemPickUp> ItemSnapped;
 
 
   public AudioStreamPlayer3D PickupAudioStreamPlayer { get; set; }

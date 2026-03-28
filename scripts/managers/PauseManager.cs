@@ -1,11 +1,11 @@
-using Godot;
 using System;
 using System.Runtime.CompilerServices;
+using Godot;
 
 public partial class PauseManager : Node
 {
     public event Action<bool> GamePauseChanged;
-    
+
 
 
     private SceneTree _tree;
@@ -15,7 +15,7 @@ public partial class PauseManager : Node
         ProcessMode = Node.ProcessModeEnum.Always;
         Name = "PauseManager";
     }
-    
+
 
     public void Pause()
     {
@@ -33,7 +33,7 @@ public partial class PauseManager : Node
         GamePauseChanged?.Invoke(_tree.Paused);
 
         GD.Print("unpaused");
-        
+
 
     }
 
@@ -53,13 +53,5 @@ public partial class PauseManager : Node
             Toggle();
         }
     }
-
-    // public override void _PhysicsProcess(double delta)
-    // {
-    //     if (Input.IsActionJustPressed("pause")) //testing pause
-    //     {
-    //         Toggle();
-    //     }
-    // }
 
 }

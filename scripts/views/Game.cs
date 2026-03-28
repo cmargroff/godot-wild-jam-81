@@ -1,10 +1,10 @@
 using System;
 using Godot;
 using ShipOfTheseus2025.Components.Game;
+using ShipOfTheseus2025.DependencyInjection;
 using ShipOfTheseus2025.Enum;
 using ShipOfTheseus2025.Managers;
 using ShipOfTheseus2025.Models;
-using ShipOfTheseus2025.Util;
 
 namespace ShipOfTheseus2025.Views;
 
@@ -44,22 +44,22 @@ public partial class Game : Node3D
     _statsManager = statsManager;
     _eventManager = eventManager;
     _dragManager = dragManager;
-    AddChild(_eventManager);
     _pauseManager = pauseManager;
-    AddChild(_pauseManager);
-    AddChild(_dragManager);
     _gameManager = gameManager;
     _audioManager = audioManager;
   }
 
   public override void _EnterTree()
   {
+    AddChild(_eventManager);
+    AddChild(_pauseManager);
+    AddChild(_dragManager);
     _gameOverScreen = GetNode<GameOver>("GameOver");
     _gameOverTimer = GetNode<Timer>("GameOverTimer");
     //used when the Game scene is loaded directly, otherwise this will be skipped
     if (_sceneManager is null)
     {
-      Globals.InjectAttributedMethods(this, Globals.ServiceProvider);
+      // Globals.Instance.InjectAttributedMethods(this, Globals.Instance.ServiceProvider);
     }
     if (_gameManager.EnabledItems is null || _gameManager.EnabledItems.Count == 0)
       _gameManager.LoadConfig();

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Godot;
 using Microsoft.Extensions.DependencyInjection;
-using ShipOfTheseus2025.Util;
 
 namespace ShipOfTheseus2025.Managers;
 
@@ -25,12 +24,6 @@ public partial class SceneManager : Node3D
   private List<Preload> _preloadQueue;
   private string _nextName;
   private bool _processing = false;
-  //private IServiceProvider _serviceProvider;
-  //[FromServices]
-  //public void Inject(IServiceProvider serviceProvider)
-  //{
-  //  _serviceProvider = serviceProvider;
-  //}
   public override void _Ready()
   {
     GD.Print(GetType().Name, " Ready");
@@ -146,7 +139,10 @@ public partial class SceneManager : Node3D
     ShowLoading();
 
     if (_currentScene != null)
+    {
       _currentScene.QueueFree();
+      _currentScene = null;
+    }
 
     Globals.Instance.CloseSceneScope();
 
@@ -176,14 +172,18 @@ public partial class SceneManager : Node3D
       Globals.Instance.CreateSceneScope();
       var scene = Globals.Instance.ServiceProvider.GetKeyedService<Node>(_nextName);
       scene.Connect(Node.SignalName.Ready, Callable.From(SceneFinishedLoading));
+      if (scene is IManagedScene managedScene)
+      {
+        managedScene.SceneClosing += ChangeScene;
+      }
       AddChild(scene);
       _currentScene = scene;
     }
   }
   private void SceneFinishedLoading()
   {
-    EmitSignal(SignalName.LoadingHidden);
     HideLoading();
+    EmitSignal(SignalName.LoadingHidden);
   }
   private class Preload
   {
@@ -202,6 +202,6 @@ public partial class SceneManager : Node3D
       .ToArray();
   }
 
-    [GeneratedRegex("\\.t?scn$")]
-    private static partial Regex SceneFileNameRegex();
+  [GeneratedRegex("\\.t?scn$")]
+  private static partial Regex SceneFileNameRegex();
 }

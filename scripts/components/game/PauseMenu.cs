@@ -4,12 +4,13 @@ using Microsoft.Extensions.DependencyInjection;
 using ShipOfTheseus2025;
 using ShipOfTheseus2025.Managers;
 
-public partial class PauseMenu : Control
+public partial class PauseMenu : Control, IManagedScene
 {
     private Button _continue;
     private Button _menu;
     private PauseManager _pauseManager;
-    private SceneManager _sceneManager;
+
+    public event Action<string> SceneClosing;
 
     public override void _Ready()
     {
@@ -20,8 +21,6 @@ public partial class PauseMenu : Control
         _menu.Pressed += Menu;
         _pauseManager = Globals.Instance.ServiceProvider.GetRequiredService<PauseManager>();
         _pauseManager.GamePauseChanged += PauseManager_GamePauseChanged;
-        _sceneManager = Globals.Instance.ServiceProvider.GetRequiredService<SceneManager>();
-
     }
 
     private void Continue()
@@ -32,7 +31,7 @@ public partial class PauseMenu : Control
     private void Menu()
     {
         _pauseManager.Unpause();
-        _sceneManager.ChangeScene("Title");
+        SceneClosing?.Invoke("Title");
     }
 
     public void PauseManager_GamePauseChanged(bool paused)

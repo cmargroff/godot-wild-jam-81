@@ -48,8 +48,8 @@ public partial class ItemPickUp : Node3D
         AddChild(InventoryItem.ItemScene);
 
         // create references to water noise
-        var water = GetNode<MeshInstance3D>("/root/SceneManager/Game/Water");
-        var material = water.Mesh.SurfaceGetMaterial(0) as ShaderMaterial;
+        var game = Globals.Instance.ServiceProvider.GetRequiredKeyedService<Node>("Game");
+        var material = game.GetNode<Water>("Water").Mesh.SurfaceGetMaterial(0) as ShaderMaterial;
         noise = material.GetShaderParameter("noise1").As<NoiseTexture2D>().Noise.GetSeamlessImage(512, 512, false, false, 0.1f, true);
         noise_scale = (float)material.GetShaderParameter("noise1_scale");
         noise_speed = (Vector2)material.GetShaderParameter("noise1_speed");

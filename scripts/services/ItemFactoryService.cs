@@ -1,8 +1,5 @@
-using System;
 using System.Collections.Generic;
 using Godot;
-using Godot.Collections;
-using ShipOfTheseus2025.Components.Game;
 using ShipOfTheseus2025.Enum;
 using ShipOfTheseus2025.Managers;
 using ShipOfTheseus2025.Resources;

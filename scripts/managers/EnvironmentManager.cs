@@ -7,9 +7,9 @@ namespace ShipOfTheseus2025.Managers;
 
 public partial class EnvironmentManager : Node
 {
-  public event Action<Noise> WaterHeightChanged;
+  // public event Action<Noise> WaterHeightChanged;
   public Image WaterNoise;
-  public event Action<NoiseParams> WaterParamsChanged;
+  // public event Action<NoiseParams> WaterParamsChanged;
   public NoiseParams WaterNoiseParams;
   private float _time = 0;
   private StatsManager _statsManager;

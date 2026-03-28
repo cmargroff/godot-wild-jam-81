@@ -164,11 +164,13 @@ public partial class DIContainerNode : Node
   {
     if (_currentScope is not null)
       throw new InvalidOperationException("You must close the service scope before opening a new one. Call " + nameof(CloseSceneScope) + "().");
+    GD.Print("Creating new service scope");
     _currentScope = _serviceProvider.CreateScope();
   }
 
   public void CloseSceneScope()
   {
+    GD.Print("Closing current service scope");
     _currentScope?.Dispose();
     _currentScope = null;
   }
