@@ -25,7 +25,7 @@ Globals="*res://scripts/Globals.cs"
 
 [custom]
 
-initial_scene="Splash"
+initial_scene="Test"
 
 [display]
 

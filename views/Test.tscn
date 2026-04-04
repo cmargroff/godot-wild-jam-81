@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://del703igq6eki"]
+
+[ext_resource type="PackedScene" uid="uid://wmg6ljmyxk7y" path="res://components/game/WorldEnvironment.tscn" id="1_gim6t"]
+[ext_resource type="PackedScene" uid="uid://cqpcvpq350dvi" path="res://components/game/Water.tscn" id="2_xjrnk"]
+[ext_resource type="PackedScene" uid="uid://dkxs3lfvjqggx" path="res://components/game/Inventory.tscn" id="3_wxtwu"]
+
+[node name="Test" type="Node3D" unique_id=212036701]
+
+[node name="Camera" type="Camera3D" parent="." unique_id=1892006983]
+transform = Transform3D(0.973179, 0.0395523, -0.226624, 0, 0.985109, 0.171929, 0.23005, -0.167318, 0.958688, -5.34206, 16.6861, 35.8802)
+fov = 44.0
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=926993424]
+transform = Transform3D(1, 0, 0, 0, 0.34049392, 0.94024676, 0, -0.94024676, 0.34049392, 0, 0, 0)
+
+[node name="WorldEnvironment" parent="." unique_id=1721466531 instance=ExtResource("1_gim6t")]
+
+[node name="Water" parent="." unique_id=2121880005 instance=ExtResource("2_xjrnk")]
+
+[node name="Inventory" parent="." unique_id=855512105 instance=ExtResource("3_wxtwu")]
