@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=21 format=3 uid="uid://c42hncv2f63k"]
+[gd_resource type="VisualShader" format=3 uid="uid://c42hncv2f63k"]
 
 [sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_a6qxr"]
 parameter_name = "noise3_normal"
@@ -74,12 +74,6 @@ expression = "	depth = 2.0 * depth - 1.0;
 	return near * far / (far + depth * (near - far));"
 
 [resource]
-code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
-
-
-
-"
 nodes/vertex/0/position = Vector2(-1400, -540)
 nodes/vertex/2/node = SubResource("VisualShaderNodeTexture_l8ss2")
 nodes/vertex/2/position = Vector2(-2262.84, -662.272)

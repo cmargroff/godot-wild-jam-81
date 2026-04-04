@@ -1,16 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://bnxurcn6pcbbr"]
+[gd_scene format=3 uid="uid://bnxurcn6pcbbr"]
 
 [ext_resource type="Texture2D" uid="uid://bhlppv8uccili" path="res://assets/textures/splash/godot_theme_card.svg" id="1_r1g1y"]
 [ext_resource type="FontFile" uid="uid://0k7r5qj6wgl7" path="res://assets/fonts/oswald/Oswald-SemiBold.ttf" id="2_5va7s"]
 [ext_resource type="Script" uid="uid://dp2m0lnvpcvgr" path="res://scripts/components/splash/ThemeCard.cs" id="2_mvdgn"]
 
-[node name="ThemeCard" type="TextureRect"]
+[node name="ThemeCard" type="TextureRect" unique_id=272104345]
 size_flags_horizontal = 3
 texture = ExtResource("1_r1g1y")
 expand_mode = 5
 script = ExtResource("2_mvdgn")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=1596873323]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 14

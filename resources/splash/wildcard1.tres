@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SplashWildcard" load_steps=2 format=3 uid="uid://kjvmjoju77r2"]
+[gd_resource type="Resource" script_class="SplashWildcard" format=3 uid="uid://kjvmjoju77r2"]
 
 [ext_resource type="Script" uid="uid://2ll2u1x47eep" path="res://scripts/resources/SplashWildcard.cs" id="1_t86q8"]
 

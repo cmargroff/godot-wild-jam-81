@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=9 format=3 uid="uid://cw7vr7ebv6vrv"]
+[gd_resource type="VisualShader" format=3 uid="uid://cw7vr7ebv6vrv"]
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_2enyo"]
 source = 5
@@ -28,52 +28,6 @@ default_value = 1.0
 operator = 2
 
 [resource]
-code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
-
-uniform float Speed = 1.0;
-uniform sampler2D Texture;
-
-
-
-void fragment() {
-// Input:4
-	vec2 n_out4p0 = UV;
-
-
-// Input:7
-	float n_out7p0 = TIME;
-
-
-// FloatParameter:8
-	float n_out8p0 = Speed;
-
-
-// FloatOp:9
-	float n_out9p0 = n_out7p0 * n_out8p0;
-
-
-// VectorCompose:6
-	float n_in6p1 = 0.00000;
-	vec2 n_out6p0 = vec2(n_out9p0, n_in6p1);
-
-
-// VectorOp:5
-	vec2 n_out5p0 = n_out4p0 + n_out6p0;
-
-
-	vec4 n_out2p0;
-// Texture2D:2
-	n_out2p0 = texture(Texture, n_out5p0);
-
-
-// Output:0
-	ALBEDO = vec3(n_out2p0.xyz);
-
-
-}
-"
-graph_offset = Vector2(-542.138, -31.9943)
 nodes/fragment/0/position = Vector2(-180, 180)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_2enyo")
 nodes/fragment/2/position = Vector2(-940, 260)

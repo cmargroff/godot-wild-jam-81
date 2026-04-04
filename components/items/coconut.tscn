@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://do54dkb5ahmwb"]
+[gd_scene format=4 uid="uid://do54dkb5ahmwb"]
 
 [ext_resource type="Texture2D" uid="uid://bt7fvr7ols83i" path="res://assets/models/items/fruits_fruits_Base_color.jpg" id="1_7x6dn"]
 [ext_resource type="Texture2D" uid="uid://c0eymhgsx6vlx" path="res://assets/models/items/fruits_fruits_Roughness.png" id="2_pxdip"]
@@ -53,14 +53,13 @@ shadow_mesh = SubResource("ArrayMesh_bypk7")
 [sub_resource type="SphereShape3D" id="SphereShape3D_7x6dn"]
 radius = 0.779962
 
-[node name="Coconut" type="Node3D"]
+[node name="Coconut" type="Node3D" unique_id=1477166749]
 
-[node name="fruits_coconut" type="MeshInstance3D" parent="."]
+[node name="fruits_coconut" type="MeshInstance3D" parent="." unique_id=1901241100]
 transform = Transform3D(0.715295, 0, 0, 0, 0.715295, 0, 0, 0, 0.715295, 0, 0, 0)
 mesh = SubResource("ArrayMesh_uq48f")
-skeleton = NodePath("")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=4594591]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=504228935]
 shape = SubResource("SphereShape3D_7x6dn")

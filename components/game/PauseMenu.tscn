@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0ifm6knh2ypk"]
+[gd_scene format=3 uid="uid://b0ifm6knh2ypk"]
 
 [ext_resource type="Script" uid="uid://dqbbtf385qxm5" path="res://scripts/components/game/PauseMenu.cs" id="1_eqkuw"]
 
-[node name="PauseMenu" type="Control"]
+[node name="PauseMenu" type="Control" unique_id=766863292]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -12,7 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_eqkuw")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1355371760]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,11 +20,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="CenterContainer"]
+[node name="Panel" type="Panel" parent="CenterContainer" unique_id=2115777811]
 custom_minimum_size = Vector2(400, 300)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel" unique_id=1760377974]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -35,19 +35,19 @@ offset_bottom = 27.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="CenterContainer/Panel/VBoxContainer"]
+[node name="Label" type="Label" parent="CenterContainer/Panel/VBoxContainer" unique_id=214981082]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Paused"
 horizontal_alignment = 1
 
-[node name="Continue" type="Button" parent="CenterContainer/Panel/VBoxContainer"]
+[node name="Continue" type="Button" parent="CenterContainer/Panel/VBoxContainer" unique_id=1482285663]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Continue"
 
-[node name="Menu" type="Button" parent="CenterContainer/Panel/VBoxContainer"]
+[node name="Menu" type="Button" parent="CenterContainer/Panel/VBoxContainer" unique_id=1771945461]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30

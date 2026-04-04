@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2uevndy0ggx6"]
+[gd_scene format=3 uid="uid://b2uevndy0ggx6"]
 
 [ext_resource type="Script" uid="uid://427f554vm4ht" path="res://views/LoadingScene.cs" id="1_3k5dh"]
 [ext_resource type="Texture2D" uid="uid://bqlicqjd2e2mg" path="res://assets/textures/loading/spinner-512.png" id="2_b80fj"]
@@ -42,7 +42,7 @@ _data = {
 &"spin": SubResource("Animation_v0di8")
 }
 
-[node name="LoadingScene" type="Control"]
+[node name="LoadingScene" type="Control" unique_id=697111609]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -52,7 +52,7 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_3k5dh")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=574382788]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -61,7 +61,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=141012344]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -72,7 +72,7 @@ offset_left = -1137.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="Label" type="Label" parent="Control"]
+[node name="Label" type="Label" parent="Control" unique_id=778962432]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -87,12 +87,10 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "Loading"
 
-[node name="Spinner" type="Sprite2D" parent="Control"]
+[node name="Spinner" type="Sprite2D" parent="Control" unique_id=833588037]
 position = Vector2(1080, -54)
 scale = Vector2(0.08, 0.08)
 texture = ExtResource("2_b80fj")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_xlvnv")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=676035526]
+libraries/ = SubResource("AnimationLibrary_xlvnv")

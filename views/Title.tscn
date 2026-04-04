@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://boi3bbpwc8wvr"]
+[gd_scene format=3 uid="uid://boi3bbpwc8wvr"]
 
 [ext_resource type="Script" uid="uid://c7kejhn7h1f0h" path="res://views/Title.cs" id="1_e3r8i"]
 
-[node name="Title" type="Control"]
+[node name="Title" type="Control" unique_id=602571912]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e3r8i")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1091655195]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,7 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=2091303176]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,50 +28,50 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=2134420363]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="Title" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1489965486]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Ship of Theseus Simulator 2025"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Subtitle" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="Subtitle" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1182567716]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "(no we dont have a fancy title screen)"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Menu" type="VBoxContainer" parent="CenterContainer/VBoxContainer"]
+[node name="Menu" type="VBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1143150189]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="StartButton" type="Button" parent="CenterContainer/VBoxContainer/Menu"]
+[node name="StartButton" type="Button" parent="CenterContainer/VBoxContainer/Menu" unique_id=1431308409]
 layout_mode = 2
 text = "Start"
 
-[node name="OptionsButton" type="Button" parent="CenterContainer/VBoxContainer/Menu"]
+[node name="OptionsButton" type="Button" parent="CenterContainer/VBoxContainer/Menu" unique_id=414773997]
 layout_mode = 2
 text = "Options"
 
-[node name="CreditsButton" type="Button" parent="CenterContainer/VBoxContainer/Menu"]
+[node name="CreditsButton" type="Button" parent="CenterContainer/VBoxContainer/Menu" unique_id=1261443092]
 layout_mode = 2
 text = "Credits"
 
-[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer/Menu"]
+[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer/Menu" unique_id=539367795]
 layout_mode = 2
 text = "Quit"
 
-[node name="Options" type="Control" parent="CenterContainer"]
+[node name="Options" type="Control" parent="CenterContainer" unique_id=222928968]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(400, 300)
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="CenterContainer/Options"]
+[node name="ColorRect" type="ColorRect" parent="CenterContainer/Options" unique_id=1324525331]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -80,88 +80,88 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.314316, 0.314316, 0.314316, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Options"]
-layout_mode = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Options" unique_id=557354111]
+layout_mode = 0
 offset_left = 3.0
 offset_top = 3.0
 offset_right = 397.0
 offset_bottom = 297.0
 
-[node name="Label" type="Label" parent="CenterContainer/Options/VBoxContainer"]
+[node name="Label" type="Label" parent="CenterContainer/Options/VBoxContainer" unique_id=1664609424]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Options"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Options/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Options/VBoxContainer" unique_id=345368246]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Options/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/Options/VBoxContainer/HBoxContainer" unique_id=981575904]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_right = 5
 
-[node name="Left" type="VBoxContainer" parent="CenterContainer/Options/VBoxContainer/HBoxContainer/MarginContainer"]
+[node name="Left" type="VBoxContainer" parent="CenterContainer/Options/VBoxContainer/HBoxContainer/MarginContainer" unique_id=1806323995]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Volume" type="Label" parent="CenterContainer/Options/VBoxContainer/HBoxContainer/MarginContainer/Left"]
+[node name="Volume" type="Label" parent="CenterContainer/Options/VBoxContainer/HBoxContainer/MarginContainer/Left" unique_id=1472724834]
 layout_mode = 2
 text = "Volume"
 horizontal_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="CenterContainer/Options/VBoxContainer/HBoxContainer/MarginContainer/Left"]
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/Options/VBoxContainer/HBoxContainer/MarginContainer/Left" unique_id=2145260338]
 layout_mode = 2
 columns = 2
 
-[node name="Label" type="Label" parent="CenterContainer/Options/VBoxContainer/HBoxContainer/MarginContainer/Left/GridContainer"]
+[node name="Label" type="Label" parent="CenterContainer/Options/VBoxContainer/HBoxContainer/MarginContainer/Left/GridContainer" unique_id=503394065]
 layout_mode = 2
 text = "Main"
 
-[node name="MainVolumeSlider" type="HSlider" parent="CenterContainer/Options/VBoxContainer/HBoxContainer/MarginContainer/Left/GridContainer"]
+[node name="MainVolumeSlider" type="HSlider" parent="CenterContainer/Options/VBoxContainer/HBoxContainer/MarginContainer/Left/GridContainer" unique_id=1865374702]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 
-[node name="Label2" type="Label" parent="CenterContainer/Options/VBoxContainer/HBoxContainer/MarginContainer/Left/GridContainer"]
+[node name="Label2" type="Label" parent="CenterContainer/Options/VBoxContainer/HBoxContainer/MarginContainer/Left/GridContainer" unique_id=927530886]
 layout_mode = 2
 text = "BGM"
 
-[node name="BGMVolumeSlider" type="HSlider" parent="CenterContainer/Options/VBoxContainer/HBoxContainer/MarginContainer/Left/GridContainer"]
+[node name="BGMVolumeSlider" type="HSlider" parent="CenterContainer/Options/VBoxContainer/HBoxContainer/MarginContainer/Left/GridContainer" unique_id=1011321450]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 
-[node name="Label3" type="Label" parent="CenterContainer/Options/VBoxContainer/HBoxContainer/MarginContainer/Left/GridContainer"]
+[node name="Label3" type="Label" parent="CenterContainer/Options/VBoxContainer/HBoxContainer/MarginContainer/Left/GridContainer" unique_id=1624888777]
 layout_mode = 2
 text = "SFX"
 
-[node name="SFXVolumeSlider" type="HSlider" parent="CenterContainer/Options/VBoxContainer/HBoxContainer/MarginContainer/Left/GridContainer"]
+[node name="SFXVolumeSlider" type="HSlider" parent="CenterContainer/Options/VBoxContainer/HBoxContainer/MarginContainer/Left/GridContainer" unique_id=37107948]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 
-[node name="Label4" type="Label" parent="CenterContainer/Options/VBoxContainer/HBoxContainer/MarginContainer/Left/GridContainer"]
+[node name="Label4" type="Label" parent="CenterContainer/Options/VBoxContainer/HBoxContainer/MarginContainer/Left/GridContainer" unique_id=892287787]
 layout_mode = 2
 text = "Voice"
 
-[node name="VoiceVolumeSlider" type="HSlider" parent="CenterContainer/Options/VBoxContainer/HBoxContainer/MarginContainer/Left/GridContainer"]
+[node name="VoiceVolumeSlider" type="HSlider" parent="CenterContainer/Options/VBoxContainer/HBoxContainer/MarginContainer/Left/GridContainer" unique_id=1710091409]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 
-[node name="Right" type="VBoxContainer" parent="CenterContainer/Options/VBoxContainer/HBoxContainer"]
+[node name="Right" type="VBoxContainer" parent="CenterContainer/Options/VBoxContainer/HBoxContainer" unique_id=34127584]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CloseOptionsButton" type="Button" parent="CenterContainer/Options/VBoxContainer"]
+[node name="CloseOptionsButton" type="Button" parent="CenterContainer/Options/VBoxContainer" unique_id=792107516]
 layout_mode = 2
 text = "Close"
 

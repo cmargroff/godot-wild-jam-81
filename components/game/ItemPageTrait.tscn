@@ -1,11 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://cwk0djsq4ityb"]
+[gd_scene format=3 uid="uid://cwk0djsq4ityb"]
 
 [ext_resource type="Script" uid="uid://lti1udmp2my1" path="res://scripts/components/game/ItemPageTrait.cs" id="1_5h3wp"]
 
-[node name="ItemPageTrait" type="HBoxContainer"]
+[node name="ItemPageTrait" type="HBoxContainer" unique_id=1293377862]
 size_flags_horizontal = 3
 script = ExtResource("1_5h3wp")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=124145717]
 layout_mode = 2
 text = "Example text of a trait effect"

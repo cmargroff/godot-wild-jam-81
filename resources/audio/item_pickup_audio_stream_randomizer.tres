@@ -1,4 +1,4 @@
-[gd_resource type="AudioStreamRandomizer" load_steps=7 format=3 uid="uid://p51ofnqbqlij"]
+[gd_resource type="AudioStreamRandomizer" format=3 uid="uid://p51ofnqbqlij"]
 
 [ext_resource type="AudioStream" uid="uid://ccfna7uvydouo" path="res://assets/audio/sfx/pickup_1.1.1.mp3" id="1_f4cig"]
 [ext_resource type="AudioStream" uid="uid://btyu2haks823h" path="res://assets/audio/sfx/pickup_1.1.mp3" id="2_bcxgc"]

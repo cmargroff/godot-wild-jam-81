@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bsibg77xt75ap"]
+[gd_scene format=3 uid="uid://bsibg77xt75ap"]
 
 [ext_resource type="Script" uid="uid://cmy7umvdaq8nl" path="res://scripts/components/splash/BuildLabel.cs" id="1_qifyb"]
 
-[node name="BuildLabel" type="Label"]
+[node name="BuildLabel" type="Label" unique_id=954836389]
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "GWJ #XX"

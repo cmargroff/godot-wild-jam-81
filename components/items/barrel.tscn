@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://brn8vyrqvowc0"]
+[gd_scene format=4 uid="uid://brn8vyrqvowc0"]
 
 [ext_resource type="Texture2D" uid="uid://daxdro1ssfhrb" path="res://assets/models/items/barell_barell_Base_color.jpg" id="1_ymdaj"]
 [ext_resource type="Texture2D" uid="uid://b7uj6tcmlrx0g" path="res://assets/models/items/barell_barell_Metallic-barell_Roughness.png" id="2_0rtev"]
@@ -54,15 +54,14 @@ shadow_mesh = SubResource("ArrayMesh_8tldn")
 radius = 0.881004
 height = 2.70146
 
-[node name="Barrel" type="Node3D"]
+[node name="Barrel" type="Node3D" unique_id=1852024509]
 
-[node name="barell" type="MeshInstance3D" parent="."]
+[node name="barell" type="MeshInstance3D" parent="." unique_id=1390366295]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_plej4")
-skeleton = NodePath("")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=102930460]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1839762225]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_ymdaj")

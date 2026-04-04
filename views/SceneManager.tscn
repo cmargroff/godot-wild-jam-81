@@ -1,11 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bngrv1h7g5w24"]
+[gd_scene format=3 uid="uid://bngrv1h7g5w24"]
 
 [ext_resource type="Script" uid="uid://cm56qkhuicn4f" path="res://scripts/managers/SceneManager.cs" id="1_12uft"]
 [ext_resource type="PackedScene" uid="uid://b2uevndy0ggx6" path="res://views/LoadingScene.tscn" id="2_ckhlm"]
 
-[node name="SceneManager" type="Node3D"]
+[node name="SceneManager" type="Node3D" unique_id=1148406884]
 script = ExtResource("1_12uft")
 
-[node name="LoadingScene" parent="." instance=ExtResource("2_ckhlm")]
+[node name="LoadingScene" parent="." unique_id=233080928 instance=ExtResource("2_ckhlm")]
 unique_name_in_owner = true
 script = null

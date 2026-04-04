@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://wmg6ljmyxk7y"]
+[gd_scene format=3 uid="uid://wmg6ljmyxk7y"]
 
 [ext_resource type="Shader" uid="uid://5yc623i2i225" path="res://assets/shaders/sky_shader.gdshader" id="1_dq0xd"]
 [ext_resource type="Texture2D" uid="uid://ch1cmvgj2pt2o" path="res://assets/textures/sky/particle.png" id="2_ki1nh"]
@@ -30,12 +30,12 @@ curve = SubResource("Curve_spkmq")
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_k5ib0"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3ffak"]
-seamless = true
 noise = SubResource("FastNoiseLite_k5ib0")
+seamless = true
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_b8rml"]
-seamless = true
 noise = SubResource("FastNoiseLite_k5ib0")
+seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_me8bu"]
 shader = ExtResource("1_dq0xd")
@@ -80,5 +80,5 @@ fog_sky_affect = 0.0
 volumetric_fog_albedo = Color(0.843137, 0.913725, 1, 1)
 adjustment_color_correction = SubResource("CurveXYZTexture_wswjn")
 
-[node name="WorldEnvironment" type="WorldEnvironment"]
+[node name="WorldEnvironment" type="WorldEnvironment" unique_id=222510432]
 environment = SubResource("Environment_4mbpp")

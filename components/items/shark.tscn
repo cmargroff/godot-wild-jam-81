@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://87u6yuw5ketm"]
+[gd_scene format=3 uid="uid://87u6yuw5ketm"]
 
 [ext_resource type="PackedScene" uid="uid://d227y6fmodipo" path="res://assets/models/items/shark_centered.glb" id="1_yd8yw"]
 
@@ -6,12 +6,12 @@
 radius = 1.73742
 height = 9.86017
 
-[node name="Shark" type="Node3D"]
+[node name="Shark" type="Node3D" unique_id=1048353470]
 
-[node name="shark_centered" parent="." instance=ExtResource("1_yd8yw")]
+[node name="shark_centered" parent="." unique_id=408492708 instance=ExtResource("1_yd8yw")]
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=607129347]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1047976606]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.804797, 0, 0)
 shape = SubResource("CapsuleShape3D_yd8yw")

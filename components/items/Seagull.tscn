@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://bojpfhre0rnkj"]
+[gd_scene format=4 uid="uid://bojpfhre0rnkj"]
 
 [ext_resource type="Texture2D" uid="uid://b3dn2ftw07fmj" path="res://assets/models/items/seagull_seagull_Base_color.png" id="1_qywdi"]
 [ext_resource type="Texture2D" uid="uid://bfri8pqa7yvr7" path="res://assets/models/items/seagull_seagull_Normal.png" id="2_cqyte"]
@@ -55,16 +55,16 @@ bind/4/name = &"wing l"
 bind/4/bone = -1
 bind/4/pose = Transform3D(-0.866516, -0.475603, 0.151502, 0.157015, 0.0283963, 0.987188, -0.473812, 0.879202, 0.0500709, 28.3498, -5.48106, 13.5375)
 
-[node name="Seagull" type="Node3D"]
+[node name="Seagull" type="Node3D" unique_id=2126850545]
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=1256732098]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.9871, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1903628347]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_dpnu6")
 
-[node name="Skeleton3D" type="Skeleton3D" parent="."]
+[node name="Skeleton3D" type="Skeleton3D" parent="." unique_id=423170590]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.944, 0)
 bones/0/name = "body"
 bones/0/parent = -1
@@ -102,6 +102,7 @@ bones/4/position = Vector3(-0.437951, 0.198683, -0.020862)
 bones/4/rotation = Quaternion(-0.210222, 0.208204, 0.729659, 0.616486)
 bones/4/scale = Vector3(1, 1, 1)
 
-[node name="seagull" type="MeshInstance3D" parent="Skeleton3D"]
+[node name="seagull" type="MeshInstance3D" parent="Skeleton3D" unique_id=2014220837]
 mesh = SubResource("ArrayMesh_f6ugd")
 skin = SubResource("Skin_vv4lg")
+skeleton = NodePath("..")

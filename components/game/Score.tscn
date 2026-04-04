@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7kdi5u8brmws"]
+[gd_scene format=3 uid="uid://b7kdi5u8brmws"]
 
 [ext_resource type="Script" uid="uid://cw458qrvpgtfo" path="res://scripts/components/game/Score.cs" id="1_a1l8k"]
 [ext_resource type="FontFile" uid="uid://c0b830g1sx2i7" path="res://assets/fonts/pirata-one/PirataOne-Regular.ttf" id="1_j0xec"]
@@ -6,7 +6,7 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ixsgd"]
 
-[node name="Score" type="Control"]
+[node name="Score" type="Control" unique_id=2066844779]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,7 +15,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_a1l8k")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1451138725]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -27,7 +27,7 @@ grow_horizontal = 0
 scale = Vector2(0.75, 0.75)
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ixsgd")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="PanelContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="PanelContainer" unique_id=540893934]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -38,17 +38,17 @@ patch_margin_top = 44
 patch_margin_right = 123
 patch_margin_bottom = 43
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1304636488]
 layout_mode = 2
 theme_override_constants/margin_left = 35
 theme_override_constants/margin_top = 6
 theme_override_constants/margin_right = 45
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1659877985]
 layout_mode = 2
 alignment = 2
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=1199294602]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3

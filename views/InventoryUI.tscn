@@ -1,13 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dbksr1rbsqitb"]
+[gd_scene format=3 uid="uid://dbksr1rbsqitb"]
 
 [ext_resource type="Script" uid="uid://dipjaswrepjkw" path="res://scripts/components/game/InventoryUi.cs" id="1_4q6ao"]
 
-[node name="InventoryUI" type="Control"]
+[node name="InventoryUI" type="Control" unique_id=1696303764]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_4q6ao")
 
-[node name="ItemList" type="ItemList" parent="."]
+[node name="ItemList" type="ItemList" parent="." unique_id=652365384]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0

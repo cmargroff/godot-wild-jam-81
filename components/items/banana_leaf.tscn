@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://co81irye3qhlo"]
+[gd_scene format=4 uid="uid://co81irye3qhlo"]
 
 [ext_resource type="Texture2D" uid="uid://bt7fvr7ols83i" path="res://assets/models/items/fruits_fruits_Base_color.jpg" id="1_5sj42"]
 [ext_resource type="Texture2D" uid="uid://c0eymhgsx6vlx" path="res://assets/models/items/fruits_fruits_Roughness.png" id="2_8goaa"]
@@ -54,16 +54,15 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_6jsh4")
 
-[node name="BananaLeaf" type="Node3D"]
+[node name="BananaLeaf" type="Node3D" unique_id=2110539075]
 transform = Transform3D(1, 0, 0, 0, 0.056989, 0.998375, 0, -0.998375, 0.056989, 0, 0, 0.356892)
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=2067133320]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=480516572]
 transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 0.237902, 9.31323e-10)
 shape = SubResource("CapsuleShape3D_5sj42")
 
-[node name="fruits_leaf" type="MeshInstance3D" parent="."]
+[node name="fruits_leaf" type="MeshInstance3D" parent="." unique_id=1005064363]
 transform = Transform3D(-3.34247e-08, 0, 0.697775, 0, 0.697775, 0, -0.764668, 0, -3.05007e-08, 0, 0.237902, 0)
 mesh = SubResource("ArrayMesh_0j6dm")
-skeleton = NodePath("")

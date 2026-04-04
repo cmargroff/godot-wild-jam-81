@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cs2ybcc1lpqhc"]
+[gd_scene format=3 uid="uid://cs2ybcc1lpqhc"]
 
 [ext_resource type="Script" uid="uid://wiwsb8d1e7fq" path="res://scripts/views/Game.cs" id="1_5pph0"]
 [ext_resource type="PackedScene" uid="uid://cxyf4q4egqw6k" path="res://components/game/Ship.tscn" id="2_26sbl"]
@@ -11,60 +11,60 @@
 [ext_resource type="PackedScene" uid="uid://eclw6x7704g" path="res://views/GameOver.tscn" id="7_hfq8r"]
 [ext_resource type="PackedScene" uid="uid://ctigml18m3xj8" path="res://components/game/Port.tscn" id="10_kcxve"]
 
-[node name="Game" type="Node3D"]
+[node name="Game" type="Node3D" unique_id=785308419]
 script = ExtResource("1_5pph0")
 
-[node name="Camera" type="Camera3D" parent="."]
+[node name="Camera" type="Camera3D" parent="." unique_id=2122966747]
 transform = Transform3D(0.973179, 0.0395523, -0.226624, 0, 0.985109, 0.171929, 0.23005, -0.167318, 0.958688, -5.34206, 16.6861, 35.8802)
 fov = 44.0
 
-[node name="Ship" parent="." instance=ExtResource("2_26sbl")]
+[node name="Ship" parent="." unique_id=1338805763 instance=ExtResource("2_26sbl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.41927, 0)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=93076111]
 transform = Transform3D(1, 0, 0, 0, 0.340494, 0.940247, 0, -0.940247, 0.340494, 0, 0, 0)
 
-[node name="HUD" parent="." instance=ExtResource("3_26sbl")]
+[node name="HUD" parent="." unique_id=2020129536 instance=ExtResource("3_26sbl")]
 
-[node name="PauseMenu" parent="." instance=ExtResource("4_26sbl")]
+[node name="PauseMenu" parent="." unique_id=1268216580 instance=ExtResource("4_26sbl")]
 
-[node name="Water" parent="." instance=ExtResource("5_lah3o")]
+[node name="Water" parent="." unique_id=1277309273 instance=ExtResource("5_lah3o")]
 unique_name_in_owner = true
 
-[node name="Water2" parent="." instance=ExtResource("5_lah3o")]
+[node name="Water2" parent="." unique_id=1089916159 instance=ExtResource("5_lah3o")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -200)
 
-[node name="Water3" parent="." instance=ExtResource("5_lah3o")]
+[node name="Water3" parent="." unique_id=451439430 instance=ExtResource("5_lah3o")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, -200)
 
-[node name="Water4" parent="." instance=ExtResource("5_lah3o")]
+[node name="Water4" parent="." unique_id=1803015867 instance=ExtResource("5_lah3o")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 0)
 
-[node name="WorldEnvironment" parent="." instance=ExtResource("6_cqtd1")]
+[node name="WorldEnvironment" parent="." unique_id=1774726062 instance=ExtResource("6_cqtd1")]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1121219313]
 
-[node name="AudioStreamPlayer_BGM" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer_BGM" type="AudioStreamPlayer" parent="." unique_id=1435463718]
 stream = ExtResource("5_k55y7")
 volume_db = -6.0
 autoplay = true
 bus = &"BGM"
 
-[node name="AudioStreamPlayer_ItemPickup" type="AudioStreamPlayer3D" parent="."]
+[node name="AudioStreamPlayer_ItemPickup" type="AudioStreamPlayer3D" parent="." unique_id=133964575]
 unique_name_in_owner = true
 stream = ExtResource("6_k55y7")
 
-[node name="GameOver" parent="." instance=ExtResource("7_hfq8r")]
+[node name="GameOver" parent="." unique_id=12513894 instance=ExtResource("7_hfq8r")]
 unique_name_in_owner = true
 visible = false
 
-[node name="Port" parent="." instance=ExtResource("10_kcxve")]
+[node name="Port" parent="." unique_id=1282910287 instance=ExtResource("10_kcxve")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16.4768, 7.19492, 28.8647)
 
-[node name="GameOverTimer" type="Timer" parent="."]
+[node name="GameOverTimer" type="Timer" parent="." unique_id=235486184]
 process_mode = 3
 process_callback = 0
 wait_time = 3.0

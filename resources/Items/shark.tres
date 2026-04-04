@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemResource" load_steps=4 format=3 uid="uid://82kelnpb6de"]
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://82kelnpb6de"]
 
 [ext_resource type="Texture2D" uid="uid://cgwiv4s41mkl8" path="res://assets/textures/items/shark.png" id="1_kuiun"]
 [ext_resource type="Script" uid="uid://chlt3chm3e8ap" path="res://scripts/resources/ItemResource.cs" id="1_xukkb"]
@@ -10,10 +10,8 @@ ItemName = "Shark"
 Description = "Increases speed and reduces water level"
 MinGoldValue = 10
 MaxGoldValue = 100
-GoldValueDistribution = 0
 MinWeight = 200.0
 MaxWeight = 1000.0
 IconTexture = ExtResource("1_kuiun")
 ItemScene = ExtResource("2_uqkvr")
-Disabled = false
 metadata/_custom_type_script = "uid://chlt3chm3e8ap"
