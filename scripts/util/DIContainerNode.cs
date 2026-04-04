@@ -49,7 +49,8 @@ public partial class DIContainerNode : Node
 
       if (autoParent)
       {
-        AddChild(node);
+        // AddChild(node);
+        CallDeferred("add_child", node);
       }
       return node;
     };
