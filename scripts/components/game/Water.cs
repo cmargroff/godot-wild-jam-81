@@ -10,6 +10,7 @@ public partial class Water : MeshInstance3D
   private EnvironmentManager _environmentManager;
   private StatsManager _statsManager;
   private ShaderMaterial _material;
+  private float _waveTime = 0;
   public override void _EnterTree()
   {
     _environmentManager = Globals.Instance.ServiceProvider.GetRequiredService<EnvironmentManager>();
@@ -35,5 +36,10 @@ public partial class Water : MeshInstance3D
   {
     var img = tex.GetImage();
     _environmentManager.WaterNoise = img;
+  }
+  public override void _Process(double delta)
+  {
+    _waveTime += (float)delta;
+    _material.SetShaderParameter("wave_time", _waveTime / 1000);
   }
 }
