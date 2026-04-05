@@ -2,9 +2,9 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"type": "shell",
+			"type": "dotnet",
 			"label": "build",
-			"command": "dotnet build",
+			"task": "build",
 			"problemMatcher": [
 				"$msCompile"
 			],
