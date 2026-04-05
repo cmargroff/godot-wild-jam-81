@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cqpcvpq350dvi"]
 
 [ext_resource type="Material" uid="uid://brcvw5ekpvgnn" path="res://assets/materials/WaterMaterial.tres" id="1_2wx3r"]
-[ext_resource type="Script" uid="uid://bivepqkhx3hwe" path="res://scripts/components/game/Water.cs" id="2_to6j5"]
+[ext_resource type="Script" uid="uid://bax83t6m5otlf" path="res://scripts/managers/WaterManager.cs" id="2_qpa8i"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_tmepk"]
 material = ExtResource("1_2wx3r")
@@ -13,4 +13,4 @@ orientation = 1
 [node name="Water" type="MeshInstance3D" unique_id=2095374296]
 mesh = SubResource("QuadMesh_tmepk")
 skeleton = NodePath("../..")
-script = ExtResource("2_to6j5")
+script = ExtResource("2_qpa8i")
