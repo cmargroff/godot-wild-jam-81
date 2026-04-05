@@ -2,12 +2,9 @@ using System;
 using System.Runtime.CompilerServices;
 using Godot;
 
-public partial class PauseManager : Node
+public partial class PauseManager : Node, IPauseManager
 {
     public event Action<bool> GamePauseChanged;
-
-
-
     private SceneTree _tree;
     public override void _Ready()
     {
@@ -16,14 +13,11 @@ public partial class PauseManager : Node
         Name = "PauseManager";
     }
 
-
     public void Pause()
     {
         _tree.Paused = true;
         GamePauseChanged?.Invoke(_tree.Paused);
         Engine.TimeScale = 0;
-        GD.Print("paused");
-
     }
 
     public void Unpause()
@@ -31,10 +25,6 @@ public partial class PauseManager : Node
         _tree.Paused = false; //here
         Engine.TimeScale = 1;
         GamePauseChanged?.Invoke(_tree.Paused);
-
-        GD.Print("unpaused");
-
-
     }
 
     public void Toggle()
@@ -42,8 +32,6 @@ public partial class PauseManager : Node
         _tree.Paused = !_tree.Paused;
         GamePauseChanged?.Invoke(_tree.Paused);
         Engine.TimeScale = _tree.Paused ? 0 : 1;
-        GD.Print("pause toggled");
-        GD.Print(GamePauseChanged?.GetInvocationList().Length);
     }
 
     public override void _Input(InputEvent @event)
