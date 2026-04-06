@@ -6,6 +6,7 @@ using ShipOfTheseus2025.Managers;
 
 public partial class ServiceListManager : Node
 {
+  private CanvasLayer _canvasLayer;
   private Tree _tree;
   [FromServices]
   public void Inject(SceneManager SceneManager)
@@ -14,6 +15,8 @@ public partial class ServiceListManager : Node
   }
   public override void _EnterTree()
   {
+    _canvasLayer = GetNode<CanvasLayer>("%CanvasLayer");
+    _canvasLayer.Visible = false;
     _tree = GetNode<Tree>("%Tree");
   }
   private void UpdateList()
@@ -36,5 +39,16 @@ public partial class ServiceListManager : Node
       item.SetText(0, service);
     }
     return group;
+  }
+  private void ToggleVisibility()
+  {
+    _canvasLayer.Visible = !_canvasLayer.Visible;
+  }
+  public override void _Input(InputEvent @event)
+  {
+    if (@event is InputEventKey eventKey && eventKey.Pressed && eventKey.Keycode == Key.F2)
+    {
+      ToggleVisibility();
+    }
   }
 }
