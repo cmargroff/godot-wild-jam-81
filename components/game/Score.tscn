@@ -8,11 +8,10 @@
 
 [node name="Score" type="Control" unique_id=2066844779]
 layout_mode = 3
-anchors_preset = 15
+anchors_preset = 1
+anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+grow_horizontal = 0
 script = ExtResource("1_a1l8k")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1451138725]

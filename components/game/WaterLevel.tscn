@@ -8,11 +8,13 @@ bg_color = Color(0.0601981, 0.634535, 0.954057, 1)
 
 [node name="WaterLevel" type="Control" unique_id=2143705855]
 layout_mode = 3
-anchors_preset = 15
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+grow_horizontal = 0
+grow_vertical = 0
 mouse_filter = 1
 script = ExtResource("1_pigcg")
 

@@ -6,10 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://dd6bd8cm6ewgm" path="res://components/game/InventoryItemSlot.tscn" id="3_fmepp"]
 [ext_resource type="Texture2D" uid="uid://7awdmhrgeqh5" path="res://assets/textures/game/inventory_handle.png" id="4_ajov7"]
 
-[node name="Inventory" type="CanvasLayer" unique_id=855512105]
+[node name="Inventory" type="Control" unique_id=808839413]
+layout_mode = 3
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
 
 [node name="Frame" type="TextureRect" parent="." unique_id=782119873]
 unique_name_in_owner = true
+layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
