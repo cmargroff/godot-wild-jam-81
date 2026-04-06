@@ -13,7 +13,7 @@ public partial class GameManager : Node
     public Godot.Collections.Array<string> EnabledItems { get; set; }
 
     [FromServices]
-    public void Inject(SceneManager sceneManager, ConfigManager configManager)
+    public void Inject(SceneManager sceneManager, ConfigManager configManager, ServiceListManager serviceList)
     {
         GD.Print(GetType().Name, " Constructed");
         _sceneManager = sceneManager;

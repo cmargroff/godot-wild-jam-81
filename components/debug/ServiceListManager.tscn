@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dom37pjj7sq00"]
+
+[ext_resource type="Script" uid="uid://cgt15icwb67o8" path="res://scripts/components/debug/ServiceListManager.cs" id="1_06bh4"]
+
+[node name="ServiceList" type="Node" unique_id=1127509778]
+script = ExtResource("1_06bh4")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=794280776]
+follow_viewport_enabled = true
+
+[node name="Tree" type="Tree" parent="CanvasLayer" unique_id=298474399]
+unique_name_in_owner = true
+offset_right = 254.0
+offset_bottom = 436.0
+allow_search = false

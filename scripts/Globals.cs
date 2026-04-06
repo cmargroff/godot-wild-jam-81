@@ -1,5 +1,8 @@
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using Godot;
 using Microsoft.Extensions.DependencyInjection;
 using ShipOfTheseus2025.Components.Game;
@@ -36,6 +39,7 @@ public partial class Globals : DIContainerNode
     .AddSingleton<ConfigManager>()
     .AddSingleton<RandomNumberGeneratorService>()
     .AddSingleton<ItemFactoryService>()
+    .AddSingleton(InjectInstantiatedPackedScene<ServiceListManager>("res://components/debug/ServiceListManager.tscn"))
     .AddScoped(InjectNodeClass<ScoreManager>(false))
     .AddScoped(InjectNodeClass<GameEventManager>(false))
     .AddScoped(InjectNodeClass<ItemDragManager>())
@@ -64,5 +68,33 @@ public partial class Globals : DIContainerNode
       _serviceCollection.AddKeyedScoped(Path.GetFileNameWithoutExtension(path), InjectAvailableScene(path));
     }
   }
-
+#if DEBUG
+  private List<string> GetActiveServicesForProvider(IServiceProvider provider)
+  {
+    Type type = provider.GetType();
+    PropertyInfo root = type.GetProperty("Root", BindingFlags.NonPublic | BindingFlags.Instance);
+    if (root == null)
+    {
+      GD.PrintErr("Could not access the root of the service provider.");
+      return new List<string>();
+    }
+    object rootValue = root.GetValue(provider);
+    return GetDisposables(rootValue);
+  }
+  private List<string> GetDisposables(object engine)
+  {
+    Type ServiceProviderEngine = engine.GetType();
+    FieldInfo Disposables = ServiceProviderEngine.GetField("_disposables", BindingFlags.NonPublic | BindingFlags.Instance);
+    var disposables = Disposables.GetValue(engine) as List<object>;
+    return disposables.Select(d => d.GetType().Name).ToList();
+  }
+  public List<string> GetActiveGlobalServices()
+  {
+    return GetActiveServicesForProvider(_serviceProvider);
+  }
+  public List<string> GetActiveSceneServices()
+  {
+    return GetDisposables(ServiceProvider);
+  }
+#endif
 }
