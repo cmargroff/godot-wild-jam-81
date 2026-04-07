@@ -7,7 +7,7 @@ script = ExtResource("1_06bh4")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=794280776]
 unique_name_in_owner = true
-layer = 1000
+layer = 1001
 follow_viewport_enabled = true
 
 [node name="Tree" type="Tree" parent="CanvasLayer" unique_id=298474399]
