@@ -2,18 +2,11 @@
 
 [ext_resource type="Script" uid="uid://dqbbtf385qxm5" path="res://scripts/components/game/PauseMenu.cs" id="1_eqkuw"]
 
-[node name="PauseMenu" type="Control" unique_id=766863292]
-process_mode = 3
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="PauseMenu" type="CanvasLayer" unique_id=1054785177]
+layer = 1000
 script = ExtResource("1_eqkuw")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1355371760]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

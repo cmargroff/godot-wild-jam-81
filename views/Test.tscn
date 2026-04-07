@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://wmg6ljmyxk7y" path="res://components/game/WorldEnvironment.tscn" id="1_gim6t"]
 [ext_resource type="Script" uid="uid://2sa5065aun7m" path="res://views/Test.cs" id="1_wxtwu"]
+[ext_resource type="PackedScene" uid="uid://b0ifm6knh2ypk" path="res://components/game/PauseMenu.tscn" id="4_cithd"]
 [ext_resource type="PackedScene" uid="uid://lw36b2co12mu" path="res://components/game/HUD.tscn" id="4_tlkmq"]
 
 [node name="Test" type="Node3D" unique_id=212036701]
@@ -17,3 +18,5 @@ transform = Transform3D(1, 0, 0, 0, 0.34049392, 0.94024676, 0, -0.94024676, 0.34
 [node name="WorldEnvironment" parent="." unique_id=1721466531 instance=ExtResource("1_gim6t")]
 
 [node name="HUD" parent="." unique_id=594933599 instance=ExtResource("4_tlkmq")]
+
+[node name="PauseMenu" parent="." unique_id=1054785177 instance=ExtResource("4_cithd")]

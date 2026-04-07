@@ -1,16 +1,19 @@
 using System;
 using Godot;
-using Microsoft.Extensions.DependencyInjection;
-using ShipOfTheseus2025;
-using ShipOfTheseus2025.Managers;
+using ShipOfTheseus2025.DependencyInjection;
 
-public partial class PauseMenu : Control, IManagedScene
+public partial class PauseMenu : CanvasLayer, IManagedScene
 {
     private Button _continue;
     private Button _menu;
-    private PauseManager _pauseManager;
-
+    private IPauseManager _pauseManager;
     public event Action<string> SceneClosing;
+
+    [FromServices]
+    public void Inject(IPauseManager pauseManager)
+    {
+        _pauseManager = pauseManager;
+    }
 
     public override void _Ready()
     {
@@ -19,8 +22,7 @@ public partial class PauseMenu : Control, IManagedScene
         _continue.Pressed += Continue;
         _menu = GetNode<Button>("%Menu");
         _menu.Pressed += Menu;
-        _pauseManager = Globals.Instance.ServiceProvider.GetRequiredService<PauseManager>();
-        _pauseManager.GamePauseChanged += PauseManager_GamePauseChanged;
+        _pauseManager.GamePauseChanged += IPauseManager_GamePauseChanged;
     }
 
     private void Continue()
@@ -34,11 +36,8 @@ public partial class PauseMenu : Control, IManagedScene
         SceneClosing?.Invoke("Title");
     }
 
-    public void PauseManager_GamePauseChanged(bool paused)
+    public void IPauseManager_GamePauseChanged(bool paused)
     {
-        GD.Print("menu");
         Visible = paused;
     }
-
-
 }
