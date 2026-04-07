@@ -5,7 +5,7 @@ using ShipOfTheseus2025.DependencyInjection;
 using ShipOfTheseus2025.Managers;
 using ShipOfTheseus2025.Services;
 
-public partial class GameEventManager : Node
+public partial class GameEventManager : Node, IGameEventManager
 {
   // times in seconds;
   const float MIN_ENVIRONMENT_TIME = 10;
@@ -39,15 +39,19 @@ public partial class GameEventManager : Node
   }
   private void InitTimers()
   {
-    _environmentTimer = new();
-    _environmentTimer.OneShot = true;
-    _environmentTimer.Autostart = false;
+    _environmentTimer = new()
+    {
+      OneShot = true,
+      Autostart = false
+    };
     _environmentTimer.Connect(Timer.SignalName.Timeout, Callable.From(DispatchEnvironmentEvent));
     AddChild(_environmentTimer);
 
-    _itemTimer = new();
-    _itemTimer.OneShot = true;
-    _itemTimer.Autostart = false;
+    _itemTimer = new()
+    {
+      OneShot = true,
+      Autostart = false
+    };
     _itemTimer.Connect(Timer.SignalName.Timeout, Callable.From(DispatchItemEvent));
     AddChild(_itemTimer);
   }

@@ -41,7 +41,7 @@ public partial class Globals : DIContainerNode
     .AddSingleton<ItemFactoryService>()
     .AddSingleton(InjectInstantiatedPackedScene<ServiceListManager>("res://components/debug/ServiceListManager.tscn"))
     .AddScoped<IScoreManager>(InjectNodeClass<ScoreManager>(false))
-    .AddScoped(InjectNodeClass<GameEventManager>(false))
+    .AddScoped<IGameEventManager>(InjectNodeClass<GameEventManager>(false))
     .AddScoped(InjectNodeClass<ItemDragManager>())
     .AddScoped<IPauseManager>(InjectNodeClass<PauseManager>())
     .AddScoped(InjectNodeClass<HoverPanelManager>())
