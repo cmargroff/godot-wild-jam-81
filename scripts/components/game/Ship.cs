@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Godot;
 using ShipOfTheseus2025.DependencyInjection;
 using ShipOfTheseus2025.Enum;
-using ShipOfTheseus2025.Managers;
 using ShipOfTheseus2025.Services;
 
 public partial class Ship : Node3D
@@ -14,7 +13,7 @@ public partial class Ship : Node3D
   private MeshInstance3D _model;
   private Node3D _damagePoints;
   private List<DamagePoint> _pointsList = new();
-  private GameEventManager _gameEventManager;
+  private IGameEventManager _gameEventManager;
   private IStatsManager _statsManager;
 
   private float _leakRate;
@@ -33,7 +32,7 @@ public partial class Ship : Node3D
   public float offset_y = -2.5f * 1.5f;
 
   [FromServices]
-  public void Inject(RandomNumberGeneratorService rng, GameEventManager gameEventManager, IStatsManager statsManager)
+  public void Inject(RandomNumberGeneratorService rng, IGameEventManager gameEventManager, IStatsManager statsManager)
   {
     _rng = rng;
     _gameEventManager = gameEventManager;
@@ -47,18 +46,17 @@ public partial class Ship : Node3D
     _damagePoints = GetNode<Node3D>("%Damage points");
     GetDamagePoints();
     _gameEventManager.EnvironmentEvent += Break;
-    _water = GetNode<MeshInstance3D>("../Water");
+    // _water = GetNode<MeshInstance3D>("../Water");
     heightsampler_z1 = GetNode<Marker3D>("%PitchSamplers/0");
     heightsampler_z2 = GetNode<Marker3D>("%PitchSamplers/1");
     heightsampler_x1 = GetNode<Marker3D>("%RollSamplers/0");
     heightsampler_x2 = GetNode<Marker3D>("%RollSamplers/1");
-    _material = _water.Mesh.SurfaceGetMaterial(0) as ShaderMaterial;
+    // _material = _water.Mesh.SurfaceGetMaterial(0) as ShaderMaterial;
 
-    noise_scale = (float)_material.GetShaderParameter("noise1_scale");
-    noise_speed = (Vector2)_material.GetShaderParameter("noise1_speed");
-    noise_strength = (float)_material.GetShaderParameter("noise1_strength");
-    noise = _material.GetShaderParameter("noise1").As<NoiseTexture2D>().Noise.GetSeamlessImage(512, 512, false, false, 0.1f, true);
-
+    // noise_scale = (float)_material.GetShaderParameter("noise1_scale");
+    // noise_speed = (Vector2)_material.GetShaderParameter("noise1_speed");
+    // noise_strength = (float)_material.GetShaderParameter("noise1_strength");
+    // noise = _material.GetShaderParameter("noise1").As<NoiseTexture2D>().Noise.GetSeamlessImage(512, 512, false, false, 0.1f, true);
   }
   private void GetDamagePoints()
   {
@@ -99,62 +97,62 @@ public partial class Ship : Node3D
   {
     _statsManager.ChangeStat(new()
     {
-      Stat = ShipOfTheseus2025.Enum.Stat.WaterLevel,
+      Stat = Stat.WaterLevel,
       Mode = StatChangeMode.Relative,
       Amount = _leakRate * (float)delta
     });
-    UpdateBuoyancy(delta);
+    // UpdateBuoyancy(delta);
   }
 
-  public void UpdateBuoyancy(double delta)
-  {
-    _time += (float)delta;
+  // public void UpdateBuoyancy(double delta)
+  // {
+  //   _time += (float)delta;
 
-    //rotation z
-    float height_z1 = GetHeight(heightsampler_z1.GlobalPosition);
-    float height_z2 = GetHeight(heightsampler_z2.GlobalPosition);
-    float heightdiff_z = height_z2 - height_z1;
-    Vector2 slopevect_z = new Vector2(1, heightdiff_z).Normalized();
+  //   //rotation z
+  //   float height_z1 = GetHeight(heightsampler_z1.GlobalPosition);
+  //   float height_z2 = GetHeight(heightsampler_z2.GlobalPosition);
+  //   float heightdiff_z = height_z2 - height_z1;
+  //   Vector2 slopevect_z = new Vector2(1, heightdiff_z).Normalized();
 
-    var targetHeight = (height_z1 + height_z2) / 2;
-    var heightDelta = (targetHeight - GlobalPosition.Y - offset_y) * .1f;
-    GlobalPosition = new Vector3(
-      GlobalPosition.X,
-      GlobalPosition.Y + heightDelta,
-      GlobalPosition.Z
-    );
+  //   var targetHeight = (height_z1 + height_z2) / 2;
+  //   var heightDelta = (targetHeight - GlobalPosition.Y - offset_y) * .1f;
+  //   GlobalPosition = new Vector3(
+  //     GlobalPosition.X,
+  //     GlobalPosition.Y + heightDelta,
+  //     GlobalPosition.Z
+  //   );
 
-    //rotation x
-    float height_x1 = GetHeight(heightsampler_x1.GlobalPosition);
-    float height_x2 = GetHeight(heightsampler_x2.GlobalPosition);
-    float heightdiff_x = height_x2 - height_x1;
-    Vector2 slopevect_x = new Vector2(1, heightdiff_x).Normalized();
+  //   //rotation x
+  //   float height_x1 = GetHeight(heightsampler_x1.GlobalPosition);
+  //   float height_x2 = GetHeight(heightsampler_x2.GlobalPosition);
+  //   float heightdiff_x = height_x2 - height_x1;
+  //   Vector2 slopevect_x = new Vector2(1, heightdiff_x).Normalized();
 
-    var targetXRot = Mathf.Clamp(Mathf.RadToDeg(slopevect_x.Angle()), -10, 10);
-    var targetZRot = Mathf.Clamp(Mathf.RadToDeg(slopevect_z.Angle()), -5, 5);
+  //   var targetXRot = Mathf.Clamp(Mathf.RadToDeg(slopevect_x.Angle()), -10, 10);
+  //   var targetZRot = Mathf.Clamp(Mathf.RadToDeg(slopevect_z.Angle()), -5, 5);
 
-    var rotXD = (targetXRot - RotationDegrees.X) * .005f;
-    var rotZD = (targetZRot - RotationDegrees.Z) * .005f;
+  //   var rotXD = (targetXRot - RotationDegrees.X) * .005f;
+  //   var rotZD = (targetZRot - RotationDegrees.Z) * .005f;
 
-    RotationDegrees = new Vector3(
-      RotationDegrees.X + rotXD,
-      RotationDegrees.Y,
-      RotationDegrees.Z + rotZD
-    );
-    // float newrotz = Vector2.Up.AngleTo(slopevect_z);
-    // float newrotx = Vector2.Up.AngleTo(slopevect_x);
+  //   RotationDegrees = new Vector3(
+  //     RotationDegrees.X + rotXD,
+  //     RotationDegrees.Y,
+  //     RotationDegrees.Z + rotZD
+  //   );
+  //   // float newrotz = Vector2.Up.AngleTo(slopevect_z);
+  //   // float newrotx = Vector2.Up.AngleTo(slopevect_x);
 
-    // var rotXD = (newrotx - RotationDegrees.X) * .1f;
-    // var rotZD = (newrotz - RotationDegrees.Z) * .1f;
+  //   // var rotXD = (newrotx - RotationDegrees.X) * .1f;
+  //   // var rotZD = (newrotz - RotationDegrees.Z) * .1f;
 
 
-    // Rotation = new Vector3(
-    //   Rotation.X + rotXD,
-    //   0,
-    //   Rotation.Z + rotZD
-    // );
+  //   // Rotation = new Vector3(
+  //   //   Rotation.X + rotXD,
+  //   //   0,
+  //   //   Rotation.Z + rotZD
+  //   // );
 
-  }
+  // }
   private float GetHeight(Vector3 position)
   {
     var uv_x = Mathf.Wrap(position.X / noise_scale + _time * noise_speed.X, 0, 1);
