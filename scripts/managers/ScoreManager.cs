@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
@@ -6,10 +7,9 @@ using ShipOfTheseus2025.DependencyInjection;
 
 namespace ShipOfTheseus2025.Managers;
 
-public partial class ScoreManager : Node
+public partial class ScoreManager : Node, IScoreManager
 {
-    [Signal]
-    public delegate void ScoreChangedEventHandler(int newScore);
+    public event Action<int> ScoreChanged;
     public int Score { get; private set; } = 0;
 
     private InventoryManager _inventoryManager;
@@ -24,7 +24,7 @@ public partial class ScoreManager : Node
     public void InventoryManager_InventoryChanged(IEnumerable<InventoryItem> items)
     {
         Score = items.Sum(i => i.GoldValue);
-        EmitSignal(SignalName.ScoreChanged, Score);
+        ScoreChanged?.Invoke(Score);
     }
 
 }
