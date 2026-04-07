@@ -1,7 +1,8 @@
 using Godot;
 using ShipOfTheseus2025.DependencyInjection;
 
-public partial class Test : Node3D
+public partial class TestScene
+ : Node3D
 {
   private IWaterManager _waterManager;
   private IPauseManager _pauseManager;

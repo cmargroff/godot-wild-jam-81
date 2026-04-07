@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://del703igq6eki"]
 
 [ext_resource type="PackedScene" uid="uid://wmg6ljmyxk7y" path="res://components/game/WorldEnvironment.tscn" id="1_gim6t"]
-[ext_resource type="Script" uid="uid://2sa5065aun7m" path="res://views/Test.cs" id="1_wxtwu"]
+[ext_resource type="Script" uid="uid://2sa5065aun7m" path="res://views/TestScene.cs" id="1_wxtwu"]
 [ext_resource type="PackedScene" uid="uid://b0ifm6knh2ypk" path="res://components/game/PauseMenu.tscn" id="4_cithd"]
 [ext_resource type="PackedScene" uid="uid://lw36b2co12mu" path="res://components/game/HUD.tscn" id="4_tlkmq"]
 [ext_resource type="PackedScene" uid="uid://cxyf4q4egqw6k" path="res://components/game/Ship.tscn" id="5_cithd"]
