@@ -31,9 +31,9 @@ public partial class Globals : DIContainerNode
     CreateServiceCollection();
 
     _serviceCollection
-    .AddSingleton(InjectNodeClass<GameManager>())
-    .AddSingleton(InjectNodeClass<AudioManager>())
-    .AddSingleton(InjectInstantiatedPackedScene<SceneManager>("res://views/SceneManager.tscn"))
+    .AddSingleton<IGameManager>(InjectNodeClass<GameManager>())
+    .AddSingleton<IAudioManager>(InjectNodeClass<AudioManager>())
+    .AddSingleton<ISceneManager>(InjectInstantiatedPackedScene<SceneManager>("res://views/SceneManager.tscn"))
     .AddSingleton<ConfigStore>()
     .AddSingleton<SettingsStore>()
     .AddSingleton<ConfigManager>()
@@ -42,9 +42,9 @@ public partial class Globals : DIContainerNode
     .AddSingleton(InjectInstantiatedPackedScene<ServiceListManager>("res://components/debug/ServiceListManager.tscn"))
     .AddScoped<IScoreManager>(InjectNodeClass<ScoreManager>(false))
     .AddScoped<IGameEventManager>(InjectNodeClass<GameEventManager>(false))
-    .AddScoped(InjectNodeClass<ItemDragManager>())
+    .AddScoped<IItemDragManager>(InjectNodeClass<ItemDragManager>())
     .AddScoped<IPauseManager>(InjectNodeClass<PauseManager>())
-    .AddScoped(InjectNodeClass<HoverPanelManager>())
+    .AddScoped<IHoverPanelManager>(InjectNodeClass<HoverPanelManager>())
     .AddScoped(InjectNodeClass<EnvironmentManager>(false))
     .AddScoped(InjectNodeClass<ItemSpawnManager>(false))
     .AddScoped<IWaterManager>(InjectInstantiatedPackedScene<WaterManager>("res://components/game/Water.tscn", false))
@@ -57,7 +57,7 @@ public partial class Globals : DIContainerNode
     BuildServiceProvider();
     CreateSceneScope();
 
-    ServiceProvider.GetRequiredService<GameManager>();
+    ServiceProvider.GetRequiredService<IGameManager>();
   }
 
   public void AddScenes()

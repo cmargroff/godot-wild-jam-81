@@ -1,24 +1,21 @@
 using System;
 using Godot;
 using ShipOfTheseus2025.DependencyInjection;
-using ShipOfTheseus2025.Managers;
 
 public partial class Title : Control, IManagedScene
 {
   private Control _menu;
   private Control _options;
   private bool _optionsShown = false;
-  private AudioManager _audio;
-  private SceneManager _sceneManager;
-  private GameManager _gameManager;
+  private IAudioManager _audio;
+  private IGameManager _gameManager;
 
   public event Action<string> SceneClosing;
 
   [FromServices]
-  public void Inject(AudioManager audio, SceneManager sceneManager, GameManager gameManager)
+  public void Inject(IAudioManager audio, IGameManager gameManager)
   {
     _audio = audio;
-    _sceneManager = sceneManager;
     _gameManager = gameManager;
   }
   public override void _EnterTree()

@@ -3,7 +3,7 @@ using ShipOfTheseus2025.Enum;
 
 namespace ShipOfTheseus2025.Components.Game;
 
-public partial class HoverPanelManager : Control
+public partial class HoverPanelManager : Control, IHoverPanelManager
 {
   public HoverPage _page;
   private Marker2D _slotMarker;
@@ -14,7 +14,7 @@ public partial class HoverPanelManager : Control
     InstantiatePage();
     InstantiateMarkers();
   }
-  public void InstantiatePage()
+  private void InstantiatePage()
   {
     var scene = ResourceLoader.Load<PackedScene>("res://components/game/HoverPage.tscn");
     _page = scene.Instantiate<HoverPage>();
@@ -22,7 +22,7 @@ public partial class HoverPanelManager : Control
     AddChild(_page);
   }
 
-  public void InstantiateMarkers()
+  private void InstantiateMarkers()
   {
     var scene = ResourceLoader.Load<PackedScene>("res://components/game/ItemDragLayout.tscn");
     var layout = scene.Instantiate<Control>();

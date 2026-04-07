@@ -6,7 +6,7 @@ using ShipOfTheseus2025.Stores;
 
 namespace ShipOfTheseus2025.Managers;
 
-public partial class AudioManager : Node
+public partial class AudioManager : Node, IAudioManager
 {
     private SettingsStore _settings;
     private RandomNumberGeneratorService _rng;

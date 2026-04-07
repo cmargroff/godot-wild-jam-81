@@ -1,16 +1,13 @@
 using System;
 using Godot;
-using Microsoft.Extensions.DependencyInjection;
-using ShipOfTheseus2025;
 using ShipOfTheseus2025.Components.Game;
 using ShipOfTheseus2025.DependencyInjection;
 using ShipOfTheseus2025.Enum;
 using ShipOfTheseus2025.Interfaces;
-using ShipOfTheseus2025.Managers;
 
 public partial class DamagePoint : Area3D, ISnapPoint
 {
-  private ItemDragManager _dragManager;
+  private IItemDragManager _dragManager;
   private IStatsManager _statsManager;
   public DamagePointState State;
   private MeshInstance3D _damage;
@@ -30,7 +27,7 @@ public partial class DamagePoint : Area3D, ISnapPoint
   }
 
   [FromServices]
-  public void Inject(IStatsManager statsManager, ItemDragManager dragManager)
+  public void Inject(IStatsManager statsManager, IItemDragManager dragManager)
   {
     _statsManager = statsManager;
     _dragManager = dragManager;

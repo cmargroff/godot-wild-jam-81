@@ -12,11 +12,11 @@ public partial class Game : Node3D
 {
   private SceneManager _sceneManager;
   private IStatsManager _statsManager;
-  private GameEventManager _eventManager;
-  private ItemDragManager _dragManager;
-  private PauseManager _pauseManager;
-  private GameManager _gameManager;
-  private AudioManager _audioManager;
+  private IGameEventManager _eventManager;
+  private IItemDragManager _dragManager;
+  private IPauseManager _pauseManager;
+  private IGameManager _gameManager;
+  private IAudioManager _audioManager;
 
   private GameOver _gameOverScreen;
   private Timer _gameOverTimer;
@@ -37,8 +37,8 @@ public partial class Game : Node3D
   public float SpeedScale { get; set; } = 1f;
 
   [FromServices]
-  public void Inject(SceneManager sceneManager, IStatsManager statsManager, GameEventManager eventManager,
-      ItemDragManager dragManager, PauseManager pauseManager, GameManager gameManager, HoverPanelManager hoverPanelManager, AudioManager audioManager)
+  public void Inject(SceneManager sceneManager, IStatsManager statsManager, IGameEventManager eventManager,
+      IItemDragManager dragManager, IPauseManager pauseManager, IGameManager gameManager, IHoverPanelManager hoverPanelManager, IAudioManager audioManager)
   {
     _sceneManager = sceneManager;
     _statsManager = statsManager;
@@ -51,9 +51,6 @@ public partial class Game : Node3D
 
   public override void _EnterTree()
   {
-    AddChild(_eventManager);
-    AddChild(_pauseManager);
-    AddChild(_dragManager);
     _gameOverScreen = GetNode<GameOver>("GameOver");
     _gameOverTimer = GetNode<Timer>("GameOverTimer");
     //used when the Game scene is loaded directly, otherwise this will be skipped

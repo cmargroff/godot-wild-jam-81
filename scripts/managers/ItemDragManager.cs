@@ -1,27 +1,23 @@
 using System;
 using Godot;
 using ShipOfTheseus2025.Components.Game;
-using ShipOfTheseus2025.Enum;
 using ShipOfTheseus2025.Interfaces;
 
 
 namespace ShipOfTheseus2025.Managers;
 
-public partial class ItemDragManager : Node3D
+public partial class ItemDragManager : Node3D, IItemDragManager
 {
-  public bool Dragging { get; private set; }
   const float ITEM_GRABBED_SCALE = 0.8f;
   const float ITEM_SCALE_SMOOTHING = 0.5f;
   const float ITEM_SNAP_SMOOTHING = 0.3f;
+  public bool Dragging { get; private set; }
   private Viewport _viewport;
   private Camera3D _camera;
   private ItemPickUp _item;
   private float _scale = 1f;
   private bool _snapped;
   private ISnapPoint _snapPoint;
-
-  // public event Action<ItemPickUp> ItemSnapped;
-
 
   public AudioStreamPlayer3D PickupAudioStreamPlayer { get; set; }
 

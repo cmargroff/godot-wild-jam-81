@@ -1,19 +1,18 @@
 using Godot;
 using ShipOfTheseus2025.Components.Game;
 using ShipOfTheseus2025.DependencyInjection;
-using ShipOfTheseus2025.Managers;
 using ShipOfTheseus2025.Resources;
 
 public partial class ItemSpawnManager : Node
 {
     private Vector3 _position = new Vector3(40, 4, 11);
     private PackedScene _itemScene;
-    private SceneManager _sceneManager;
+    private ISceneManager _sceneManager;
     private ItemFactoryService _itemFactoryService;
     public AudioStreamPlayer3D ItemPickupAudio { get; private set; }
 
     [FromServices]
-    public void Inject(SceneManager sceneManager, ItemFactoryService itemFactoryService)
+    public void Inject(ISceneManager sceneManager, ItemFactoryService itemFactoryService)
     {
         _sceneManager = sceneManager;
         _itemFactoryService = itemFactoryService;

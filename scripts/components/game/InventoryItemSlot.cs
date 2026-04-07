@@ -10,8 +10,8 @@ using ShipOfTheseus2025.Managers;
 public partial class InventoryItemSlot : TextureRect, ISnapPoint
 {
   private InventoryManager _inventoryManager;
-  private ItemDragManager _dragManager;
-  private HoverPanelManager _hoverManager;
+  private IItemDragManager _dragManager;
+  private IHoverPanelManager _hoverManager;
   private TextureRect _icon;
   private ItemPickUp _item;
   public InventoryItem InventoryItem { get; set; }
@@ -24,8 +24,8 @@ public partial class InventoryItemSlot : TextureRect, ISnapPoint
 
   public override void _EnterTree()
   {
-    _dragManager = Globals.Instance.ServiceProvider.GetRequiredService<ItemDragManager>();
-    _hoverManager = Globals.Instance.ServiceProvider.GetRequiredService<HoverPanelManager>();
+    _dragManager = Globals.Instance.ServiceProvider.GetRequiredService<IItemDragManager>();
+    _hoverManager = Globals.Instance.ServiceProvider.GetRequiredService<IHoverPanelManager>();
     _inventoryManager = Globals.Instance.ServiceProvider.GetRequiredService<InventoryManager>();
     _icon = GetNode<TextureRect>("%Icon");
     Connect(SignalName.MouseEntered, Callable.From(_MouseEntered));

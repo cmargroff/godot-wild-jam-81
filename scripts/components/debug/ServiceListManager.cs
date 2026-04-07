@@ -2,14 +2,13 @@ using System.Collections.Generic;
 using Godot;
 using ShipOfTheseus2025;
 using ShipOfTheseus2025.DependencyInjection;
-using ShipOfTheseus2025.Managers;
 
 public partial class ServiceListManager : Node
 {
   private CanvasLayer _canvasLayer;
   private Tree _tree;
   [FromServices]
-  public void Inject(SceneManager SceneManager)
+  public void Inject(ISceneManager SceneManager)
   {
     SceneManager.LoadingHidden += UpdateList;
   }

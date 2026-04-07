@@ -1,9 +1,7 @@
 using System.Collections.Generic;
 using Godot;
-using Microsoft.Extensions.DependencyInjection;
 using ShipOfTheseus2025.DependencyInjection;
 using ShipOfTheseus2025.Enum;
-using ShipOfTheseus2025.Managers;
 
 namespace ShipOfTheseus2025.Components.Game;
 
@@ -16,9 +14,8 @@ public partial class ItemPickUp : Node3D
 
     private Vector3 _globalPosition;
     private bool _hovered = false;
-    private ItemDragManager _dragManager;
-    private HoverPanelManager _hoverManager;
-    private IWaterManager _waterManager;
+    private IItemDragManager _dragManager;
+    private IHoverPanelManager _hoverManager;
     private Area3D _area;
     public InventoryItem InventoryItem { get; set; }
     public ItemPickupState State;
@@ -40,7 +37,7 @@ public partial class ItemPickUp : Node3D
     public AudioStreamPlayer3D ItemPickupAudioPlayer { get; set; }
 
     [FromServices]
-    public void Inject(ItemDragManager itemDragManager, HoverPanelManager hoverPanelManager)
+    public void Inject(IItemDragManager itemDragManager, IHoverPanelManager hoverPanelManager)
     {
         _dragManager = itemDragManager;
         _hoverManager = hoverPanelManager;

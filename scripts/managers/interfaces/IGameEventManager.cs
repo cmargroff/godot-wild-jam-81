@@ -7,4 +7,5 @@ public interface IGameEventManager
   public void End();
   public void DispatchEnvironmentEvent();
   public void DispatchItemEvent();
+  public void Start();
 }

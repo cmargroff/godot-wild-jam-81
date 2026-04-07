@@ -5,15 +5,15 @@ using ShipOfTheseus2025.Resources;
 
 namespace ShipOfTheseus2025.Managers;
 
-public partial class GameManager : Node
+public partial class GameManager : Node, IGameManager
 {
-    private SceneManager _sceneManager;
+    private ISceneManager _sceneManager;
     private ConfigManager _configManager;
 
     public Godot.Collections.Array<string> EnabledItems { get; set; }
 
     [FromServices]
-    public void Inject(SceneManager sceneManager, ConfigManager configManager, ServiceListManager serviceList)
+    public void Inject(ISceneManager sceneManager, ConfigManager configManager, ServiceListManager serviceList)
     {
         GD.Print(GetType().Name, " Constructed");
         _sceneManager = sceneManager;

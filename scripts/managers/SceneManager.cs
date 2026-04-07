@@ -10,15 +10,13 @@ namespace ShipOfTheseus2025.Managers;
 using Preloaded = Dictionary<string, Dictionary<string, Resource>>;
 using Preloads = Dictionary<string, Dictionary<string, string>>;
 
-public partial class SceneManager : Node3D
+public partial class SceneManager : Node3D, ISceneManager
 {
-  [Signal]
-  public delegate void LoadingShownEventHandler();
-  [Signal]
-  public delegate void LoadingHiddenEventHandler();
+  public event Action LoadingShown;
+  public event Action LoadingHidden;
   private Control _loadingScene;
   private Node _currentScene;
-  public Preloaded PreloadedResources;
+  public Preloaded PreloadedResources { get; set; }
   private Preload _currentLoading;
   private Godot.Collections.Array _currentProgress;
   private List<Preload> _preloadQueue;
@@ -135,7 +133,7 @@ public partial class SceneManager : Node3D
   public void ChangeScene(string name, Preloads preloads)
   {
     _nextName = name;
-    EmitSignal(SignalName.LoadingShown);
+    LoadingShown?.Invoke();
     ShowLoading();
 
     if (_currentScene != null)
@@ -183,7 +181,7 @@ public partial class SceneManager : Node3D
   private void SceneFinishedLoading()
   {
     HideLoading();
-    EmitSignal(SignalName.LoadingHidden);
+    LoadingHidden?.Invoke();
   }
   private class Preload
   {
