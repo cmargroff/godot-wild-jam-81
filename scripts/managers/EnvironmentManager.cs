@@ -11,7 +11,7 @@ public partial class EnvironmentManager : Node
   // public event Action<NoiseParams> WaterParamsChanged;
   public NoiseParams WaterNoiseParams;
   private float _time = 0;
-  private StatsManager _statsManager;
+  private IStatsManager _statsManager;
   public EnvironmentManager()
   {
     // var texture = new NoiseTexture2D();
@@ -29,7 +29,7 @@ public partial class EnvironmentManager : Node
     };
   }
   [FromServices]
-  public void Inject(StatsManager statsManager)
+  public void Inject(IStatsManager statsManager)
   {
     _statsManager = statsManager;
   }

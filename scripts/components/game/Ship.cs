@@ -15,7 +15,7 @@ public partial class Ship : Node3D
   private Node3D _damagePoints;
   private List<DamagePoint> _pointsList = new();
   private GameEventManager _gameEventManager;
-  private StatsManager _statsManager;
+  private IStatsManager _statsManager;
 
   private float _leakRate;
   private Marker3D heightsampler_z1;
@@ -33,7 +33,7 @@ public partial class Ship : Node3D
   public float offset_y = -2.5f * 1.5f;
 
   [FromServices]
-  public void Inject(RandomNumberGeneratorService rng, GameEventManager gameEventManager, StatsManager statsManager)
+  public void Inject(RandomNumberGeneratorService rng, GameEventManager gameEventManager, IStatsManager statsManager)
   {
     _rng = rng;
     _gameEventManager = gameEventManager;

@@ -1,7 +1,6 @@
 using Godot;
 using ShipOfTheseus2025.DependencyInjection;
 using ShipOfTheseus2025.Enum;
-using ShipOfTheseus2025.Managers;
 
 namespace ShipOfTheseus2025.Components.Game;
 
@@ -9,12 +8,9 @@ public partial class TravelProgress : Control
 {
     private TextureProgressBar _progressBar;
 
-    private StatsManager _statsManager;
-
     [FromServices]
-    public void Inject(StatsManager statsManager)
+    public void Inject(IStatsManager statsManager)
     {
-        _statsManager = statsManager;
         statsManager.StatChanged += StatsManager_StatChanged;
     }
 
@@ -31,7 +27,4 @@ public partial class TravelProgress : Control
     {
         _progressBar = GetNode<TextureProgressBar>("%TravelProgressBar");
     }
-
-
-
 }

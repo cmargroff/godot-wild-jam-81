@@ -1,11 +1,10 @@
 using System;
 using Godot;
 using ShipOfTheseus2025.DependencyInjection;
-using ShipOfTheseus2025.Managers;
 
 public partial class GameOver : Control, IManagedScene
 {
-    private ScoreManager _scoreManager;
+    private IScoreManager _scoreManager;
     private int _score;
     private Label _scoreLabel;
     private Label _label;
@@ -15,7 +14,7 @@ public partial class GameOver : Control, IManagedScene
     public event Action<string> SceneClosing;
 
     [FromServices]
-    public void Inject(ScoreManager scoreManager)
+    public void Inject(IScoreManager scoreManager)
     {
         _scoreManager = scoreManager;
     }

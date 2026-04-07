@@ -10,9 +10,9 @@ public class ItemFactoryService
     private System.Collections.Generic.Dictionary<string, List<ItemTrait>> ItemTraitLookup;
 
     private RandomNumberGeneratorService rng;
-    private readonly StatsManager statsManager;
+    private readonly IStatsManager statsManager;
 
-    public ItemFactoryService(RandomNumberGeneratorService rng, StatsManager statsManager)
+    public ItemFactoryService(RandomNumberGeneratorService rng, IStatsManager statsManager)
     {
         this.rng = rng;
         this.statsManager = statsManager;
@@ -28,10 +28,10 @@ public class ItemFactoryService
                     rng,
                     "Attached speed bonus of {0:N2}",
                     -0.01f, -0.05f, false,
-                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                    (IStatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue }
                     ),
-                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                    (IStatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue * -1}
                     )
                 )
@@ -41,10 +41,10 @@ public class ItemFactoryService
                     rng,
                     "Attached speed bonus of {0:N2}",
                     0.7f, 1.5f, false,
-                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                    (IStatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue }
                     ),
-                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                    (IStatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue * -1 }
                     )
                 ),
@@ -52,10 +52,10 @@ public class ItemFactoryService
                     rng,
                     "Attached bailing bonus of {0:N2}",
                     -0.2f, -0.5f, true,
-                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                    (IStatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.WaterLevel, Mode = StatChangeMode.Relative, Amount = fixedValue }
                     ),
-                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                    (IStatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.WaterLevel, Mode = StatChangeMode.Relative, Amount = fixedValue * -1 }
                     )
                 )
@@ -65,10 +65,10 @@ public class ItemFactoryService
                     rng,
                     "Attached buoyancy bonus of {0:N2}",
                     0.02f, 0.05f, false,
-                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                    (IStatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.Buoyancy, Mode = StatChangeMode.Relative, Amount = fixedValue }
                     ),
-                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                    (IStatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.Buoyancy, Mode = StatChangeMode.Relative, Amount = fixedValue* -1 }
                     )
                 ),
@@ -76,10 +76,10 @@ public class ItemFactoryService
                     rng,
                     "Attached speed bonus of {0:N2}",
                     -0.2f, -0.5f, false,
-                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                    (IStatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue }
                     ),
-                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                    (IStatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue * -1}
                     )
                 ),
@@ -89,10 +89,10 @@ public class ItemFactoryService
                     rng,
                     "Attached speed bonus of {0:N2}",
                     0.2f, 0.5f, false,
-                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                    (IStatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue }
                     ),
-                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                    (IStatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue * -1}
                     )
                 ),
@@ -100,10 +100,10 @@ public class ItemFactoryService
                     rng,
                     "Attached bailing bonus of {0:N2}",
                     -0.7f, -0.9f, true,
-                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                    (IStatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.WaterLevel, Mode = StatChangeMode.Relative, Amount = fixedValue }
                     ),
-                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                    (IStatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.WaterLevel, Mode = StatChangeMode.Relative, Amount = 0 }
                     )
                 )
@@ -113,10 +113,10 @@ public class ItemFactoryService
                     rng,
                     "Attached speed bonus of {0:N2}",
                     -0.1f, -0.05f, false,
-                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                    (IStatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue }
                     ),
-                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                    (IStatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.Speed, Mode = StatChangeMode.Relative, Amount = fixedValue * -1 }
                     )
                 ),
@@ -124,10 +124,10 @@ public class ItemFactoryService
                     rng,
                     "Attached bailing bonus of {0:N2}",
                     -0.2f, -0.5f, true,
-                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                    (IStatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.WaterLevel, Mode = StatChangeMode.Relative, Amount = fixedValue }
                     ),
-                    (StatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
+                    (IStatsManager statsManager, float fixedValue) => statsManager.ChangeStat(
                         new(){ Stat = Stat.WaterLevel, Mode = StatChangeMode.Relative, Amount = 0 }
                     )
                 )

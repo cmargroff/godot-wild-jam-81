@@ -2,6 +2,7 @@ using Godot;
 using Microsoft.Extensions.DependencyInjection;
 using ShipOfTheseus2025;
 using ShipOfTheseus2025.Components.Game;
+using ShipOfTheseus2025.DependencyInjection;
 using ShipOfTheseus2025.Enum;
 using ShipOfTheseus2025.Interfaces;
 using ShipOfTheseus2025.Managers;
@@ -14,6 +15,12 @@ public partial class InventoryItemSlot : TextureRect, ISnapPoint
   private TextureRect _icon;
   private ItemPickUp _item;
   public InventoryItem InventoryItem { get; set; }
+
+  [FromServices]
+  public void Inject()
+  {
+    GD.Print("Injecting InventoryItemSlot");
+  }
 
   public override void _EnterTree()
   {

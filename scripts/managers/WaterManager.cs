@@ -1,6 +1,4 @@
 using Godot;
-using Microsoft.Extensions.DependencyInjection;
-using ShipOfTheseus2025;
 using ShipOfTheseus2025.DependencyInjection;
 using ShipOfTheseus2025.Enum;
 using ShipOfTheseus2025.Managers;
@@ -8,13 +6,13 @@ using ShipOfTheseus2025.Managers;
 public partial class WaterManager : MeshInstance3D, IWaterManager
 {
   private EnvironmentManager _environmentManager;
-  private StatsManager _statsManager;
+  private IStatsManager _statsManager;
   private ShaderMaterial _material;
   private int seed;
   private bool isRunning = false;
   private float _waveTime = 0;
   [FromServices]
-  public void Inject(EnvironmentManager environmentManager, StatsManager statsManager)
+  public void Inject(EnvironmentManager environmentManager, IStatsManager statsManager)
   {
     _environmentManager = environmentManager;
     _statsManager = statsManager;

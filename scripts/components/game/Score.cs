@@ -1,6 +1,5 @@
 using Godot;
 using ShipOfTheseus2025.DependencyInjection;
-using ShipOfTheseus2025.Managers;
 
 namespace ShipOfTheseus2025.Components.Game;
 
@@ -8,9 +7,9 @@ public partial class Score : Control
 {
   private int _score;
   private Label _label;
-  private ScoreManager _scoreManager;
+  private IScoreManager _scoreManager;
   [FromServices]
-  public void Inject(ScoreManager scoreManager)
+  public void Inject(IScoreManager scoreManager)
   {
     _scoreManager = scoreManager;
   }

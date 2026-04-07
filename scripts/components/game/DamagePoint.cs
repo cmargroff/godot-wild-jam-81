@@ -11,7 +11,7 @@ using ShipOfTheseus2025.Managers;
 public partial class DamagePoint : Area3D, ISnapPoint
 {
   private ItemDragManager _dragManager;
-  private StatsManager _statsManager;
+  private IStatsManager _statsManager;
   public DamagePointState State;
   private MeshInstance3D _damage;
   private ItemPickUp _item;
@@ -30,18 +30,16 @@ public partial class DamagePoint : Area3D, ISnapPoint
   }
 
   [FromServices]
-  public void Inject(StatsManager statsManager)
+  public void Inject(IStatsManager statsManager, ItemDragManager dragManager)
   {
     _statsManager = statsManager;
+    _dragManager = dragManager;
   }
 
   public override void _EnterTree()
   {
     State = DamagePointState.SnapDisable;
-    _dragManager = Globals.Instance.ServiceProvider.GetRequiredService<ItemDragManager>();
     _damage = GetNode<MeshInstance3D>("damage");
-
-
   }
   public override void _MouseEnter()
   {

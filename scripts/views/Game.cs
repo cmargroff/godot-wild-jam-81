@@ -11,7 +11,7 @@ namespace ShipOfTheseus2025.Views;
 public partial class Game : Node3D
 {
   private SceneManager _sceneManager;
-  private StatsManager _statsManager;
+  private IStatsManager _statsManager;
   private GameEventManager _eventManager;
   private ItemDragManager _dragManager;
   private PauseManager _pauseManager;
@@ -37,7 +37,7 @@ public partial class Game : Node3D
   public float SpeedScale { get; set; } = 1f;
 
   [FromServices]
-  public void Inject(SceneManager sceneManager, StatsManager statsManager, GameEventManager eventManager,
+  public void Inject(SceneManager sceneManager, IStatsManager statsManager, GameEventManager eventManager,
       ItemDragManager dragManager, PauseManager pauseManager, GameManager gameManager, HoverPanelManager hoverPanelManager, AudioManager audioManager)
   {
     _sceneManager = sceneManager;

@@ -14,11 +14,11 @@ public partial class InventoryManager
     private int _inventorySize = 6;
     [Export]
     // Texture2D blankIcon;
-    private StatsManager _statsManager;
+    private IStatsManager _statsManager;
 
     private List<InventoryItem> _items;
 
-    public InventoryManager(StatsManager statsManager)
+    public InventoryManager(IStatsManager statsManager)
     {
         _items = new();
         _statsManager = statsManager;
