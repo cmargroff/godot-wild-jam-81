@@ -1,19 +1,21 @@
 using Godot;
-using Microsoft.Extensions.DependencyInjection;
-using ShipOfTheseus2025;
+using ShipOfTheseus2025.DependencyInjection;
 using ShipOfTheseus2025.Enum;
-using ShipOfTheseus2025.Managers;
 
 public partial class WaterLevel : Control
 {
   private ProgressBar _progressBar;
   // private TextureRect _icon;
-  private StatsManager _statsManager;
+  private IStatsManager _statsManager;
+  [FromServices]
+  public void Inject(IStatsManager statsManager)
+  {
+    _statsManager = statsManager;
+  }
   public override void _EnterTree()
   {
     _progressBar = GetNode<ProgressBar>("%ProgressBar");
     // _icon = GetNode<TextureRect>("%Icon");
-    _statsManager = Globals.Instance.ServiceProvider.GetRequiredService<StatsManager>();
     _statsManager.StatChanged += StatsManager_StatChanged;
 
     _progressBar.Value = _statsManager.GetStats(Stat.WaterLevel);
