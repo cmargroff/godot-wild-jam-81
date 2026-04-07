@@ -40,7 +40,7 @@ public partial class Globals : DIContainerNode
     .AddSingleton<RandomNumberGeneratorService>()
     .AddSingleton<ItemFactoryService>()
     .AddSingleton(InjectInstantiatedPackedScene<ServiceListManager>("res://components/debug/ServiceListManager.tscn"))
-    .AddScoped(InjectNodeClass<ScoreManager>(false))
+    .AddScoped<IScoreManager>(InjectNodeClass<ScoreManager>(false))
     .AddScoped(InjectNodeClass<GameEventManager>(false))
     .AddScoped(InjectNodeClass<ItemDragManager>())
     .AddScoped<IPauseManager>(InjectNodeClass<PauseManager>())
