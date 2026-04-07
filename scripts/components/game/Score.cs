@@ -1,5 +1,5 @@
 using Godot;
-using Microsoft.Extensions.DependencyInjection;
+using ShipOfTheseus2025.DependencyInjection;
 using ShipOfTheseus2025.Managers;
 
 namespace ShipOfTheseus2025.Components.Game;
@@ -9,10 +9,14 @@ public partial class Score : Control
   private int _score;
   private Label _label;
   private ScoreManager _scoreManager;
+  [FromServices]
+  public void Inject(ScoreManager scoreManager)
+  {
+    _scoreManager = scoreManager;
+  }
   public override void _EnterTree()
   {
     _label = GetNode<Label>("%Label");
-    _scoreManager = Globals.Instance.ServiceProvider.GetRequiredService<ScoreManager>();
     _scoreManager.ScoreChanged += ScoreManager_ScoreChanged;
     _label.Text = _scoreManager.Score.ToString();
   }
