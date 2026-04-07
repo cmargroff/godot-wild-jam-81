@@ -5,7 +5,7 @@ using ShipOfTheseus2025.Models;
 
 namespace ShipOfTheseus2025.Managers;
 
-public class StatsManager
+public class StatsManager : IStatsManager
 {
   public event Action<Stat, float> StatChanged;
 
