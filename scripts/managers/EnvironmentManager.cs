@@ -4,12 +4,12 @@ using ShipOfTheseus2025.Models;
 
 namespace ShipOfTheseus2025.Managers;
 
-public partial class EnvironmentManager : Node
+public partial class EnvironmentManager : Node, IEnvironmentManager
 {
   // public event Action<Noise> WaterHeightChanged;
-  public Image WaterNoise;
+  public Image WaterNoise { get; private set; }
   // public event Action<NoiseParams> WaterParamsChanged;
-  public NoiseParams WaterNoiseParams;
+  public NoiseParams WaterNoiseParams { get; private set; }
   private float _time = 0;
   private IStatsManager _statsManager;
   public EnvironmentManager()
@@ -33,10 +33,7 @@ public partial class EnvironmentManager : Node
   {
     _statsManager = statsManager;
   }
-  // private void UpdateTexture(NoiseTexture2D texture)
-  // {
-  //   WaterNoise = texture.GetImage();
-  // }
+
   public struct NoiseParams
   {
     public Vector2 Speed;

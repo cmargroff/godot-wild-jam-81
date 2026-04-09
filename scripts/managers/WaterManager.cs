@@ -42,7 +42,7 @@ public partial class WaterManager : MeshInstance3D, IWaterManager
   private void SetEnvironmentNoise(NoiseTexture2D tex)
   {
     var img = tex.GetImage();
-    _environmentManager.WaterNoise = img;
+    // _environmentManager.WaterNoise = img;
   }
   public override void _Process(double delta)
   {
