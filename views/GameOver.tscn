@@ -5,6 +5,7 @@
 [node name="GameOver" type="CanvasLayer" unique_id=994459584]
 process_mode = 3
 layer = 1000
+visible = false
 script = ExtResource("1_phg3o")
 
 [node name="Root" type="Control" parent="." unique_id=171068066]
