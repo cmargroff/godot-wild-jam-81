@@ -2,10 +2,10 @@ using System;
 using Godot;
 using ShipOfTheseus2025.DependencyInjection;
 
-public partial class GameOver : Control, IManagedScene
+public partial class GameOver : CanvasLayer, IManagedScene
 {
     private IScoreManager _scoreManager;
-    private int _score;
+    private Control _root;
     private Label _scoreLabel;
     private Label _label;
     private Button _home;
@@ -23,18 +23,20 @@ public partial class GameOver : Control, IManagedScene
     {
         _scoreLabel = GetNode<Label>("%Score");
         _label = GetNode<Label>("%Label");
+        _root = GetNode<Control>("%Root");
+        Visible = false;
     }
 
     public void ShowScreen(bool win)
     {
         if (win) _label.Text = "You Won!";
         else _label.Text = "You Lost";
-        _scoreLabel.Text = $"Score: {_score}";
+        _scoreLabel.Text = $"Score: {_scoreManager.Score}";
 
-        Modulate = new Color(1, 1, 1, 0);
+        _root.Modulate = new Color(1, 1, 1, 0);
         Visible = true;
         var tween = CreateTween();
-        tween.TweenProperty(this, "modulate:a", 1f, 0.5f);
+        tween.TweenProperty(_root, "modulate:a", 1f, 0.5f);
     }
 
     public void Home()
@@ -44,8 +46,6 @@ public partial class GameOver : Control, IManagedScene
 
     public void Restart()
     {
-        //code to restart game
-        GD.Print("restart");
         SceneClosing?.Invoke("Game");
     }
 }
