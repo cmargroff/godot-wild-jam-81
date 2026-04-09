@@ -47,10 +47,10 @@ public partial class Ship : Node3D
     GetDamagePoints();
     _gameEventManager.EnvironmentEvent += Break;
     // _water = GetNode<MeshInstance3D>("../Water");
-    heightsampler_z1 = GetNode<Marker3D>("%PitchSamplers/0");
-    heightsampler_z2 = GetNode<Marker3D>("%PitchSamplers/1");
-    heightsampler_x1 = GetNode<Marker3D>("%RollSamplers/0");
-    heightsampler_x2 = GetNode<Marker3D>("%RollSamplers/1");
+    // heightsampler_z1 = GetNode<Marker3D>("%PitchSamplers/0");
+    // heightsampler_z2 = GetNode<Marker3D>("%PitchSamplers/1");
+    // heightsampler_x1 = GetNode<Marker3D>("%RollSamplers/0");
+    // heightsampler_x2 = GetNode<Marker3D>("%RollSamplers/1");
     // _material = _water.Mesh.SurfaceGetMaterial(0) as ShaderMaterial;
 
     // noise_scale = (float)_material.GetShaderParameter("noise1_scale");
