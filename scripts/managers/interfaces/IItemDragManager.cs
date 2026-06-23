@@ -5,7 +5,7 @@ using ShipOfTheseus2025.Interfaces;
 public interface IItemDragManager
 {
   bool Dragging { get; }
-  AudioStreamPlayer3D PickupAudioStreamPlayer { get; set; }
+  AudioStreamPlayer PickupAudioStreamPlayer { get; set; }
   void SetCamera(Camera3D camera);
   void StartDragItem(ItemPickUp item);
   void EndDragItem();

@@ -34,7 +34,7 @@ public partial class ItemPickUp : Node3D
         Dropped,
         Attached
     }
-    public AudioStreamPlayer3D ItemPickupAudioPlayer { get; set; }
+    public AudioStreamPlayer ItemPickupAudioPlayer { get; set; }
 
     [FromServices]
     public void Inject(IItemDragManager itemDragManager, IHoverPanelManager hoverPanelManager)

@@ -19,7 +19,7 @@ public partial class ItemDragManager : Node3D, IItemDragManager
   private bool _snapped;
   private ISnapPoint _snapPoint;
 
-  public AudioStreamPlayer3D PickupAudioStreamPlayer { get; set; }
+  public AudioStreamPlayer PickupAudioStreamPlayer { get; set; }
 
   public override void _EnterTree()
   {
@@ -42,7 +42,7 @@ public partial class ItemDragManager : Node3D, IItemDragManager
     _scale = 1f;
     _item = item;
     item.Reparent(GetTree().Root, true);
-    PickupAudioStreamPlayer.GlobalPosition = item.GlobalPosition;
+    // PickupAudioStreamPlayer.GlobalPosition = item.GlobalPosition;
     PickupAudioStreamPlayer.Play();
     ;
   }
