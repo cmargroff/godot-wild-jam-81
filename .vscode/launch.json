@@ -17,7 +17,7 @@
         "program": "${env:GODOT_HOME}/Godot_v4.6.1-stable_mono_win64.exe",
       },
       "linux": {
-        "program": "~/.local/bin/godot",
+        "program": "godot",
       }
     },
     {
@@ -33,7 +33,7 @@
         "program": "${env:GODOT_HOME}/Godot_v4.6.1-stable_mono_win64.exe",
       },
       "linux": {
-        "program": "~/.local/bin/godot",
+        "program": "godot",
       }
     }
   ]
