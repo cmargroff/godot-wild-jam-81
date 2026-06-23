@@ -59,7 +59,7 @@ public partial class Globals : DIContainerNode
   }
   public override void _Ready()
   {
-    ServiceProvider.GetRequiredService<IGameManager>();
+    ServiceProvider.GetRequiredService<IGameManager>().StartGame();
   }
 
   public void AddScenes()

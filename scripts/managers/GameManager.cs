@@ -22,13 +22,13 @@ public partial class GameManager : Node, IGameManager
 
     public override void _Ready()
     {
-        Name = GetType().Name;
-        GD.Print(GetType().Name, " Started");
-        var initialSceneKey = ProjectSettings.GetSetting("custom/initial_scene").AsString();
-        if (initialSceneKey != "")
-        {
-            _sceneManager.ChangeScene(initialSceneKey);
-        }
+        // Name = GetType().Name;
+        // GD.Print(GetType().Name, " Started");
+        // var initialSceneKey = ProjectSettings.GetSetting("custom/initial_scene").AsString();
+        // if (initialSceneKey != "")
+        // {
+        //     _sceneManager.ChangeScene(initialSceneKey);
+        // }
     }
 
     public void LoadConfig()

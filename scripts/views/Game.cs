@@ -10,7 +10,7 @@ namespace ShipOfTheseus2025.Views;
 
 public partial class Game : Node3D
 {
-  private SceneManager _sceneManager;
+  private ISceneManager _sceneManager;
   private IStatsManager _statsManager;
   private IGameEventManager _eventManager;
   private IItemDragManager _dragManager;
@@ -37,7 +37,7 @@ public partial class Game : Node3D
   public float SpeedScale { get; set; } = 1f;
 
   [FromServices]
-  public void Inject(SceneManager sceneManager, IStatsManager statsManager, IGameEventManager eventManager,
+  public void Inject(ISceneManager sceneManager, IStatsManager statsManager, IGameEventManager eventManager,
       IItemDragManager dragManager, IPauseManager pauseManager, IGameManager gameManager, IHoverPanelManager hoverPanelManager, IAudioManager audioManager)
   {
     _sceneManager = sceneManager;
@@ -72,7 +72,7 @@ public partial class Game : Node3D
   {
     _dragManager.SetCamera(GetNode<Camera3D>("Camera"));
     _eventManager.Start();
-    _sceneManager.GetChild<Control>(0).Visible = false; //hides loading screen without crashing when running the game scene directly
+    // _sceneManager.GetChild<Control>(0).Visible = false; //hides loading screen without crashing when running the game scene directly
     _audioManager.PlayGlobalAudioOnRepeat(_sceneManager.PreloadedResources["AudioRandomizers"]["waves_audio_stream_randomizer.tres"] as AudioStreamRandomizer,
         "SFX", this, new(0, 2f), true, (AudioStreamPlayer player) => player.VolumeDb = -6f, null);
     _audioManager.PlayGlobalAudioOnRepeat(_sceneManager.PreloadedResources["AudioRandomizers"]["ship_creaking_audio_stream_randomizer.tres"] as AudioStreamRandomizer,
