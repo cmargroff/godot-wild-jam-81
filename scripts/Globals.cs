@@ -41,7 +41,7 @@ public partial class Globals : DIContainerNode
     .AddSingleton<ItemFactoryService>()
     .AddSingleton(InjectInstantiatedPackedScene<ServiceListManager>("res://components/debug/ServiceListManager.tscn"))
     .AddScoped<IScoreManager>(InjectNodeClass<ScoreManager>(false))
-    .AddScoped<IGameEventManager>(InjectNodeClass<GameEventManager>(false))
+    .AddScoped<IGameEventManager>(InjectNodeClass<GameEventManager>())
     .AddScoped<IItemDragManager>(InjectNodeClass<ItemDragManager>())
     .AddScoped<IPauseManager>(InjectNodeClass<PauseManager>())
     .AddScoped<IHoverPanelManager>(InjectNodeClass<HoverPanelManager>())
@@ -56,7 +56,9 @@ public partial class Globals : DIContainerNode
     AddScenes();
     BuildServiceProvider();
     CreateSceneScope();
-
+  }
+  public override void _Ready()
+  {
     ServiceProvider.GetRequiredService<IGameManager>();
   }
 
