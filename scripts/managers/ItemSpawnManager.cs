@@ -3,7 +3,7 @@ using ShipOfTheseus2025.Components.Game;
 using ShipOfTheseus2025.DependencyInjection;
 using ShipOfTheseus2025.Resources;
 
-public partial class ItemSpawnManager : Node
+public partial class ItemSpawnManager : Node, IItemSpawnManager
 {
     private Vector3 _position = new Vector3(40, 4, 11);
     private PackedScene _itemScene;
