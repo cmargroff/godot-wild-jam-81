@@ -17,6 +17,7 @@ public partial class Game : Node3D
   private IPauseManager _pauseManager;
   private IGameManager _gameManager;
   private IAudioManager _audioManager;
+  private IItemSpawnManager _itemSpawnManager;
 
   private GameOver _gameOverScreen;
   private Timer _gameOverTimer;
@@ -38,7 +39,7 @@ public partial class Game : Node3D
 
   [FromServices]
   public void Inject(ISceneManager sceneManager, IStatsManager statsManager, IGameEventManager eventManager,
-      IItemDragManager dragManager, IPauseManager pauseManager, IGameManager gameManager, IHoverPanelManager hoverPanelManager, IAudioManager audioManager)
+      IItemDragManager dragManager, IPauseManager pauseManager, IGameManager gameManager, IHoverPanelManager hoverPanelManager, IAudioManager audioManager, IItemSpawnManager itemSpawnManager)
   {
     _sceneManager = sceneManager;
     _statsManager = statsManager;
@@ -47,6 +48,7 @@ public partial class Game : Node3D
     _pauseManager = pauseManager;
     _gameManager = gameManager;
     _audioManager = audioManager;
+    _itemSpawnManager = itemSpawnManager;
   }
 
   public override void _EnterTree()
@@ -77,6 +79,7 @@ public partial class Game : Node3D
         "SFX", this, new(0, 2f), true, (AudioStreamPlayer player) => player.VolumeDb = -6f, null);
     _audioManager.PlayGlobalAudioOnRepeat(_sceneManager.PreloadedResources["AudioRandomizers"]["ship_creaking_audio_stream_randomizer.tres"] as AudioStreamRandomizer,
         "SFX", this, new(2, 5f), false, null, null);
+    AddChild(_itemSpawnManager as Node3D);
   }
 
   public override void _PhysicsProcess(double delta)

@@ -16,13 +16,13 @@ public partial class GameEventManager : Node, IGameEventManager
   private Timer _environmentTimer;
   private Timer _itemTimer;
   private IGameManager _gameManager;
-  private ItemSpawnManager _spawnManager;
+  private IItemSpawnManager _spawnManager;
   private ISceneManager _sceneManager;
 
   public event Action EnvironmentEvent;
 
   [FromServices]
-  public void Inject(RandomNumberGeneratorService rng, ItemSpawnManager spawnManager, IGameManager gameManager, ISceneManager sceneManager)
+  public void Inject(RandomNumberGeneratorService rng, IItemSpawnManager spawnManager, IGameManager gameManager, ISceneManager sceneManager)
   {
     GD.Print("Injecting dependencies into GameEventManager");
     _rng = rng;
