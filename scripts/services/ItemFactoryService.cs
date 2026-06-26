@@ -1,13 +1,12 @@
 using System.Collections.Generic;
 using Godot;
 using ShipOfTheseus2025.Enum;
-using ShipOfTheseus2025.Managers;
 using ShipOfTheseus2025.Resources;
 using ShipOfTheseus2025.Services;
 
 public class ItemFactoryService
 {
-    private System.Collections.Generic.Dictionary<string, List<ItemTrait>> ItemTraitLookup;
+    private Dictionary<string, List<ItemTrait>> ItemTraitLookup;
 
     private RandomNumberGeneratorService rng;
     private readonly IStatsManager statsManager;

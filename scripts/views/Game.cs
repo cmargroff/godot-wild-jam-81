@@ -1,9 +1,7 @@
 using System;
 using Godot;
-using ShipOfTheseus2025.Components.Game;
 using ShipOfTheseus2025.DependencyInjection;
 using ShipOfTheseus2025.Enum;
-using ShipOfTheseus2025.Managers;
 using ShipOfTheseus2025.Models;
 
 namespace ShipOfTheseus2025.Views;
@@ -79,7 +77,11 @@ public partial class Game : Node3D
         "SFX", this, new(0, 2f), true, (AudioStreamPlayer player) => player.VolumeDb = -6f, null);
     _audioManager.PlayGlobalAudioOnRepeat(_sceneManager.PreloadedResources["AudioRandomizers"]["ship_creaking_audio_stream_randomizer.tres"] as AudioStreamRandomizer,
         "SFX", this, new(2, 5f), false, null, null);
-    AddChild(_itemSpawnManager as Node3D);
+
+    if (_itemSpawnManager is Node3D itemSpawnManagerNode)
+    {
+      AddChild(itemSpawnManagerNode);
+    }
   }
 
   public override void _PhysicsProcess(double delta)

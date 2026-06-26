@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dyb6pfwfxd74r"]
+
+[ext_resource type="Script" uid="uid://d2ygarpjeg3e5" path="res://scripts/managers/ItemSpawnManager.cs" id="1_lg8gb"]
+[ext_resource type="PackedScene" uid="uid://dkyhu7w5hp1d4" path="res://components/game/ItemPickUp.tscn" id="2_byyw0"]
+[ext_resource type="AudioStream" uid="uid://bcfr8bmp5wpv2" path="res://assets/audio/sfx/pickup_1.mp3" id="3_2nsl3"]
+
+[node name="ItemSpawnManager" type="Node3D" unique_id=1234176807]
+script = ExtResource("1_lg8gb")
+ItemScene = ExtResource("2_byyw0")
+ItemPickupAudio = ExtResource("3_2nsl3")
