@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using ShipOfTheseus2025.DependencyInjection;
 using ShipOfTheseus2025.Enum;
@@ -11,15 +12,11 @@ public partial class TravelProgress : Control
     [FromServices]
     public void Inject(IStatsManager statsManager)
     {
-        statsManager.StatChanged += StatsManager_StatChanged;
+        statsManager[Stat.Progress].OnChanged += Progress_OnChanged;
     }
 
-    private void StatsManager_StatChanged(Stat stat, float val)
+    private void Progress_OnChanged(float val)
     {
-        if (stat != Stat.Progress)
-            return;
-        //convert knots to relative change to speed scale
-        // SpeedScale = val / InitialKnots;
         _progressBar.Value = val;
     }
 

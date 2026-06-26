@@ -88,12 +88,12 @@ public partial class Game : Node3D
   {
     RemainingTime = Math.Max(0, RemainingTime - (float)(delta * SpeedScale));
     _statsManager.ChangeStat(new StatChange { Stat = Stat.Progress, Mode = StatChangeMode.Absolute, Amount = (1 - RemainingTime / RunTimeAt1X) * 100f });
-    if (_statsManager.GetStats(Stat.WaterLevel) >= 100)
+    if (_statsManager.GetStat(Stat.WaterLevel) >= 100)
     {
 
       _gameOverScreen.ShowScreen(false);
     }
-    else if (_statsManager.GetStats(Stat.Progress) >= 100)
+    else if (_statsManager.GetStat(Stat.Progress) >= 100)
     {
       _gameOverScreen.ShowScreen(true);
       // _gameOverTimer.Start();

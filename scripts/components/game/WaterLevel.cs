@@ -5,7 +5,6 @@ using ShipOfTheseus2025.Enum;
 public partial class WaterLevel : Control
 {
   private ProgressBar _progressBar;
-  // private TextureRect _icon;
   private IStatsManager _statsManager;
   [FromServices]
   public void Inject(IStatsManager statsManager)
@@ -15,22 +14,18 @@ public partial class WaterLevel : Control
   public override void _EnterTree()
   {
     _progressBar = GetNode<ProgressBar>("%ProgressBar");
-    // _icon = GetNode<TextureRect>("%Icon");
-    _statsManager.StatChanged += StatsManager_StatChanged;
 
-    _progressBar.Value = _statsManager.GetStats(Stat.WaterLevel);
-    GD.Print(_progressBar.Value);
-    GD.Print(_statsManager.GetStats(Stat.WaterLevel));
+    var waterLevel = _statsManager[Stat.WaterLevel];
+    _progressBar.Value = waterLevel;
+    waterLevel.OnChanged += WaterLevel_OnChanged;
   }
   public override void _ExitTree()
   {
-    _statsManager.StatChanged -= StatsManager_StatChanged;
+    var waterLevel = _statsManager[Stat.WaterLevel];
+    waterLevel.OnChanged -= WaterLevel_OnChanged;
   }
-  public void StatsManager_StatChanged(Stat stat, float amount)
+  private void WaterLevel_OnChanged(float val)
   {
-    if (stat == Stat.WaterLevel)
-    {
-      _progressBar.Value = amount;
-    }
+    _progressBar.Value = val;
   }
 }

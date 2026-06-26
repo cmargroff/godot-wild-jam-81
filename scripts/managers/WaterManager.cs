@@ -6,17 +6,20 @@ using ShipOfTheseus2025.Managers;
 public partial class WaterManager : MeshInstance3D, IWaterManager
 {
   private EnvironmentManager _environmentManager;
-  private IStatsManager _statsManager;
   private ShaderMaterial _material;
   private int seed;
   private bool isRunning = false;
   private float _waveTime = 0;
+  private ObservableStat _speedStat;
+  private ObservableStat _waterNoiseTimeStat;
   [FromServices]
   public void Inject(EnvironmentManager environmentManager, IStatsManager statsManager)
   {
     _environmentManager = environmentManager;
-    _statsManager = statsManager;
-    _statsManager.StatChanged += StatsManager_StatChanged;
+    _speedStat = statsManager[Stat.Speed];
+    _speedStat.OnChanged += SpeedStat_OnChanged;
+    _waterNoiseTimeStat = statsManager[Stat.WaterNoiseTime];
+    _waterNoiseTimeStat.OnChanged += WaterNoiseTimeStat_OnChanged;
   }
 
   public void SetSeed(int seed)
@@ -25,14 +28,14 @@ public partial class WaterManager : MeshInstance3D, IWaterManager
     // var tex = _material.GetShaderParameter("noise1").As<NoiseTexture2D>();
   }
 
-  private void StatsManager_StatChanged(Stat stat, float val)
+  private void SpeedStat_OnChanged(float val)
   {
-    if (stat == Stat.Speed)
-      _material.SetShaderParameter("boat_speed", val);
-    else if (stat == Stat.WaterNoiseTime)
-      _material.SetShaderParameter("wave_time", val / 1000);
+    _material.SetShaderParameter("boat_speed", val);
   }
-
+  private void WaterNoiseTimeStat_OnChanged(float val)
+  {
+    _material.SetShaderParameter("wave_time", val / 1000);
+  }
   public override void _Ready()
   {
     _material = Mesh.SurfaceGetMaterial(0) as ShaderMaterial;
@@ -48,5 +51,10 @@ public partial class WaterManager : MeshInstance3D, IWaterManager
   {
     _waveTime += (float)delta;
     _material.SetShaderParameter("wave_time", _waveTime / 1000);
+  }
+  public override void _ExitTree()
+  {
+    _speedStat.OnChanged -= SpeedStat_OnChanged;
+    _waterNoiseTimeStat.OnChanged -= WaterNoiseTimeStat_OnChanged;
   }
 }
