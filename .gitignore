@@ -3,3 +3,5 @@
 /android/
 .vs/
 *.csproj.user
+*.csproj.old
+*.csproj.old.*
