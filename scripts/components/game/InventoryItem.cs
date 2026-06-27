@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Godot;
 
@@ -10,11 +9,15 @@ public class InventoryItem
 
     public int GoldValue { get; set; }
 
+    public float GoldValueMultiplier { get; set; } = 1.0f;
+
     public string Description { get; set; }
 
     public float Weight { get; set; }
 
     public List<ItemTrait> Traits { get; set; } = [];
+
+    public List<ItemEffect> Effects { get; set; } = [];
 
     public Texture2D IconTexture { get; set; }
 
