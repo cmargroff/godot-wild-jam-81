@@ -76,6 +76,10 @@ public partial class HoverPage : Control
       }
     }
   }
+  private void UpdateEffects(List<ItemEffect> effects)
+  {
+    throw new System.NotImplementedException("TODO implement UpdateEffects");
+  }
   private void AssignData(InventoryItem inventoryItem)
   {
     // assign a page bg color based on the hash of the item object;
@@ -91,6 +95,7 @@ public partial class HoverPage : Control
     _weightLabel.Text = string.Format(_weightFmt, inventoryItem.Weight);
     _valueLabel.Text = string.Format(_valueFmt, inventoryItem.GoldValue);
     UpdateTraits(inventoryItem.Traits);
+    UpdateEffects(inventoryItem.Effects);
   }
   public void Show(InventoryItem inventoryItem)
   {
