@@ -51,7 +51,7 @@ public partial class Globals : DIContainerNode
     .AddScoped<IWaterManager>(InjectInstantiatedPackedScene<WaterManager>("res://components/game/Water.tscn", false))
     .AddScoped<PlayerDataStore>()
     .AddScoped<IStatsManager, StatsManager>()
-    .AddScoped<InventoryManager>()
+    .AddScoped<IInventoryManager, InventoryManager>()
     ;
 
     AddScenes();

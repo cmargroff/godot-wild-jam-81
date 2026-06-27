@@ -12,10 +12,10 @@ public partial class ScoreManager : Node, IScoreManager
     public event Action<int> ScoreChanged;
     public int Score { get; private set; } = 0;
 
-    private InventoryManager _inventoryManager;
+    private IInventoryManager _inventoryManager;
 
     [FromServices]
-    public void Inject(InventoryManager inventoryManager)
+    public void Inject(IInventoryManager inventoryManager)
     {
         _inventoryManager = inventoryManager;
         _inventoryManager.InventoryUpdated += InventoryManager_InventoryChanged;

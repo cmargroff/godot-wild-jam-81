@@ -5,11 +5,10 @@ using ShipOfTheseus2025.Components.Game;
 using ShipOfTheseus2025.DependencyInjection;
 using ShipOfTheseus2025.Enum;
 using ShipOfTheseus2025.Interfaces;
-using ShipOfTheseus2025.Managers;
 
 public partial class InventoryItemSlot : TextureRect, ISnapPoint
 {
-  private InventoryManager _inventoryManager;
+  private IInventoryManager _inventoryManager;
   private IItemDragManager _dragManager;
   private IHoverPanelManager _hoverManager;
   private TextureRect _icon;
@@ -26,7 +25,7 @@ public partial class InventoryItemSlot : TextureRect, ISnapPoint
   {
     _dragManager = Globals.Instance.ServiceProvider.GetRequiredService<IItemDragManager>();
     _hoverManager = Globals.Instance.ServiceProvider.GetRequiredService<IHoverPanelManager>();
-    _inventoryManager = Globals.Instance.ServiceProvider.GetRequiredService<InventoryManager>();
+    _inventoryManager = Globals.Instance.ServiceProvider.GetRequiredService<IInventoryManager>();
     _icon = GetNode<TextureRect>("%Icon");
     Connect(SignalName.MouseEntered, Callable.From(_MouseEntered));
     Connect(SignalName.MouseExited, Callable.From(_MouseExited));

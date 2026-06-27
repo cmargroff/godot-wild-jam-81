@@ -5,7 +5,7 @@ using ShipOfTheseus2025.Components.Game;
 
 namespace ShipOfTheseus2025.Managers;
 
-public partial class InventoryManager
+public partial class InventoryManager : IInventoryManager
 {
 
     public event Action<List<InventoryItem>> InventoryUpdated;
@@ -23,7 +23,6 @@ public partial class InventoryManager
         _items = new();
         _statsManager = statsManager;
         InventoryUpdated?.Invoke(_items);
-
     }
 
     public void AddInventoryItem(InventoryItem item)
