@@ -36,6 +36,11 @@ public partial class InventoryManager : IInventoryManager
                 Mode = Enum.StatChangeMode.Relative,
                 Amount = item.Weight
             });
+            foreach (var effect in item.Effects)
+            {
+                if (effect.ItemStored is not null)
+                    effect.ItemStored();
+            }
             InventoryUpdated?.Invoke(_items);
         }
 
