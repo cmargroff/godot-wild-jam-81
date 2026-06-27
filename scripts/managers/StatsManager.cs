@@ -19,6 +19,7 @@ public class StatsManager : IStatsManager
     _stats[Stat.Buoyancy] = new ObservableStat(Stat.Buoyancy, configManager.GetValue("shipstats", "INITIAL_WEIGHT_TONS").As<float>() * 2000);
     _stats[Stat.Progress] = new ObservableStat(Stat.Progress, 0f);
     _stats[Stat.WaterNoiseTime] = new ObservableStat(Stat.WaterNoiseTime, 0f);
+    _stats[Stat.Bailing] = new ObservableStat(Stat.Bailing, 0f);
   }
 
   public void ChangeStat(StatChange statChange)
