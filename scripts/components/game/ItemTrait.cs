@@ -1,5 +1,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
+using ShipOfTheseus2025.Enum;
+using ShipOfTheseus2025.Models;
 using ShipOfTheseus2025.Services;
 
 public sealed class ItemTrait
@@ -15,10 +17,7 @@ public sealed class ItemTrait
     public bool ReverseColor { get; init; }
 
     [SetsRequiredMembers]
-    public ItemTrait(RandomNumberGeneratorService rng, string description, float minValue, float maxValue, bool reverseColor,
-        Action<IStatsManager, float> applyToShip,
-
-        Action<IStatsManager, float> removeFromShip)
+    public ItemTrait(RandomNumberGeneratorService rng, string description, Stat stat, float minValue, float maxValue, StatChangeMode mode = StatChangeMode.Relative, bool reverseColor = false)
     {
 
         MinValue = minValue;
@@ -26,9 +25,23 @@ public sealed class ItemTrait
         FixedValue = rng.GetFloatRange(minValue, maxValue);
         Description = string.Format(description, FixedValue);
 
-        ApplyToShip = applyToShip;
+        ApplyToShip = CreateApplyAction(stat, mode);
         ReverseColor = reverseColor;
-        RemoveFromShip = removeFromShip;
+        RemoveFromShip = CreateRemoveAction(stat, mode);
+    }
+    public static Action<IStatsManager, float> CreateApplyAction(Stat stat, StatChangeMode mode)
+    {
+        return (IStatsManager statsManager, float fixedValue) =>
+        {
+            statsManager.ChangeStat(new StatChange { Stat = stat, Mode = mode, Amount = fixedValue });
+        };
+    }
+    public static Action<IStatsManager, float> CreateRemoveAction(Stat stat, StatChangeMode mode)
+    {
+        return (IStatsManager statsManager, float fixedValue) =>
+        {
+            statsManager.ChangeStat(new StatChange { Stat = stat, Mode = mode, Amount = fixedValue * -1 });
+        };
     }
 
     public void Apply(IStatsManager statsManager) => ApplyToShip(statsManager, FixedValue);

@@ -7,4 +7,5 @@ public enum Stat
   Buoyancy,
   Progress,
   WaterNoiseTime,
+  Bailing
 }
