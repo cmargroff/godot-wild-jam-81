@@ -9,7 +9,6 @@ public partial class DamagePoint : Area3D, ISnapPoint
 {
   private IItemDragManager _dragManager;
   private IStatsManager _statsManager;
-  private IHoverPanelManager _hoverManager;
   public DamagePointState State;
   private MeshInstance3D _damage;
   private ItemPickUp _item;
@@ -28,11 +27,10 @@ public partial class DamagePoint : Area3D, ISnapPoint
   }
 
   [FromServices]
-  public void Inject(IStatsManager statsManager, IItemDragManager dragManager, IHoverPanelManager hoverPanelManager)
+  public void Inject(IStatsManager statsManager, IItemDragManager dragManager)
   {
     _statsManager = statsManager;
     _dragManager = dragManager;
-    _hoverManager = hoverPanelManager;
   }
 
   public override void _EnterTree()
@@ -47,7 +45,6 @@ public partial class DamagePoint : Area3D, ISnapPoint
       _dragManager.SnapPoint(this, true);
 
     }
-    if (_dragManager.Dragging == false && _item is not null) _hoverManager.ShowItem(_item.InventoryItem, HoverType.Slot);
   }
   public override void _MouseExit()
   {
@@ -55,7 +52,6 @@ public partial class DamagePoint : Area3D, ISnapPoint
     {
       _dragManager.Unsnap();
     }
-    if (_dragManager.Dragging == false) _hoverManager.HidePage();
     
   }
   public void AttachItem(ItemPickUp item)

@@ -119,12 +119,14 @@ public partial class ItemPickUp : Node3D
     public void Attach()
     {
         State = ItemPickupState.Attached;
+        _area.InputRayPickable = true;
         //_hoverManager.HidePage();
     }
 
     public void Grab()
     {
         State = ItemPickupState.Held;
+        _area.InputRayPickable = false;
         GD.Print("hover page");
         _hoverManager.ShowItem(InventoryItem, HoverType.Item);
 
@@ -139,7 +141,7 @@ public partial class ItemPickUp : Node3D
     {
         if (_dragManager.Dragging == false)
         {
-            _hovered = (State == ItemPickupState.Floating) ? true : false;
+            _hovered = (State == ItemPickupState.Floating || State == ItemPickupState.Attached) ? true : false;
             if (_hovered) _hoverManager.ShowItem(InventoryItem, HoverType.Item);
         }
 
@@ -147,7 +149,7 @@ public partial class ItemPickUp : Node3D
     public void MouseExited()
     {
         _hovered = false;
-        if (_dragManager.Dragging == false && State == ItemPickupState.Floating) _hoverManager.HidePage();
+        if (_dragManager.Dragging == false && (State == ItemPickupState.Floating || State == ItemPickupState.Attached)) _hoverManager.HidePage();
         GD.Print("mouse exited");
     }
 }
