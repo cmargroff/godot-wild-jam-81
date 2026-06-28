@@ -119,7 +119,7 @@ public partial class ItemPickUp : Node3D
     public void Attach()
     {
         State = ItemPickupState.Attached;
-        _hoverManager.HidePage();
+        //_hoverManager.HidePage();
     }
 
     public void Grab()

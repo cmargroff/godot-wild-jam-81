@@ -36,15 +36,16 @@ public partial class HoverPanelManager : Control, IHoverPanelManager
   public void ShowItem(InventoryItem item, HoverType hoverType)
   {
     _page.Show(item);
-    if (hoverType == HoverType.Item)
-    {
-      _page.Position = _hoverMarker.Position;
-    }
-    else
-    {
-      _page.Position = _slotMarker.Position;
+    _page.Position = _hoverMarker.Position;
+    // if (hoverType == HoverType.Item)
+    // {
+    //   _page.Position = _hoverMarker.Position;
+    // }
+    // else
+    // {
+    //   _page.Position = _slotMarker.Position;
 
-    }
+    // }
   }
   public void HidePage()
   {

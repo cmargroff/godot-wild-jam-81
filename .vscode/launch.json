@@ -14,7 +14,7 @@
       "console": "internalConsole",
       "stopAtEntry": false,
       "windows": {
-        "program": "${env:GODOT_HOME}/Godot_v4.6.1-stable_mono_win64.exe",
+        "program": "${env:GODOT_HOME}/Godot_v4.7-stable_mono_win64.exe",
       },
       "linux": {
         "program": "godot",
@@ -30,7 +30,7 @@
       "console": "internalConsole",
       "stopAtEntry": false,
       "windows": {
-        "program": "${env:GODOT_HOME}/Godot_v4.6.1-stable_mono_win64.exe",
+        "program": "${env:GODOT_HOME}/Godot_v4.7-stable_mono_win64.exe",
       },
       "linux": {
         "program": "godot",

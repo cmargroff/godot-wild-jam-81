@@ -2,15 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dt0lcpjiea5u6"
+uid="uid://bp6pn6lm1bqfg"
 path.s3tc="res://.godot/imported/fancy_portrait_painting_Metallic-painting_Roughness.png-00390776e032a1aab39d9c54dcaaeed1.s3tc.ctex"
 path.etc2="res://.godot/imported/fancy_portrait_painting_Metallic-painting_Roughness.png-00390776e032a1aab39d9c54dcaaeed1.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "ae15ce4bc3bf64f2bc305342a5c185af"
 }
 
 [deps]

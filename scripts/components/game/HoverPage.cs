@@ -78,7 +78,7 @@ public partial class HoverPage : Control
   }
   private void UpdateEffects(List<ItemEffect> effects)
   {
-    throw new System.NotImplementedException("TODO implement UpdateEffects");
+    //throw new System.NotImplementedException("TODO implement UpdateEffects");
   }
   private void AssignData(InventoryItem inventoryItem)
   {
