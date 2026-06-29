@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
+using Microsoft.Extensions.DependencyInjection;
+using ShipOfTheseus2025;
 using ShipOfTheseus2025.Components.Game;
 using ShipOfTheseus2025.Enum;
 using ShipOfTheseus2025.Resources;
@@ -17,6 +19,7 @@ public class ItemFactoryService
     private readonly IInventoryManager inventoryManager;
     private readonly IItemDragManager dragManager;
     private ItemEffectContext _itemEffectContext;
+    private readonly Script _itemScript;
 
     public ItemFactoryService(RandomNumberGeneratorService rng, IStatsManager statsManager, IInventoryManager inventoryManager, IItemDragManager dragManager)
     {
@@ -32,6 +35,7 @@ public class ItemFactoryService
         };
         SetupItemTraitLookup();
         SetupItemEffectLookup();
+        _itemScript = ResourceLoader.Load<Script>("res://scripts/components/game/Item.cs");
     }
 
     public void SetupItemTraitLookup()
@@ -181,6 +185,10 @@ public class ItemFactoryService
 
     public InventoryItem GenerateItem(ItemResource itemResource)
     {
+        var node = new Item();
+        var scene = itemResource.ItemScene.Instantiate<Node3D>();
+        node.AddChild(scene);
+        scene.Name = "Display";
         InventoryItem item = new()
         {
             Name = itemResource.ItemName,
@@ -188,10 +196,12 @@ public class ItemFactoryService
             GoldValue = GetGoldValue(itemResource),
             Weight = rng.GetFloatRange(itemResource.MinWeight, itemResource.MaxWeight),
             IconTexture = itemResource.IconTexture,
-            ItemScene = itemResource.ItemScene?.Instantiate<Node3D>()// ?? new Node3D()
+            Node = node
         };
+        node.InventoryItem = item;
         AddItemTraits(item);
         AddItemEffects(item);
+        AddItemComponents(node);
         return item;
     }
 
@@ -220,6 +230,21 @@ public class ItemFactoryService
                 EnemyAttacking = config.EnemyAttacking is not null ? BindItemEffectContext(item, config.EnemyAttacking) : null
             }).ToList();
         }
+    }
+
+    private void AddItemComponents(Node3D itemScene)
+    {
+        if (itemScene == null)
+            return;
+
+        var mover = Globals.Instance.ServiceProvider.GetRequiredService<IWaterMover>();
+        itemScene.AddChild(mover as Node);
+
+        var dragHandler = Globals.Instance.ServiceProvider.GetRequiredService<IDragHandler>();
+        itemScene.AddChild(dragHandler as Node);
+
+        var hoverHandler = Globals.Instance.ServiceProvider.GetRequiredService<IHoverHandler>();
+        itemScene.AddChild(hoverHandler as Node);
     }
 
     private int GetGoldValue(ItemResource itemResource)
