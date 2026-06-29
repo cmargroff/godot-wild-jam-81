@@ -39,10 +39,10 @@ public partial class ItemSpawnManager : Node3D, IItemSpawnManager
     {
         ItemResource resource = _sceneManager.PreloadedResources["Items"][identifier] as ItemResource;
         InventoryItem item = _itemFactoryService.GenerateItem(resource);
-        ItemPickUp pickupableItem = Globals.Instance.ServiceProvider.GetRequiredService<ItemPickUp>();
-        pickupableItem.ItemPickupAudioPlayer = _pickupSFX;
-        pickupableItem.InventoryItem = item;
-        pickupableItem.Position = _position;
-        AddChild(pickupableItem);
+        // ItemPickUp pickupableItem = Globals.Instance.ServiceProvider.GetRequiredService<ItemPickUp>();
+        // pickupableItem.ItemPickupAudioPlayer = _pickupSFX;
+        // pickupableItem.InventoryItem = item;
+        item.Node.Position = _position;
+        AddChild(item.Node);
     }
 }
