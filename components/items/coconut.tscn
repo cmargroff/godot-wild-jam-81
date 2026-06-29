@@ -60,6 +60,7 @@ transform = Transform3D(0.715295, 0, 0, 0, 0.715295, 0, 0, 0, 0.715295, 0, 0, 0)
 mesh = SubResource("ArrayMesh_uq48f")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=4594591]
+unique_name_in_owner = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=504228935]
 shape = SubResource("SphereShape3D_7x6dn")
