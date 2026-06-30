@@ -29,12 +29,6 @@ public partial class ItemSpawnManager : Node3D, IItemSpawnManager
         {
             _spawnZones.Add(child.Name, child);
         }
-
-        foreach (var i in _spawnZones)
-        {
-            GD.Print($"Key: {i.Key}, Value: {i.Value}");
-        }
-        GD.Print(_spawnZones["Water"]);
     }
 
     public override void _Ready()
