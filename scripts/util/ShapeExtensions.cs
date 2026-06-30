@@ -16,4 +16,12 @@ public static class ShapeExtensions
     }
     return Vector3.Zero; // Default for unsupported shapes
   }
+  public static Vector3 GetRandomPoint(this CollisionShape3D collisionShape)
+  {
+    if (collisionShape.Shape is Shape3D shape)
+    {
+      return shape.GetRandomPoint() + collisionShape.Position;
+    }
+    return Vector3.Zero; // Default for unsupported shapes
+  }
 }

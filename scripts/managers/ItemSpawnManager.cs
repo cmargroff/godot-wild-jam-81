@@ -55,7 +55,7 @@ public partial class ItemSpawnManager : Node3D, IItemSpawnManager
         // pickupableItem.ItemPickupAudioPlayer = _pickupSFX;
         // pickupableItem.InventoryItem = item;
         GD.Print($"Check spawn {_spawnZones["Water"]}");
-        _position = _spawnZones["Water"].Shape.GetRandomPoint();
+        _position = _spawnZones["Water"].GetRandomPoint();
         item.Node.Position = _position;
         GD.Print($"Spawn position: {_position}");
         AddChild(item.Node);
