@@ -1,6 +1,5 @@
 using System;
 using Godot;
-using ShipOfTheseus2025.Components.Game;
 using ShipOfTheseus2025.DependencyInjection;
 using ShipOfTheseus2025.Enum;
 using ShipOfTheseus2025.Interfaces;
@@ -11,7 +10,7 @@ public partial class DamagePoint : Area3D, ISnapPoint
   private IStatsManager _statsManager;
   public DamagePointState State;
   private MeshInstance3D _damage;
-  private ItemPickUp _item;
+  private Item _item;
   public event Action LeakingChanged;
   public bool Leaking
   {
@@ -52,13 +51,13 @@ public partial class DamagePoint : Area3D, ISnapPoint
     {
       _dragManager.Unsnap();
     }
-    
+
   }
-  public void AttachItem(ItemPickUp item)
+  public void AttachItem(Item item)
   {
     _item = item;
     item.Reparent(this);
-    item.Attach();
+    // item.Attach();
     item.GlobalPosition = GlobalPosition;
     State = DamagePointState.SnapDisable;
     _statsManager.ChangeStat(new()
@@ -90,11 +89,11 @@ public partial class DamagePoint : Area3D, ISnapPoint
       {
         trait.Remove(_statsManager);
       }
-      _item.Drop();
+      // _item.Drop();
     }
     State = DamagePointState.SnapEnable;
     LeakingChanged?.Invoke();
   }
 
-  
+
 }

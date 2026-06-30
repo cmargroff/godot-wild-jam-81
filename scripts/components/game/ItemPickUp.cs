@@ -48,10 +48,10 @@ public partial class ItemPickUp : Node3D
         State = ItemPickupState.Floating;
         _dragManager.PickupAudioStreamPlayer = ItemPickupAudioPlayer;
         _globalPosition = GlobalPosition;
-        AddChild(InventoryItem.ItemScene);
+        AddChild(InventoryItem.Node);
 
         // add events of item pickup area
-        var area = InventoryItem.ItemScene.GetNode<Area3D>("Area3D");
+        var area = InventoryItem.Node.GetNode<Area3D>("Area3D");
         _area = area;
         _area.Connect(Area3D.SignalName.MouseEntered, Callable.From(MouseEntered));
         _area.Connect(Area3D.SignalName.MouseExited, Callable.From(MouseExited));
@@ -90,12 +90,12 @@ public partial class ItemPickUp : Node3D
         {
             if (_hovered && State == ItemPickupState.Floating)
             {
-                _dragManager.StartDragItem(this);
+                // _dragManager.StartDragItem(this);
                 State = ItemPickupState.Held;
                 _area.InputRayPickable = false;
                 if (InventoryItem.Name == "Seagull")
                 {
-                    InventoryItem.ItemScene.GetChild<Node3D>(1).Position = Vector3.Zero;
+                    InventoryItem.Node.GetChild<Node3D>(1).Position = Vector3.Zero;
                 }
                 _hoverManager.ShowItem(InventoryItem, HoverType.Item);
                 GD.Print("hover page");

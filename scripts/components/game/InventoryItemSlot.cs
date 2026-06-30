@@ -12,7 +12,7 @@ public partial class InventoryItemSlot : TextureRect, ISnapPoint
   private IItemDragManager _dragManager;
   private IHoverPanelManager _hoverManager;
   private TextureRect _icon;
-  private ItemPickUp _item;
+  private Item _item;
   public InventoryItem InventoryItem { get; set; }
 
   [FromServices]
@@ -61,7 +61,7 @@ public partial class InventoryItemSlot : TextureRect, ISnapPoint
     if (_dragManager.Dragging == false) _hoverManager.HidePage();
   }
 
-  public void AttachItem(ItemPickUp item)
+  public void AttachItem(Item item)
   {
     if (_dragManager.Dragging == false && _item is not null)
     {
@@ -73,7 +73,7 @@ public partial class InventoryItemSlot : TextureRect, ISnapPoint
       item.Visible = false;
       _icon.Texture = item.InventoryItem.IconTexture;
       _icon.Modulate = new Color(1, 1, 1, 1);
-      item.Attach();
+      // item.Attach();
       _inventoryManager.AddInventoryItem(item.InventoryItem);
       _dragManager.EndDragItem();
       _dragManager.Unsnap();
@@ -85,7 +85,7 @@ public partial class InventoryItemSlot : TextureRect, ISnapPoint
   {
     _icon.Texture = null;
     _item.Visible = true;
-    _item.Grab();
+    // _item.Grab();
     _inventoryManager.RemoveInventoryItem(_item.InventoryItem);
     _dragManager.StartDragItem(_item);
     _item = null;

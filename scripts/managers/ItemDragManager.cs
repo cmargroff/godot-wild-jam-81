@@ -1,6 +1,4 @@
-using System;
 using Godot;
-using ShipOfTheseus2025.Components.Game;
 using ShipOfTheseus2025.Interfaces;
 
 
@@ -14,7 +12,7 @@ public partial class ItemDragManager : Node3D, IItemDragManager
   public bool Dragging { get; private set; }
   private Viewport _viewport;
   private Camera3D _camera;
-  private ItemPickUp _item;
+  private Item _item;
   private float _scale = 1f;
   private bool _snapped;
   private ISnapPoint _snapPoint;
@@ -33,7 +31,7 @@ public partial class ItemDragManager : Node3D, IItemDragManager
   {
     _camera = camera;
   }
-  public void StartDragItem(ItemPickUp item)
+  public void StartDragItem(Item item)
   {
     Dragging = true;
 
@@ -43,7 +41,7 @@ public partial class ItemDragManager : Node3D, IItemDragManager
     _item = item;
     item.Reparent(GetTree().Root, true);
     // PickupAudioStreamPlayer.GlobalPosition = item.GlobalPosition;
-    PickupAudioStreamPlayer.Play();
+    // PickupAudioStreamPlayer.Play();
     ;
   }
   public void EndDragItem()
@@ -104,7 +102,7 @@ public partial class ItemDragManager : Node3D, IItemDragManager
     _snapPoint = null;
   }
 
-  public ItemPickUp GetItem()
+  public Item GetItem()
   {
     return _item;
   }
