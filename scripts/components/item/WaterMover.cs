@@ -2,9 +2,10 @@ using Godot;
 using ShipOfTheseus2025.DependencyInjection;
 using ShipOfTheseus2025.Enum;
 
-public partial class WaterMover : Node, IWaterMover
+public partial class ItemMover : Node, IItemMover
 {
   private float _speed;
+  private float _speedOffset;
   private ObservableStat _speedStat;
   private Item _item;
   [FromServices]
@@ -18,7 +19,13 @@ public partial class WaterMover : Node, IWaterMover
   public override void _EnterTree()
   {
     _item = GetParent<Item>();
-    _item.WaterMover = this;
+    _item.ItemMover = this;
+    _speedOffset = _item.InventoryItem.SpeedOffset;
+    _speed = _speedStat + _speedOffset;
+    GD.Print("SpeedStat: " + _speedStat);
+    GD.Print("SpedOffset: " + _item.InventoryItem.SpeedOffset);
+    GD.Print("Speed: " + _speed);
+
   }
   public void Start()
   {
@@ -49,6 +56,6 @@ public partial class WaterMover : Node, IWaterMover
   }
   public void OnSpeedChanged(float newValue)
   {
-    _speed = newValue;
+    _speed = newValue + _speedOffset;
   }
 }

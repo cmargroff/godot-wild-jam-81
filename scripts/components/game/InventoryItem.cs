@@ -14,6 +14,7 @@ public class InventoryItem
     public string Description { get; set; }
 
     public float Weight { get; set; }
+    public float SpeedOffset { get; set; }
 
     public List<ItemTrait> Traits { get; set; } = [];
 

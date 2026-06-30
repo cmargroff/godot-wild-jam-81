@@ -1,4 +1,4 @@
-public interface IWaterMover
+public interface IItemMover
 {
   void Start();
   void Stop();

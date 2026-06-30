@@ -195,6 +195,7 @@ public class ItemFactoryService
             Description = itemResource.Description,
             GoldValue = GetGoldValue(itemResource),
             Weight = rng.GetFloatRange(itemResource.MinWeight, itemResource.MaxWeight),
+            SpeedOffset = itemResource.SpeedOffset,
             IconTexture = itemResource.IconTexture,
             Node = node
         };
@@ -237,7 +238,7 @@ public class ItemFactoryService
         if (itemScene == null)
             return;
 
-        var mover = Globals.Instance.ServiceProvider.GetRequiredService<IWaterMover>();
+        var mover = Globals.Instance.ServiceProvider.GetRequiredService<IItemMover>();
         itemScene.AddChild(mover as Node);
 
         var dragHandler = Globals.Instance.ServiceProvider.GetRequiredService<IDragHandler>();

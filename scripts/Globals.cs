@@ -52,7 +52,7 @@ public partial class Globals : DIContainerNode
     .AddScoped<PlayerDataStore>()
     .AddScoped<IStatsManager, StatsManager>()
     .AddScoped<IInventoryManager, InventoryManager>()
-    .AddTransient<IWaterMover>(InjectNodeClass<WaterMover>(false))
+    .AddTransient<IItemMover>(InjectNodeClass<ItemMover>(false))
     .AddTransient<IDragHandler>(InjectNodeClass<DragHandler>(false))
     .AddTransient<IHoverHandler>(InjectNodeClass<HoverHandler>(false))
     ;

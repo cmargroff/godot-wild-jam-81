@@ -27,6 +27,8 @@ public partial class ItemResource : Resource
 
     [Export]
     public float MaxWeight { get; set; }
+    [Export]
+    public float SpeedOffset {get; set; }
 
     [Export]
     public Texture2D IconTexture { get; set; }
