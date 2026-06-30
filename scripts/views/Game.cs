@@ -78,6 +78,10 @@ public partial class Game : Node3D
     _audioManager.PlayGlobalAudioOnRepeat(_sceneManager.PreloadedResources["AudioRandomizers"]["ship_creaking_audio_stream_randomizer.tres"] as AudioStreamRandomizer,
         "SFX", this, new(2, 5f), false, null, null);
 
+    if (_itemSpawnManager is Node3D itemSpawnManagerNode)
+    {
+      AddChild(itemSpawnManagerNode);
+    }
   }
 
   public override void _PhysicsProcess(double delta)

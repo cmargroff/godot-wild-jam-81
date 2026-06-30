@@ -17,16 +17,16 @@ script = ExtResource("1_lg8gb")
 ItemPickupAudio = ExtResource("3_2nsl3")
 
 [node name="Water" type="CollisionShape3D" parent="." unique_id=691279426]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.053239822, 7.87294)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.949974, -0.053239822, 14.250143)
 shape = SubResource("BoxShape3D_5imfg")
 disabled = true
 
 [node name="Air" type="CollisionShape3D" parent="." unique_id=1530134309]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.49194336, 11.269463, 7.407798)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.45803, 11.269463, 13.785001)
 shape = SubResource("BoxShape3D_6kpt4")
 disabled = true
 
 [node name="Underwater" type="CollisionShape3D" parent="." unique_id=299711848]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1963136, 6.348587)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.949974, -1.1963136, 12.72579)
 shape = SubResource("BoxShape3D_byyw0")
 disabled = true

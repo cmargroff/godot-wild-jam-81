@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://wmg6ljmyxk7y" path="res://components/game/WorldEnvironment.tscn" id="6_cqtd1"]
 [ext_resource type="AudioStream" uid="uid://p51ofnqbqlij" path="res://resources/audio/item_pickup_audio_stream_randomizer.tres" id="6_k55y7"]
 [ext_resource type="PackedScene" uid="uid://eclw6x7704g" path="res://views/GameOver.tscn" id="7_hfq8r"]
-[ext_resource type="PackedScene" uid="uid://dyb6pfwfxd74r" path="res://components/game/ItemSpawnManager.tscn" id="10_dn4eh"]
 [ext_resource type="PackedScene" uid="uid://ctigml18m3xj8" path="res://components/game/Port.tscn" id="10_kcxve"]
 
 [node name="Game" type="Node3D" unique_id=785308419]
@@ -61,12 +60,6 @@ stream = ExtResource("6_k55y7")
 [node name="GameOver" parent="." unique_id=12513894 instance=ExtResource("7_hfq8r")]
 unique_name_in_owner = true
 
-[node name="ItemSpawnManager" parent="." unique_id=1234176807 instance=ExtResource("10_dn4eh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.555473, 7.4742184, 9.408016)
-
-[node name="Water" parent="ItemSpawnManager" index="0" unique_id=691279426]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.053239822, 4.5668526)
-
 [node name="Port" parent="." unique_id=1282910287 instance=ExtResource("10_kcxve")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16.4768, 7.19492, 28.8647)
 
@@ -77,5 +70,3 @@ wait_time = 3.0
 one_shot = true
 
 [connection signal="timeout" from="GameOverTimer" to="." method="GameOver"]
-
-[editable path="ItemSpawnManager"]
