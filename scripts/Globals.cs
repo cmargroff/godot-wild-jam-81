@@ -46,7 +46,7 @@ public partial class Globals : DIContainerNode
     .AddScoped<IPauseManager>(InjectNodeClass<PauseManager>())
     .AddScoped<IHoverPanelManager>(InjectNodeClass<HoverPanelManager>())
     .AddScoped(InjectNodeClass<EnvironmentManager>(false))
-    .AddScoped<IItemSpawnManager>(InjectInstantiatedPackedScene<ItemSpawnManager>("res://components/game/ItemSpawnManager.tscn", false))
+    .AddSingleton<IItemSpawnManager>(InjectInstantiatedPackedScene<ItemSpawnManager>("res://components/game/ItemSpawnManager.tscn", false))
     .AddTransient(InjectInstantiatedPackedScene<ItemPickUp>("res://components/game/ItemPickUp.tscn", false)) // Transient item pickup factory
     .AddScoped<IWaterManager>(InjectInstantiatedPackedScene<WaterManager>("res://components/game/Water.tscn", false))
     .AddScoped<PlayerDataStore>()

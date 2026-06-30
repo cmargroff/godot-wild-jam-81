@@ -13,6 +13,7 @@ MaxGoldValue = 100
 MinWeight = 200.0
 MaxWeight = 1000.0
 SpeedOffset = 3.0
+SpawnZone = 2
 IconTexture = ExtResource("1_kuiun")
 ItemScene = ExtResource("2_uqkvr")
 metadata/_custom_type_script = "uid://chlt3chm3e8ap"
