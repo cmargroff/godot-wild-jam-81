@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Godot;
 using ShipOfTheseus2025.Components.Game;
 using ShipOfTheseus2025.DependencyInjection;
+using ShipOfTheseus2025.Enum;
 using ShipOfTheseus2025.Resources;
 
 public partial class ItemSpawnManager : Node3D, IItemSpawnManager
@@ -44,11 +45,22 @@ public partial class ItemSpawnManager : Node3D, IItemSpawnManager
         // ItemPickUp pickupableItem = Globals.Instance.ServiceProvider.GetRequiredService<ItemPickUp>();
         // pickupableItem.ItemPickupAudioPlayer = _pickupSFX;
         // pickupableItem.InventoryItem = item;
-        GD.Print($"Check spawn {_spawnZones["Water"]}");
-        _position = _spawnZones["Water"].GetRandomPoint();
-        item.Node.Position = _position;
-        GD.Print($"Spawn position: {_position}");
+        item.Node.Position = GetSpawnPosition(resource);
         AddChild(item.Node);
+    }
+
+    public Vector3 GetSpawnPosition(ItemResource resource)
+    {
+        var spawnZone = System.Enum.GetName(typeof(ItemSpawnZone), resource.SpawnZone);
+        if (_spawnZones.ContainsKey(spawnZone))
+        {
+            return _spawnZones[spawnZone].GetRandomPoint();
+        }
+        else
+        {
+            GD.PrintErr($"Spawn zone '{spawnZone}' not found.");
+            return Vector3.Zero;
+        }
     }
 
 }
