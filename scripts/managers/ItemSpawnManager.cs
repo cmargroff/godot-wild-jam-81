@@ -1,8 +1,5 @@
-using System;
 using System.Collections.Generic;
 using Godot;
-using Microsoft.Extensions.DependencyInjection;
-using ShipOfTheseus2025;
 using ShipOfTheseus2025.Components.Game;
 using ShipOfTheseus2025.DependencyInjection;
 using ShipOfTheseus2025.Resources;
@@ -28,13 +25,12 @@ public partial class ItemSpawnManager : Node3D, IItemSpawnManager
 
     public override void _EnterTree()
     {
-        Name = GetType().Name;
-        foreach(CollisionShape3D child in GetChildren())
+        foreach (CollisionShape3D child in GetChildren())
         {
             _spawnZones.Add(child.Name, child);
         }
 
-        foreach(var i in _spawnZones)
+        foreach (var i in _spawnZones)
         {
             GD.Print($"Key: {i.Key}, Value: {i.Value}");
         }
@@ -59,6 +55,6 @@ public partial class ItemSpawnManager : Node3D, IItemSpawnManager
         item.Node.Position = _position;
         GD.Print($"Spawn position: {_position}");
         AddChild(item.Node);
-    }  
+    }
 
 }
