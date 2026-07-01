@@ -1,4 +1,6 @@
 using Godot;
+using Microsoft.Extensions.DependencyInjection;
+using ShipOfTheseus2025;
 
 public partial class Inventory : Control
 {
@@ -16,7 +18,8 @@ public partial class Inventory : Control
 
     for (var i = 0; i < SlotsAvailable; i++)
     {
-      _slotsWrap.AddChild(SlotTemplate.Instantiate<Control>());
+      var slot = Globals.Instance.ServiceProvider.GetRequiredService<InventoryItemSlot>();
+      _slotsWrap.AddChild(slot);
     }
 
     Connect(SignalName.MouseEntered, Callable.From(_MouseEntered));

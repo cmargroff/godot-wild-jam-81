@@ -55,6 +55,7 @@ public partial class Globals : DIContainerNode
     .AddTransient<IItemMover>(InjectNodeClass<ItemMover>(false))
     .AddTransient<IDragHandler>(InjectNodeClass<DragHandler>(false))
     .AddTransient<IHoverHandler>(InjectNodeClass<HoverHandler>(false))
+    .AddTransient(InjectInstantiatedPackedScene<InventoryItemSlot>("res://components/game/InventoryItemSlot.tscn", false))
     ;
 
     AddScenes();
