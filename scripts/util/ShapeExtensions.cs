@@ -24,4 +24,23 @@ public static class ShapeExtensions
     }
     return Vector3.Zero; // Default for unsupported shapes
   }
+  public static RectangleShape2D GetShape2D(this BoxShape3D boxShape)
+  {
+    var rectangleShape2D = new RectangleShape2D();
+    rectangleShape2D.Size = new Vector2(boxShape.Size.X, boxShape.Size.Y);
+    return rectangleShape2D;
+  }
+  public static CircleShape2D GetShape2D(this SphereShape3D sphereShape)
+  {
+    var circleShape2D = new CircleShape2D();
+    circleShape2D.Radius = sphereShape.Radius;
+    return circleShape2D;
+  }
+  public static CapsuleShape2D GetShape2D(this CapsuleShape3D capsuleShape)
+  {
+    var capsuleShape2D = new CapsuleShape2D();
+    capsuleShape2D.Radius = capsuleShape.Radius;
+    capsuleShape2D.Height = capsuleShape.Height;
+    return capsuleShape2D;
+  }
 }
