@@ -4,10 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://cxyf4q4egqw6k" path="res://components/game/Ship.tscn" id="2_26sbl"]
 [ext_resource type="PackedScene" uid="uid://lw36b2co12mu" path="res://components/game/HUD.tscn" id="3_26sbl"]
 [ext_resource type="PackedScene" uid="uid://b0ifm6knh2ypk" path="res://components/game/PauseMenu.tscn" id="4_26sbl"]
-[ext_resource type="AudioStream" uid="uid://80uic5ew3hph" path="res://assets/audio/music/Pirate 2.ogg" id="5_k55y7"]
 [ext_resource type="PackedScene" uid="uid://cqpcvpq350dvi" path="res://components/game/Water.tscn" id="5_lah3o"]
 [ext_resource type="PackedScene" uid="uid://wmg6ljmyxk7y" path="res://components/game/WorldEnvironment.tscn" id="6_cqtd1"]
-[ext_resource type="AudioStream" uid="uid://p51ofnqbqlij" path="res://resources/audio/item_pickup_audio_stream_randomizer.tres" id="6_k55y7"]
 [ext_resource type="PackedScene" uid="uid://eclw6x7704g" path="res://views/GameOver.tscn" id="7_hfq8r"]
 [ext_resource type="PackedScene" uid="uid://ctigml18m3xj8" path="res://components/game/Port.tscn" id="10_kcxve"]
 
@@ -46,16 +44,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 200, 0, 0)
 [node name="WorldEnvironment" parent="." unique_id=1774726062 instance=ExtResource("6_cqtd1")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1121219313]
-
-[node name="AudioStreamPlayer_BGM" type="AudioStreamPlayer" parent="." unique_id=1435463718]
-stream = ExtResource("5_k55y7")
-volume_db = -6.0
-autoplay = true
-bus = &"BGM"
-
-[node name="AudioStreamPlayer_ItemPickup" type="AudioStreamPlayer3D" parent="." unique_id=133964575]
-unique_name_in_owner = true
-stream = ExtResource("6_k55y7")
 
 [node name="GameOver" parent="." unique_id=12513894 instance=ExtResource("7_hfq8r")]
 unique_name_in_owner = true
