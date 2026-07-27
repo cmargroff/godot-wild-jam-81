@@ -60,6 +60,9 @@ public partial class GameEventManager : Node, IGameEventManager
     // code that the game calls when its ready to start the events
     // this should only be called once
     QueueEnvironmentEvent();
+    _itemTimer.Start(
+      _rng.GetFloatRange(0, 0)
+    );
     QueueItemEvent();
   }
   public void QueueEnvironmentEvent()

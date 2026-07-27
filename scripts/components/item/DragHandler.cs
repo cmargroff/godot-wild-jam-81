@@ -1,7 +1,7 @@
 using Godot;
 using ShipOfTheseus2025.DependencyInjection;
 
-public partial class DragHandler : Node, IDragHandler
+public partial class DragHandler : Node, IDragHandler, IDraggable
 {
   private Item _item;
   private IItemDragManager _dragManager;
@@ -20,7 +20,6 @@ public partial class DragHandler : Node, IDragHandler
 
   public void Enable()
   {
-    // _item.Area.Connect(Area3D.SignalName.InputEvent, Callable.From<Node, InputEvent, int>(OnInputEvent));
     _item.Area.InputEvent += OnInputEvent;
   }
 
@@ -44,9 +43,30 @@ public partial class DragHandler : Node, IDragHandler
   {
     if (mouseEvent.ButtonIndex == MouseButton.Left)
     {
-      _dragManager.StartDragItem(_item);
+      if (!_dragManager.CanPickup()) return;
+      _dragManager.StartDragItem(this);
       _item.Area.InputRayPickable = false;
       _item.HoverHandler.Disable();
     }
+  }
+  public Item GetItem()
+  {
+    return _item;
+  }
+  public Node3D GetVisualComponent()
+  {
+    return _item.Visual;
+  }
+  public CollisionShape2D GetDragShape()
+  {
+    var shape = new CircleShape2D
+    {
+      Radius = 20f
+    };
+    var collisionShape = new CollisionShape2D
+    {
+      Shape = shape
+    };
+    return collisionShape;
   }
 }

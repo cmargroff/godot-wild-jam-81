@@ -2,9 +2,8 @@ using System;
 using Godot;
 using ShipOfTheseus2025.DependencyInjection;
 using ShipOfTheseus2025.Enum;
-using ShipOfTheseus2025.Interfaces;
 
-public partial class DamagePoint : Area3D, ISnapPoint
+public partial class DamagePoint : Area3D, IDroppable
 {
   private IItemDragManager _dragManager;
   private IStatsManager _statsManager;
@@ -12,6 +11,8 @@ public partial class DamagePoint : Area3D, ISnapPoint
   private MeshInstance3D _damage;
   private Item _item;
   public event Action LeakingChanged;
+  private Area2D _dropArea;
+  private Camera3D _camera;
   public bool Leaking
   {
     get
@@ -34,30 +35,36 @@ public partial class DamagePoint : Area3D, ISnapPoint
 
   public override void _EnterTree()
   {
+    _camera = GetViewport().GetCamera3D();
     State = DamagePointState.SnapDisable;
     _damage = GetNode<MeshInstance3D>("damage");
-  }
-  public override void _MouseEnter()
-  {
-    if (_dragManager.Dragging && State == DamagePointState.SnapEnable)
-    {
-      _dragManager.SnapPoint(this, true);
 
-    }
-  }
-  public override void _MouseExit()
-  {
-    if (_dragManager.Dragging && State == DamagePointState.SnapEnable)
+    _dropArea = new Area2D
     {
-      _dragManager.Unsnap();
-    }
+      CollisionLayer = 2,
+      CollisionMask = 1
+    };
+    var dropShape = new CollisionShape2D
+    {
+      Shape = new CircleShape2D
+      {
+        Radius = 20f
+      }
+    };
+    _dropArea.AddChild(dropShape);
+    AddChild(_dropArea);
 
+    _dragManager.Register(this);
+  }
+
+  public override void _Process(double delta)
+  {
+    _dropArea.GlobalPosition = _camera.UnprojectPosition(GlobalPosition);
   }
   public void AttachItem(Item item)
   {
     _item = item;
     item.Reparent(this);
-    // item.Attach();
     item.GlobalPosition = GlobalPosition;
     State = DamagePointState.SnapDisable;
     _statsManager.ChangeStat(new()
@@ -70,8 +77,6 @@ public partial class DamagePoint : Area3D, ISnapPoint
     {
       trait.Apply(_statsManager);
     }
-    _dragManager.Unsnap();
-    _dragManager.EndDragItem();
     LeakingChanged?.Invoke();
   }
 
@@ -95,5 +100,32 @@ public partial class DamagePoint : Area3D, ISnapPoint
     LeakingChanged?.Invoke();
   }
 
+  public bool CanDrop(IDraggable draggable)
+  {
+    return State == DamagePointState.SnapEnable;
+  }
 
+  public Vector3 GetDropPosition()
+  {
+    return GlobalPosition;
+  }
+
+  public void OnDragOver(IDraggable draggable)
+  {
+
+  }
+
+  public void OnDragOut(IDraggable draggable)
+  {
+
+  }
+
+  public void OnDragDrop(IDraggable draggable)
+  {
+
+  }
+  public Area2D GetDropArea()
+  {
+    return _dropArea;
+  }
 }

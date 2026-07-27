@@ -46,7 +46,7 @@ public partial class ItemPickUp : Node3D
     public override void _EnterTree()
     {
         State = ItemPickupState.Floating;
-        _dragManager.PickupAudioStreamPlayer = ItemPickupAudioPlayer;
+        // _dragManager.PickupAudioStreamPlayer = ItemPickupAudioPlayer;
         _globalPosition = GlobalPosition;
         AddChild(InventoryItem.Node);
 
@@ -139,17 +139,17 @@ public partial class ItemPickUp : Node3D
 
     public void MouseEntered()
     {
-        if (_dragManager.Dragging == false)
-        {
-            _hovered = (State == ItemPickupState.Floating || State == ItemPickupState.Attached) ? true : false;
-            if (_hovered) _hoverManager.ShowItem(InventoryItem, HoverType.Item);
-        }
+        // if (_dragManager.Dragging == false)
+        // {
+        //     _hovered = (State == ItemPickupState.Floating || State == ItemPickupState.Attached) ? true : false;
+        //     if (_hovered) _hoverManager.ShowItem(InventoryItem, HoverType.Item);
+        // }
 
     }
     public void MouseExited()
     {
-        _hovered = false;
-        if (_dragManager.Dragging == false && (State == ItemPickupState.Floating || State == ItemPickupState.Attached)) _hoverManager.HidePage();
-        GD.Print("mouse exited");
+        // _hovered = false;
+        // if (_dragManager.Dragging == false && (State == ItemPickupState.Floating || State == ItemPickupState.Attached)) _hoverManager.HidePage();
+        // GD.Print("mouse exited");
     }
 }

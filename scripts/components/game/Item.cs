@@ -8,9 +8,11 @@ public partial class Item : Node3D
   public IDragHandler DragHandler { get; set; }
   public IHoverHandler HoverHandler { get; set; }
   public Area3D Area { get; private set; }
+  public Node3D Visual { get; private set; }
   public override void _EnterTree()
   {
-    var area = GetNode<Area3D>("Display/%Area3D");
+    Visual = GetNode<Node3D>("Visual");
+    var area = Visual.GetNode<Area3D>("%Area3D");
     if (area == null)
     {
       GD.PrintErr("Area3D node not found in Item");

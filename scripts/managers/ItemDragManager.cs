@@ -1,7 +1,4 @@
 using Godot;
-using ShipOfTheseus2025.Interfaces;
-
-
 namespace ShipOfTheseus2025.Managers;
 
 public partial class ItemDragManager : Node3D, IItemDragManager
@@ -9,13 +6,14 @@ public partial class ItemDragManager : Node3D, IItemDragManager
   const float ITEM_GRABBED_SCALE = 0.8f;
   const float ITEM_SCALE_SMOOTHING = 0.5f;
   const float ITEM_SNAP_SMOOTHING = 0.3f;
+  const int DRAG_LAYER = 1;
+  const int DROP_LAYER = 2;
   public bool Dragging { get; private set; }
   private Viewport _viewport;
   private Camera3D _camera;
-  private Item _item;
-  private float _scale = 1f;
-  private bool _snapped;
-  private ISnapPoint _snapPoint;
+  private Node3D _draggedNode;
+  private IDraggable _draggedItem;
+  private Area2D _dragArea;
 
   public AudioStreamPlayer PickupAudioStreamPlayer { get; set; }
 
@@ -25,86 +23,77 @@ public partial class ItemDragManager : Node3D, IItemDragManager
 
     Name = "ItemDragManager";
     GD.Print("ItemDragManager entered");
+    _camera = GetTree().Root.GetCamera3D();
   }
 
   public void SetCamera(Camera3D camera)
   {
     _camera = camera;
   }
-  public void StartDragItem(Item item)
+  private void CreateDragArea(IDraggable draggable)
   {
-    Dragging = true;
+    var area = new Area2D
+    {
+      Name = "DragArea",
+      CollisionLayer = DRAG_LAYER | DROP_LAYER,
+      CollisionMask = DROP_LAYER,
+      Monitoring = false,
+      Monitorable = true
+    };
+    var collisionShape = draggable.GetDragShape();
+    area.AddChild(collisionShape);
+    AddChild(area);
+    _dragArea = area;
+  }
 
+  public bool CanPickup() => !Dragging;
+
+  public void StartDragItem(IDraggable draggable)
+  {
     if (_camera == null) return;
 
-    _scale = 1f;
-    _item = item;
-    item.Reparent(GetTree().Root, true);
-    // PickupAudioStreamPlayer.GlobalPosition = item.GlobalPosition;
-    // PickupAudioStreamPlayer.Play();
-    ;
+    CreateDragArea(draggable);
+
+    // mode ownership of dragged item to root to simplify dragging
+    var node = draggable.GetVisualComponent();
+    node.Reparent(GetTree().Root, true);
+    _draggedNode = node;
+    _draggedItem = draggable;
+
+    Dragging = true;
   }
   public void EndDragItem()
   {
+    _draggedNode = null;
+    _dragArea.QueueFree();
     Dragging = false;
-    _item = null;
   }
   public override void _Process(double delta)
   {
-
     if (Dragging)
     {
-      var scaleDelta = _scale - (_snapped ? 1f : ITEM_GRABBED_SCALE);
-      if (scaleDelta > Mathf.Epsilon || scaleDelta < 0)
-      {
-        var targetScale = _scale - (scaleDelta * ITEM_SCALE_SMOOTHING);
-        _item.GetChild<Node3D>(0).Scale = Vector3.One * targetScale;
-        _scale = targetScale;
-      }
-
-      var dest = _snapped ? ((Area3D)_snapPoint).GlobalPosition : _camera.ProjectPosition(_viewport.GetMousePosition(), 24f);
-
-      var distance = _item.GlobalPosition.DistanceTo(dest);
-      if (distance > Mathf.Epsilon)
-      {
-        var dir = _item.Position.DirectionTo(dest);
-        _item.GlobalPosition += dir * (distance * ITEM_SNAP_SMOOTHING);
-      }
-
+      var mousePos = _viewport.GetMousePosition();
+      _dragArea.GlobalPosition = mousePos;
+      _draggedNode.GlobalPosition = _camera.ProjectPosition(mousePos, 24f);
     }
-
   }
-  public override void _Input(InputEvent @event)
+  public void Register(IDroppable droppable)
   {
-    if (@event.IsPressed() && @event.IsAction("lmb"))
+    BindDropAreaEvents(droppable);
+  }
+  private void BindDropAreaEvents(IDroppable droppable)
+  {
+    var area = droppable.GetDropArea();
+    area.AreaEntered += (body) => HandleBodyEntered(droppable);
+    area.AreaShapeEntered += (area, areaShapeIdx, body, bodyShapeIdx) => HandleBodyEntered(droppable);
+    area.BodyEntered += (body) => HandleBodyEntered(droppable);
+    area.BodyShapeEntered += (area, areaShapeIdx, body, bodyShapeIdx) => HandleBodyEntered(droppable);
+  }
+  private void HandleBodyEntered(IDroppable droppable)
+  {
+    if (droppable.CanDrop(_draggedItem))
     {
-      if (_snapPoint is not null)
-      {
-        Attach();
-      }
+      droppable.OnDragOver(_draggedItem);
     }
   }
-  public void SnapPoint(ISnapPoint point, bool snap)
-  {
-    _snapped = snap;
-    _snapPoint = point;
-
-  }
-
-  public void Attach()
-  {
-    _snapPoint.AttachItem(_item);
-
-  }
-  public void Unsnap()
-  {
-    _snapped = false;
-    _snapPoint = null;
-  }
-
-  public Item GetItem()
-  {
-    return _item;
-  }
-
 }

@@ -4,6 +4,9 @@
 [ext_resource type="Script" uid="uid://cjruwugynfcll" path="res://scripts/components/game/InventoryItemSlot.cs" id="2_7pdgj"]
 [ext_resource type="Material" uid="uid://bxe6fyyubevft" path="res://assets/materials/Item_slot_clip.tres" id="3_7pdgj"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rhud3"]
+size = Vector2(55, 55)
+
 [node name="ItemInventorySlot" type="TextureRect" unique_id=838162867]
 custom_minimum_size = Vector2(75, 75)
 texture = ExtResource("1_h0vun")
@@ -20,3 +23,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
+
+[node name="DropArea" type="Area2D" parent="." unique_id=643180111]
+unique_name_in_owner = true
+collision_layer = 3
+
+[node name="DropShape" type="CollisionShape2D" parent="DropArea" unique_id=1399517998]
+position = Vector2(37.5, 37.5)
+shape = SubResource("RectangleShape2D_rhud3")
