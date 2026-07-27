@@ -14,5 +14,4 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 
 unique_name_in_owner = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=503026909]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.127194)
 shape = SubResource("BoxShape3D_sf1m2")
