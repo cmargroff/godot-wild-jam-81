@@ -9,7 +9,7 @@
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build",
-      "args": ["--verbose"],
+      "args": ["--verbose", "--debug-collisions"],
       "cwd": "${workspaceRoot}",
       "console": "internalConsole",
       "stopAtEntry": false,
