@@ -4,12 +4,9 @@ using Godot;
 public interface IDroppable
 {
   public bool CanDrop(IDraggable draggable);
-  public void HandleOver(IDraggable draggable);
-  public void HandleDrop(IDraggable draggable);
-  public Action<IDraggable> OnOver { get; set; }
-  public Action<IDraggable> OnOut { get; set; }
-  public Action<IDraggable> OnDrop { get; set; }
-  public Action<IDraggable> OnPickup { get; set; }
+  public void OnDragOver(IDraggable draggable);
+  public void OnDragOut(IDraggable draggable);
+  public void OnDragDrop(IDraggable draggable);
   public Vector3 GetDropPosition();
-  public Shape2D GetDropShape();
+  public Area2D GetDropArea();
 }

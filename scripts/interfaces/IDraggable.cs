@@ -2,7 +2,7 @@ using Godot;
 
 public interface IDraggable
 {
-  public ItemCategory Category { get; }
+  public Item GetItem();
   public Node3D GetVisualComponent();
-  public Shape2D GetDragShape();
+  public CollisionShape2D GetDragShape();
 }
