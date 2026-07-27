@@ -188,7 +188,7 @@ public class ItemFactoryService
         var node = new Item();
         var scene = itemResource.ItemScene.Instantiate<Node3D>();
         node.AddChild(scene);
-        scene.Name = "Display";
+        scene.Name = "Visual";
         InventoryItem item = new()
         {
             Name = itemResource.ItemName,
