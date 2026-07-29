@@ -14,6 +14,7 @@ public partial class ItemDragManager : Node3D, IItemDragManager
   private Node3D _draggedNode;
   private IDraggable _draggedItem;
   private Area2D _dragArea;
+  private IDroppable _currentDroppable;
 
   public AudioStreamPlayer PickupAudioStreamPlayer { get; set; }
 
@@ -24,6 +25,7 @@ public partial class ItemDragManager : Node3D, IItemDragManager
     Name = "ItemDragManager";
     GD.Print("ItemDragManager entered");
     _camera = GetTree().Root.GetCamera3D();
+    _viewport.GetWindow().WindowInput += Window_WindowInput;
   }
 
   public void SetCamera(Camera3D camera)
@@ -85,15 +87,33 @@ public partial class ItemDragManager : Node3D, IItemDragManager
   {
     var area = droppable.GetDropArea();
     area.AreaEntered += (body) => HandleBodyEntered(droppable);
-    area.AreaShapeEntered += (area, areaShapeIdx, body, bodyShapeIdx) => HandleBodyEntered(droppable);
-    area.BodyEntered += (body) => HandleBodyEntered(droppable);
-    area.BodyShapeEntered += (area, areaShapeIdx, body, bodyShapeIdx) => HandleBodyEntered(droppable);
   }
   private void HandleBodyEntered(IDroppable droppable)
   {
     if (droppable.CanDrop(_draggedItem))
     {
       droppable.OnDragOver(_draggedItem);
+      if (_currentDroppable != null && _currentDroppable != droppable)
+      {
+        _currentDroppable.OnDragOut(_draggedItem);
+      }
+    }
+    _currentDroppable = droppable;
+  }
+  private void Window_WindowInput(InputEvent @event)
+  {
+    if (Dragging && @event is InputEventMouseButton mouseEvent && mouseEvent.Pressed)
+    {
+      if (mouseEvent.ButtonIndex == MouseButton.Left && _currentDroppable != null)
+      {
+        _currentDroppable.OnDragDrop(_draggedItem);
+        EndDragItem();
+      }
+      if (mouseEvent.ButtonIndex == MouseButton.Right)
+      {
+        // TODO: drop item in water
+        EndDragItem();
+      }
     }
   }
 }
