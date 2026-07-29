@@ -10,8 +10,7 @@ public partial class InventoryItemSlot : TextureRect, IDroppable
   private IHoverPanelManager _hoverPanelManager;
   private TextureRect _icon;
   private Area2D _dropArea;
-  private bool _pickingUp;
-  public InventoryItem InventoryItem { get; set; }
+  private IDraggable _storedItem;
 
   [FromServices]
   public void Inject(
@@ -50,6 +49,7 @@ public partial class InventoryItemSlot : TextureRect, IDroppable
   public void OnDragDrop(IDraggable draggable)
   {
     var item = draggable.GetItem();
+    _storedItem = draggable;
     _inventoryManager.AddInventoryItem(item.InventoryItem);
     _icon.Texture = item.InventoryItem.IconTexture;
     _icon.Modulate = new Color(1, 1, 1, 1);
@@ -57,7 +57,7 @@ public partial class InventoryItemSlot : TextureRect, IDroppable
 
   public bool CanDrop(IDraggable draggable)
   {
-    return true;
+    return _storedItem == null;
   }
 
 
@@ -72,8 +72,15 @@ public partial class InventoryItemSlot : TextureRect, IDroppable
   }
   public override void _GuiInput(InputEvent @event)
   {
-    if (@event is InputEventMouseButton mouseEvent && mouseEvent.ButtonIndex == MouseButton.Left)
+    if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed && mouseEvent.ButtonIndex == MouseButton.Left)
     {
+      if (_storedItem != null)
+      {
+        _dragManager.StartDragItem(_storedItem);
+        _storedItem.GetVisualComponent().Visible = true;
+        _storedItem = null;
+        _icon.Texture = null;
+      }
     }
   }
 }
