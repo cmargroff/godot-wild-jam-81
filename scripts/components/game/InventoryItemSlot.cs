@@ -36,12 +36,14 @@ public partial class InventoryItemSlot : TextureRect, IDroppable
   {
     var item = draggable.GetItem();
     _icon.Texture = item.InventoryItem.IconTexture;
+    _icon.Modulate = new Color(1, 1, 1, 0.5f);
     draggable.GetVisualComponent().Visible = false;
   }
 
   public void OnDragOut(IDraggable draggable)
   {
     _icon.Texture = null;
+    _icon.Modulate = new Color(1, 1, 1, 1);
     draggable.GetVisualComponent().Visible = true;
   }
 
@@ -49,6 +51,8 @@ public partial class InventoryItemSlot : TextureRect, IDroppable
   {
     var item = draggable.GetItem();
     _inventoryManager.AddInventoryItem(item.InventoryItem);
+    _icon.Texture = item.InventoryItem.IconTexture;
+    _icon.Modulate = new Color(1, 1, 1, 1);
   }
 
   public bool CanDrop(IDraggable draggable)
