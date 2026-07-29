@@ -35,15 +35,20 @@ public partial class InventoryItemSlot : TextureRect, IDroppable
   public void OnDragOver(IDraggable draggable)
   {
     var item = draggable.GetItem();
+    _icon.Texture = item.InventoryItem.IconTexture;
+    draggable.GetVisualComponent().Visible = false;
   }
 
   public void OnDragOut(IDraggable draggable)
   {
-    GD.Print("Drag out");
+    _icon.Texture = null;
+    draggable.GetVisualComponent().Visible = true;
   }
 
   public void OnDragDrop(IDraggable draggable)
   {
+    var item = draggable.GetItem();
+    _inventoryManager.AddInventoryItem(item.InventoryItem);
   }
 
   public bool CanDrop(IDraggable draggable)
