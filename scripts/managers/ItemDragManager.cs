@@ -87,18 +87,27 @@ public partial class ItemDragManager : Node3D, IItemDragManager
   {
     var area = droppable.GetDropArea();
     area.AreaEntered += (body) => HandleBodyEntered(droppable);
+    area.AreaExited += (body) => HandleBodyExited(droppable);
   }
   private void HandleBodyEntered(IDroppable droppable)
   {
     if (droppable.CanDrop(_draggedItem))
     {
-      droppable.OnDragOver(_draggedItem);
       if (_currentDroppable != null && _currentDroppable != droppable)
       {
         _currentDroppable.OnDragOut(_draggedItem);
       }
+      droppable.OnDragOver(_draggedItem);
+      _currentDroppable = droppable;
     }
-    _currentDroppable = droppable;
+  }
+  private void HandleBodyExited(IDroppable droppable)
+  {
+    if (_currentDroppable == droppable)
+    {
+      droppable.OnDragOut(_draggedItem);
+      _currentDroppable = null;
+    }
   }
   private void Window_WindowInput(InputEvent @event)
   {
