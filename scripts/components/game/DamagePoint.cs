@@ -110,16 +110,12 @@ public partial class DamagePoint : Area3D, IDroppable
 
   public void OnDragOver(IDraggable draggable)
   {
-    // create animation timeline for scale and position
-    // animation should be a function callback that translates between the current position and the target position over time
-    // hold timeline in variable so it can be stopped if the item is dragged out
-    // play animation
+    draggable.GetItem().PlayDropAnimation(this);
   }
 
   public void OnDragOut(IDraggable draggable)
   {
-    // stop animation timeline or play from current position back to original position
-
+    draggable.GetItem().PlayDropAnimation(this, true);
   }
 
   public void OnDragDrop(IDraggable draggable)
