@@ -15,10 +15,7 @@ public partial class DamagePoint : Area3D, IDroppable
   private Camera3D _camera;
   public bool Leaking
   {
-    get
-    {
-      return State == DamagePointState.SnapEnable;
-    }
+    get => State == DamagePointState.SnapEnable;
   }
   public enum DamagePointState
   {
@@ -77,6 +74,7 @@ public partial class DamagePoint : Area3D, IDroppable
     {
       trait.Apply(_statsManager);
     }
+    _item.SetAttached(AttachSlotType.Hull);
     LeakingChanged?.Invoke();
   }
 
@@ -94,7 +92,7 @@ public partial class DamagePoint : Area3D, IDroppable
       {
         trait.Remove(_statsManager);
       }
-      // _item.Drop();
+      _item.SetDetached();
     }
     State = DamagePointState.SnapEnable;
     LeakingChanged?.Invoke();
@@ -112,17 +110,23 @@ public partial class DamagePoint : Area3D, IDroppable
 
   public void OnDragOver(IDraggable draggable)
   {
-
+    // create animation timeline for scale and position
+    // animation should be a function callback that translates between the current position and the target position over time
+    // hold timeline in variable so it can be stopped if the item is dragged out
+    // play animation
   }
 
   public void OnDragOut(IDraggable draggable)
   {
+    // stop animation timeline or play from current position back to original position
 
   }
 
   public void OnDragDrop(IDraggable draggable)
   {
-
+    // attach item to damage point
+    var item = draggable.GetItem();
+    AttachItem(item);
   }
   public Area2D GetDropArea()
   {

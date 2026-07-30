@@ -20,4 +20,6 @@ public partial class Item : Node3D
     }
     Area = area;
   }
+  public void SetAttached(AttachSlotType attachSlotType) { }
+  public void SetDetached() { }
 }
