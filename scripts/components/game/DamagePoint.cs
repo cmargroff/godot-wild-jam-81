@@ -62,7 +62,8 @@ public partial class DamagePoint : Area3D, IDroppable
   {
     _item = item;
     item.Reparent(this);
-    item.GlobalPosition = GlobalPosition;
+    item.Position = Vector3.Zero;
+    item.ResetVisual();
     State = DamagePointState.SnapDisable;
     _statsManager.ChangeStat(new()
     {
