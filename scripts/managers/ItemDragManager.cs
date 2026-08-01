@@ -59,7 +59,7 @@ public partial class ItemDragManager : Node3D, IItemDragManager
     CreateDragArea(draggable);
 
     // mode ownership of dragged item to root to simplify dragging
-    var node = draggable.GetVisualComponent();
+    var node = draggable.GetItem();
     node.Reparent(GetTree().Root, true);
     _draggedNode = node;
     _draggedItem = draggable;

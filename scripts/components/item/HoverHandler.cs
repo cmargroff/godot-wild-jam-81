@@ -22,15 +22,9 @@ public partial class HoverHandler : Node, IHoverHandler
     _item.Area.MouseEntered += OnMouseEntered;
     _item.Area.MouseExited += OnMouseExited;
   }
-
   public void Disable()
   {
-    _item.Area.MouseEntered -= OnMouseEntered;
-    _item.Area.MouseExited -= OnMouseExited;
-  }
-  public override void _ExitTree()
-  {
-    Disable();
+
   }
   private void OnMouseEntered()
   {

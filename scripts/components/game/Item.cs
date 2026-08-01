@@ -3,7 +3,7 @@ using ShipOfTheseus2025.Components.Game;
 
 public partial class Item : Node3D
 {
-  const float DROP_ANIMATION_DURATION = 0.3f;
+  const float DROP_ANIMATION_DURATION = 1 / 0.3f;
   const float DROP_ANIMATION_SCALE = 0.5f;
   public InventoryItem InventoryItem { get; set; }
   public IItemMover ItemMover { get; set; }
@@ -11,10 +11,12 @@ public partial class Item : Node3D
   public IHoverHandler HoverHandler { get; set; }
   public Area3D Area { get; private set; }
   public Node3D Visual { get; private set; }
-  private Tween _animation;
   private DamagePoint _targetSnapPoint;
   private Vector3 _originalScale;
   private Vector3 _targetScale;
+  private bool _isAnimating = false;
+  private float _animationProgress = 0f;
+  private float _animationSpeed = 1f;
   public override void _EnterTree()
   {
     _originalScale = new Vector3(DROP_ANIMATION_SCALE, DROP_ANIMATION_SCALE, DROP_ANIMATION_SCALE);
@@ -27,9 +29,6 @@ public partial class Item : Node3D
       QueueFree();
     }
     Area = area;
-    _animation = GetTree().CreateTween();
-    _animation.TweenMethod(Callable.From<float>(SnapTween), 0f, 1f, DROP_ANIMATION_DURATION);
-    _animation.Pause();
   }
   public void SetAttached(AttachSlotType attachSlotType)
   {
@@ -41,22 +40,35 @@ public partial class Item : Node3D
   {
     if (damagePoint == null)
     {
-      GD.PrintErr("DamagePoint is null in PlayDropAnimation");
       return;
     }
     _targetSnapPoint = damagePoint;
     if (reversed)
     {
-      _animation.SetSpeedScale(-1f);
+      _animationSpeed = -1f;
     }
     else
     {
-      _animation.SetSpeedScale(1f);
+      _animationSpeed = 1f;
     }
-    if (!_animation.IsRunning())
+    _isAnimating = true;
+  }
+  public override void _Process(double delta)
+  {
+    if (_isAnimating)
     {
-      var t = _animation.GetTotalElapsedTime();
-      _animation.Play();
+      _animationProgress += (float)delta * DROP_ANIMATION_DURATION * _animationSpeed;
+      if (_animationProgress >= 1f || _animationProgress <= 0f)
+      {
+        _animationProgress = Mathf.Clamp(_animationProgress, 0f, 1f);
+        _isAnimating = false;
+      }
+      SnapTween(_animationProgress);
+    }
+    else if (_animationProgress >= 1f)
+    {
+      // TODO: this is a really bad band-aid, needs to be updated to make the visual a child of the drop point
+      Visual.GlobalPosition = _targetSnapPoint.GlobalPosition;
     }
   }
   private void SnapTween(float t)
@@ -64,16 +76,21 @@ public partial class Item : Node3D
     Visual.GlobalPosition = GlobalPosition.Lerp(_targetSnapPoint.GlobalPosition, t);
     Visual.Scale = _originalScale.Lerp(_targetScale, t);
   }
-  public void Hide()
+  public new void Hide()
   {
     Visual.Visible = false;
     Area.Monitoring = false;
     Area.Monitorable = false;
   }
-  public void Show()
+  public new void Show()
   {
     Visual.Visible = true;
     Area.Monitoring = true;
     Area.Monitorable = true;
+  }
+  public void ResetVisual()
+  {
+    Visual.GlobalPosition = Vector3.Zero;
+    Visual.Scale = Vector3.One;
   }
 }
