@@ -17,6 +17,7 @@ public partial class Item : Node3D
   private bool _isAnimating = false;
   private float _animationProgress = 0f;
   private float _animationSpeed = 1f;
+  private InventoryItemSlot _currentItemSlot;
   public override void _EnterTree()
   {
     _originalScale = new Vector3(DROP_ANIMATION_SCALE, DROP_ANIMATION_SCALE, DROP_ANIMATION_SCALE);
@@ -35,6 +36,22 @@ public partial class Item : Node3D
   }
   public void SetDetached()
   {
+  }
+  public void InventoryHover(InventoryItemSlot slot, bool hovered = true)
+  {
+    if (_currentItemSlot is not null)
+    {
+      _currentItemSlot.RemoveHoverImage();
+    }
+    if (hovered)
+    {
+      _currentItemSlot = slot;
+      slot.ShowHoverImage(InventoryItem.IconTexture);
+    }
+    else
+    {
+      _currentItemSlot = null;
+    }
   }
   public void PlayDropAnimation(DamagePoint damagePoint, bool reversed = false)
   {

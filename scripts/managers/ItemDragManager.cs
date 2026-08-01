@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Godot;
+using System.Linq;
 namespace ShipOfTheseus2025.Managers;
 
 public partial class ItemDragManager : Node3D, IItemDragManager
@@ -15,7 +16,7 @@ public partial class ItemDragManager : Node3D, IItemDragManager
   private Node3D _draggedNode;
   private IDraggable _draggedItem;
   private Area2D _dragArea;
-  private IDroppable _currentDroppable;
+  private IDroppable _currentDroppable {get => _droppables.Peek(); }
   private Stack<IDroppable> _droppables = new Stack<IDroppable>();
 
   public AudioStreamPlayer PickupAudioStreamPlayer { get; set; }
@@ -96,31 +97,16 @@ public partial class ItemDragManager : Node3D, IItemDragManager
     if (droppable.CanDrop(_draggedItem))
     {
       _droppables.Push(droppable);
-      var newDroppable = _droppables.Peek();
-      if (_currentDroppable != null && _currentDroppable != newDroppable)
-      {
-        _currentDroppable.OnDragOut(_draggedItem);
-      }
-      newDroppable.OnDragOver(_draggedItem);
-      _currentDroppable = newDroppable;
+      _currentDroppable.OnDragOver(_draggedItem);
     }
   }
   private void HandleBodyExited(IDroppable droppable)
   {
-    if (_currentDroppable == droppable)
+    droppable.OnDragOut(_draggedItem);
+    _droppables = new Stack<IDroppable>(_droppables.Where(item => item != droppable).ToList());
+    if (_droppables.Count > 0)
     {
-      droppable.OnDragOut(_draggedItem);
-      _droppables.Pop();
-      if (_droppables.Count > 0)
-      {
-        var newDroppable = _droppables.Peek();
-        newDroppable.OnDragOver(_draggedItem);
-        _currentDroppable = newDroppable;
-      }
-      else
-      {
-        _currentDroppable = null;
-      }
+      _currentDroppable.OnDragOver(_draggedItem);
     }
   }
   private void Window_WindowInput(InputEvent @event)

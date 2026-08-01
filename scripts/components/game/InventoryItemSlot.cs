@@ -34,16 +34,13 @@ public partial class InventoryItemSlot : TextureRect, IDroppable
   public void OnDragOver(IDraggable draggable)
   {
     var item = draggable.GetItem();
-    _icon.Texture = item.InventoryItem.IconTexture;
-    _icon.Modulate = new Color(1, 1, 1, 0.5f);
-    draggable.GetItem().Hide();
+    item.InventoryHover(this);
   }
 
   public void OnDragOut(IDraggable draggable)
   {
-    _icon.Texture = null;
-    _icon.Modulate = new Color(1, 1, 1, 1);
-    draggable.GetItem().Show();
+    var item = draggable.GetItem();
+    item.InventoryHover(this, false);
   }
 
   public void OnDragDrop(IDraggable draggable)
@@ -82,5 +79,15 @@ public partial class InventoryItemSlot : TextureRect, IDroppable
         _icon.Texture = null;
       }
     }
+  }
+  public void ShowHoverImage(Texture2D tex)
+  {
+    _icon.Texture = tex;
+    _icon.Modulate = new Color(1,1,1,0.75f);
+  }
+  public void RemoveHoverImage()
+  {
+    _icon.Texture = null;
+    _icon.Modulate = new Color(1,1,1,1);
   }
 }
