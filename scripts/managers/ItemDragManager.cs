@@ -18,7 +18,14 @@ public partial class ItemDragManager : Node3D, IItemDragManager
   private Node3D _draggedNode;
   private IDraggable _draggedItem;
   private Area2D _dragArea;
-  private IDroppable _currentDroppable { get => _droppables.Peek(); }
+  private IDroppable _currentDroppable
+  {
+    get
+    {
+      if (_droppables.Count == 0) return null;
+      return _droppables.Peek();
+    }
+  }
   private Stack<IDroppable> _droppables = new Stack<IDroppable>();
 
   public AudioStreamPlayer PickupAudioStreamPlayer { get; set; }
