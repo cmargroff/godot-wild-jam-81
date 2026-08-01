@@ -124,7 +124,7 @@ public partial class ItemDragManager : Node3D, IItemDragManager
     {
       droppable.OnDragOut(_draggedItem);
       _droppables = new Stack<IDroppable>(_droppables.Where(item => item != droppable).ToList());
-      _currentDroppable.OnDragOver(_draggedItem);
+      _currentDroppable?.OnDragOver(_draggedItem);
     }
   }
   private void Window_WindowInput(InputEvent @event)
