@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using Godot;
 using System.Linq;
+using ShipOfTheseus2025.DependencyInjection;
+
 namespace ShipOfTheseus2025.Managers;
 
 public partial class ItemDragManager : Node3D, IItemDragManager
@@ -20,6 +22,13 @@ public partial class ItemDragManager : Node3D, IItemDragManager
   private Stack<IDroppable> _droppables = new Stack<IDroppable>();
 
   public AudioStreamPlayer PickupAudioStreamPlayer { get; set; }
+  private IHoverPanelManager _hoverPanelManager;
+
+  [FromServices]
+  public void Inject(IHoverPanelManager hoverPanelManager)
+  {
+    _hoverPanelManager = hoverPanelManager;
+  }
 
   public override void _EnterTree()
   {
@@ -66,12 +75,14 @@ public partial class ItemDragManager : Node3D, IItemDragManager
     _draggedItem = draggable;
 
     Dragging = true;
+    _hoverPanelManager.SetEnabled(false);
   }
   public void EndDragItem()
   {
     _draggedNode = null;
     _dragArea.QueueFree();
     Dragging = false;
+    _hoverPanelManager.SetEnabled(true);
   }
   public override void _Process(double delta)
   {

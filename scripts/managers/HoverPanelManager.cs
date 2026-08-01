@@ -8,6 +8,7 @@ public partial class HoverPanelManager : Control, IHoverPanelManager
   public HoverPage _page;
   private Marker2D _slotMarker;
   private Marker2D _hoverMarker;
+  private bool _enabled = true;
   public override void _EnterTree()
   {
     Name = GetType().Name;
@@ -35,6 +36,7 @@ public partial class HoverPanelManager : Control, IHoverPanelManager
 
   public void ShowItem(InventoryItem item, HoverType hoverType)
   {
+    if (!_enabled) return;
     _page.Show(item);
     _page.Position = _hoverMarker.Position;
     // if (hoverType == HoverType.Item)
@@ -50,5 +52,9 @@ public partial class HoverPanelManager : Control, IHoverPanelManager
   public void HidePage()
   {
     _page.Hide();
+  }
+  public void SetEnabled(bool enabled)
+  {
+    _enabled = enabled;
   }
 }

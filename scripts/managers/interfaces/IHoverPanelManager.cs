@@ -5,4 +5,5 @@ public interface IHoverPanelManager
 {
   void ShowItem(InventoryItem item, HoverType hoverType);
   void HidePage();
+  void SetEnabled(bool enabled);
 }

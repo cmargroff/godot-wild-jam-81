@@ -1,14 +1,17 @@
 using Godot;
 using ShipOfTheseus2025.DependencyInjection;
+using ShipOfTheseus2025.Enum;
 
 public partial class DragHandler : Node, IDragHandler, IDraggable
 {
   private Item _item;
   private IItemDragManager _dragManager;
+  private IHoverPanelManager _hoverPanelManager;
   [FromServices]
-  public void Inject(IItemDragManager dragManager)
+  public void Inject(IItemDragManager dragManager, IHoverPanelManager hoverPanelManager)
   {
     _dragManager = dragManager;
+    _hoverPanelManager = hoverPanelManager;
   }
 
   public override void _EnterTree()
@@ -45,8 +48,6 @@ public partial class DragHandler : Node, IDragHandler, IDraggable
     {
       if (!_dragManager.CanPickup()) return;
       _dragManager.StartDragItem(this);
-      _item.Area.InputRayPickable = false;
-      _item.HoverHandler.Disable();
     }
   }
   public Item GetItem()
