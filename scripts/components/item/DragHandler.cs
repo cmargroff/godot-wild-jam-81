@@ -47,6 +47,7 @@ public partial class DragHandler : Node, IDragHandler, IDraggable
     if (mouseEvent.ButtonIndex == MouseButton.Left)
     {
       if (!_dragManager.CanPickup()) return;
+      _item.HoverHandler.Disable();
       _dragManager.StartDragItem(this);
     }
   }

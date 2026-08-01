@@ -51,6 +51,7 @@ public partial class HoverPanelManager : Control, IHoverPanelManager
   }
   public void HidePage()
   {
+    if (!_enabled) return;
     _page.Hide();
   }
   public void SetEnabled(bool enabled)

@@ -127,6 +127,8 @@ public partial class ItemDragManager : Node3D, IItemDragManager
       if (mouseEvent.ButtonIndex == MouseButton.Left && _currentDroppable != null)
       {
         _currentDroppable.OnDragDrop(_draggedItem);
+        _hoverPanelManager.SetEnabled(true);
+        _hoverPanelManager.HidePage();
         EndDragItem();
       }
       if (mouseEvent.ButtonIndex == MouseButton.Right)
