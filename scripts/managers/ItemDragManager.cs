@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using Godot;
 using System.Linq;
+using Godot;
 using ShipOfTheseus2025.DependencyInjection;
 
 namespace ShipOfTheseus2025.Managers;
@@ -18,7 +18,7 @@ public partial class ItemDragManager : Node3D, IItemDragManager
   private Node3D _draggedNode;
   private IDraggable _draggedItem;
   private Area2D _dragArea;
-  private IDroppable _currentDroppable {get => _droppables.Peek(); }
+  private IDroppable _currentDroppable { get => _droppables.Peek(); }
   private Stack<IDroppable> _droppables = new Stack<IDroppable>();
 
   public AudioStreamPlayer PickupAudioStreamPlayer { get; set; }
@@ -113,10 +113,10 @@ public partial class ItemDragManager : Node3D, IItemDragManager
   }
   private void HandleBodyExited(IDroppable droppable)
   {
-    droppable.OnDragOut(_draggedItem);
-    _droppables = new Stack<IDroppable>(_droppables.Where(item => item != droppable).ToList());
     if (_droppables.Count > 0)
     {
+      droppable.OnDragOut(_draggedItem);
+      _droppables = new Stack<IDroppable>(_droppables.Where(item => item != droppable).ToList());
       _currentDroppable.OnDragOver(_draggedItem);
     }
   }
