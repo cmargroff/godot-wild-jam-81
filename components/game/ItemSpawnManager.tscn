@@ -1,10 +1,10 @@
-[gd_scene format=3 uid="uid://dyb6pfwfxd74r"]
+[gd_scene format=3 uid="uid://hmvl0ucm2hww"]
 
 [ext_resource type="Script" uid="uid://d2ygarpjeg3e5" path="res://scripts/managers/ItemSpawnManager.cs" id="1_lg8gb"]
 [ext_resource type="AudioStream" uid="uid://bcfr8bmp5wpv2" path="res://assets/audio/sfx/pickup_1.mp3" id="3_2nsl3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5imfg"]
-size = Vector3(0, 0, 15.807526)
+size = Vector3(0, 0, 13.224197)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6kpt4"]
 size = Vector3(0, 2.262, 15.816046)
@@ -17,16 +17,16 @@ script = ExtResource("1_lg8gb")
 ItemPickupAudio = ExtResource("3_2nsl3")
 
 [node name="Water" type="CollisionShape3D" parent="." unique_id=691279426]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.949974, -0.053239822, 14.250143)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.95, 4.5, 12.958)
 shape = SubResource("BoxShape3D_5imfg")
 disabled = true
 
 [node name="Air" type="CollisionShape3D" parent="." unique_id=1530134309]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.45803, 11.269463, 13.785001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.458, 15.769, 13.785)
 shape = SubResource("BoxShape3D_6kpt4")
 disabled = true
 
 [node name="Underwater" type="CollisionShape3D" parent="." unique_id=299711848]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.949974, -1.1963136, 12.72579)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.95, 3.304, 12.726)
 shape = SubResource("BoxShape3D_byyw0")
 disabled = true
