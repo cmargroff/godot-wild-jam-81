@@ -97,7 +97,7 @@ public partial class ItemDragManager : Node3D, IItemDragManager
     {
       var mousePos = _viewport.GetMousePosition();
       _dragArea.GlobalPosition = mousePos;
-      _draggedNode.GlobalPosition = _camera.ProjectPosition(mousePos, 24f);
+      _draggedNode.GlobalPosition = _camera.ProjectPosition(mousePos, 15f);
     }
   }
   public void Register(IDroppable droppable)
@@ -138,10 +138,14 @@ public partial class ItemDragManager : Node3D, IItemDragManager
         _hoverPanelManager.HidePage();
         EndDragItem();
       }
-      if (mouseEvent.ButtonIndex == MouseButton.Right)
+      else if (mouseEvent.ButtonIndex == MouseButton.Right)
       {
         // TODO: drop item in water
         EndDragItem();
+        var mousePos = _viewport.GetMousePosition();
+        var node = _draggedItem.GetItem();
+        node.GlobalPosition = _camera.ProjectPosition(mousePos, 28f);
+        node.ItemMover.Start();
       }
     }
   }
