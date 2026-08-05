@@ -9,6 +9,7 @@ public partial class Item : Node3D
   public IItemMover ItemMover { get; set; }
   public IDragHandler DragHandler { get; set; }
   public IHoverHandler HoverHandler { get; set; }
+  public IVfxManager VfxManager { get; set; }
   public Area3D Area { get; private set; }
   public Node3D Visual { get; private set; }
   private DamagePoint _targetSnapPoint;
@@ -33,6 +34,7 @@ public partial class Item : Node3D
   }
   public void SetAttached(AttachSlotType attachSlotType)
   {
+    VfxManager?.Disable();
   }
   public void SetDetached()
   {
