@@ -49,10 +49,12 @@ public partial class Item : Node3D
     {
       _currentItemSlot = slot;
       slot.ShowHoverImage(InventoryItem.IconTexture);
+      Hide();
     }
     else
     {
       _currentItemSlot = null;
+      Show();
     }
   }
   public void PlayDropAnimation(DamagePoint damagePoint, bool reversed = false)
