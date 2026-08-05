@@ -1,9 +1,51 @@
 [gd_scene format=3 uid="uid://bo27gupy337aw"]
 
 [ext_resource type="PackedScene" uid="uid://de03r7o3hbar3" path="res://assets/models/items/fancy_portrait.glb" id="1_sf1m2"]
+[ext_resource type="Texture2D" uid="uid://cg7274j6cxh1v" path="res://assets/textures/particles/sparkle.png" id="2_gld8m"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sf1m2"]
 size = Vector3(2.24878, 3.22174, 0.528198)
+
+[sub_resource type="Gradient" id="Gradient_gld8m"]
+offsets = PackedFloat32Array(0, 0.22740525, 0.40816328, 0.6180758, 0.787172, 1)
+colors = PackedColorArray(0.9650146, 0.9650146, 0.9650146, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_w3div"]
+gradient = SubResource("Gradient_gld8m")
+
+[sub_resource type="Curve" id="Curve_tuc36"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.76151764, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_d0vp7"]
+curve = SubResource("Curve_tuc36")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vt8xo"]
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+spread = 0.0
+orbit_velocity_min = 2.0000002
+orbit_velocity_max = 2.0000002
+radial_velocity_min = 0.49997765
+radial_velocity_max = 0.49997765
+gravity = Vector3(0, 4.5, 0)
+scale_min = 0.14999999
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_d0vp7")
+color_ramp = SubResource("GradientTexture1D_w3div")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_10ohs"]
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_gld8m")
+stencil_flags = 2
+stencil_color = Color(0.9400826, 0, 0.42903006, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_khwic"]
+material = SubResource("StandardMaterial3D_10ohs")
 
 [node name="FancyPortrait" type="Node3D" unique_id=851820761]
 
@@ -15,3 +57,11 @@ unique_name_in_owner = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=503026909]
 shape = SubResource("BoxShape3D_sf1m2")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=328520283]
+amount = 20
+local_coords = true
+transform_align = 1
+transform_align_channel_filter = 1
+process_material = SubResource("ParticleProcessMaterial_vt8xo")
+draw_pass_1 = SubResource("QuadMesh_khwic")
