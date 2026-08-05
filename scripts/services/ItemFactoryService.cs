@@ -246,6 +246,9 @@ public class ItemFactoryService
 
         var hoverHandler = Globals.Instance.ServiceProvider.GetRequiredService<IHoverHandler>();
         itemScene.AddChild(hoverHandler as Node);
+
+        var vfxManager = new ItemVfxManager();
+        itemScene.AddChild(vfxManager);
     }
 
     private int GetGoldValue(ItemResource itemResource)
