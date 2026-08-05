@@ -10,7 +10,7 @@ public partial class ItemVfxManager : Node, IVfxManager
   public override void _Ready()
   {
     var parent = GetParent<Item>();
-    if (parent != null)
+    if (parent is null)
     {
       QueueFree();
       return;
