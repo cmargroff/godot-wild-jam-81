@@ -8,7 +8,7 @@ size = Vector3(2.24878, 3.22174, 0.528198)
 
 [sub_resource type="Gradient" id="Gradient_gld8m"]
 offsets = PackedFloat32Array(0, 0.22740525, 0.40816328, 0.6180758, 0.787172, 1)
-colors = PackedColorArray(0.9650146, 0.9650146, 0.9650146, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+colors = PackedColorArray(0.999999, 0.98525494, 0.5754021, 1, 0, 0, 0, 1, 1, 0.9843137, 0.5764706, 1, 0, 0, 0, 1, 1, 0.9843137, 0.5764706, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_w3div"]
 gradient = SubResource("Gradient_gld8m")
@@ -22,11 +22,10 @@ curve = SubResource("Curve_tuc36")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vt8xo"]
 lifetime_randomness = 1.0
+emission_shape_offset = Vector3(0, 0.485, 0)
 emission_shape = 3
-emission_box_extents = Vector3(1, 1, 1)
+emission_box_extents = Vector3(1.12, 1.13, 0.23)
 spread = 0.0
-orbit_velocity_min = 2.0000002
-orbit_velocity_max = 2.0000002
 radial_velocity_min = 0.49997765
 radial_velocity_max = 0.49997765
 gravity = Vector3(0, 4.5, 0)
